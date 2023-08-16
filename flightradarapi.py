@@ -1,5 +1,6 @@
 from FlightRadar24 import FlightRadar24API
 import json
+import time
 
 
 def get_flight_data():
@@ -18,6 +19,7 @@ def get_flight_data():
         #       sort_keys=True, indent=4)[0:25000])
 
         print(flight_details['time']['scheduled'])
+        print(time.localtime(flight_details['time']['scheduled']['departure']))
 
         # print(flight.__dict__)
         # print(flight.number, flight.origin_airport_iata,
