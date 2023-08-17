@@ -20,6 +20,8 @@ def get_flight_data():
 
         # print(flight_details['time']['scheduled'])
         # print(time.localtime(flight_details['time']['scheduled']['departure']))
+        time_test = flight_details['time']['scheduled']['departure'];
+        print(time_test)
         dep_time = time.localtime(flight_details['time']['scheduled']['departure'])
         arr_time = time.localtime(flight_details['time']['scheduled']['arrival'])
 
