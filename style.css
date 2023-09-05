@@ -8,3 +8,16 @@
     bottom: 0;
     width: 100%;
   }
+
+
+  .marker {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: blue; /* Initial color */
+    cursor: pointer;
+}
+
+.marker:hover {
+    background-color: red; /* Color on hover */
+}

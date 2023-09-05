@@ -9,7 +9,6 @@
 
 //// This is the mapbox code
 mapboxgl.accessToken =
-// from European Startups
 
 const map = new mapboxgl.Map({
   container: "map",
@@ -77,3 +76,12 @@ map.on("load", () => {
     },
   });
 });
+
+// Create a marker element with a custom icon
+const markerElement = document.createElement("div");
+markerElement.className = "marker";
+
+// Add a marker
+new mapboxgl.Marker(markerElement)
+  .setLngLat(origin) // Set the marker's coordinates
+  .addTo(map);
