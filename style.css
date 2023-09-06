@@ -16,6 +16,8 @@
     border-radius: 50%;
     background-color: blue; /* Initial color */
     cursor: pointer;
+    border-style:solid;
+    border-color: yellow
 }
 
 .marker:hover {
