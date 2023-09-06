@@ -81,7 +81,14 @@ map.on("load", () => {
 const markerElement = document.createElement("div");
 markerElement.className = "marker";
 
+const markerElement2 = document.createElement("div");
+markerElement2.className = "marker";
+
 // Add a marker
 new mapboxgl.Marker(markerElement)
   .setLngLat(origin) // Set the marker's coordinates
+  .addTo(map);
+
+new mapboxgl.Marker(markerElement2)
+  .setLngLat(destination) // Set the marker's coordinates
   .addTo(map);
