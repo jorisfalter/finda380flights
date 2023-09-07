@@ -8,7 +8,6 @@
 // }).addTo(map);
 
 //// This is the mapbox code
-mapboxgl.accessToken = "";
 
 const map = new mapboxgl.Map({
   container: "map",
@@ -98,19 +97,22 @@ const elementToHover = document.getElementsByClassName("marker")[0];
 console.log(elementToHover);
 const tooltip = document.getElementById("tooltip");
 console.log(tooltip);
+console.log(elementToHover.getBoundingClientRect().top);
+console.log(elementToHover.offsetHeight);
 console.log(elementToHover.offsetLeft);
 
 // Add event listener for mouse enter (hover) event
 elementToHover.addEventListener("mouseenter", () => {
+  // Get the position of the element relative to the viewport
+  const rect = elementToHover.getBoundingClientRect();
+
   // Set the tooltip content and position
   tooltip.textContent = "This is a tooltip.";
   tooltip.style.display = "block";
-  tooltip.style.top = `${
-    elementToHover.offsetTop + elementToHover.offsetHeight
+  tooltip.style.bottom = `${
+    rect.bottom + rect.height + rect.height + rect.height / 2
   }px`;
-  tooltip.style.left = `${
-    elementToHover.offsetLeft + elementToHover.parentElement.offsetLeft
-  }px`;
+  tooltip.style.left = `${rect.left}px`;
 });
 
 // Add event listener for mouse leave (hover out) event
