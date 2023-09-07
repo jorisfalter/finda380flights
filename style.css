@@ -9,7 +9,6 @@
     width: 100%;
   }
 
-
   .marker {
     width: 30px;
     height: 30px;
@@ -23,3 +22,29 @@
 .marker:hover {
     background-color: red; /* Color on hover */
 }
+
+
+
+@keyframes shining {
+  0% {
+      background-color: rgba(255, 255, 255, 0); /* Start with transparent background */
+  }
+  50% {
+      background-color: rgba(255, 255, 255, 0.5); /* Middle point with some opacity */
+  }
+  100% {
+      background-color: rgba(255, 255, 255, 0); /* End with transparent background */
+  }
+}
+
+/* Apply the animation to the tooltip */
+#tooltip {
+  display: none;
+  position: absolute;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  animation: shining 2s infinite; /* Use a different duration if needed */
+}
+

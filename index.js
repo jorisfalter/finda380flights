@@ -8,7 +8,7 @@
 // }).addTo(map);
 
 //// This is the mapbox code
-mapboxgl.accessToken =
+mapboxgl.accessToken = "";
 
 const map = new mapboxgl.Map({
   container: "map",
@@ -92,3 +92,29 @@ new mapboxgl.Marker(markerElement)
 new mapboxgl.Marker(markerElement2)
   .setLngLat(destination) // Set the marker's coordinates
   .addTo(map);
+
+// Get references to the element and the tooltip container
+const elementToHover = document.getElementsByClassName("marker")[0];
+console.log(elementToHover);
+const tooltip = document.getElementById("tooltip");
+console.log(tooltip);
+console.log(elementToHover.offsetLeft);
+
+// Add event listener for mouse enter (hover) event
+elementToHover.addEventListener("mouseenter", () => {
+  // Set the tooltip content and position
+  tooltip.textContent = "This is a tooltip.";
+  tooltip.style.display = "block";
+  tooltip.style.top = `${
+    elementToHover.offsetTop + elementToHover.offsetHeight
+  }px`;
+  tooltip.style.left = `${
+    elementToHover.offsetLeft + elementToHover.parentElement.offsetLeft
+  }px`;
+});
+
+// Add event listener for mouse leave (hover out) event
+elementToHover.addEventListener("mouseleave", () => {
+  // Hide the tooltip
+  tooltip.style.display = "none";
+});
