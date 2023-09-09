@@ -8,6 +8,7 @@
 // }).addTo(map);
 
 //// This is the mapbox code
+mapboxgl.accessToken =
 
 const map = new mapboxgl.Map({
   container: "map",
@@ -109,10 +110,17 @@ elementToHover.addEventListener("mouseenter", () => {
   // Set the tooltip content and position
   tooltip.textContent = "This is a tooltip.";
   tooltip.style.display = "block";
+
+  // Calculate the left position for the tooltip to center it above the element
+  const tooltipWidth = tooltip.offsetWidth;
+  console.log("tooltipWidth: " + tooltipWidth);
+  const elementWidth = rect.width;
+  const leftPosition = rect.left + elementWidth / 2 - tooltipWidth / 2;
+
   tooltip.style.bottom = `${
     rect.bottom + rect.height + rect.height + rect.height / 2
   }px`;
-  tooltip.style.left = `${rect.left}px`;
+  tooltip.style.left = `${leftPosition}px`;
 });
 
 // Add event listener for mouse leave (hover out) event
