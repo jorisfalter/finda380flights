@@ -23,8 +23,6 @@
     background-color: red; /* Color on hover */
 }
 
-
-
 @keyframes animatedgradient {
   0% {
       background-position: 0% 50; /* Start with background hidden to the left */

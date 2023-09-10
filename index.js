@@ -9,10 +9,13 @@
 
 //// This is the mapbox code
 mapboxgl.accessToken =
+  "pk.eyJ1Ijoiam9yaXNib3JpcyIsImEiOiJjbDA3ajF3d3IxOW00M2RueTF1ZXR0dnJlIn0.bZdaW_lcWxw_mGuN4uq82g";
 
 const map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/mapbox/streets-v11",
+  //   style: "mapbox://styles/jorisboris/clmdk27ll01bw01qx24l12bnw",
+  //   style: "mapbox://styles/jorisboris/cl0aital300sd16kdnx09uo34",
   center: [-96, 37.8],
   zoom: 2.7,
 });
@@ -116,6 +119,9 @@ elementToHover.addEventListener("mouseenter", () => {
   console.log("tooltipWidth: " + tooltipWidth);
   const elementWidth = rect.width;
   const leftPosition = rect.left + elementWidth / 2 - tooltipWidth / 2;
+
+  console.log("bottom: " + rect.bottom);
+  console.log("height: " + rect.height);
 
   tooltip.style.bottom = `${
     rect.bottom + rect.height + rect.height + rect.height / 2
