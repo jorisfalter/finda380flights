@@ -12,9 +12,8 @@ mapboxgl.accessToken =
 
 const map = new mapboxgl.Map({
   container: "map",
-  style: "mapbox://styles/mapbox/streets-v11",
-  //   style: "mapbox://styles/jorisboris/clmdk27ll01bw01qx24l12bnw",
-  //   style: "mapbox://styles/jorisboris/cl0aital300sd16kdnx09uo34",
+  //   style: "mapbox://styles/mapbox/streets-v11",
+  style: "mapbox://styles/jorisboris/clmdk27ll01bw01qx24l12bnw",
   center: [-96, 37.8],
   zoom: 2.7,
 });
