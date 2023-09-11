@@ -9,7 +9,6 @@
 
 //// This is the mapbox code
 mapboxgl.accessToken =
-  "pk.eyJ1Ijoiam9yaXNib3JpcyIsImEiOiJjbDA3ajF3d3IxOW00M2RueTF1ZXR0dnJlIn0.bZdaW_lcWxw_mGuN4uq82g";
 
 const map = new mapboxgl.Map({
   container: "map",
