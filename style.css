@@ -1,9 +1,9 @@
 /* leaflet code from weekendaway */
-#map { height: 400px; }
+#map { height: 600px; }
 
 /* Mapbox code from European Startups */
 #map {
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     bottom: 0;
     width: 100%;

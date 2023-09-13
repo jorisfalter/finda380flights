@@ -18,11 +18,37 @@ const map = new mapboxgl.Map({
   zoom: 2.7,
 });
 
-// San Francisco
-const origin = [-122.414, 37.776];
+// Origin: Incheon, Dubai, // Destination: LAX, New York
+// [[Incheon, Lax], [Dubai, JFK]]
+const flightsCoordinates = [
+  [
+    [126.450898, 37.469221], // Incheon
+    [-118.4085, 33.9416], // Lax
+  ],
+  [
+    [55.3657, 25.2532], // Dubai
+    [-73.7781, 40.6413], // JFK
+  ],
+];
 
-// Washington DC
-const destination = [-77.032, 38.913];
+let origin = flightsCoordinates[0][0];
+// const origin = [126.450898, 37.469221];
+
+let destination = flightsCoordinates[1][1];
+// const destination = [-118.4085, 33.9416];
+
+// mathematical hack to make sure both coordinates are positive when crossing the dateline
+function changeHemisphere() {
+  let originX = origin[0];
+  let destinationX = destination[0];
+  if (originX - destinationX > 180) {
+    destination[0] = destinationX + 360;
+  } else if (originX - destinationX < -180) {
+    origin[0] = originX + 360;
+  }
+}
+
+changeHemisphere();
 
 // A simple line from origin to destination.
 const route = {
@@ -54,6 +80,10 @@ for (let i = 0; i < lineDistance; i += lineDistance / steps) {
   arc.push(segment.geometry.coordinates);
 }
 
+// // Calculate the great-circle arc between origin and destination
+// const arc = turf.greatCircle(origin, destination, { steps }).geometry
+//   .coordinates;
+
 // Update the route with calculated arc coordinates
 route.features[0].geometry.coordinates = arc;
 
@@ -78,6 +108,21 @@ map.on("load", () => {
   });
 });
 
+//// hovering a line
+// Add an event listener for the "mouseenter" event
+map.on("mouseenter", "route", function () {
+  // Change the line's appearance when hovered over
+  map.setPaintProperty("route", "line-color", "#FF5733"); // Change line color to red, for example
+  map.setPaintProperty("route", "line-width", 4); // Increase line width on hover
+});
+
+// Add an event listener for the "mouseleave" event
+map.on("mouseleave", "route", function () {
+  // Restore the line's original appearance when the mouse leaves
+  map.setPaintProperty("route", "line-color", "#007cbf"); // Restore original line color
+  map.setPaintProperty("route", "line-width", 2); // Restore original line width
+});
+
 // Create a marker element with a custom icon
 const markerElement = document.createElement("div");
 markerElement.className = "marker";
@@ -96,34 +141,28 @@ new mapboxgl.Marker(markerElement2)
 
 // Get references to the element and the tooltip container
 const elementToHover = document.getElementsByClassName("marker")[0];
-console.log(elementToHover);
 const tooltip = document.getElementById("tooltip");
-console.log(tooltip);
-console.log(elementToHover.getBoundingClientRect().top);
-console.log(elementToHover.offsetHeight);
-console.log(elementToHover.offsetLeft);
 
 // Add event listener for mouse enter (hover) event
 elementToHover.addEventListener("mouseenter", () => {
   // Get the position of the element relative to the viewport
   const rect = elementToHover.getBoundingClientRect();
 
-  // Set the tooltip content and position
+  // Set the tooltip content
   tooltip.textContent = "This is a tooltip.";
   tooltip.style.display = "block";
 
   // Calculate the left position for the tooltip to center it above the element
   const tooltipWidth = tooltip.offsetWidth;
-  console.log("tooltipWidth: " + tooltipWidth);
   const elementWidth = rect.width;
   const leftPosition = rect.left + elementWidth / 2 - tooltipWidth / 2;
 
-  console.log("bottom: " + rect.bottom);
-  console.log("height: " + rect.height);
+  // Position the tooltip above the element
+  const margin = 10;
+  const tooltipTop = rect.top - tooltip.offsetHeight - margin;
 
-  tooltip.style.bottom = `${
-    rect.bottom + rect.height + rect.height + rect.height / 2
-  }px`;
+  // Set the tooltip position
+  tooltip.style.top = `${tooltipTop}px`;
   tooltip.style.left = `${leftPosition}px`;
 });
 
