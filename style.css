@@ -19,6 +19,11 @@
     border-color: yellow
 }
 
+/* CSS style for changing the cursor to a pointer when hovering over the "route" layer */
+.mapboxgl-canvas.hover-pointer {
+  cursor: default;
+}
+
 .marker:hover {
     background-color: red; /* Color on hover */
 }

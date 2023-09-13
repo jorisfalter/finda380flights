@@ -37,6 +37,8 @@ let origin = flightsCoordinates[0][0];
 let destination = flightsCoordinates[1][1];
 // const destination = [-118.4085, 33.9416];
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+//// Drawing Lines
 // mathematical hack to make sure both coordinates are positive when crossing the dateline
 function changeHemisphere() {
   let originX = origin[0];
@@ -108,12 +110,16 @@ map.on("load", () => {
   });
 });
 
+////////////////////////////////////////////////////////////////////////////////////////////////
 //// hovering a line
 // Add an event listener for the "mouseenter" event
 map.on("mouseenter", "route", function () {
   // Change the line's appearance when hovered over
   map.setPaintProperty("route", "line-color", "#FF5733"); // Change line color to red, for example
   map.setPaintProperty("route", "line-width", 4); // Increase line width on hover
+
+  // Add the "hover-pointer" class to the map container
+  map.getCanvas().classList.add("hover-pointer");
 });
 
 // Add an event listener for the "mouseleave" event
@@ -121,8 +127,13 @@ map.on("mouseleave", "route", function () {
   // Restore the line's original appearance when the mouse leaves
   map.setPaintProperty("route", "line-color", "#007cbf"); // Restore original line color
   map.setPaintProperty("route", "line-width", 2); // Restore original line width
+
+  // Remove the "hover-pointer" class from the map container
+  map.getCanvas().classList.remove("hover-pointer");
 });
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+//// Creating the location marker
 // Create a marker element with a custom icon
 const markerElement = document.createElement("div");
 markerElement.className = "marker";
@@ -139,11 +150,12 @@ new mapboxgl.Marker(markerElement2)
   .setLngLat(destination) // Set the marker's coordinates
   .addTo(map);
 
+////////////////////////////////////////////////////////////////////////////////////////////////
 // Get references to the element and the tooltip container
 const elementToHover = document.getElementsByClassName("marker")[0];
 const tooltip = document.getElementById("tooltip");
 
-// Add event listener for mouse enter (hover) event
+// Add event listener for mouse enter (hover) event for a marker
 elementToHover.addEventListener("mouseenter", () => {
   // Get the position of the element relative to the viewport
   const rect = elementToHover.getBoundingClientRect();
