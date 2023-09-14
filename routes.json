@@ -1,0 +1,24 @@
+[
+	{
+		"originName": "ICN",
+        "originCoordinates":[126.450898, 37.469221],
+		"destinationName": "JFK",
+        "destinationCoordinates": [-73.7781, 40.6413],
+        "departureTimeLocal": "10:00",
+        "arrivalTimeLocal": "11:05",
+        "airline": "Korean Air",
+        "flightNumber": "KE81",
+        "daysOfWeek":[0,1,2,3,4,5,6]
+	},{
+		"originName": "LAX",
+        "originCoordinates":[-118.4085, 33.9416],
+		"destinationName": "DXB",
+        "destinationCoordinates": [55.3657, 25.2532],
+        "departureTimeLocal": "16:40",
+        "arrivalTimeLocal": "19:30",
+        "airline": "Emirates",
+        "flightNumber": "EK216",
+        "daysOfWeek":[0,1,2,3,4,5,6]
+	}
+]
+

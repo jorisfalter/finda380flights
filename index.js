@@ -1,11 +1,4 @@
-//// This is the leaflet code
-// var map = L.map("map").setView([51.505, -0.09], 13);
-
-// L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-//   maxZoom: 19,
-//   attribution:
-//     '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-// }).addTo(map);
+// import importedRoutes from "./routes.json" assert { type: "json" };
 
 //// This is the mapbox code
 mapboxgl.accessToken =
@@ -31,26 +24,39 @@ const flightsCoordinates = [
   ],
 ];
 
-let origin = flightsCoordinates[0][0];
-// const origin = [126.450898, 37.469221];
+let origin1 = flightsCoordinates[0][0];
 
-let destination = flightsCoordinates[1][1];
-// const destination = [-118.4085, 33.9416];
+let destination1 = flightsCoordinates[1][1];
+
+let origin2 = flightsCoordinates[0][1];
+
+let destination2 = flightsCoordinates[1][0];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //// Drawing Lines
 // mathematical hack to make sure both coordinates are positive when crossing the dateline
-function changeHemisphere() {
-  let originX = origin[0];
-  let destinationX = destination[0];
+function changeHemisphere1() {
+  let originX = origin1[0];
+  let destinationX = destination1[0];
   if (originX - destinationX > 180) {
-    destination[0] = destinationX + 360;
+    destination1[0] = destinationX + 360;
   } else if (originX - destinationX < -180) {
-    origin[0] = originX + 360;
+    origin1[0] = originX + 360;
   }
 }
+changeHemisphere1();
 
-changeHemisphere();
+// temp for testing
+function changeHemisphere2() {
+  let originX = origin2[0];
+  let destinationX = destination2[0];
+  if (originX - destinationX > 180) {
+    destination2[0] = destinationX + 360;
+  } else if (originX - destinationX < -180) {
+    origin2[0] = originX + 360;
+  }
+}
+changeHemisphere2();
 
 // A simple line from origin to destination.
 const route = {
@@ -58,9 +64,28 @@ const route = {
   features: [
     {
       type: "Feature",
+      properties: {
+        origin: "Incheon",
+      },
       geometry: {
         type: "LineString",
-        coordinates: [origin, destination],
+        coordinates: [origin1, destination1],
+      },
+    },
+  ],
+};
+
+const route2 = {
+  type: "FeatureCollection",
+  features: [
+    {
+      type: "Feature",
+      properties: {
+        origin: "LAX",
+      },
+      geometry: {
+        type: "LineString",
+        coordinates: [origin2, destination2],
       },
     },
   ],
@@ -90,7 +115,7 @@ for (let i = 0; i < lineDistance; i += lineDistance / steps) {
 route.features[0].geometry.coordinates = arc;
 
 // Used to increment the value of the point measurement against the route.
-let counter = 0;
+// let counter = 0;
 
 map.on("load", () => {
   // Add a source and layer displaying a point which will be animated in a circle.
@@ -134,6 +159,7 @@ map.on("mouseleave", "route", function () {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //// Creating the location marker
+
 // Create a marker element with a custom icon
 const markerElement = document.createElement("div");
 markerElement.className = "marker";
@@ -143,14 +169,16 @@ markerElement2.className = "marker";
 
 // Add a marker
 new mapboxgl.Marker(markerElement)
-  .setLngLat(origin) // Set the marker's coordinates
+  .setLngLat(origin1) // Set the marker's coordinates
   .addTo(map);
 
 new mapboxgl.Marker(markerElement2)
-  .setLngLat(destination) // Set the marker's coordinates
+  .setLngLat(destination1) // Set the marker's coordinates
   .addTo(map);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
+// Add tooltip and hover effect to marker
+
 // Get references to the element and the tooltip container
 const elementToHover = document.getElementsByClassName("marker")[0];
 const tooltip = document.getElementById("tooltip");
