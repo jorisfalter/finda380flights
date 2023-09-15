@@ -1,0 +1,57 @@
+/* leaflet code from weekendaway */
+#map { height: 600px; }
+
+/* Mapbox code from European Startups */
+#map {
+    /* position: absolute; */
+    top: 0;
+    bottom: 0;
+    width: 80%;
+    margin:auto;
+  }
+
+  .marker {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: blue; /* Initial color */
+    cursor: pointer;
+    border-style:solid;
+    border-color: yellow
+}
+
+/* CSS style for changing the cursor to a pointer when hovering over the "route" layer */
+.mapboxgl-canvas.hover-pointer {
+  cursor: default;
+}
+
+.marker:hover {
+    background-color: red; /* Color on hover */
+}
+
+@keyframes animatedgradient {
+  0% {
+      background-position: 0% 50; /* Start with background hidden to the left */
+  }
+  50% {
+    background-position: 100% 50%; /* Move background to the right */
+}
+  100% {
+      background-position: 0% 50%; /* Move background to the right */
+  }
+}
+
+/* Apply the animation to the tooltip */
+#tooltip {
+  display: none;
+  position: absolute;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  background: linear-gradient(60deg,#f5b31e,#ffe289,#FFBF00);
+  background-size: 300% 300%; /* Double the width to accommodate the animation */
+  animation: animatedgradient 3s ease infinite alternate; /* Use a different duration if needed */
+}
+
+
