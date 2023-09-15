@@ -1,5 +1,6 @@
 key.txt
 .env
+node_modules/
 
 # Logs
 logs
