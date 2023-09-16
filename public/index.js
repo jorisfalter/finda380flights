@@ -195,22 +195,6 @@ for (let j = 0; j < allMarkersObject.length; j++) {
     .setLngLat(allMarkersObject[j].coordinates) // Set the marker's coordinates
     .addTo(map);
 
-  // // Create a marker element with a custom icon
-  // const markerElement = document.createElement("div");
-  // markerElement.className = "marker";
-
-  // const markerElement2 = document.createElement("div");
-  // markerElement2.className = "marker";
-
-  // // Add a marker
-  // new mapboxgl.Marker(markerElement)
-  //   .setLngLat(origin1) // Set the marker's coordinates
-  //   .addTo(map);
-
-  // new mapboxgl.Marker(markerElement2)
-  //   .setLngLat(destination1) // Set the marker's coordinates
-  //   .addTo(map);
-
   ////////////////////////////////////////////////////////////////////////////////////////////////
   // Add tooltip and hover effect to marker
 
@@ -225,7 +209,8 @@ for (let j = 0; j < allMarkersObject.length; j++) {
     const rect = elementToHover.getBoundingClientRect();
 
     // Set the tooltip content
-    tooltip.textContent = allMarkersObject[j].cityName;
+    tooltip.textContent =
+      allMarkersObject[j].cityName + " (" + allMarkersObject[j].name + ")";
     tooltip.style.display = "block";
 
     // Calculate the left position for the tooltip to center it above the element
