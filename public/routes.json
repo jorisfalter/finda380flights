@@ -1,8 +1,10 @@
 [
 	{
 		"originName": "ICN",
+        "originCityName": "Seoul",
         "originCoordinates":[126.450898, 37.469221],
 		"destinationName": "JFK",
+        "destinationCityName": "New York",
         "destinationCoordinates": [-73.7781, 40.6413],
         "departureTimeLocal": "10:00",
         "arrivalTimeLocal": "11:05",
@@ -11,13 +13,27 @@
         "daysOfWeek":[0,1,2,3,4,5,6]
 	},{
 		"originName": "LAX",
+        "originCityName": "Los Angeles",
         "originCoordinates":[-118.4085, 33.9416],
 		"destinationName": "DXB",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [55.3657, 25.2532],
         "departureTimeLocal": "16:40",
         "arrivalTimeLocal": "19:30",
         "airline": "Emirates",
         "flightNumber": "EK216",
+        "daysOfWeek":[0,1,2,3,4,5,6]
+	},{
+		"originName": "LAX",
+        "originCityName": "Los Angeles",
+        "originCoordinates":[-118.4085, 33.9416],
+		"destinationName": "abc",
+        "destinationCityName": "abc city",
+        "destinationCoordinates": [0,0],
+        "departureTimeLocal": "16:40",
+        "arrivalTimeLocal": "19:30",
+        "airline": "testflight",
+        "flightNumber": "tf216",
         "daysOfWeek":[0,1,2,3,4,5,6]
 	}
 ]

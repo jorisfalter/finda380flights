@@ -159,54 +159,92 @@ map.on("mouseleave", "route", function () {
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //// Creating the location marker
 
-// Create a marker element with a custom icon
-const markerElement = document.createElement("div");
-markerElement.className = "marker";
+//// making an array of all destinations and origins:
+const allMarkersNames = [];
+const allMarkersObject = [];
 
-const markerElement2 = document.createElement("div");
-markerElement2.className = "marker";
+for (let i = 0; i < importedRoutes.length; i++) {
+  if (!allMarkersNames.includes(importedRoutes[i].originName)) {
+    allMarkersNames.push(importedRoutes[i].originName);
+    allMarkersObject.push({
+      name: importedRoutes[i].originName,
+      coordinates: importedRoutes[i].originCoordinates,
+      cityName: importedRoutes[i].originCityName,
+    });
+  }
 
-// Add a marker
-new mapboxgl.Marker(markerElement)
-  .setLngLat(origin1) // Set the marker's coordinates
-  .addTo(map);
+  if (!allMarkersNames.includes(importedRoutes[i].destinationName)) {
+    allMarkersNames.push(importedRoutes[i].destinationName);
+    allMarkersObject.push({
+      name: importedRoutes[i].destinationName,
+      coordinates: importedRoutes[i].destinationCoordinates,
+      cityName: importedRoutes[i].destinationCityName,
+    });
+  }
+}
+console.log(allMarkersNames);
+console.log(allMarkersObject);
 
-new mapboxgl.Marker(markerElement2)
-  .setLngLat(destination1) // Set the marker's coordinates
-  .addTo(map);
+for (let j = 0; j < allMarkersObject.length; j++) {
+  // Create a marker element with a custom icon
+  const markerElement = document.createElement("div");
+  markerElement.className = "marker";
 
-////////////////////////////////////////////////////////////////////////////////////////////////
-// Add tooltip and hover effect to marker
+  // Add a marker
+  new mapboxgl.Marker(markerElement)
+    .setLngLat(allMarkersObject[j].coordinates) // Set the marker's coordinates
+    .addTo(map);
 
-// Get references to the element and the tooltip container
-const elementToHover = document.getElementsByClassName("marker")[0];
-const tooltip = document.getElementById("tooltip");
+  // // Create a marker element with a custom icon
+  // const markerElement = document.createElement("div");
+  // markerElement.className = "marker";
 
-// Add event listener for mouse enter (hover) event for a marker
-elementToHover.addEventListener("mouseenter", () => {
-  // Get the position of the element relative to the viewport
-  const rect = elementToHover.getBoundingClientRect();
+  // const markerElement2 = document.createElement("div");
+  // markerElement2.className = "marker";
 
-  // Set the tooltip content
-  tooltip.textContent = "This is a tooltip.";
-  tooltip.style.display = "block";
+  // // Add a marker
+  // new mapboxgl.Marker(markerElement)
+  //   .setLngLat(origin1) // Set the marker's coordinates
+  //   .addTo(map);
 
-  // Calculate the left position for the tooltip to center it above the element
-  const tooltipWidth = tooltip.offsetWidth;
-  const elementWidth = rect.width;
-  const leftPosition = rect.left + elementWidth / 2 - tooltipWidth / 2;
+  // new mapboxgl.Marker(markerElement2)
+  //   .setLngLat(destination1) // Set the marker's coordinates
+  //   .addTo(map);
 
-  // Position the tooltip above the element
-  const margin = 10;
-  const tooltipTop = rect.top - tooltip.offsetHeight - margin;
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+  // Add tooltip and hover effect to marker
 
-  // Set the tooltip position
-  tooltip.style.top = `${tooltipTop}px`;
-  tooltip.style.left = `${leftPosition}px`;
-});
+  // Get references to the element and the tooltip container
+  const elementToHover = document.getElementsByClassName("marker")[j];
 
-// Add event listener for mouse leave (hover out) event
-elementToHover.addEventListener("mouseleave", () => {
-  // Hide the tooltip
-  tooltip.style.display = "none";
-});
+  const tooltip = document.getElementById("tooltip");
+
+  // Add event listener for mouse enter (hover) event for a marker
+  elementToHover.addEventListener("mouseenter", () => {
+    // Get the position of the element relative to the viewport
+    const rect = elementToHover.getBoundingClientRect();
+
+    // Set the tooltip content
+    tooltip.textContent = allMarkersObject[j].cityName;
+    tooltip.style.display = "block";
+
+    // Calculate the left position for the tooltip to center it above the element
+    const tooltipWidth = tooltip.offsetWidth;
+    const elementWidth = rect.width;
+    const leftPosition = rect.left + elementWidth / 2 - tooltipWidth / 2;
+
+    // Position the tooltip above the element
+    const margin = 10;
+    const tooltipTop = rect.top - tooltip.offsetHeight - margin;
+
+    // Set the tooltip position
+    tooltip.style.top = `${tooltipTop}px`;
+    tooltip.style.left = `${leftPosition}px`;
+  });
+
+  // Add event listener for mouse leave (hover out) event
+  elementToHover.addEventListener("mouseleave", () => {
+    // Hide the tooltip
+    tooltip.style.display = "none";
+  });
+}
