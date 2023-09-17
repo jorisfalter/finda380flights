@@ -1,7 +1,7 @@
 import importedRoutes from "./routes.json" assert { type: "json" };
 
 //// This is the mapbox code
-mapboxgl.accessToken =
+mapboxgl.accessToken = "";
 
 const map = new mapboxgl.Map({
   container: "map",
@@ -21,7 +21,6 @@ const flightsCoordinates = [
     importedRoutes[1].destinationCoordinates, // dubai
   ],
 ];
-// console.log(flightsCoordinates2);
 
 let origin1 = flightsCoordinates[0][0];
 
@@ -45,18 +44,6 @@ function changeHemisphere1() {
 }
 changeHemisphere1();
 
-// temp for testing
-function changeHemisphere2() {
-  let originX = origin2[0];
-  let destinationX = destination2[0];
-  if (originX - destinationX > 180) {
-    destination2[0] = destinationX + 360;
-  } else if (originX - destinationX < -180) {
-    origin2[0] = originX + 360;
-  }
-}
-changeHemisphere2();
-
 // A simple line from origin to destination.
 const route = {
   type: "FeatureCollection",
@@ -69,22 +56,6 @@ const route = {
       geometry: {
         type: "LineString",
         coordinates: [origin1, destination1],
-      },
-    },
-  ],
-};
-
-const route2 = {
-  type: "FeatureCollection",
-  features: [
-    {
-      type: "Feature",
-      properties: {
-        origin: "LAX",
-      },
-      geometry: {
-        type: "LineString",
-        coordinates: [origin2, destination2],
       },
     },
   ],
@@ -124,7 +95,7 @@ map.on("load", () => {
   });
 
   map.addLayer({
-    id: "route",
+    id: "route1",
     source: "route",
     type: "line",
     paint: {
@@ -137,20 +108,20 @@ map.on("load", () => {
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //// hovering a line
 // Add an event listener for the "mouseenter" event
-map.on("mouseenter", "route", function () {
+map.on("mouseenter", "route1", function () {
   // Change the line's appearance when hovered over
-  map.setPaintProperty("route", "line-color", "#FF5733"); // Change line color to red, for example
-  map.setPaintProperty("route", "line-width", 4); // Increase line width on hover
+  map.setPaintProperty("route1", "line-color", "#FF5733"); // Change line color to red, for example
+  map.setPaintProperty("route1", "line-width", 4); // Increase line width on hover
 
   // Add the "hover-pointer" class to the map container
   map.getCanvas().classList.add("hover-pointer");
 });
 
 // Add an event listener for the "mouseleave" event
-map.on("mouseleave", "route", function () {
+map.on("mouseleave", "route1", function () {
   // Restore the line's original appearance when the mouse leaves
-  map.setPaintProperty("route", "line-color", "#007cbf"); // Restore original line color
-  map.setPaintProperty("route", "line-width", 2); // Restore original line width
+  map.setPaintProperty("route1", "line-color", "#007cbf"); // Restore original line color
+  map.setPaintProperty("route1", "line-width", 2); // Restore original line width
 
   // Remove the "hover-pointer" class from the map container
   map.getCanvas().classList.remove("hover-pointer");
