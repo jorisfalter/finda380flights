@@ -22,16 +22,24 @@ const flightsCoordinates = [
   ],
 ];
 
-let origin1 = flightsCoordinates[0][0];
-
-let destination1 = flightsCoordinates[0][1];
-
 let origin2 = flightsCoordinates[1][0];
 
 let destination2 = flightsCoordinates[1][1];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //// Drawing Lines
+
+// IK HEB DE DUBBELE ER NOG NIET UITGEHAALD
+
+// for (let k = 0; k < importedRoutes.length; k++) {
+// let origin1 = flightsCoordinates[k][0];
+
+// let destination1 = flightsCoordinates[k][1];
+
+let origin1 = flightsCoordinates[0][0];
+
+let destination1 = flightsCoordinates[0][1];
+
 // mathematical hack to make sure both coordinates are positive when crossing the dateline
 function changeHemisphere1() {
   let originX = origin1[0];
@@ -51,6 +59,7 @@ const route = {
     {
       type: "Feature",
       properties: {
+        // DIT NOG UPDATEN
         origin: "Incheon",
       },
       geometry: {
@@ -104,6 +113,7 @@ map.on("load", () => {
     },
   });
 });
+// }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //// hovering a line
