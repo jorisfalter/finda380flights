@@ -1,7 +1,7 @@
 import importedRoutes from "./routes.json" assert { type: "json" };
 
 //// This is the mapbox code
-mapboxgl.accessToken = "";
+mapboxgl.accessToken = "process.env.MAPBOX_KEY";
 
 const map = new mapboxgl.Map({
   container: "map",
