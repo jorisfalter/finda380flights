@@ -11,109 +11,90 @@ const map = new mapboxgl.Map({
   zoom: 1,
 });
 
-const flightsCoordinates = [
-  [
-    importedRoutes[0].originCoordinates, // inc
-    importedRoutes[0].destinationCoordinates, // jfk
-  ],
-  [
-    importedRoutes[1].originCoordinates, // lax
-    importedRoutes[1].destinationCoordinates, // dubai
-  ],
-];
-
-let origin2 = flightsCoordinates[1][0];
-
-let destination2 = flightsCoordinates[1][1];
-
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //// Drawing Lines
 
 // IK HEB DE DUBBELE ER NOG NIET UITGEHAALD
 
-// for (let k = 0; k < importedRoutes.length; k++) {
-// let origin1 = flightsCoordinates[k][0];
+for (let k = 0; k < importedRoutes.length; k++) {
+  let origin1 = importedRoutes[k].originCoordinates;
 
-// let destination1 = flightsCoordinates[k][1];
+  let destination1 = importedRoutes[k].destinationCoordinates;
 
-let origin1 = flightsCoordinates[0][0];
-
-let destination1 = flightsCoordinates[0][1];
-
-// mathematical hack to make sure both coordinates are positive when crossing the dateline
-function changeHemisphere1() {
-  let originX = origin1[0];
-  let destinationX = destination1[0];
-  if (originX - destinationX > 180) {
-    destination1[0] = destinationX + 360;
-  } else if (originX - destinationX < -180) {
-    origin1[0] = originX + 360;
+  // mathematical hack to make sure both coordinates are positive when crossing the dateline
+  function changeHemisphere1() {
+    let originX = origin1[0];
+    let destinationX = destination1[0];
+    if (originX - destinationX > 180) {
+      destination1[0] = destinationX + 360;
+    } else if (originX - destinationX < -180) {
+      origin1[0] = originX + 360;
+    }
   }
-}
-changeHemisphere1();
+  changeHemisphere1();
 
-// A simple line from origin to destination.
-const route = {
-  type: "FeatureCollection",
-  features: [
-    {
-      type: "Feature",
-      properties: {
-        // DIT NOG UPDATEN
-        origin: "Incheon",
+  // A simple line from origin to destination.
+  const route = {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        properties: {
+          // DIT NOG UPDATEN
+          origin: "Incheon",
+        },
+        geometry: {
+          type: "LineString",
+          coordinates: [origin1, destination1],
+        },
       },
-      geometry: {
-        type: "LineString",
-        coordinates: [origin1, destination1],
+    ],
+  };
+
+  // Calculate the distance in kilometers between route start/end point.
+  const lineDistance = turf.length(route.features[0]);
+
+  const arc = [];
+
+  // Number of steps to use in the arc and animation, more steps means
+  // a smoother arc and animation, but too many steps will result in a
+  // low frame rate
+  const steps = 500;
+
+  // Draw an arc between the `origin` & `destination` of the two points
+  for (let i = 0; i < lineDistance; i += lineDistance / steps) {
+    const segment = turf.along(route.features[0], i);
+    arc.push(segment.geometry.coordinates);
+  }
+
+  // // Calculate the great-circle arc between origin and destination
+  // const arc = turf.greatCircle(origin, destination, { steps }).geometry
+  //   .coordinates;
+
+  // Update the route with calculated arc coordinates
+  route.features[0].geometry.coordinates = arc;
+
+  // Used to increment the value of the point measurement against the route.
+  // let counter = 0;
+
+  map.on("load", () => {
+    // Add a source and layer displaying a point which will be animated in a circle.
+    map.addSource("route" + k, {
+      type: "geojson",
+      data: route,
+    });
+
+    map.addLayer({
+      id: "route" + k,
+      source: "route" + k,
+      type: "line",
+      paint: {
+        "line-width": 2,
+        "line-color": "#007cbf",
       },
-    },
-  ],
-};
-
-// Calculate the distance in kilometers between route start/end point.
-const lineDistance = turf.length(route.features[0]);
-
-const arc = [];
-
-// Number of steps to use in the arc and animation, more steps means
-// a smoother arc and animation, but too many steps will result in a
-// low frame rate
-const steps = 500;
-
-// Draw an arc between the `origin` & `destination` of the two points
-for (let i = 0; i < lineDistance; i += lineDistance / steps) {
-  const segment = turf.along(route.features[0], i);
-  arc.push(segment.geometry.coordinates);
+    });
+  });
 }
-
-// // Calculate the great-circle arc between origin and destination
-// const arc = turf.greatCircle(origin, destination, { steps }).geometry
-//   .coordinates;
-
-// Update the route with calculated arc coordinates
-route.features[0].geometry.coordinates = arc;
-
-// Used to increment the value of the point measurement against the route.
-// let counter = 0;
-
-map.on("load", () => {
-  // Add a source and layer displaying a point which will be animated in a circle.
-  map.addSource("route", {
-    type: "geojson",
-    data: route,
-  });
-
-  map.addLayer({
-    id: "route1",
-    source: "route",
-    type: "line",
-    paint: {
-      "line-width": 2,
-      "line-color": "#007cbf",
-    },
-  });
-});
-// }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //// hovering a line
