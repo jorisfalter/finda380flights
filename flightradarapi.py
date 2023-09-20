@@ -3,16 +3,13 @@ import json
 import time
 import datetime
 import pytz
+import csv
 
 
 def get_flight_data():
     api = FlightRadar24API()
-    # flight_data = api.get_flights(aircraft_type="A388", details=True)
-    # return flight_data
 
-    # for flight in api.get_flights(aircraft_type="A388", details="true"):
-    #     print(flight.__dict__)
-    #     break
+    data = []
 
     for flight in api.get_flights(aircraft_type="A388"):
         flight_details = api.get_flight_details(flight)
@@ -47,19 +44,33 @@ def get_flight_data():
             # print(flight.__dict__)
 
             # data for databse
+
+            # dataOneFlight = {"flightNumber": flight.number, "originIata": flight.origin_airport_iata,
+            #    "destinationIata": flight.destination_airport_iata, "departureDatetimeLocal": local_dep_datetime, "arrivalDatetimeLocal": local_arr_datetime}
+
+            dataOneFlight = [flight.number, flight.origin_airport_iata,flight.destination_airport_iata, local_dep_datetime, local_arr_datetime]
+
             print(flight.number, flight.origin_airport_iata,
                 flight.destination_airport_iata, local_dep_datetime, local_arr_datetime)
+
+            data.append(dataOneFlight)
+
         else:
             print("no destination")
             # print(flight_details)
        
-       # break
+        # break
+
+    # write to file
+    filename = "data.csv"
+
+    # Open the file in write mode ('w')
+    with open(filename, mode='w', newline='') as file:
+        csv_writer = csv.writer(file)
+        for row in data:
+            csv_writer.writerow(row)
+    file.close()
 
 if __name__ == "__main__":
     flight_data=get_flight_data()
 
-    # if flight_data:
-    #     # Print or process the flight data
-    #     print(flight_data.number)
-    # else:
-    #     print("Failed to fetch data")

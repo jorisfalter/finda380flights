@@ -1,11 +1,10 @@
 import importedRoutes from "./routes.json" assert { type: "json" };
 
 //// This is the mapbox code
-mapboxgl.accessToken = "process.env.MAPBOX_KEY";
+mapboxgl.accessToken = "process.env.MY_SECRET_MAPBOX_KEY";
 
 const map = new mapboxgl.Map({
   container: "map",
-  //   style: "mapbox://styles/mapbox/streets-v11",
   style: "mapbox://styles/jorisboris/clmdk27ll01bw01qx24l12bnw",
   center: [-96, 37.8],
   zoom: 1,
@@ -18,6 +17,8 @@ const map = new mapboxgl.Map({
 
 for (let k = 0; k < importedRoutes.length; k++) {
   let origin1 = importedRoutes[k].originCoordinates;
+
+  let originCityName = importedRoutes[k].originCityName;
 
   let destination1 = importedRoutes[k].destinationCoordinates;
 
@@ -41,7 +42,7 @@ for (let k = 0; k < importedRoutes.length; k++) {
         type: "Feature",
         properties: {
           // DIT NOG UPDATEN
-          origin: "Incheon",
+          origin: originCityName,
         },
         geometry: {
           type: "LineString",
