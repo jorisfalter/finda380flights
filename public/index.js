@@ -1,7 +1,7 @@
 import importedRoutes from "./routes.json" assert { type: "json" };
 
 //// This is the mapbox code
-mapboxgl.accessToken = "process.env.MY_SECRET_MAPBOX_KEY";
+mapboxgl.accessToken = "";
 
 const map = new mapboxgl.Map({
   container: "map",
@@ -41,7 +41,7 @@ for (let k = 0; k < importedRoutes.length; k++) {
       {
         type: "Feature",
         properties: {
-          // DIT NOG UPDATEN
+          // wondering if I can use this for the lines lighting up when hovering a marker
           origin: originCityName,
         },
         geometry: {
@@ -168,6 +168,12 @@ for (let j = 0; j < allMarkersObject.length; j++) {
 
   // Add event listener for mouse enter (hover) event for a marker
   elementToHover.addEventListener("mouseenter", () => {
+    // first tries at code to make all the lines light up when you hover over a marker
+    // it should make the lines from that marker light up
+    // it should also make the other lines gray
+    console.log(allMarkersObject[j].cityName);
+
+    //// tooltip
     // Get the position of the element relative to the viewport
     const rect = elementToHover.getBoundingClientRect();
 
