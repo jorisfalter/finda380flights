@@ -95,29 +95,29 @@ for (let k = 0; k < importedRoutes.length; k++) {
       },
     });
   });
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+  //// hovering a line
+  // Add an event listener for the "mouseenter" event
+  map.on("mouseenter", "route" + k, function () {
+    // Change the line's appearance when hovered over
+    map.setPaintProperty("route" + k, "line-color", "#FF5733"); // Change line color to red, for example
+    map.setPaintProperty("route" + k, "line-width", 4); // Increase line width on hover
+
+    // Add the "hover-pointer" class to the map container
+    map.getCanvas().classList.add("hover-pointer");
+  });
+
+  // Add an event listener for the "mouseleave" event
+  map.on("mouseleave", "route" + k, function () {
+    // Restore the line's original appearance when the mouse leaves
+    map.setPaintProperty("route" + k, "line-color", "#007cbf"); // Restore original line color
+    map.setPaintProperty("route" + k, "line-width", 2); // Restore original line width
+
+    // Remove the "hover-pointer" class from the map container
+    map.getCanvas().classList.remove("hover-pointer");
+  });
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-//// hovering a line
-// Add an event listener for the "mouseenter" event
-map.on("mouseenter", "route1", function () {
-  // Change the line's appearance when hovered over
-  map.setPaintProperty("route1", "line-color", "#FF5733"); // Change line color to red, for example
-  map.setPaintProperty("route1", "line-width", 4); // Increase line width on hover
-
-  // Add the "hover-pointer" class to the map container
-  map.getCanvas().classList.add("hover-pointer");
-});
-
-// Add an event listener for the "mouseleave" event
-map.on("mouseleave", "route1", function () {
-  // Restore the line's original appearance when the mouse leaves
-  map.setPaintProperty("route1", "line-color", "#007cbf"); // Restore original line color
-  map.setPaintProperty("route1", "line-width", 2); // Restore original line width
-
-  // Remove the "hover-pointer" class from the map container
-  map.getCanvas().classList.remove("hover-pointer");
-});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //// Creating the location marker
