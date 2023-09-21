@@ -98,8 +98,18 @@ if __name__ == "__main__":
         'age': 30
     }
 
-    result = collection.insert_one(data)
-    # cursor = collection.find()
+    # result = collection.insert_one(data)
+    cursor = collection.find()
+
+    # write to file
+    filename = "data.csv"
+
+    # Open the file in write mode ('w')
+    with open(filename, mode='w', newline='') as file:
+        csv_writer = csv.writer(file)
+        for row in cursor:
+            csv_writer.writerow(row)
+    file.close()
 
     # for document in cursor:
     client.close()
