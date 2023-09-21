@@ -1,4 +1,4 @@
-from FlightRadar24 import FlightRadar24API
+# from FlightRadar24 import FlightRadar24API
 import json
 import time
 import datetime
