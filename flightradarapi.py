@@ -12,8 +12,19 @@ import os
 
 def get_flight_data():
     api = FlightRadar24API()
+    # data = []
+    from pymongo import MongoClient
+    ca = certifi.where()
 
-    data = []
+    # Load environment variables from .env file
+    load_dotenv()
+    mongoPass = os.getenv("MONGO_ATLAS_PASS")
+
+    client = pymongo.MongoClient(
+        f'mongodb+srv://joris-a380:{mongoPass}@cluster0.1gi6i3v.mongodb.net/?retryWrites=true&w=majority&connectTimeoutMS=5000', tlsCAFile=ca)
+
+    db = client['a380flightsDb']
+    collection = db['a380flightsCollection']
 
     for flight in api.get_flights(aircraft_type="A388"):
         flight_details = api.get_flight_details(flight)
@@ -46,72 +57,46 @@ def get_flight_data():
             local_arr_datetime = utc_arr_datetime.astimezone(
                 pytz.timezone(target_timezone_destination))
 
-            # all details
+            # print all details
             # print(flight.__dict__)
 
-            # data for databse
+            # data for database
+            dataOneFlight = {"flightNumber": flight.number, "originIata": flight.origin_airport_iata,
+                             "destinationIata": flight.destination_airport_iata, "departureDatetimeLocal": local_dep_datetime, "arrivalDatetimeLocal": local_arr_datetime}
 
-            # dataOneFlight = {"flightNumber": flight.number, "originIata": flight.origin_airport_iata,
-            #    "destinationIata": flight.destination_airport_iata, "departureDatetimeLocal": local_dep_datetime, "arrivalDatetimeLocal": local_arr_datetime}
+            result = collection.insert_one(dataOneFlight)
 
-            dataOneFlight = [flight.number, flight.origin_airport_iata,
-                             flight.destination_airport_iata, local_dep_datetime, local_arr_datetime]
+            # dataOneFlight = [flight.number, flight.origin_airport_iata,
+            #  flight.destination_airport_iata, local_dep_datetime, local_arr_datetime]
+            # data.append(dataOneFlight)
 
             print(flight.number, flight.origin_airport_iata,
                   flight.destination_airport_iata, local_dep_datetime, local_arr_datetime)
 
-            data.append(dataOneFlight)
+            break
 
         else:
             print("no destination")
             # print(flight_details)
 
         # break
-
-    # write to file
-    filename = "data.csv"
-
-    # Open the file in write mode ('w')
-    with open(filename, mode='w', newline='') as file:
-        csv_writer = csv.writer(file)
-        for row in data:
-            csv_writer.writerow(row)
-    file.close()
+    # close db:
+    client.close()
 
 
 if __name__ == "__main__":
-    from pymongo import MongoClient
-    ca = certifi.where()
-    # Load environment variables from .env file
-    load_dotenv()
-    mongoPass = os.getenv("MONGO_ATLAS_PASS")
 
-    client = pymongo.MongoClient(
-        f'mongodb+srv://joris-a380:{mongoPass}@cluster0.1gi6i3v.mongodb.net/?retryWrites=true&w=majority&connectTimeoutMS=5000', tlsCAFile=ca)
+    # # take data out of collection
+    # cursor = collection.find()
 
-    db = client['a380flightsDb']
-    collection = db['a380flightsCollection']
+    # # write to file
+    # filename = "data.csv"
 
-    data = {
-        'name': 'John Doe',
-        'email': 'johndoe@example.com',
-        'age': 30
-    }
+    # # Open the file in write mode ('w')
+    # with open(filename, mode='w', newline='') as file:
+    #     csv_writer = csv.writer(file)
+    #     for row in cursor:
+    #         csv_writer.writerow(row)
+    # file.close()
 
-    # result = collection.insert_one(data)
-    cursor = collection.find()
-
-    # write to file
-    filename = "data.csv"
-
-    # Open the file in write mode ('w')
-    with open(filename, mode='w', newline='') as file:
-        csv_writer = csv.writer(file)
-        for row in cursor:
-            csv_writer.writerow(row)
-    file.close()
-
-    # for document in cursor:
-    client.close()
-
-# flight_data=get_flight_data()
+    flight_data=get_flight_data()
