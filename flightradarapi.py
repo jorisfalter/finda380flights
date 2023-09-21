@@ -76,7 +76,6 @@ def get_flight_data():
             print(flight.number, flight.origin_airport_iata,
                   flight.destination_airport_iata, local_dep_datetime, local_arr_datetime)
 
-            break
 
         else:
             print("no destination")
