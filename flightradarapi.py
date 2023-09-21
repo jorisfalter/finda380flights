@@ -60,8 +60,11 @@ def get_flight_data():
             # print all details
             # print(flight.__dict__)
 
+            now = datetime.datetime.now()
+
+
             # data for database
-            dataOneFlight = {"flightNumber": flight.number, "originIata": flight.origin_airport_iata,
+            dataOneFlight = {"loggingTime":now,"flightNumber": flight.number, "originIata": flight.origin_airport_iata,
                              "destinationIata": flight.destination_airport_iata, "departureDatetimeLocal": local_dep_datetime, "arrivalDatetimeLocal": local_arr_datetime}
 
             result = collection.insert_one(dataOneFlight)
