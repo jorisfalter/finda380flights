@@ -2,7 +2,6 @@ import importedRoutes from "./routes.json" assert { type: "json" };
 
 //// This is the mapbox code
 mapboxgl.accessToken = "";
-
 const map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/jorisboris/clmdk27ll01bw01qx24l12bnw",
@@ -10,10 +9,10 @@ const map = new mapboxgl.Map({
   zoom: 1,
 });
 
+const lineTooltip = document.getElementById("lineTooltip");
+
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //// Drawing Lines
-
-// IK HEB DE DUBBELE ER NOG NIET UITGEHAALD
 
 for (let k = 0; k < importedRoutes.length; k++) {
   let origin1 = importedRoutes[k].originCoordinates;
@@ -68,15 +67,8 @@ for (let k = 0; k < importedRoutes.length; k++) {
     arc.push(segment.geometry.coordinates);
   }
 
-  // // Calculate the great-circle arc between origin and destination
-  // const arc = turf.greatCircle(origin, destination, { steps }).geometry
-  //   .coordinates;
-
   // Update the route with calculated arc coordinates
   route.features[0].geometry.coordinates = arc;
-
-  // Used to increment the value of the point measurement against the route.
-  // let counter = 0;
 
   map.on("load", () => {
     // Add a source and layer displaying a point which will be animated in a circle.
@@ -98,6 +90,27 @@ for (let k = 0; k < importedRoutes.length; k++) {
 
   ////////////////////////////////////////////////////////////////////////////////////////////////
   //// hovering a line
+
+  // Add event listener to detect mouse movement over the line
+  map.on("mousemove", "route" + k, (e) => {
+    const features = map.queryRenderedFeatures(e.point, {
+      layers: ["route" + k],
+    });
+
+    if (features.length > 0) {
+      const feature = features[0];
+      // const coordinates = e.lngLat;
+
+      // Populate the tooltip with information from the feature properties
+      lineTooltip.innerHTML = `<strong>${feature.properties.name}</strong><br>${feature.properties.description}`;
+
+      // Position the tooltip at the mouse pointer's coordinates
+      lineTooltip.style.display = "block";
+      lineTooltip.style.left = e.originalEvent.pageX + "px";
+      lineTooltip.style.top = e.originalEvent.pageY + "px";
+    }
+  });
+
   // Add an event listener for the "mouseenter" event
   map.on("mouseenter", "route" + k, function () {
     // Change the line's appearance when hovered over
@@ -116,6 +129,9 @@ for (let k = 0; k < importedRoutes.length; k++) {
 
     // Remove the "hover-pointer" class from the map container
     map.getCanvas().classList.remove("hover-pointer");
+
+    // Hide the tooltip when leaving the line
+    lineTooltip.style.display = "none";
   });
 }
 
@@ -145,8 +161,6 @@ for (let i = 0; i < importedRoutes.length; i++) {
     });
   }
 }
-console.log(allMarkersNames);
-console.log(allMarkersObject);
 
 for (let j = 0; j < allMarkersObject.length; j++) {
   // Create a marker element with a custom icon
