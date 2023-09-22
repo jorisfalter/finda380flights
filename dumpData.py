@@ -22,7 +22,7 @@ if __name__ == "__main__":
         f'mongodb+srv://joris-a380:{mongoPass}@cluster0.1gi6i3v.mongodb.net/?retryWrites=true&w=majority&connectTimeoutMS=5000', tlsCAFile=ca)
 
     db = client['a380flightsDb']
-    collection = db['a380flightsCollection']
+    collection = db['a380flightsCollectionFiltered']
 
     # take data out of collection
     cursor = collection.find()
