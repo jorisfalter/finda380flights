@@ -1,4 +1,5 @@
 import importedRoutes from "./routes.json" assert { type: "json" };
+import importedRoutesV2 from "./routesV2.json" assert { type: "json" };
 
 //// This is the mapbox code
 mapboxgl.accessToken = "";
@@ -101,8 +102,33 @@ for (let k = 0; k < importedRoutes.length; k++) {
       const feature = features[0];
       // const coordinates = e.lngLat;
 
-      // Populate the tooltip with information from the feature properties
-      lineTooltip.innerHTML = `<strong>${feature.properties.name}</strong><br>${feature.properties.description}`;
+      //// create tooltipcontent
+      // create origin - destination
+      let tooltipContent = `<strong>${
+        importedRoutesV2[k].originName +
+        " - " +
+        importedRoutesV2[k].destinationName
+      }</strong><br>`;
+
+      // add origin - destination info for each airline and flightnumber
+      for (const item of importedRoutesV2[k].goflights) {
+        tooltipContent += `${item.airline} - ${item.flightNumber}<br>${item.departureTimeLocal} - ${item.arrivalTimeLocal}<br>`;
+      }
+
+      // create origin - destination
+      tooltipContent += `<br><strong>${
+        importedRoutesV2[k].destinationName +
+        " - " +
+        importedRoutesV2[k].originName
+      }</strong><br>`;
+
+      // add destination - origin info for each airline and flightnumber
+      for (const item of importedRoutesV2[k].returnflights) {
+        tooltipContent += `${item.airline} - ${item.flightNumber}<br>${item.departureTimeLocal} - ${item.arrivalTimeLocal}<br>`;
+      }
+
+      // add it to the html
+      lineTooltip.innerHTML = tooltipContent;
 
       // Position the tooltip at the mouse pointer's coordinates
       lineTooltip.style.display = "block";

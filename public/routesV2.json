@@ -13,24 +13,36 @@
             "departureTimeLocal": "10:00",
             "arrivalTimeLocal": "11:05"
             },{ 
+            "airline": "Korean Air",
+            "flightNumber": "KE83",
+            "daysOfWeek":[0,2,4,6],
+            "departureTimeLocal": "12:00",
+            "arrivalTimeLocal": "13:05"
+            },{ 
             "airline": "Asiana",
             "flightNumber": "AS03",
             "daysOfWeek":[0,1,2,3,4,5,6],
             "departureTimeLocal": "10:30",
-            "arrivalTimeLocal": "11:35"}],
-        "returnflights":[{
+            "arrivalTimeLocal": "11:35"}
+        ],"returnflights":[{
             "airline": "Korean Air",
             "flightNumber": "KE82",
             "daysOfWeek":[0,1,2,3,4,5,6],
             "departureTimeLocal": "13:05",
             "arrivalTimeLocal": "8:00"
-        },{ 
+            },{ 
+            "airline": "Korean Air",
+            "flightNumber": "KE84",
+            "daysOfWeek":[0,2,4,6],
+            "departureTimeLocal": "14:00",
+            "arrivalTimeLocal": "15:05"
+            },{ 
             "airline": "Asiana",
             "flightNumber": "AS04",
             "daysOfWeek":[0,1,2,3,4,5,6],
             "departureTimeLocal": "13:35",
-            "arrivalTimeLocal": "8:30"}]
- 
+            "arrivalTimeLocal": "8:30"}
+        ]
 	},{
 		"originName": "LAX",
         "originCityName": "Los Angeles",
@@ -38,23 +50,28 @@
 		"destinationName": "DXB",
         "destinationCityName": "Dubai",
         "destinationCoordinates": [55.3657, 25.2532],
-        "departureTimeLocal": "16:40",
-        "arrivalTimeLocal": "19:30",
-        "airline": "Emirates",
-        "flightNumber": "EK216",
-        "daysOfWeek":[0,1,2,3,4,5,6]
-	},{
+        "goflights":[{
+            "airline": "Emirates",
+            "flightNumber": "EK216",
+            "daysOfWeek":[0,1,2,3,4,5,6],
+            "departureTimeLocal": "16:40",
+            "arrivalTimeLocal": "19:30"} 
+        ],"returnflights":[{
+	}]},{
 		"originName": "LAX",
         "originCityName": "Los Angeles",
         "originCoordinates":[-118.4085, 33.9416],
 		"destinationName": "abc",
         "destinationCityName": "abc city",
         "destinationCoordinates": [0,0],
-        "departureTimeLocal": "16:40",
-        "arrivalTimeLocal": "19:30",
-        "airline": "testflight",
-        "flightNumber": "tf216",
-        "daysOfWeek":[0,1,2,3,4,5,6]
+        "goflights":[{
+            "airline": "testflight",
+            "flightNumber": "tf216",
+            "daysOfWeek":[0,1,2,3,4,5,6],
+            "departureTimeLocal": "16:40",
+            "arrivalTimeLocal": "19:30"}
+        ],"returnflights":[{
+        }]
 	}
 ]
 
