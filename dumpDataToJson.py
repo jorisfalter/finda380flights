@@ -39,7 +39,7 @@ if __name__ == "__main__":
         data.append(document)
 
     # Specify the file path where you want to save the JSON file
-    file_path = "data.json"
+    file_path = "dataDump.json"
 
     # Open the file in write mode and use json.dump() to write the data
     with open(file_path, "w") as json_file:

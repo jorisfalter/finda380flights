@@ -46,9 +46,21 @@ if __name__ == "__main__":
                      "destinationName":  document["destinationIata"],
                      "destinationCityName": "",
                      "destinationCoordinates": [],
+                     "goflights": [{
+                         "airline": "",
+                         "flightNumber": document["flightNumber"],
+                         "daysOfWeek": [],
+                         "departureTimeLocal": document["departureDatetimeLocal"],
+                         "arrivalTimeLocal": document["arrivalDatetimeLocal"]}],
+                     "returnflights": [{
+                         "airline": "",
+                         "flightNumber": "",
+                         "daysOfWeek": [],
+                         "departureTimeLocal": "",
+                         "arrivalTimeLocal": ""}]
                      }
         data.append(newObject)
-        break
+        # break
 
     # Specify the file path where you want to save the JSON file
     file_path = "data.json"
