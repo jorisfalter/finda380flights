@@ -8,7 +8,13 @@ import certifi
 from dotenv import load_dotenv
 import os
 
-# this script converts the
+
+# Specify the path to your JSON file
+json_file_path = "airports.json"
+
+# Open and read the JSON file
+with open(json_file_path, "r") as json_file:
+    airport_coordinates = json.load(json_file)
 
 if __name__ == "__main__":
 
@@ -40,9 +46,25 @@ if __name__ == "__main__":
         # if both not, build a new object
         # if one of both, check the goflights / returnflights, wel duidelijk maken welke van de twee checken, anders gaat ie duplicates genereren
 
+        # search the coordinates
+        # Look up the coordinates for the origin
+        foundCoordinatesOrigin = airport_coordinates.get(
+            document["originIata"])
+
+        # for error handling now
+        latitudeOrigin = 0
+        longitudeOrigin = 0
+
+        if foundCoordinatesOrigin:
+            latitudeOrigin = foundCoordinatesOrigin["latitude"]
+            longitudeOrigin = foundCoordinatesOrigin["longitude"]
+
+        # look up the coordinates for the destination
+        # document["destinationIata"]
+
         newObject = {"originName": document["originIata"],
                      "originCityName": "",
-                     "originCoordinates": [],
+                     "originCoordinates": [longitudeOrigin, latitudeOrigin],
                      "destinationName":  document["destinationIata"],
                      "destinationCityName": "",
                      "destinationCoordinates": [],
