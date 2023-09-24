@@ -9,6 +9,8 @@ from dotenv import load_dotenv
 import os
 
 
+# imports the data from airports.json
+
 # Specify the path to your JSON file
 json_file_path = "airports.json"
 
@@ -60,14 +62,23 @@ if __name__ == "__main__":
             longitudeOrigin = foundCoordinatesOrigin["longitude"]
 
         # look up the coordinates for the destination
-        # document["destinationIata"]
+        foundCoordinatesDestination = airport_coordinates.get(
+            document["destinationIata"])
+
+        # for error handling now
+        latitudeDestination = 0
+        longitudeDestination = 0
+
+        if foundCoordinatesDestination:
+            latitudeDestination = foundCoordinatesDestination["latitude"]
+            longitudeDestination = foundCoordinatesDestination["longitude"]
 
         newObject = {"originName": document["originIata"],
                      "originCityName": "",
                      "originCoordinates": [longitudeOrigin, latitudeOrigin],
                      "destinationName":  document["destinationIata"],
                      "destinationCityName": "",
-                     "destinationCoordinates": [],
+                     "destinationCoordinates": [longitudeDestination, latitudeDestination],
                      "goflights": [{
                          "airline": "",
                          "flightNumber": document["flightNumber"],
