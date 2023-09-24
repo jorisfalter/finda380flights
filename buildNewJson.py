@@ -42,61 +42,92 @@ if __name__ == "__main__":
 
     # Query MongoDB and retrieve data
     data = []
+    counter = 0
+    counterNegatives = 0
     for document in source_collection.find():
-        # if "data" has and object with the same document['originIata'] and document['destinationIata']
-        # else if "data" has an object inverted origin and destination
-        # if both not, build a new object
-        # if one of both, check the goflights / returnflights, wel duidelijk maken welke van de twee checken, anders gaat ie duplicates genereren
 
-        # search the coordinates
-        # Look up the coordinates for the origin
-        foundCoordinatesOrigin = airport_coordinates.get(
-            document["originIata"])
+        origin_iata = document["originIata"]
+        destination_iata = document["destinationIata"]
 
-        # for error handling now
-        latitudeOrigin = 0
-        longitudeOrigin = 0
+        # Check if a corresponding object exists in the data array
+        if not data:
+            matching_data_obj = None
+        else:
+            matching_data_obj = next(
+                (obj for obj in data if obj["originName"] == origin_iata and obj["destinationName"] == destination_iata), None)
 
-        if foundCoordinatesOrigin:
-            latitudeOrigin = foundCoordinatesOrigin["latitude"]
-            longitudeOrigin = foundCoordinatesOrigin["longitude"]
+        if matching_data_obj:
+            # A matching object was found in the data array
+            counterNegatives +=1
+            
+            
+            # need to check if: 
+            # - the airline already exists
+            # - and the dow
+            # - and the flightnumber
 
-        # look up the coordinates for the destination
-        foundCoordinatesDestination = airport_coordinates.get(
-            document["destinationIata"])
+        else:
+            # No matching object was found in the data array
 
-        # for error handling now
-        latitudeDestination = 0
-        longitudeDestination = 0
+            # DONE if "data" has and object with the same document['originIata'] and document['destinationIata']
+            # TODO else if "data" has an object inverted origin and destination
+            # TODO if both not, build a new object
+            # TODO if one of both, check the goflights / returnflights, wel duidelijk maken welke van de twee checken, anders gaat ie duplicates genereren
+  
 
-        if foundCoordinatesDestination:
-            latitudeDestination = foundCoordinatesDestination["latitude"]
-            longitudeDestination = foundCoordinatesDestination["longitude"]
+            # search the coordinates
+            # Look up the coordinates for the origin
+            foundCoordinatesOrigin = airport_coordinates.get(
+                document["originIata"])
 
-        newObject = {"originName": document["originIata"],
-                     "originCityName": "",
-                     "originCoordinates": [longitudeOrigin, latitudeOrigin],
-                     "destinationName":  document["destinationIata"],
-                     "destinationCityName": "",
-                     "destinationCoordinates": [longitudeDestination, latitudeDestination],
-                     "goflights": [{
-                         "airline": "",
-                         "flightNumber": document["flightNumber"],
-                         "daysOfWeek": [],
-                         "departureTimeLocal": document["departureDatetimeLocal"],
-                         "arrivalTimeLocal": document["arrivalDatetimeLocal"]}],
-                     "returnflights": [{
-                         "airline": "",
-                         "flightNumber": "",
-                         "daysOfWeek": [],
-                         "departureTimeLocal": "",
-                         "arrivalTimeLocal": ""}]
-                     }
-        data.append(newObject)
-        # break
+            # for error handling now
+            latitudeOrigin = 0
+            longitudeOrigin = 0
 
+            if foundCoordinatesOrigin:
+                latitudeOrigin = foundCoordinatesOrigin["latitude"]
+                longitudeOrigin = foundCoordinatesOrigin["longitude"]
+
+            # look up the coordinates for the destination
+            foundCoordinatesDestination = airport_coordinates.get(
+                document["destinationIata"])
+
+            # for error handling now
+            latitudeDestination = 0
+            longitudeDestination = 0
+
+            if foundCoordinatesDestination:
+                latitudeDestination = foundCoordinatesDestination["latitude"]
+                longitudeDestination = foundCoordinatesDestination["longitude"]
+
+            newObject = {"originName": document["originIata"],
+                         "originCityName": "",
+                         "originCoordinates": [longitudeOrigin, latitudeOrigin],
+                         "destinationName":  document["destinationIata"],
+                         "destinationCityName": "",
+                         "destinationCoordinates": [longitudeDestination, latitudeDestination],
+                         "goflights": [{
+                             "airline": "",
+                             "flightNumber": document["flightNumber"],
+                             "daysOfWeek": [],
+                             "departureTimeLocal": document["departureDatetimeLocal"],
+                             "arrivalTimeLocal": document["arrivalDatetimeLocal"]}],
+                         "returnflights": [{
+                             "airline": "",
+                             "flightNumber": "",
+                             "daysOfWeek": [],
+                             "departureTimeLocal": "",
+                             "arrivalTimeLocal": ""}]
+                         }
+            data.append(newObject)
+            counter +=1
+
+    print(f"array with {counter} objects created")
+    print(f"{counterNegatives} duplicates ignored")
+
+    
     # Specify the file path where you want to save the JSON file
-    file_path = "data.json"
+    file_path = "routesV2.json"
 
     # Open the file in write mode and use json.dump() to write the data
     with open(file_path, "w") as json_file:

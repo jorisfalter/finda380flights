@@ -1,9 +1,9 @@
-import importedRoutes from "./routes.json" assert { type: "json" };
+// import importedRoutes from "./routes.json" assert { type: "json" };
 import importedRoutesV2 from "./routesV2.json" assert { type: "json" };
+// import importedRoutesV2 from "./routesV2mock.json" assert { type: "json" };
 
 //// This is the mapbox code
 mapboxgl.accessToken = "";
-
 const map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/jorisboris/clmdk27ll01bw01qx24l12bnw",
@@ -16,12 +16,12 @@ const lineTooltip = document.getElementById("lineTooltip");
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //// Drawing Lines
 
-for (let k = 0; k < importedRoutes.length; k++) {
-  let origin1 = importedRoutes[k].originCoordinates;
+for (let k = 0; k < importedRoutesV2.length; k++) {
+  let origin1 = importedRoutesV2[k].originCoordinates;
 
-  let originCityName = importedRoutes[k].originCityName;
+  let originCityName = importedRoutesV2[k].originCityName;
 
-  let destination1 = importedRoutes[k].destinationCoordinates;
+  let destination1 = importedRoutesV2[k].destinationCoordinates;
 
   // mathematical hack to make sure both coordinates are positive when crossing the dateline
   function changeHemisphere1() {
@@ -169,22 +169,22 @@ for (let k = 0; k < importedRoutes.length; k++) {
 const allMarkersNames = [];
 const allMarkersObject = [];
 
-for (let i = 0; i < importedRoutes.length; i++) {
-  if (!allMarkersNames.includes(importedRoutes[i].originName)) {
-    allMarkersNames.push(importedRoutes[i].originName);
+for (let i = 0; i < importedRoutesV2.length; i++) {
+  if (!allMarkersNames.includes(importedRoutesV2[i].originName)) {
+    allMarkersNames.push(importedRoutesV2[i].originName);
     allMarkersObject.push({
-      name: importedRoutes[i].originName,
-      coordinates: importedRoutes[i].originCoordinates,
-      cityName: importedRoutes[i].originCityName,
+      name: importedRoutesV2[i].originName,
+      coordinates: importedRoutesV2[i].originCoordinates,
+      cityName: importedRoutesV2[i].originCityName,
     });
   }
 
-  if (!allMarkersNames.includes(importedRoutes[i].destinationName)) {
-    allMarkersNames.push(importedRoutes[i].destinationName);
+  if (!allMarkersNames.includes(importedRoutesV2[i].destinationName)) {
+    allMarkersNames.push(importedRoutesV2[i].destinationName);
     allMarkersObject.push({
-      name: importedRoutes[i].destinationName,
-      coordinates: importedRoutes[i].destinationCoordinates,
-      cityName: importedRoutes[i].destinationCityName,
+      name: importedRoutesV2[i].destinationName,
+      coordinates: importedRoutesV2[i].destinationCoordinates,
+      cityName: importedRoutesV2[i].destinationCityName,
     });
   }
 }
