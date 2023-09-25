@@ -8,6 +8,8 @@ import certifi
 from dotenv import load_dotenv
 import os
 
+# deprecated
+# i can also delete the db
 
 if __name__ == "__main__":
 

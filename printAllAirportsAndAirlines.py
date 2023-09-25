@@ -9,9 +9,12 @@ with open(file_path, "r") as json_file:
     data = json.load(json_file)
 
 # Create an array with only the 'originIata' values
-origin_data = [item["originIata"] for item in data]
+# origin_data = [item["originIata"] for item in data]
+# unique_list = list(set(origin_data))
 
-unique_list = list(set(origin_data))
+# create an array with only the first two letters of the flightnumber
+airline_date = [item["flightNumber"][:2] for item in data]
+unique_list = list(set(airline_date))
 
 
 # 'origin_data' now contains only the 'originIata' values

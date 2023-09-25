@@ -13,11 +13,28 @@ import os
 # uses the data in airports.json
 # after generating the routesV2 file you have to manually drag it to the "public" folder
 
-json_file_path = "airports.json"
 
-# Open and read the Airports file
+
+# Open and read the Airports and Airlines files
+json_file_path = "airports.json"
+json_file_path_airlines = "airlines.json"
+
 with open(json_file_path, "r") as json_file:
     airport_coordinates = json.load(json_file)
+
+with open(json_file_path_airlines,"r") as json_file:
+    airline_data = json.load(json_file)
+
+def get_airline_name(flight_number):
+    # Extract the first two letters from the flight number (the airline abbreviation)
+    airline_abbreviation = flight_number[:2].upper()  # Convert to uppercase for case-insensitive matching
+
+    # Check if the airline abbreviation exists in the data
+    if airline_abbreviation in airline_data:
+        return airline_data[airline_abbreviation]
+    else:
+        return "Unknown"  # Return a default value if the abbreviation is not found
+
 
 if __name__ == "__main__":
 
@@ -56,12 +73,11 @@ if __name__ == "__main__":
         matching_data_obj = next(
             (obj for obj in data if obj["originName"] == origin_iata and obj["destinationName"] == destination_iata), None)
 
-        # if the matching flight already exists (EXIST1):
+        # if the matching flight already exists (EXIST1) we will check if the Flight Number already exists:
         if matching_data_obj:
 
             # Find the index of the matching object in the data array
             index_of_matching_obj = data.index(matching_data_obj)
-            
 
             # check the flightnumbers
             if all(item.get("flightNumber") != document["flightNumber"] for item in matching_data_obj["goflights"]):
@@ -69,8 +85,9 @@ if __name__ == "__main__":
                 print("going to add a similar flight but other number")
                 countNewGoRoutes += 1
 
+                airlineName = get_airline_name(document["flightNumber"])
                 new_subObject = {
-                            "airline": "",
+                            "airline": airlineName,
                             "flightNumber": document["flightNumber"],
                             "daysOfWeek": [],
                             "departureTimeLocal": document["departureDatetimeLocal"],
@@ -82,13 +99,14 @@ if __name__ == "__main__":
             else: 
                 # now check the DOW
                 ignoredRoutes +=1
-            
+        
+        # if no matching flight already exists, we will check if the opposite (return) flight already exists
         else:
             # check if the return flight already exists in the "data" array
             matching_data_obj_return = next(
                 (obj for obj in data if obj["originName"] == destination_iata and obj["destinationName"] == origin_iata), None)
             
-            # Now we do similar steps to if the matching flight already exists (see EXIST1)
+            # Now we do similar steps to if the matching flight already exists (see EXIST1), we will check if the Flight Number already exists
             if matching_data_obj_return:
 
                 # Find the index of the matching object in the data array
@@ -98,9 +116,10 @@ if __name__ == "__main__":
                 if all(item.get("flightNumber") != document["flightNumber"] for item in matching_data_obj_return["returnflights"]):
 
                     print("going to add a similar return flight but other number")
+                    airlineName = get_airline_name(document["flightNumber"])
                     countNewReturnRoutes += 1
                     new_subObject = {
-                            "airline": "",
+                            "airline": airlineName,
                             "flightNumber": document["flightNumber"],
                             "daysOfWeek": [],
                             "departureTimeLocal": document["departureDatetimeLocal"],
@@ -146,6 +165,9 @@ if __name__ == "__main__":
                     latitudeDestination = foundCoordinatesDestination["latitude"]
                     longitudeDestination = foundCoordinatesDestination["longitude"]
 
+                airlineName = get_airline_name(document["flightNumber"])
+
+
                 newObject = {"originName": document["originIata"],
                             "originCityName": "",
                             "originCoordinates": [longitudeOrigin, latitudeOrigin],
@@ -153,7 +175,7 @@ if __name__ == "__main__":
                             "destinationCityName": "",
                             "destinationCoordinates": [longitudeDestination, latitudeDestination],
                             "goflights": [{
-                                "airline": "",
+                                "airline": airlineName,
                                 "flightNumber": document["flightNumber"],
                                 "daysOfWeek": [],
                                 "departureTimeLocal": document["departureDatetimeLocal"],

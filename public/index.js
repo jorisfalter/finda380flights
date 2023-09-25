@@ -4,7 +4,6 @@ import importedRoutesV2 from "./routesV2.json" assert { type: "json" };
 
 //// This is the mapbox code
 mapboxgl.accessToken = "";
-
 const map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/jorisboris/clmdk27ll01bw01qx24l12bnw",
