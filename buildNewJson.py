@@ -44,34 +44,31 @@ if __name__ == "__main__":
     # Query MongoDB and retrieve data
     data = []
     counter = 0
-    counterNegatives = 0
+    countNewGoRoutes = 0
+    countNewReturnRoutes = 0;
+    ignoredRoutes = 0;
     for document in source_collection.find():
 
         origin_iata = document["originIata"]
         destination_iata = document["destinationIata"]
 
-        # Check if a corresponding object exists in the data array
-        # error solution if "data" is empty. Potentially could be deleted
-        if not data:
-            matching_data_obj = None
-        else:
-            matching_data_obj = next(
-                (obj for obj in data if obj["originName"] == origin_iata and obj["destinationName"] == destination_iata), None)
+        # Check if the flight already exists in the "data" array
+        matching_data_obj = next(
+            (obj for obj in data if obj["originName"] == origin_iata and obj["destinationName"] == destination_iata), None)
 
-
+        # if the matching flight already exists (EXIST1):
         if matching_data_obj:
 
             # Find the index of the matching object in the data array
             index_of_matching_obj = data.index(matching_data_obj)
             
             for individual_route in matching_data_obj["goflights"]:
-                # if individual_route["flightNumber"] == document["flightNumber"]:
-          
-
-
+                # check the flightnumbers
                 if all(item.get("flightNumber") != document["flightNumber"] for item in matching_data_obj["goflights"]):
 
-                    print("found a similar flight but other number")
+                    print("going to add a similar flight but other number")
+                    countNewGoRoutes += 1
+
                     new_subObject = {
                              "airline": "",
                              "flightNumber": document["flightNumber"],
@@ -84,66 +81,98 @@ if __name__ == "__main__":
 
                 else: 
                     # now check the DOW
-                    counterNegatives +=1
+                    ignoredRoutes +=1
             
         else:
-            # No matching object was found in the data array
+            # check if the return flight already exists in the "data" array
+            matching_data_obj_return = next(
+                (obj for obj in data if obj["originName"] == destination_iata and obj["destinationName"] == origin_iata), None)
+            
+            # Now we do similar steps to if the matching flight already exists (see EXIST1)
+            if matching_data_obj_return:
+
+                # Find the index of the matching object in the data array
+                index_of_matching_obj_return = data.index(matching_data_obj_return)
+                
+                for individual_route in matching_data_obj_return["returnflights"]:
+                    # check the flightnumbers
+                    if all(item.get("flightNumber") != document["flightNumber"] for item in matching_data_obj_return["returnflights"]):
+
+                        print("going to add a similar return flight but other number")
+                        countNewReturnRoutes += 1
+                        new_subObject = {
+                                "airline": "",
+                                "flightNumber": document["flightNumber"],
+                                "daysOfWeek": [],
+                                "departureTimeLocal": document["departureDatetimeLocal"],
+                                "arrivalTimeLocal": document["arrivalDatetimeLocal"]}
+                        matching_data_obj_return["returnflights"].append(new_subObject)
+
+                        data[index_of_matching_obj_return] = matching_data_obj_return
+
+                    else: 
+                        # now check the DOW
+                        ignoredRoutes +=1
 
             # DONE if "data" has and object with the same document['originIata'] and document['destinationIata']
             # TODO else if "data" has an object inverted origin and destination
             # TODO if both not, build a new object
             # TODO if one of both, check the goflights / returnflights, wel duidelijk maken welke van de twee checken, anders gaat ie duplicates genereren
-  
 
-            # search the coordinates
-            # Look up the coordinates for the origin
-            foundCoordinatesOrigin = airport_coordinates.get(
-                document["originIata"])
+            # if both the return and the go flights don't exist, we have to create a new route
+            else:
 
-            # for error handling now
-            latitudeOrigin = 0
-            longitudeOrigin = 0
+                # search the coordinates
+                # Look up the coordinates for the origin
+                foundCoordinatesOrigin = airport_coordinates.get(
+                    document["originIata"])
 
-            if foundCoordinatesOrigin:
-                latitudeOrigin = foundCoordinatesOrigin["latitude"]
-                longitudeOrigin = foundCoordinatesOrigin["longitude"]
+                # for error handling now
+                latitudeOrigin = 0
+                longitudeOrigin = 0
 
-            # look up the coordinates for the destination
-            foundCoordinatesDestination = airport_coordinates.get(
-                document["destinationIata"])
+                if foundCoordinatesOrigin:
+                    latitudeOrigin = foundCoordinatesOrigin["latitude"]
+                    longitudeOrigin = foundCoordinatesOrigin["longitude"]
 
-            # for error handling now
-            latitudeDestination = 0
-            longitudeDestination = 0
+                # look up the coordinates for the destination
+                foundCoordinatesDestination = airport_coordinates.get(
+                    document["destinationIata"])
 
-            if foundCoordinatesDestination:
-                latitudeDestination = foundCoordinatesDestination["latitude"]
-                longitudeDestination = foundCoordinatesDestination["longitude"]
+                # for error handling now
+                latitudeDestination = 0
+                longitudeDestination = 0
 
-            newObject = {"originName": document["originIata"],
-                         "originCityName": "",
-                         "originCoordinates": [longitudeOrigin, latitudeOrigin],
-                         "destinationName":  document["destinationIata"],
-                         "destinationCityName": "",
-                         "destinationCoordinates": [longitudeDestination, latitudeDestination],
-                         "goflights": [{
-                             "airline": "",
-                             "flightNumber": document["flightNumber"],
-                             "daysOfWeek": [],
-                             "departureTimeLocal": document["departureDatetimeLocal"],
-                             "arrivalTimeLocal": document["arrivalDatetimeLocal"]}],
-                         "returnflights": [{
-                             "airline": "",
-                             "flightNumber": "",
-                             "daysOfWeek": [],
-                             "departureTimeLocal": "",
-                             "arrivalTimeLocal": ""}]
-                         }
-            data.append(newObject)
-            counter +=1
+                if foundCoordinatesDestination:
+                    latitudeDestination = foundCoordinatesDestination["latitude"]
+                    longitudeDestination = foundCoordinatesDestination["longitude"]
+
+                newObject = {"originName": document["originIata"],
+                            "originCityName": "",
+                            "originCoordinates": [longitudeOrigin, latitudeOrigin],
+                            "destinationName":  document["destinationIata"],
+                            "destinationCityName": "",
+                            "destinationCoordinates": [longitudeDestination, latitudeDestination],
+                            "goflights": [{
+                                "airline": "",
+                                "flightNumber": document["flightNumber"],
+                                "daysOfWeek": [],
+                                "departureTimeLocal": document["departureDatetimeLocal"],
+                                "arrivalTimeLocal": document["arrivalDatetimeLocal"]}],
+                            "returnflights": [{
+                                "airline": "",
+                                "flightNumber": "",
+                                "daysOfWeek": [],
+                                "departureTimeLocal": "",
+                                "arrivalTimeLocal": ""}]
+                            }
+                data.append(newObject)
+                counter +=1
 
     print(f"array with {counter} objects created")
-    print(f"{counterNegatives} duplicates ignored")
+    print(f"{countNewGoRoutes} go routes added")
+    print(f"{countNewReturnRoutes} return routes added")
+    print(f"{ignoredRoutes} duplicates ignored")
 
     
     # Specify the file path where you want to save the JSON file
