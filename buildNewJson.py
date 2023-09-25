@@ -62,26 +62,26 @@ if __name__ == "__main__":
             # Find the index of the matching object in the data array
             index_of_matching_obj = data.index(matching_data_obj)
             
-            for individual_route in matching_data_obj["goflights"]:
-                # check the flightnumbers
-                if all(item.get("flightNumber") != document["flightNumber"] for item in matching_data_obj["goflights"]):
 
-                    print("going to add a similar flight but other number")
-                    countNewGoRoutes += 1
+            # check the flightnumbers
+            if all(item.get("flightNumber") != document["flightNumber"] for item in matching_data_obj["goflights"]):
 
-                    new_subObject = {
-                             "airline": "",
-                             "flightNumber": document["flightNumber"],
-                             "daysOfWeek": [],
-                             "departureTimeLocal": document["departureDatetimeLocal"],
-                             "arrivalTimeLocal": document["arrivalDatetimeLocal"]}
-                    matching_data_obj["goflights"].append(new_subObject)
+                print("going to add a similar flight but other number")
+                countNewGoRoutes += 1
 
-                    data[index_of_matching_obj] = matching_data_obj
+                new_subObject = {
+                            "airline": "",
+                            "flightNumber": document["flightNumber"],
+                            "daysOfWeek": [],
+                            "departureTimeLocal": document["departureDatetimeLocal"],
+                            "arrivalTimeLocal": document["arrivalDatetimeLocal"]}
+                matching_data_obj["goflights"].append(new_subObject)
 
-                else: 
-                    # now check the DOW
-                    ignoredRoutes +=1
+                data[index_of_matching_obj] = matching_data_obj
+
+            else: 
+                # now check the DOW
+                ignoredRoutes +=1
             
         else:
             # check if the return flight already exists in the "data" array
@@ -94,25 +94,24 @@ if __name__ == "__main__":
                 # Find the index of the matching object in the data array
                 index_of_matching_obj_return = data.index(matching_data_obj_return)
                 
-                for individual_route in matching_data_obj_return["returnflights"]:
-                    # check the flightnumbers
-                    if all(item.get("flightNumber") != document["flightNumber"] for item in matching_data_obj_return["returnflights"]):
+                # check the flightnumbers
+                if all(item.get("flightNumber") != document["flightNumber"] for item in matching_data_obj_return["returnflights"]):
 
-                        print("going to add a similar return flight but other number")
-                        countNewReturnRoutes += 1
-                        new_subObject = {
-                                "airline": "",
-                                "flightNumber": document["flightNumber"],
-                                "daysOfWeek": [],
-                                "departureTimeLocal": document["departureDatetimeLocal"],
-                                "arrivalTimeLocal": document["arrivalDatetimeLocal"]}
-                        matching_data_obj_return["returnflights"].append(new_subObject)
+                    print("going to add a similar return flight but other number")
+                    countNewReturnRoutes += 1
+                    new_subObject = {
+                            "airline": "",
+                            "flightNumber": document["flightNumber"],
+                            "daysOfWeek": [],
+                            "departureTimeLocal": document["departureDatetimeLocal"],
+                            "arrivalTimeLocal": document["arrivalDatetimeLocal"]}
+                    matching_data_obj_return["returnflights"].append(new_subObject)
 
-                        data[index_of_matching_obj_return] = matching_data_obj_return
+                    data[index_of_matching_obj_return] = matching_data_obj_return
 
-                    else: 
-                        # now check the DOW
-                        ignoredRoutes +=1
+                else: 
+                    # now check the DOW
+                    ignoredRoutes +=1
 
             # DONE if "data" has and object with the same document['originIata'] and document['destinationIata']
             # TODO else if "data" has an object inverted origin and destination
@@ -159,12 +158,14 @@ if __name__ == "__main__":
                                 "daysOfWeek": [],
                                 "departureTimeLocal": document["departureDatetimeLocal"],
                                 "arrivalTimeLocal": document["arrivalDatetimeLocal"]}],
-                            "returnflights": [{
-                                "airline": "",
-                                "flightNumber": "",
-                                "daysOfWeek": [],
-                                "departureTimeLocal": "",
-                                "arrivalTimeLocal": ""}]
+                            "returnflights": [
+                                # {
+                                # "airline": "",
+                                # "flightNumber": "",
+                                # "daysOfWeek": [],
+                                # "departureTimeLocal": "",
+                                # "arrivalTimeLocal": ""}
+                                ]
                             }
                 data.append(newObject)
                 counter +=1
