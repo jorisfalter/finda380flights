@@ -10,11 +10,12 @@ import os
 
 
 # imports the data from airports.json
+# uses the data in airports.json
+# after generating the routesV2 file you have to manually drag it to the "public" folder
 
-# Specify the path to your JSON file
 json_file_path = "airports.json"
 
-# Open and read the JSON file
+# Open and read the Airports file
 with open(json_file_path, "r") as json_file:
     airport_coordinates = json.load(json_file)
 
@@ -50,22 +51,41 @@ if __name__ == "__main__":
         destination_iata = document["destinationIata"]
 
         # Check if a corresponding object exists in the data array
+        # error solution if "data" is empty. Potentially could be deleted
         if not data:
             matching_data_obj = None
         else:
             matching_data_obj = next(
                 (obj for obj in data if obj["originName"] == origin_iata and obj["destinationName"] == destination_iata), None)
 
-        if matching_data_obj:
-            # A matching object was found in the data array
-            counterNegatives +=1
-            
-            
-            # need to check if: 
-            # - the airline already exists
-            # - and the dow
-            # - and the flightnumber
 
+        if matching_data_obj:
+
+            # Find the index of the matching object in the data array
+            index_of_matching_obj = data.index(matching_data_obj)
+            
+            for individual_route in matching_data_obj["goflights"]:
+                # if individual_route["flightNumber"] == document["flightNumber"]:
+          
+
+
+                if all(item.get("flightNumber") != document["flightNumber"] for item in matching_data_obj["goflights"]):
+
+                    print("found a similar flight but other number")
+                    new_subObject = {
+                             "airline": "",
+                             "flightNumber": document["flightNumber"],
+                             "daysOfWeek": [],
+                             "departureTimeLocal": document["departureDatetimeLocal"],
+                             "arrivalTimeLocal": document["arrivalDatetimeLocal"]}
+                    matching_data_obj["goflights"].append(new_subObject)
+
+                    data[index_of_matching_obj] = matching_data_obj
+
+                else: 
+                    # now check the DOW
+                    counterNegatives +=1
+            
         else:
             # No matching object was found in the data array
 
