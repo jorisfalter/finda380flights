@@ -42,6 +42,9 @@
   pointer-events: none; /* Allow interactions with the map underneath */
 }
 
+.selected {
+  border: 2px solid blue;
+}
 
 @keyframes blinkAirline { 50% { border-color:#89CFF0 ; }  }
 

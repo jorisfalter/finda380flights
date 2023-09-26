@@ -17,6 +17,8 @@ const map = new mapboxgl.Map({
 
 const lineTooltip = document.getElementById("lineTooltip");
 
+const selectedAirlines = [];
+
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //// Drawing Lines
 
@@ -179,7 +181,7 @@ for (let k = 0; k < importedRoutesV2.length; k++) {
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //// Airline Filters
 
-// need to wait until all styles are loaded
+// need to wait until all styles are loaded > I think this can be removed
 map.on("style.load", () => {
   function toggleLayers(selectedAirlines) {
     // console.log(map.getStyle());
@@ -187,7 +189,7 @@ map.on("style.load", () => {
     map.getStyle().layers.forEach((layer) => {
       // take the layers starting with "route..."
       if (layer.type === "line" && layer.id.substring(0, 5) == "route") {
-        console.log(map.getLayer(layer.id).metadata.airline);
+        // console.log(map.getLayer(layer.id).metadata.airline);
         // Get the airlines associated with the layer
         const airlineArray =
           // map.getPaintProperty(layer.id, "line-opacity") !== 0
@@ -206,17 +208,57 @@ map.on("style.load", () => {
     });
   }
 
-  // Assuming you have a reference to your map element with id "map"
-  const mapElement = document.getElementById("map");
+  // // Assuming you have a reference to your map element with id "map"
+  // const mapElement = document.getElementById("map");
 
-  // Add a click event listener to the map element
-  mapElement.addEventListener("click", () => {
-    // Example user input (you can replace this with your actual user input handling)
-    const selectedAirlines = ["Korean Air", "British Airways"];
+  // // Add a click event listener to the map element
+  // mapElement.addEventListener("click", () => {
+  //   // Example user input (you can replace this with your actual user input handling)
+  //   const selectedAirlines = ["Korean Air", "British Airways"];
 
-    // Call the toggleLayers function with the selected airlines
+  //   // Call the toggleLayers function with the selected airlines
+  //   toggleLayers(selectedAirlines);
+  // });
+
+  // Function to toggle airline selection
+  function toggleAirline(airlineId) {
+    const imageElement = document.getElementById(airlineId);
+    let airlineName = "";
+
+    if (airlineId === "koreanAir") {
+      airlineName = "Korean Air";
+    }
+    if (airlineId === "emirates") {
+      airlineName = "Emirates";
+    }
+
+    // Check if the image is already selected
+    const index = selectedAirlines.indexOf(airlineName);
+
+    console.log(index);
+    console.log(selectedAirlines);
+
+    if (index === -1) {
+      // Image not selected, add it to the array
+      selectedAirlines.push(airlineName);
+      imageElement.classList.add("selected"); // Add a CSS class for styling
+    } else {
+      // Image already selected, remove it from the array
+      selectedAirlines.splice(index, 1);
+      imageElement.classList.remove("selected"); // Remove the CSS class
+    }
+
+    // Call your function here, passing selectedImages as needed
     toggleLayers(selectedAirlines);
-  });
+  }
+
+  // Event listeners for image clicks
+  document
+    .getElementById("koreanAir")
+    .addEventListener("click", () => toggleAirline("koreanAir"));
+  document
+    .getElementById("emirates")
+    .addEventListener("click", () => toggleAirline("emirates"));
 
   // Wait for the map to be idle
   // I think this keeps loading, so I need another event
