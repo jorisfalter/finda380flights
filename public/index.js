@@ -25,6 +25,11 @@ for (let k = 0; k < importedRoutesV2.length; k++) {
 
   let destination1 = importedRoutesV2[k].destinationCoordinates;
 
+  let routeAirlines = [];
+  for (let m = 0; m < importedRoutesV2[k].goflights.length; m++) {
+    routeAirlines.push(importedRoutesV2[k].goflights[m].airline);
+  }
+
   // mathematical hack to make sure both coordinates are positive when crossing the dateline
   function changeHemisphere1() {
     let originX = origin1[0];
@@ -46,6 +51,7 @@ for (let k = 0; k < importedRoutesV2.length; k++) {
         properties: {
           // wondering if I can use this for the lines lighting up when hovering a marker
           origin: originCityName,
+          airline: routeAirlines,
         },
         geometry: {
           type: "LineString",
@@ -165,6 +171,41 @@ for (let k = 0; k < importedRoutesV2.length; k++) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
+//// Airline Filters
+
+// need to wait until all styles are loaded
+map.on("style.load", () => {
+  function toggleLayers(airlines) {
+    console.log(map.getStyle());
+
+    map.getStyle().layers.forEach((layer) => {
+      // if (layer.type === "line" && layer.id !== "background") {
+      if (layer.type === "line" && layer.id.substring(0, 5) == "route") {
+        console.log(layer);
+        // const airline =
+        //   map.getPaintProperty(layer.id, "line-opacity") !== 0
+        //     ? map.getLayer(layer.id).metadata.airline // Get the airline associated with the layer
+        //     : null;
+        // if (airlines.includes(airline)) {
+        //   map.setPaintProperty(layer.id, "line-opacity", 1);
+        // } else {
+        //   map.setPaintProperty(layer.id, "line-opacity", 0);
+        // }
+      }
+    });
+  }
+
+  // Wait for the map to be idle
+  map.on("idle", () => {
+    // Example user input (you can replace this with your actual user input handling)
+    const selectedAirlines = ["Emirates", "British Airways"];
+
+    // Call the toggleLayers function with the selected airlines
+    toggleLayers(selectedAirlines);
+  });
+});
+
+////////////////////////////////////////////////////////////////////////////////////////////////
 //// Creating the location marker
 
 //// making an array of all destinations and origins:
@@ -191,6 +232,7 @@ for (let i = 0; i < importedRoutesV2.length; i++) {
   }
 }
 
+// create markers
 for (let j = 0; j < allMarkersObject.length; j++) {
   // Create a marker element with a custom icon
   const markerElement = document.createElement("div");
