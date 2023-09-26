@@ -20,11 +20,12 @@ json_file_path = "airports.json"
 json_file_path_airlines = "airlines.json"
 
 with open(json_file_path, "r") as json_file:
-    airport_coordinates = json.load(json_file)
+    airport_data = json.load(json_file)
 
 with open(json_file_path_airlines,"r") as json_file:
     airline_data = json.load(json_file)
 
+# function to get the airline name
 def get_airline_name(flight_number):
     # Extract the first two letters from the flight number (the airline abbreviation)
     airline_abbreviation = flight_number[:2].upper()  # Convert to uppercase for case-insensitive matching
@@ -132,47 +133,48 @@ if __name__ == "__main__":
                     # now check the DOW
                     ignoredRoutes +=1
 
-            # DONE if "data" has and object with the same document['originIata'] and document['destinationIata']
-            # TODO else if "data" has an object inverted origin and destination
-            # TODO if both not, build a new object
-            # TODO if one of both, check the goflights / returnflights, wel duidelijk maken welke van de twee checken, anders gaat ie duplicates genereren
-
             # if both the return and the go flights don't exist, we have to create a new route
             else:
 
-                # search the coordinates
+                ## search the coordinates
+                ## Origin
                 # Look up the coordinates for the origin
-                foundCoordinatesOrigin = airport_coordinates.get(
+                foundCoordinatesOrigin = airport_data.get(
                     document["originIata"])
 
                 # for error handling now
                 latitudeOrigin = 0
                 longitudeOrigin = 0
+                cityNameOrigin = "na"
 
                 if foundCoordinatesOrigin:
                     latitudeOrigin = foundCoordinatesOrigin["latitude"]
                     longitudeOrigin = foundCoordinatesOrigin["longitude"]
+                    cityNameOrigin = foundCoordinatesOrigin["cityName"]
 
+                ## destination
                 # look up the coordinates for the destination
-                foundCoordinatesDestination = airport_coordinates.get(
+                foundCoordinatesDestination = airport_data.get(
                     document["destinationIata"])
 
                 # for error handling now
                 latitudeDestination = 0
                 longitudeDestination = 0
+                cityNameDestination = "na"
 
                 if foundCoordinatesDestination:
                     latitudeDestination = foundCoordinatesDestination["latitude"]
                     longitudeDestination = foundCoordinatesDestination["longitude"]
+                    cityNameDestination = foundCoordinatesDestination["cityName"]
 
+                ## get the airline name
                 airlineName = get_airline_name(document["flightNumber"])
 
-
                 newObject = {"originName": document["originIata"],
-                            "originCityName": "",
+                            "originCityName": cityNameOrigin,
                             "originCoordinates": [longitudeOrigin, latitudeOrigin],
                             "destinationName":  document["destinationIata"],
-                            "destinationCityName": "",
+                            "destinationCityName": cityNameDestination,
                             "destinationCoordinates": [longitudeDestination, latitudeDestination],
                             "goflights": [{
                                 "airline": airlineName,

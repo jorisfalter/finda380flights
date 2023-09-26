@@ -2,9 +2,11 @@
 import importedRoutesV2 from "./routesV2.json" assert { type: "json" };
 // import importedRoutesV2 from "./routesV2mock.json" assert { type: "json" };
 
-//// This is the mapbox code
+//// This is the public Mapbox code
 mapboxgl.accessToken =
   "pk.eyJ1Ijoiam9yaXNib3JpcyIsImEiOiJjbG1lam95ZWQxeXhjM2ZteGY2NDhqY2ltIn0.UnfVT_V85n8-D4IN7lxcnA";
+
+//// local accessToken
 
 const map = new mapboxgl.Map({
   container: "map",
@@ -48,11 +50,11 @@ for (let k = 0; k < importedRoutesV2.length; k++) {
     features: [
       {
         type: "Feature",
-        properties: {
-          // wondering if I can use this for the lines lighting up when hovering a marker
-          origin: originCityName,
-          airline: routeAirlines,
-        },
+        // properties: {
+        //   // wondering if I can use this for the lines lighting up when hovering a marker
+        //   origin: originCityName,
+        //   airline: routeAirlines,
+        // },
         geometry: {
           type: "LineString",
           coordinates: [origin1, destination1],
@@ -94,6 +96,10 @@ for (let k = 0; k < importedRoutesV2.length; k++) {
       paint: {
         "line-width": 2,
         "line-color": "#007cbf",
+      },
+      metadata: {
+        origin: originCityName,
+        airline: routeAirlines,
       },
     });
   });
@@ -175,34 +181,46 @@ for (let k = 0; k < importedRoutesV2.length; k++) {
 
 // need to wait until all styles are loaded
 map.on("style.load", () => {
-  function toggleLayers(airlines) {
-    console.log(map.getStyle());
+  function toggleLayers(selectedAirlines) {
+    // console.log(map.getStyle());
 
     map.getStyle().layers.forEach((layer) => {
-      // if (layer.type === "line" && layer.id !== "background") {
+      // take the layers starting with "route..."
       if (layer.type === "line" && layer.id.substring(0, 5) == "route") {
-        console.log(layer);
-        // const airline =
-        //   map.getPaintProperty(layer.id, "line-opacity") !== 0
-        //     ? map.getLayer(layer.id).metadata.airline // Get the airline associated with the layer
-        //     : null;
-        // if (airlines.includes(airline)) {
-        //   map.setPaintProperty(layer.id, "line-opacity", 1);
-        // } else {
-        //   map.setPaintProperty(layer.id, "line-opacity", 0);
-        // }
+        console.log(map.getLayer(layer.id).metadata.airline);
+        // Get the airlines associated with the layer
+        const airlineArray =
+          // map.getPaintProperty(layer.id, "line-opacity") !== 0
+          // ?
+          map.getLayer(layer.id).metadata.airline;
+        // : null;
+        for (let n = 0; n < airlineArray.length; n++) {
+          if (selectedAirlines.includes(airlineArray[n])) {
+            map.setPaintProperty(layer.id, "line-opacity", 1);
+            n = airlineArray.length;
+          } else {
+            map.setPaintProperty(layer.id, "line-opacity", 0);
+          }
+        }
       }
     });
   }
 
-  // Wait for the map to be idle
-  map.on("idle", () => {
+  // Assuming you have a reference to your map element with id "map"
+  const mapElement = document.getElementById("map");
+
+  // Add a click event listener to the map element
+  mapElement.addEventListener("click", () => {
     // Example user input (you can replace this with your actual user input handling)
-    const selectedAirlines = ["Emirates", "British Airways"];
+    const selectedAirlines = ["Korean Air", "British Airways"];
 
     // Call the toggleLayers function with the selected airlines
     toggleLayers(selectedAirlines);
   });
+
+  // Wait for the map to be idle
+  // I think this keeps loading, so I need another event
+  // map.on("idle", () => {});
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////

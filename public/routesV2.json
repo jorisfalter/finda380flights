@@ -1,13 +1,13 @@
 [
     {
         "originName": "LAX",
-        "originCityName": "",
+        "originCityName": "Los Angeles",
         "originCoordinates": [
             -118.4081,
             33.9425
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -33,13 +33,13 @@
     },
     {
         "originName": "SFO",
-        "originCityName": "",
+        "originCityName": "San Francisco",
         "originCoordinates": [
             -122.379,
             37.6219
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -65,13 +65,13 @@
     },
     {
         "originName": "DXB",
-        "originCityName": "",
+        "originCityName": "Dubai",
         "originCoordinates": [
             55.3657,
             25.2532
         ],
         "destinationName": "YYZ",
-        "destinationCityName": "",
+        "destinationCityName": "Toronto",
         "destinationCoordinates": [
             -79.6248,
             43.6777
@@ -97,13 +97,13 @@
     },
     {
         "originName": "SYD",
-        "originCityName": "",
+        "originCityName": "Sydney",
         "originCoordinates": [
             151.1772,
             -33.9461
         ],
         "destinationName": "LAX",
-        "destinationCityName": "",
+        "destinationCityName": "Los Angeles",
         "destinationCoordinates": [
             -118.4081,
             33.9425
@@ -129,13 +129,13 @@
     },
     {
         "originName": "IAH",
-        "originCityName": "",
+        "originCityName": "Houston",
         "originCoordinates": [
             -95.3391,
             29.983
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -161,13 +161,13 @@
     },
     {
         "originName": "SIN",
-        "originCityName": "",
+        "originCityName": "Singapore",
         "originCoordinates": [
             103.9915,
             1.3644
         ],
         "destinationName": "LHR",
-        "destinationCityName": "",
+        "destinationCityName": "London",
         "destinationCoordinates": [
             -0.4543,
             51.47
@@ -216,18 +216,25 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "2023-09-22T10:25:00",
                 "arrivalTimeLocal": "2023-09-22T23:30:00"
+            },
+            {
+                "airline": "Singapore Airlines",
+                "flightNumber": "SQ9305",
+                "daysOfWeek": [],
+                "departureTimeLocal": "2023-09-25T10:55:00",
+                "arrivalTimeLocal": "2023-09-26T00:02:00"
             }
         ]
     },
     {
         "originName": "ICN",
-        "originCityName": "",
+        "originCityName": "Seoul",
         "originCoordinates": [
             126.4505,
             37.4692
         ],
         "destinationName": "JFK",
-        "destinationCityName": "",
+        "destinationCityName": "New York",
         "destinationCoordinates": [
             -73.7781,
             40.6413
@@ -253,13 +260,13 @@
     },
     {
         "originName": "JFK",
-        "originCityName": "",
+        "originCityName": "New York",
         "originCoordinates": [
             -73.7781,
             40.6413
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -299,13 +306,13 @@
     },
     {
         "originName": "DXB",
-        "originCityName": "",
+        "originCityName": "Dubai",
         "originCoordinates": [
             55.3657,
             25.2532
         ],
         "destinationName": "HKG",
-        "destinationCityName": "",
+        "destinationCityName": "Hong Kong",
         "destinationCoordinates": [
             113.9185,
             22.308
@@ -331,13 +338,13 @@
     },
     {
         "originName": "DXB",
-        "originCityName": "",
+        "originCityName": "Dubai",
         "originCoordinates": [
             55.3657,
             25.2532
         ],
         "destinationName": "LHR",
-        "destinationCityName": "",
+        "destinationCityName": "London",
         "destinationCoordinates": [
             -0.4543,
             51.47
@@ -447,13 +454,13 @@
     },
     {
         "originName": "GRU",
-        "originCityName": "",
+        "originCityName": "S\u00e3o Paulo",
         "originCoordinates": [
             -46.4697,
             -23.4346
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -479,13 +486,13 @@
     },
     {
         "originName": "SYD",
-        "originCityName": "",
+        "originCityName": "Sydney",
         "originCoordinates": [
             151.1772,
             -33.9461
         ],
         "destinationName": "SIN",
-        "destinationCityName": "",
+        "destinationCityName": "Singapore",
         "destinationCoordinates": [
             103.9915,
             1.3644
@@ -553,13 +560,13 @@
     },
     {
         "originName": "MEL",
-        "originCityName": "",
+        "originCityName": "Melbourne",
         "originCoordinates": [
             144.841,
             -37.669
         ],
         "destinationName": "SIN",
-        "destinationCityName": "",
+        "destinationCityName": "Singapore",
         "destinationCoordinates": [
             103.9915,
             1.3644
@@ -585,13 +592,13 @@
     },
     {
         "originName": "ICN",
-        "originCityName": "",
+        "originCityName": "Seoul",
         "originCoordinates": [
             126.4505,
             37.4692
         ],
         "destinationName": "LAX",
-        "destinationCityName": "",
+        "destinationCityName": "Los Angeles",
         "destinationCoordinates": [
             -118.4081,
             33.9425
@@ -631,13 +638,13 @@
     },
     {
         "originName": "DXB",
-        "originCityName": "",
+        "originCityName": "Dubai",
         "originCoordinates": [
             55.3657,
             25.2532
         ],
         "destinationName": "SIN",
-        "destinationCityName": "",
+        "destinationCityName": "Singapore",
         "destinationCoordinates": [
             103.9915,
             1.3644
@@ -677,13 +684,13 @@
     },
     {
         "originName": "DXB",
-        "originCityName": "",
+        "originCityName": "Dubai",
         "originCoordinates": [
             55.3657,
             25.2532
         ],
         "destinationName": "CAN",
-        "destinationCityName": "",
+        "destinationCityName": "Guangzhou",
         "destinationCoordinates": [
             113.2988,
             23.3924
@@ -709,13 +716,13 @@
     },
     {
         "originName": "DXB",
-        "originCityName": "",
+        "originCityName": "Dubai",
         "originCoordinates": [
             55.3657,
             25.2532
         ],
         "destinationName": "AKL",
-        "destinationCityName": "",
+        "destinationCityName": "Auckland",
         "destinationCoordinates": [
             174.785,
             -37.0081
@@ -741,13 +748,13 @@
     },
     {
         "originName": "DXB",
-        "originCityName": "",
+        "originCityName": "Dubai",
         "originCoordinates": [
             55.3657,
             25.2532
         ],
         "destinationName": "JNB",
-        "destinationCityName": "",
+        "destinationCityName": "Johannesburg",
         "destinationCoordinates": [
             28.241,
             -26.1362
@@ -773,13 +780,13 @@
     },
     {
         "originName": "DXB",
-        "originCityName": "",
+        "originCityName": "Dubai",
         "originCoordinates": [
             55.3657,
             25.2532
         ],
         "destinationName": "MEL",
-        "destinationCityName": "",
+        "destinationCityName": "Melbourne",
         "destinationCoordinates": [
             144.841,
             -37.669
@@ -819,13 +826,13 @@
     },
     {
         "originName": "DXB",
-        "originCityName": "",
+        "originCityName": "Dubai",
         "originCoordinates": [
             55.3657,
             25.2532
         ],
         "destinationName": "SYD",
-        "destinationCityName": "",
+        "destinationCityName": "Sydney",
         "destinationCoordinates": [
             151.1772,
             -33.9461
@@ -865,13 +872,13 @@
     },
     {
         "originName": "DXB",
-        "originCityName": "",
+        "originCityName": "Dubai",
         "originCoordinates": [
             55.3657,
             25.2532
         ],
         "destinationName": "BNE",
-        "destinationCityName": "",
+        "destinationCityName": "Brisbane",
         "destinationCoordinates": [
             153.1183,
             -27.4057
@@ -897,13 +904,13 @@
     },
     {
         "originName": "DXB",
-        "originCityName": "",
+        "originCityName": "Dubai",
         "originCoordinates": [
             55.3657,
             25.2532
         ],
         "destinationName": "PEK",
-        "destinationCityName": "",
+        "destinationCityName": "Beijing",
         "destinationCoordinates": [
             116.5846,
             40.0801
@@ -943,13 +950,13 @@
     },
     {
         "originName": "LHR",
-        "originCityName": "",
+        "originCityName": "London",
         "originCoordinates": [
             -0.4543,
             51.47
         ],
         "destinationName": "DOH",
-        "destinationCityName": "",
+        "destinationCityName": "Doha",
         "destinationCoordinates": [
             51.6081,
             25.2761
@@ -1010,13 +1017,13 @@
     },
     {
         "originName": "PVG",
-        "originCityName": "",
+        "originCityName": "Shanghai",
         "originCoordinates": [
             121.8058,
             31.1441
         ],
         "destinationName": "SIN",
-        "destinationCityName": "",
+        "destinationCityName": "Singapore",
         "destinationCoordinates": [
             103.9915,
             1.3644
@@ -1042,13 +1049,13 @@
     },
     {
         "originName": "SIN",
-        "originCityName": "",
+        "originCityName": "Singapore",
         "originCoordinates": [
             103.9915,
             1.3644
         ],
         "destinationName": "DEL",
-        "destinationCityName": "",
+        "destinationCityName": "Delhi",
         "destinationCoordinates": [
             77.1,
             28.5562
@@ -1074,13 +1081,13 @@
     },
     {
         "originName": "LHR",
-        "originCityName": "",
+        "originCityName": "London",
         "originCoordinates": [
             -0.4543,
             51.47
         ],
         "destinationName": "AUH",
-        "destinationCityName": "",
+        "destinationCityName": "Abu Dhabi",
         "destinationCoordinates": [
             54.6458,
             24.4322
@@ -1108,18 +1115,25 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "2023-09-21T22:05:00",
                 "arrivalTimeLocal": "2023-09-22T05:45:00"
+            },
+            {
+                "airline": "Etihad Airways",
+                "flightNumber": "EY19",
+                "daysOfWeek": [],
+                "departureTimeLocal": "2023-09-25T04:10:00",
+                "arrivalTimeLocal": "2023-09-25T11:50:00"
             }
         ]
     },
     {
         "originName": "LGW",
-        "originCityName": "",
+        "originCityName": "London",
         "originCoordinates": [
             -0.1821,
             51.1537
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -1173,13 +1187,13 @@
     },
     {
         "originName": "CDG",
-        "originCityName": "",
+        "originCityName": "Paris",
         "originCoordinates": [
             2.567,
             49.0034
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -1233,13 +1247,13 @@
     },
     {
         "originName": "CAI",
-        "originCityName": "",
+        "originCityName": "Cairo",
         "originCoordinates": [
             31.4139,
             30.1114
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -1279,13 +1293,13 @@
     },
     {
         "originName": "DXB",
-        "originCityName": "",
+        "originCityName": "Dubai",
         "originCoordinates": [
             55.3657,
             25.2532
         ],
         "destinationName": "AMM",
-        "destinationCityName": "",
+        "destinationCityName": "Amman",
         "destinationCoordinates": [
             35.9931,
             31.7225
@@ -1311,13 +1325,13 @@
     },
     {
         "originName": "MUC",
-        "originCityName": "",
+        "originCityName": "Munich",
         "originCoordinates": [
             11.7746,
             48.3537
         ],
         "destinationName": "JFK",
-        "destinationCityName": "",
+        "destinationCityName": "New York",
         "destinationCoordinates": [
             -73.7781,
             40.6413
@@ -1343,13 +1357,13 @@
     },
     {
         "originName": "ICN",
-        "originCityName": "",
+        "originCityName": "Seoul",
         "originCoordinates": [
             126.4505,
             37.4692
         ],
         "destinationName": "BKK",
-        "destinationCityName": "",
+        "destinationCityName": "Bangkok",
         "destinationCoordinates": [
             100.7472,
             13.6811
@@ -1375,13 +1389,13 @@
     },
     {
         "originName": "LHR",
-        "originCityName": "",
+        "originCityName": "London",
         "originCoordinates": [
             -0.4543,
             51.47
         ],
         "destinationName": "MIA",
-        "destinationCityName": "",
+        "destinationCityName": "Miami",
         "destinationCoordinates": [
             -80.2906,
             25.7933
@@ -1407,13 +1421,13 @@
     },
     {
         "originName": "SYD",
-        "originCityName": "",
+        "originCityName": "Sydney",
         "originCoordinates": [
             151.1772,
             -33.9461
         ],
         "destinationName": "DOH",
-        "destinationCityName": "",
+        "destinationCityName": "Doha",
         "destinationCoordinates": [
             51.6081,
             25.2761
@@ -1439,13 +1453,13 @@
     },
     {
         "originName": "DXB",
-        "originCityName": "",
+        "originCityName": "Dubai",
         "originCoordinates": [
             55.3657,
             25.2532
         ],
         "destinationName": "MAN",
-        "destinationCityName": "",
+        "destinationCityName": "Manchester",
         "destinationCoordinates": [
             -2.2721,
             53.3651
@@ -1485,13 +1499,13 @@
     },
     {
         "originName": "SIN",
-        "originCityName": "",
+        "originCityName": "Singapore",
         "originCoordinates": [
             103.9915,
             1.3644
         ],
         "destinationName": "BOM",
-        "destinationCityName": "",
+        "destinationCityName": "Mumbai",
         "destinationCoordinates": [
             72.8683,
             19.0888
@@ -1517,13 +1531,13 @@
     },
     {
         "originName": "NRT",
-        "originCityName": "",
+        "originCityName": "Tokyo",
         "originCoordinates": [
             140.3864,
             35.7647
         ],
         "destinationName": "HNL",
-        "destinationCityName": "",
+        "destinationCityName": "Honolulu",
         "destinationCoordinates": [
             -157.9224,
             21.3187
@@ -1563,13 +1577,13 @@
     },
     {
         "originName": "DPS",
-        "originCityName": "",
+        "originCityName": "Denpasar",
         "originCoordinates": [
             115.1667,
             -8.7467
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -1595,13 +1609,13 @@
     },
     {
         "originName": "KUL",
-        "originCityName": "",
+        "originCityName": "Kuala Lumpur",
         "originCoordinates": [
             101.7099,
             2.7456
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -1627,13 +1641,13 @@
     },
     {
         "originName": "DXB",
-        "originCityName": "",
+        "originCityName": "Dubai",
         "originCoordinates": [
             55.3657,
             25.2532
         ],
         "destinationName": "JED",
-        "destinationCityName": "",
+        "destinationCityName": "Jeddah",
         "destinationCoordinates": [
             39.1525,
             21.67
@@ -1687,13 +1701,13 @@
     },
     {
         "originName": "MXP",
-        "originCityName": "",
+        "originCityName": "Milan",
         "originCoordinates": [
             8.7281,
             45.6306
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -1733,13 +1747,13 @@
     },
     {
         "originName": "MRU",
-        "originCityName": "",
+        "originCityName": "Mauritius",
         "originCoordinates": [
             57.6836,
             -20.4302
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -1779,13 +1793,13 @@
     },
     {
         "originName": "DXB",
-        "originCityName": "",
+        "originCityName": "Dubai",
         "originCoordinates": [
             55.3657,
             25.2532
         ],
         "destinationName": "DME",
-        "destinationCityName": "",
+        "destinationCityName": "Moscow",
         "destinationCoordinates": [
             37.9024,
             55.4103
@@ -1825,13 +1839,13 @@
     },
     {
         "originName": "DXB",
-        "originCityName": "",
+        "originCityName": "Dubai",
         "originCoordinates": [
             55.3657,
             25.2532
         ],
         "destinationName": "MUC",
-        "destinationCityName": "",
+        "destinationCityName": "Munich",
         "destinationCoordinates": [
             11.7746,
             48.3537
@@ -1871,13 +1885,13 @@
     },
     {
         "originName": "IST",
-        "originCityName": "",
+        "originCityName": "Istanbul",
         "originCoordinates": [
             28.7519,
             41.2756
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -1903,13 +1917,13 @@
     },
     {
         "originName": "NRT",
-        "originCityName": "",
+        "originCityName": "Tokyo",
         "originCoordinates": [
             140.3864,
             35.7647
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -1935,13 +1949,13 @@
     },
     {
         "originName": "FCO",
-        "originCityName": "",
+        "originCityName": "Rome",
         "originCoordinates": [
             12.2389,
             41.8003
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -1967,13 +1981,13 @@
     },
     {
         "originName": "AMS",
-        "originCityName": "",
+        "originCityName": "Amsterdam",
         "originCoordinates": [
             4.7683,
             52.3105
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -1999,13 +2013,13 @@
     },
     {
         "originName": "MAD",
-        "originCityName": "",
+        "originCityName": "Madrid",
         "originCoordinates": [
             -3.5626,
             40.4719
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -2031,13 +2045,13 @@
     },
     {
         "originName": "FRA",
-        "originCityName": "",
+        "originCityName": "Frankfurt",
         "originCoordinates": [
             8.561,
             50.0344
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -2063,13 +2077,13 @@
     },
     {
         "originName": "BHX",
-        "originCityName": "",
+        "originCityName": "Birmingham",
         "originCoordinates": [
             -1.748,
             52.4539
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -2095,13 +2109,13 @@
     },
     {
         "originName": "HKG",
-        "originCityName": "",
+        "originCityName": "Hong Kong",
         "originCoordinates": [
             113.9185,
             22.308
         ],
         "destinationName": "BKK",
-        "destinationCityName": "",
+        "destinationCityName": "Bangkok",
         "destinationCoordinates": [
             100.7472,
             13.6811
@@ -2127,13 +2141,13 @@
     },
     {
         "originName": "LHR",
-        "originCityName": "",
+        "originCityName": "London",
         "originCoordinates": [
             -0.4543,
             51.47
         ],
         "destinationName": "BOS",
-        "destinationCityName": "",
+        "destinationCityName": "Boston",
         "destinationCoordinates": [
             -71.0096,
             42.3656
@@ -2159,13 +2173,13 @@
     },
     {
         "originName": "GLA",
-        "originCityName": "",
+        "originCityName": "Glasgow",
         "originCoordinates": [
             -4.4325,
             55.8642
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -2191,13 +2205,13 @@
     },
     {
         "originName": "ZRH",
-        "originCityName": "",
+        "originCityName": "Zurich",
         "originCoordinates": [
             8.5492,
             47.4647
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -2223,13 +2237,13 @@
     },
     {
         "originName": "NCE",
-        "originCityName": "",
+        "originCityName": "Nice",
         "originCoordinates": [
             7.2127,
             43.6622
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -2255,13 +2269,13 @@
     },
     {
         "originName": "MUC",
-        "originCityName": "",
+        "originCityName": "Munich",
         "originCoordinates": [
             11.7746,
             48.3537
         ],
         "destinationName": "BOS",
-        "destinationCityName": "",
+        "destinationCityName": "Boston",
         "destinationCoordinates": [
             -71.0096,
             42.3656
@@ -2287,13 +2301,13 @@
     },
     {
         "originName": "PER",
-        "originCityName": "",
+        "originCityName": "Perth",
         "originCoordinates": [
             115.9672,
             -31.9403
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -2319,13 +2333,13 @@
     },
     {
         "originName": "BKK",
-        "originCityName": "",
+        "originCityName": "Bangkok",
         "originCoordinates": [
             100.7472,
             13.6811
         ],
         "destinationName": "DOH",
-        "destinationCityName": "",
+        "destinationCityName": "Doha",
         "destinationCoordinates": [
             51.6081,
             25.2761
@@ -2365,13 +2379,13 @@
     },
     {
         "originName": "CMN",
-        "originCityName": "",
+        "originCityName": "Casablanca",
         "originCoordinates": [
             -7.5864,
             33.369
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -2397,13 +2411,13 @@
     },
     {
         "originName": "MXP",
-        "originCityName": "",
+        "originCityName": "Milan",
         "originCoordinates": [
             8.7281,
             45.6306
         ],
         "destinationName": "JFK",
-        "destinationCityName": "",
+        "destinationCityName": "New York",
         "destinationCoordinates": [
             -73.7781,
             40.6413
@@ -2429,13 +2443,13 @@
     },
     {
         "originName": "DUS",
-        "originCityName": "",
+        "originCityName": "D\u00fcsseldorf",
         "originCoordinates": [
             6.7487,
             51.2793
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -2461,13 +2475,13 @@
     },
     {
         "originName": "ICN",
-        "originCityName": "",
+        "originCityName": "Seoul",
         "originCoordinates": [
             126.4505,
             37.4692
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -2493,13 +2507,13 @@
     },
     {
         "originName": "PER",
-        "originCityName": "",
+        "originCityName": "Perth",
         "originCoordinates": [
             115.9672,
             -31.9403
         ],
         "destinationName": "DOH",
-        "destinationCityName": "",
+        "destinationCityName": "Doha",
         "destinationCoordinates": [
             51.6081,
             25.2761
@@ -2525,13 +2539,13 @@
     },
     {
         "originName": "IAD",
-        "originCityName": "",
+        "originCityName": "Washington, D.C.",
         "originCoordinates": [
             -77.4477,
             38.947
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -2557,13 +2571,13 @@
     },
     {
         "originName": "TPE",
-        "originCityName": "",
+        "originCityName": "Taipei",
         "originCoordinates": [
             121.2328,
             25.0777
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -2589,13 +2603,13 @@
     },
     {
         "originName": "PVG",
-        "originCityName": "",
+        "originCityName": "Shanghai",
         "originCoordinates": [
             121.8058,
             31.1441
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -2621,13 +2635,13 @@
     },
     {
         "originName": "LHR",
-        "originCityName": "",
+        "originCityName": "London",
         "originCoordinates": [
             -0.4543,
             51.47
         ],
         "destinationName": "IAD",
-        "destinationCityName": "",
+        "destinationCityName": "Washington, D.C.",
         "destinationCoordinates": [
             -77.4477,
             38.947
@@ -2653,13 +2667,13 @@
     },
     {
         "originName": "LHR",
-        "originCityName": "",
+        "originCityName": "London",
         "originCoordinates": [
             -0.4543,
             51.47
         ],
         "destinationName": "SFO",
-        "destinationCityName": "",
+        "destinationCityName": "San Francisco",
         "destinationCoordinates": [
             -122.379,
             37.6219
@@ -2685,13 +2699,13 @@
     },
     {
         "originName": "DXB",
-        "originCityName": "",
+        "originCityName": "Dubai",
         "originCoordinates": [
             55.3657,
             25.2532
         ],
         "destinationName": "BLR",
-        "destinationCityName": "",
+        "destinationCityName": "Bengaluru",
         "destinationCoordinates": [
             77.7066,
             13.1986
@@ -2717,13 +2731,13 @@
     },
     {
         "originName": "JNB",
-        "originCityName": "",
+        "originCityName": "Johannesburg",
         "originCoordinates": [
             28.241,
             -26.1362
         ],
         "destinationName": "LHR",
-        "destinationCityName": "",
+        "destinationCityName": "London",
         "destinationCoordinates": [
             -0.4543,
             51.47
@@ -2763,13 +2777,13 @@
     },
     {
         "originName": "DXB",
-        "originCityName": "",
+        "originCityName": "Dubai",
         "originCoordinates": [
             55.3657,
             25.2532
         ],
         "destinationName": "BOM",
-        "destinationCityName": "",
+        "destinationCityName": "Mumbai",
         "destinationCoordinates": [
             72.8683,
             19.0888
@@ -2795,13 +2809,13 @@
     },
     {
         "originName": "DXB",
-        "originCityName": "",
+        "originCityName": "Dubai",
         "originCoordinates": [
             55.3657,
             25.2532
         ],
         "destinationName": "BKK",
-        "destinationCityName": "",
+        "destinationCityName": "Bangkok",
         "destinationCoordinates": [
             100.7472,
             13.6811
@@ -2855,13 +2869,13 @@
     },
     {
         "originName": "SYD",
-        "originCityName": "",
+        "originCityName": "Sydney",
         "originCoordinates": [
             151.1772,
             -33.9461
         ],
         "destinationName": "CHC",
-        "destinationCityName": "",
+        "destinationCityName": "Christchurch",
         "destinationCoordinates": [
             172.5327,
             -43.4894
@@ -2887,13 +2901,13 @@
     },
     {
         "originName": "ICN",
-        "originCityName": "",
+        "originCityName": "Seoul",
         "originCoordinates": [
             126.4505,
             37.4692
         ],
         "destinationName": "TPE",
-        "destinationCityName": "",
+        "destinationCityName": "Taipei",
         "destinationCoordinates": [
             121.2328,
             25.0777
@@ -2919,13 +2933,13 @@
     },
     {
         "originName": "SIN",
-        "originCityName": "",
+        "originCityName": "Singapore",
         "originCoordinates": [
             103.9915,
             1.3644
         ],
         "destinationName": "HKG",
-        "destinationCityName": "",
+        "destinationCityName": "Hong Kong",
         "destinationCoordinates": [
             113.9185,
             22.308
@@ -2951,13 +2965,13 @@
     },
     {
         "originName": "ICN",
-        "originCityName": "",
+        "originCityName": "Seoul",
         "originCoordinates": [
             126.4505,
             37.4692
         ],
         "destinationName": "SYD",
-        "destinationCityName": "",
+        "destinationCityName": "Sydney",
         "destinationCoordinates": [
             151.1772,
             -33.9461
@@ -2983,13 +2997,13 @@
     },
     {
         "originName": "TLS",
-        "originCityName": "",
+        "originCityName": "Toulouse",
         "originCoordinates": [
             1.364,
             43.6313
         ],
         "destinationName": "DXB",
-        "destinationCityName": "",
+        "destinationCityName": "Dubai",
         "destinationCoordinates": [
             55.3657,
             25.2532
@@ -3007,13 +3021,13 @@
     },
     {
         "originName": "LHR",
-        "originCityName": "",
+        "originCityName": "London",
         "originCoordinates": [
             -0.4543,
             51.47
         ],
         "destinationName": "ORD",
-        "destinationCityName": "",
+        "destinationCityName": "Chicago",
         "destinationCoordinates": [
             -87.909,
             41.9802
@@ -3039,13 +3053,13 @@
     },
     {
         "originName": "ICN",
-        "originCityName": "",
+        "originCityName": "Seoul",
         "originCoordinates": [
             126.4505,
             37.4692
         ],
         "destinationName": "PVG",
-        "destinationCityName": "",
+        "destinationCityName": "Shanghai",
         "destinationCoordinates": [
             121.8058,
             31.1441
@@ -3063,13 +3077,13 @@
     },
     {
         "originName": "LHR",
-        "originCityName": "",
+        "originCityName": "London",
         "originCoordinates": [
             -0.4543,
             51.47
         ],
         "destinationName": "DFW",
-        "destinationCityName": "",
+        "destinationCityName": "Dallas/Fort Worth",
         "destinationCoordinates": [
             -97.0403,
             32.8998
@@ -3095,13 +3109,13 @@
     },
     {
         "originName": "IST",
-        "originCityName": "",
+        "originCityName": "Istanbul",
         "originCoordinates": [
             28.7519,
             41.2756
         ],
         "destinationName": "MAN",
-        "destinationCityName": "",
+        "destinationCityName": "Manchester",
         "destinationCoordinates": [
             -2.2721,
             53.3651
@@ -3119,13 +3133,13 @@
     },
     {
         "originName": "ICN",
-        "originCityName": "",
+        "originCityName": "Seoul",
         "originCoordinates": [
             126.4505,
             37.4692
         ],
         "destinationName": "LHR",
-        "destinationCityName": "",
+        "destinationCityName": "London",
         "destinationCoordinates": [
             -0.4543,
             51.47
@@ -3151,13 +3165,13 @@
     },
     {
         "originName": "DXB",
-        "originCityName": "",
+        "originCityName": "Dubai",
         "originCoordinates": [
             55.3657,
             25.2532
         ],
         "destinationName": "TEV",
-        "destinationCityName": "",
+        "destinationCityName": "na",
         "destinationCoordinates": [
             0,
             0
@@ -3169,6 +3183,30 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "2023-09-24T23:15:00",
                 "arrivalTimeLocal": "2023-09-25T06:25:00"
+            }
+        ],
+        "returnflights": []
+    },
+    {
+        "originName": "IST",
+        "originCityName": "Istanbul",
+        "originCoordinates": [
+            28.7519,
+            41.2756
+        ],
+        "destinationName": "LHR",
+        "destinationCityName": "London",
+        "destinationCoordinates": [
+            -0.4543,
+            51.47
+        ],
+        "goflights": [
+            {
+                "airline": "Unknown",
+                "flightNumber": "N/A",
+                "daysOfWeek": [],
+                "departureTimeLocal": "2023-09-25T13:15:00",
+                "arrivalTimeLocal": "2023-09-25T16:27:00"
             }
         ],
         "returnflights": []

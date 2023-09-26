@@ -1,6 +1,8 @@
 
 import json
 
+# use this file to manually dump all airports or airlines into console
+
 # Specify the path to the JSON file
 file_path = "dataDump.json"
 
