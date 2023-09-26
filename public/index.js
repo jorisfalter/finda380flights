@@ -3,7 +3,9 @@ import importedRoutesV2 from "./routesV2.json" assert { type: "json" };
 // import importedRoutesV2 from "./routesV2mock.json" assert { type: "json" };
 
 //// This is the mapbox code
-mapboxgl.accessToken = "";
+mapboxgl.accessToken =
+  "pk.eyJ1Ijoiam9yaXNib3JpcyIsImEiOiJjbG1lam95ZWQxeXhjM2ZteGY2NDhqY2ltIn0.UnfVT_V85n8-D4IN7lxcnA";
+
 const map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/jorisboris/clmdk27ll01bw01qx24l12bnw",
