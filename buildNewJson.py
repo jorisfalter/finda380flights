@@ -57,7 +57,8 @@ if __name__ == "__main__":
         f'mongodb+srv://joris-a380:{mongoPass}@cluster0.1gi6i3v.mongodb.net/?retryWrites=true&w=majority&connectTimeoutMS=5000', tlsCAFile=ca)
 
     db = client['a380flightsDb']
-    source_collection = db['a380flightsCollection']
+    # source_collection = db['a380flightsCollection']
+    source_collection = db['a380flightsCollectionV2']
 
     # Query MongoDB and retrieve data
     data = []
@@ -69,6 +70,16 @@ if __name__ == "__main__":
 
         origin_iata = document["originIata"]
         destination_iata = document["destinationIata"]
+
+        # extract the time
+        # testTime = document["departureDatetimeLocal"]
+        # print(type(document["departureDatetimeLocal"]))
+        # Extract and format the time in 24-hour format
+        # print(testTime)
+        # formatted_time = testTime.strftime('%H:%M')
+        # print(formatted_time)
+        # print(type(document["arrivalDatetimeLocal"]))
+        # break
 
         # Check if the flight already exists in the "data" array
         matching_data_obj = next(
@@ -84,6 +95,8 @@ if __name__ == "__main__":
             if all(item.get("flightNumber") != document["flightNumber"] for item in matching_data_obj["goflights"]):
 
                 print("going to add a similar flight but other number")
+                print(document["departureDatetimeLocal"])
+                print(document["departureDatetimeLocal"].strftime('%H:%M'))
                 countNewGoRoutes += 1
 
                 airlineName = get_airline_name(document["flightNumber"])
@@ -91,8 +104,8 @@ if __name__ == "__main__":
                             "airline": airlineName,
                             "flightNumber": document["flightNumber"],
                             "daysOfWeek": [],
-                            "departureTimeLocal": document["departureDatetimeLocal"],
-                            "arrivalTimeLocal": document["arrivalDatetimeLocal"]}
+                            "departureTimeLocal": document["departureDatetimeLocal"].strftime('%H:%M'),
+                            "arrivalTimeLocal": document["arrivalDatetimeLocal"].strftime('%H:%M')}
                 matching_data_obj["goflights"].append(new_subObject)
 
                 data[index_of_matching_obj] = matching_data_obj
@@ -123,8 +136,8 @@ if __name__ == "__main__":
                             "airline": airlineName,
                             "flightNumber": document["flightNumber"],
                             "daysOfWeek": [],
-                            "departureTimeLocal": document["departureDatetimeLocal"],
-                            "arrivalTimeLocal": document["arrivalDatetimeLocal"]}
+                            "departureTimeLocal": document["departureDatetimeLocal"].strftime('%H:%M'),
+                            "arrivalTimeLocal": document["arrivalDatetimeLocal"].strftime('%H:%M')}
                     matching_data_obj_return["returnflights"].append(new_subObject)
 
                     data[index_of_matching_obj_return] = matching_data_obj_return
@@ -180,8 +193,8 @@ if __name__ == "__main__":
                                 "airline": airlineName,
                                 "flightNumber": document["flightNumber"],
                                 "daysOfWeek": [],
-                                "departureTimeLocal": document["departureDatetimeLocal"],
-                                "arrivalTimeLocal": document["arrivalDatetimeLocal"]}],
+                                "departureTimeLocal": document["departureDatetimeLocal"].strftime('%H:%M'),
+                                "arrivalTimeLocal": document["arrivalDatetimeLocal"].strftime('%H:%M')}],
                             "returnflights": [
                                 # {
                                 # "airline": "",

@@ -3,8 +3,8 @@ import importedRoutesV2 from "./routesV2.json" assert { type: "json" };
 // import importedRoutesV2 from "./routesV2mock.json" assert { type: "json" };
 
 //// This is the public Mapbox code
-mapboxgl.accessToken =
-  "pk.eyJ1Ijoiam9yaXNib3JpcyIsImEiOiJjbG1lam95ZWQxeXhjM2ZteGY2NDhqY2ltIn0.UnfVT_V85n8-D4IN7lxcnA";
+// mapboxgl.accessToken =
+//   "pk.eyJ1Ijoiam9yaXNib3JpcyIsImEiOiJjbG1lam95ZWQxeXhjM2ZteGY2NDhqY2ltIn0.UnfVT_V85n8-D4IN7lxcnA";
 
 //// local accessToken
 
@@ -28,6 +28,8 @@ for (let k = 0; k < importedRoutesV2.length; k++) {
   let originCityName = importedRoutesV2[k].originCityName;
 
   let destination1 = importedRoutesV2[k].destinationCoordinates;
+
+  let destinationCityName = importedRoutesV2[k].destinationCityName;
 
   let routeAirlines = [];
   for (let m = 0; m < importedRoutesV2[k].goflights.length; m++) {

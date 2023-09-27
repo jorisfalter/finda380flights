@@ -29,7 +29,8 @@ if __name__ == "__main__":
         f'mongodb+srv://joris-a380:{mongoPass}@cluster0.1gi6i3v.mongodb.net/?retryWrites=true&w=majority&connectTimeoutMS=5000', tlsCAFile=ca)
 
     db = client['a380flightsDb']
-    source_collection = db['a380flightsCollection']
+    # source_collection = db['a380flightsCollection']
+    source_collection = db['a380flightsCollectionV2']
 
     # Query MongoDB and retrieve data
     data = []
