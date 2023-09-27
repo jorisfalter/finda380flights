@@ -3,8 +3,8 @@ import importedRoutesV2 from "./routesV2.json" assert { type: "json" };
 // import importedRoutesV2 from "./routesV2mock.json" assert { type: "json" };
 
 //// This is the public Mapbox code
-// mapboxgl.accessToken =
-//   "pk.eyJ1Ijoiam9yaXNib3JpcyIsImEiOiJjbG1lam95ZWQxeXhjM2ZteGY2NDhqY2ltIn0.UnfVT_V85n8-D4IN7lxcnA";
+mapboxgl.accessToken =
+  "pk.eyJ1Ijoiam9yaXNib3JpcyIsImEiOiJjbG1lam95ZWQxeXhjM2ZteGY2NDhqY2ltIn0.UnfVT_V85n8-D4IN7lxcnA";
 
 //// local accessToken
 
@@ -127,11 +127,11 @@ for (let k = 0; k < importedRoutesV2.length; k++) {
         importedRoutesV2[k].originName +
         " - " +
         importedRoutesV2[k].destinationName
-      }</strong><br>`;
+      }</strong><br><div style="line-height: 1px;"></div>`;
 
       // add origin - destination info for each airline and flightnumber
       for (const item of importedRoutesV2[k].goflights) {
-        tooltipContent += `${item.airline} - ${item.flightNumber}<br>${item.departureTimeLocal} - ${item.arrivalTimeLocal}<br>`;
+        tooltipContent += `${item.airline} - ${item.flightNumber}<br>${item.departureTimeLocal} - ${item.arrivalTimeLocal}<br><div style="line-height: 1px;"></div>`;
       }
 
       // create origin - destination
@@ -139,11 +139,11 @@ for (let k = 0; k < importedRoutesV2.length; k++) {
         importedRoutesV2[k].destinationName +
         " - " +
         importedRoutesV2[k].originName
-      }</strong><br>`;
+      }</strong><br><div style="line-height: 1px;"></div>`;
 
       // add destination - origin info for each airline and flightnumber
       for (const item of importedRoutesV2[k].returnflights) {
-        tooltipContent += `${item.airline} - ${item.flightNumber}<br>${item.departureTimeLocal} - ${item.arrivalTimeLocal}<br>`;
+        tooltipContent += `${item.airline} - ${item.flightNumber}<br>${item.departureTimeLocal} - ${item.arrivalTimeLocal}<br><div style="line-height: 1px;"></div>`;
       }
 
       // add it to the html

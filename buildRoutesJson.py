@@ -95,8 +95,7 @@ if __name__ == "__main__":
             if all(item.get("flightNumber") != document["flightNumber"] for item in matching_data_obj["goflights"]):
 
                 print("going to add a similar flight but other number")
-                print(document["departureDatetimeLocal"])
-                print(document["departureDatetimeLocal"].strftime('%H:%M'))
+                print(document["departureTimeLocal"])
                 countNewGoRoutes += 1
 
                 airlineName = get_airline_name(document["flightNumber"])
@@ -104,8 +103,8 @@ if __name__ == "__main__":
                             "airline": airlineName,
                             "flightNumber": document["flightNumber"],
                             "daysOfWeek": [],
-                            "departureTimeLocal": document["departureDatetimeLocal"].strftime('%H:%M'),
-                            "arrivalTimeLocal": document["arrivalDatetimeLocal"].strftime('%H:%M')}
+                            "departureTimeLocal": document["departureTimeLocal"],
+                            "arrivalTimeLocal": document["arrivalTimeLocal"]}
                 matching_data_obj["goflights"].append(new_subObject)
 
                 data[index_of_matching_obj] = matching_data_obj
@@ -136,8 +135,8 @@ if __name__ == "__main__":
                             "airline": airlineName,
                             "flightNumber": document["flightNumber"],
                             "daysOfWeek": [],
-                            "departureTimeLocal": document["departureDatetimeLocal"].strftime('%H:%M'),
-                            "arrivalTimeLocal": document["arrivalDatetimeLocal"].strftime('%H:%M')}
+                            "departureTimeLocal": document["departureTimeLocal"],
+                            "arrivalTimeLocal": document["arrivalTimeLocal"]}
                     matching_data_obj_return["returnflights"].append(new_subObject)
 
                     data[index_of_matching_obj_return] = matching_data_obj_return
@@ -193,8 +192,8 @@ if __name__ == "__main__":
                                 "airline": airlineName,
                                 "flightNumber": document["flightNumber"],
                                 "daysOfWeek": [],
-                                "departureTimeLocal": document["departureDatetimeLocal"].strftime('%H:%M'),
-                                "arrivalTimeLocal": document["arrivalDatetimeLocal"].strftime('%H:%M')}],
+                                "departureTimeLocal": document["departureTimeLocal"],
+                                "arrivalTimeLocal": document["arrivalTimeLocal"]}],
                             "returnflights": [
                                 # {
                                 # "airline": "",
