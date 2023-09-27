@@ -17,7 +17,18 @@ const map = new mapboxgl.Map({
 
 const lineTooltip = document.getElementById("lineTooltip");
 
-const selectedAirlines = [];
+const selectedAirlines = [
+  "Singapore Airlines",
+  "Asiana Airlines",
+  "Qantas Airways",
+  "Korean Air",
+  "Qatar Airways",
+  "Emirates",
+  "Etihad Airways",
+  "British Airways",
+  "All Nippon Airways",
+  "Lufthansa",
+];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //// Drawing Lines
@@ -233,6 +244,30 @@ map.on("style.load", () => {
     if (airlineId === "emirates") {
       airlineName = "Emirates";
     }
+    if (airlineId === "britishAirways") {
+      airlineName = "British Airways";
+    }
+    if (airlineId === "etihad") {
+      airlineName = "Etihad Airways";
+    }
+    if (airlineId === "qatar") {
+      airlineName = "Qatar Airways";
+    }
+    if (airlineId === "ana") {
+      airlineName = "All Nippon Airways";
+    }
+    if (airlineId === "asiana") {
+      airlineName = "Asiana Airlines";
+    }
+    if (airlineId === "lufthansa") {
+      airlineName = "Lufthansa";
+    }
+    if (airlineId === "singaporeAirlines") {
+      airlineName = "Singapore Airlines";
+    }
+    if (airlineId === "qantas") {
+      airlineName = "Qantas Airways";
+    }
 
     // Check if the image is already selected
     const index = selectedAirlines.indexOf(airlineName);
@@ -243,11 +278,11 @@ map.on("style.load", () => {
     if (index === -1) {
       // Image not selected, add it to the array
       selectedAirlines.push(airlineName);
-      imageElement.classList.add("selected"); // Add a CSS class for styling
+      imageElement.classList.remove("unselected"); // Add a CSS class for styling
     } else {
       // Image already selected, remove it from the array
       selectedAirlines.splice(index, 1);
-      imageElement.classList.remove("selected"); // Remove the CSS class
+      imageElement.classList.add("unselected"); // Remove the CSS class
     }
 
     // Call your function here, passing selectedImages as needed
@@ -261,6 +296,30 @@ map.on("style.load", () => {
   document
     .getElementById("emirates")
     .addEventListener("click", () => toggleAirline("emirates"));
+  document
+    .getElementById("britishAirways")
+    .addEventListener("click", () => toggleAirline("britishAirways"));
+  document
+    .getElementById("etihad")
+    .addEventListener("click", () => toggleAirline("etihad"));
+  document
+    .getElementById("qatar")
+    .addEventListener("click", () => toggleAirline("qatar"));
+  document
+    .getElementById("ana")
+    .addEventListener("click", () => toggleAirline("ana"));
+  document
+    .getElementById("asiana")
+    .addEventListener("click", () => toggleAirline("asiana"));
+  document
+    .getElementById("lufthansa")
+    .addEventListener("click", () => toggleAirline("lufthansa"));
+  document
+    .getElementById("singaporeAirlines")
+    .addEventListener("click", () => toggleAirline("singaporeAirlines"));
+  document
+    .getElementById("qantas")
+    .addEventListener("click", () => toggleAirline("qantas"));
 
   // Wait for the map to be idle
   // I think this keeps loading, so I need another event

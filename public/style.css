@@ -25,6 +25,15 @@
   border-width: 5px;
   border-color:black;
   border-radius:5px;
+  width: 100px;
+  height: 70px;
+  object-fit: contain;
+
+}
+
+.airlineFilter{
+  width: 80%;
+  margin:auto;
 }
 
 .airline:hover{
@@ -42,7 +51,7 @@
   pointer-events: none; /* Allow interactions with the map underneath */
 }
 
-.selected {
+.unselected {
   border: 2px solid blue;
 }
 
