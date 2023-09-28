@@ -601,6 +601,13 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "22:15",
                 "arrivalTimeLocal": "08:05"
+            },
+            {
+                "airline": "British Airways",
+                "flightNumber": "BA107",
+                "daysOfWeek": [],
+                "departureTimeLocal": "12:55",
+                "arrivalTimeLocal": "23:05"
             }
         ]
     },
@@ -2991,10 +2998,10 @@
     },
     {
         "originName": "GIG",
-        "originCityName": "na",
+        "originCityName": "Rio de Janeiro",
         "originCoordinates": [
-            0,
-            0
+            -43.2506,
+            -22.8146
         ],
         "destinationName": "GRU",
         "destinationCityName": "S\u00e3o Paulo",
@@ -3009,6 +3016,30 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "19:35",
                 "arrivalTimeLocal": "20:00"
+            }
+        ],
+        "returnflights": []
+    },
+    {
+        "originName": "NRT",
+        "originCityName": "Tokyo",
+        "originCoordinates": [
+            140.3864,
+            35.7647
+        ],
+        "destinationName": "XMN",
+        "destinationCityName": "Xiamen",
+        "destinationCoordinates": [
+            118.1278,
+            24.5441
+        ],
+        "goflights": [
+            {
+                "airline": "All Nippon Airways",
+                "flightNumber": "NH9411",
+                "daysOfWeek": [],
+                "departureTimeLocal": "21:13",
+                "arrivalTimeLocal": "00:03"
             }
         ],
         "returnflights": []
