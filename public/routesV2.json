@@ -35,6 +35,13 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "07:25",
                 "arrivalTimeLocal": "11:35"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK307",
+                "daysOfWeek": [],
+                "departureTimeLocal": "00:40",
+                "arrivalTimeLocal": "05:00"
             }
         ]
     },
@@ -88,6 +95,13 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "20:55",
                 "arrivalTimeLocal": "17:30"
+            },
+            {
+                "airline": "Singapore Airlines",
+                "flightNumber": "SQ317",
+                "daysOfWeek": [],
+                "departureTimeLocal": "11:25",
+                "arrivalTimeLocal": "07:30"
             }
         ]
     },
@@ -113,7 +127,15 @@
                 "arrivalTimeLocal": "17:10"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Qatar Airways",
+                "flightNumber": "QR909",
+                "daysOfWeek": [],
+                "departureTimeLocal": "21:00",
+                "arrivalTimeLocal": "04:55"
+            }
+        ]
     },
     {
         "originName": "JFK",
@@ -167,6 +189,13 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "21:20",
                 "arrivalTimeLocal": "07:30"
+            },
+            {
+                "airline": "British Airways",
+                "flightNumber": "BA56",
+                "daysOfWeek": [],
+                "departureTimeLocal": "19:20",
+                "arrivalTimeLocal": "05:30"
             }
         ],
         "returnflights": [
@@ -284,6 +313,13 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "05:15",
                 "arrivalTimeLocal": "13:05"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK407",
+                "daysOfWeek": [],
+                "departureTimeLocal": "21:15",
+                "arrivalTimeLocal": "05:15"
             }
         ],
         "returnflights": [
@@ -323,6 +359,13 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "06:00",
                 "arrivalTimeLocal": "14:10"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK413",
+                "daysOfWeek": [],
+                "departureTimeLocal": "21:10",
+                "arrivalTimeLocal": "05:40"
             }
         ],
         "returnflights": [
@@ -332,6 +375,13 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "02:15",
                 "arrivalTimeLocal": "22:05"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK412",
+                "daysOfWeek": [],
+                "departureTimeLocal": "10:25",
+                "arrivalTimeLocal": "06:05"
             }
         ]
     },
@@ -357,7 +407,15 @@
                 "arrivalTimeLocal": "06:50"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "British Airways",
+                "flightNumber": "BA213",
+                "daysOfWeek": [],
+                "departureTimeLocal": "14:40",
+                "arrivalTimeLocal": "17:00"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -388,7 +446,22 @@
                 "arrivalTimeLocal": "16:45"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK702",
+                "daysOfWeek": [],
+                "departureTimeLocal": "16:35",
+                "arrivalTimeLocal": "23:10"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK704",
+                "daysOfWeek": [],
+                "departureTimeLocal": "21:50",
+                "arrivalTimeLocal": "04:25"
+            }
+        ]
     },
     {
         "originName": "JFK",
@@ -412,7 +485,15 @@
                 "arrivalTimeLocal": "07:35"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Lufthansa",
+                "flightNumber": "LH410",
+                "daysOfWeek": [],
+                "departureTimeLocal": "12:10",
+                "arrivalTimeLocal": "15:00"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -455,9 +536,73 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "09:40",
                 "arrivalTimeLocal": "14:25"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK31",
+                "daysOfWeek": [],
+                "departureTimeLocal": "11:25",
+                "arrivalTimeLocal": "16:10"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK3",
+                "daysOfWeek": [],
+                "departureTimeLocal": "14:15",
+                "arrivalTimeLocal": "18:40"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK5",
+                "daysOfWeek": [],
+                "departureTimeLocal": "15:45",
+                "arrivalTimeLocal": "20:15"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK8",
+                "daysOfWeek": [],
+                "departureTimeLocal": "09:05",
+                "arrivalTimeLocal": "19:10"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK2",
+                "daysOfWeek": [],
+                "departureTimeLocal": "14:20",
+                "arrivalTimeLocal": "00:20"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK30",
+                "daysOfWeek": [],
+                "departureTimeLocal": "16:50",
+                "arrivalTimeLocal": "02:45"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK32",
+                "daysOfWeek": [],
+                "departureTimeLocal": "19:50",
+                "arrivalTimeLocal": "05:50"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK4",
+                "daysOfWeek": [],
+                "departureTimeLocal": "20:40",
+                "arrivalTimeLocal": "06:35"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK6",
+                "daysOfWeek": [],
+                "departureTimeLocal": "22:15",
+                "arrivalTimeLocal": "08:05"
+            }
+        ]
     },
     {
         "originName": "MIA",
@@ -481,7 +626,15 @@
                 "arrivalTimeLocal": "06:50"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "British Airways",
+                "flightNumber": "BA207",
+                "daysOfWeek": [],
+                "departureTimeLocal": "10:25",
+                "arrivalTimeLocal": "14:45"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -505,7 +658,15 @@
                 "arrivalTimeLocal": "08:40"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK232",
+                "daysOfWeek": [],
+                "departureTimeLocal": "10:55",
+                "arrivalTimeLocal": "08:05"
+            }
+        ]
     },
     {
         "originName": "DOH",
@@ -536,7 +697,22 @@
                 "arrivalTimeLocal": "13:15"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Qatar Airways",
+                "flightNumber": "QR6",
+                "daysOfWeek": [],
+                "departureTimeLocal": "08:30",
+                "arrivalTimeLocal": "17:10"
+            },
+            {
+                "airline": "Qatar Airways",
+                "flightNumber": "QR4",
+                "daysOfWeek": [],
+                "departureTimeLocal": "15:05",
+                "arrivalTimeLocal": "23:50"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -560,7 +736,15 @@
                 "arrivalTimeLocal": "15:30"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK303",
+                "daysOfWeek": [],
+                "departureTimeLocal": "00:05",
+                "arrivalTimeLocal": "04:55"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -589,6 +773,13 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "03:45",
                 "arrivalTimeLocal": "13:25"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK374",
+                "daysOfWeek": [],
+                "departureTimeLocal": "22:30",
+                "arrivalTimeLocal": "08:00"
             }
         ],
         "returnflights": [
@@ -598,6 +789,20 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "09:55",
                 "arrivalTimeLocal": "13:00"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK385",
+                "daysOfWeek": [],
+                "departureTimeLocal": "01:35",
+                "arrivalTimeLocal": "04:45"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK377",
+                "daysOfWeek": [],
+                "departureTimeLocal": "02:50",
+                "arrivalTimeLocal": "06:00"
             }
         ]
     },
@@ -660,9 +865,38 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "08:00",
                 "arrivalTimeLocal": "12:35"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK9",
+                "daysOfWeek": [],
+                "departureTimeLocal": "14:55",
+                "arrivalTimeLocal": "19:45"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK12",
+                "daysOfWeek": [],
+                "departureTimeLocal": "10:10",
+                "arrivalTimeLocal": "20:00"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK16",
+                "daysOfWeek": [],
+                "departureTimeLocal": "14:35",
+                "arrivalTimeLocal": "00:40"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK10",
+                "daysOfWeek": [],
+                "departureTimeLocal": "21:45",
+                "arrivalTimeLocal": "07:35"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -686,7 +920,15 @@
                 "arrivalTimeLocal": "17:35"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK319",
+                "daysOfWeek": [],
+                "departureTimeLocal": "22:30",
+                "arrivalTimeLocal": "04:10"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -724,6 +966,13 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "23:00",
                 "arrivalTimeLocal": "19:45"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK204",
+                "daysOfWeek": [],
+                "departureTimeLocal": "11:20",
+                "arrivalTimeLocal": "07:50"
             }
         ]
     },
@@ -756,7 +1005,22 @@
                 "arrivalTimeLocal": "12:50"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Etihad Airways",
+                "flightNumber": "EY12",
+                "daysOfWeek": [],
+                "departureTimeLocal": "09:30",
+                "arrivalTimeLocal": "19:35"
+            },
+            {
+                "airline": "Etihad Airways",
+                "flightNumber": "EY20",
+                "daysOfWeek": [],
+                "departureTimeLocal": "14:50",
+                "arrivalTimeLocal": "00:55"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -780,7 +1044,15 @@
                 "arrivalTimeLocal": "17:35"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK421",
+                "daysOfWeek": [],
+                "departureTimeLocal": "22:20",
+                "arrivalTimeLocal": "05:20"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -804,7 +1076,15 @@
                 "arrivalTimeLocal": "14:25"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK347",
+                "daysOfWeek": [],
+                "departureTimeLocal": "19:20",
+                "arrivalTimeLocal": "22:20"
+            }
+        ]
     },
     {
         "originName": "DOH",
@@ -828,7 +1108,15 @@
                 "arrivalTimeLocal": "13:00"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Qatar Airways",
+                "flightNumber": "QR835",
+                "daysOfWeek": [],
+                "departureTimeLocal": "20:00",
+                "arrivalTimeLocal": "22:50"
+            }
+        ]
     },
     {
         "originName": "DOH",
@@ -852,7 +1140,15 @@
                 "arrivalTimeLocal": "18:20"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Qatar Airways",
+                "flightNumber": "QR901",
+                "daysOfWeek": [],
+                "departureTimeLocal": "23:00",
+                "arrivalTimeLocal": "05:15"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -883,7 +1179,22 @@
                 "arrivalTimeLocal": "21:15"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK355",
+                "daysOfWeek": [],
+                "departureTimeLocal": "21:40",
+                "arrivalTimeLocal": "00:50"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK353",
+                "daysOfWeek": [],
+                "departureTimeLocal": "00:50",
+                "arrivalTimeLocal": "04:15"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -907,7 +1218,15 @@
                 "arrivalTimeLocal": "16:15"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK367",
+                "daysOfWeek": [],
+                "departureTimeLocal": "23:35",
+                "arrivalTimeLocal": "04:20"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -931,7 +1250,15 @@
                 "arrivalTimeLocal": "17:00"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK323",
+                "daysOfWeek": [],
+                "departureTimeLocal": "23:55",
+                "arrivalTimeLocal": "04:25"
+            }
+        ]
     },
     {
         "originName": "SFO",
@@ -1019,7 +1346,15 @@
                 "arrivalTimeLocal": "16:35"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK369",
+                "daysOfWeek": [],
+                "departureTimeLocal": "19:40",
+                "arrivalTimeLocal": "00:45"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1048,9 +1383,38 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "08:20",
                 "arrivalTimeLocal": "13:30"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK75",
+                "daysOfWeek": [],
+                "departureTimeLocal": "14:40",
+                "arrivalTimeLocal": "20:00"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK72",
+                "daysOfWeek": [],
+                "departureTimeLocal": "11:25",
+                "arrivalTimeLocal": "20:00"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK74",
+                "daysOfWeek": [],
+                "departureTimeLocal": "15:35",
+                "arrivalTimeLocal": "00:20"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK76",
+                "daysOfWeek": [],
+                "departureTimeLocal": "21:55",
+                "arrivalTimeLocal": "06:35"
+            }
+        ]
     },
     {
         "originName": "BOS",
@@ -1074,7 +1438,15 @@
                 "arrivalTimeLocal": "09:15"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Lufthansa",
+                "flightNumber": "LH424",
+                "daysOfWeek": [],
+                "departureTimeLocal": "15:35",
+                "arrivalTimeLocal": "17:50"
+            }
+        ]
     },
     {
         "originName": "IAH",
@@ -1130,7 +1502,15 @@
                 "arrivalTimeLocal": "10:35"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "British Airways",
+                "flightNumber": "BA193",
+                "daysOfWeek": [],
+                "departureTimeLocal": "12:50",
+                "arrivalTimeLocal": "16:50"
+            }
+        ]
     },
     {
         "originName": "SYD",
@@ -1168,7 +1548,29 @@
                 "arrivalTimeLocal": "21:30"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Qantas Airways",
+                "flightNumber": "QF2",
+                "daysOfWeek": [],
+                "departureTimeLocal": "19:30",
+                "arrivalTimeLocal": "05:10"
+            },
+            {
+                "airline": "Singapore Airlines",
+                "flightNumber": "SQ221",
+                "daysOfWeek": [],
+                "departureTimeLocal": "20:20",
+                "arrivalTimeLocal": "05:55"
+            },
+            {
+                "airline": "Singapore Airlines",
+                "flightNumber": "SQ231",
+                "daysOfWeek": [],
+                "departureTimeLocal": "00:45",
+                "arrivalTimeLocal": "10:25"
+            }
+        ]
     },
     {
         "originName": "SIN",
@@ -1192,7 +1594,15 @@
                 "arrivalTimeLocal": "13:55"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Singapore Airlines",
+                "flightNumber": "SQ893",
+                "daysOfWeek": [],
+                "departureTimeLocal": "15:40",
+                "arrivalTimeLocal": "19:35"
+            }
+        ]
     },
     {
         "originName": "SIN",
@@ -1216,7 +1626,15 @@
                 "arrivalTimeLocal": "15:05"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Singapore Airlines",
+                "flightNumber": "SQ833",
+                "daysOfWeek": [],
+                "departureTimeLocal": "16:50",
+                "arrivalTimeLocal": "22:20"
+            }
+        ]
     },
     {
         "originName": "JFK",
@@ -1240,7 +1658,15 @@
                 "arrivalTimeLocal": "12:15"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK205",
+                "daysOfWeek": [],
+                "departureTimeLocal": "16:10",
+                "arrivalTimeLocal": "18:55"
+            }
+        ]
     },
     {
         "originName": "ORD",
@@ -1264,7 +1690,15 @@
                 "arrivalTimeLocal": "11:00"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "British Airways",
+                "flightNumber": "BA297",
+                "daysOfWeek": [],
+                "departureTimeLocal": "15:35",
+                "arrivalTimeLocal": "18:15"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1286,9 +1720,45 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "06:55",
                 "arrivalTimeLocal": "08:45"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK803",
+                "daysOfWeek": [],
+                "departureTimeLocal": "15:40",
+                "arrivalTimeLocal": "18:00"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK801",
+                "daysOfWeek": [],
+                "departureTimeLocal": "00:10",
+                "arrivalTimeLocal": "02:10"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK806",
+                "daysOfWeek": [],
+                "departureTimeLocal": "10:45",
+                "arrivalTimeLocal": "14:45"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK804",
+                "daysOfWeek": [],
+                "departureTimeLocal": "20:05",
+                "arrivalTimeLocal": "00:15"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK802",
+                "daysOfWeek": [],
+                "departureTimeLocal": "04:10",
+                "arrivalTimeLocal": "07:55"
+            }
+        ]
     },
     {
         "originName": "SFO",
@@ -1312,7 +1782,15 @@
                 "arrivalTimeLocal": "13:50"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "British Airways",
+                "flightNumber": "BA287",
+                "daysOfWeek": [],
+                "departureTimeLocal": "14:05",
+                "arrivalTimeLocal": "17:10"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1334,9 +1812,31 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "07:25",
                 "arrivalTimeLocal": "12:00"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK19",
+                "daysOfWeek": [],
+                "departureTimeLocal": "14:30",
+                "arrivalTimeLocal": "19:15"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK18",
+                "daysOfWeek": [],
+                "departureTimeLocal": "14:05",
+                "arrivalTimeLocal": "00:20"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK20",
+                "daysOfWeek": [],
+                "departureTimeLocal": "21:15",
+                "arrivalTimeLocal": "07:25"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1360,7 +1860,15 @@
                 "arrivalTimeLocal": "13:25"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK142",
+                "daysOfWeek": [],
+                "departureTimeLocal": "15:25",
+                "arrivalTimeLocal": "00:35"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1384,7 +1892,15 @@
                 "arrivalTimeLocal": "12:45"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK752",
+                "daysOfWeek": [],
+                "departureTimeLocal": "14:45",
+                "arrivalTimeLocal": "01:15"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1408,7 +1924,15 @@
                 "arrivalTimeLocal": "12:30"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK40",
+                "daysOfWeek": [],
+                "departureTimeLocal": "14:40",
+                "arrivalTimeLocal": "00:45"
+            }
+        ]
     },
     {
         "originName": "GRU",
@@ -1464,7 +1988,15 @@
                 "arrivalTimeLocal": "13:15"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK148",
+                "daysOfWeek": [],
+                "departureTimeLocal": "15:20",
+                "arrivalTimeLocal": "23:59"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1486,9 +2018,31 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "08:15",
                 "arrivalTimeLocal": "11:05"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK923",
+                "daysOfWeek": [],
+                "departureTimeLocal": "15:15",
+                "arrivalTimeLocal": "18:05"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK928",
+                "daysOfWeek": [],
+                "departureTimeLocal": "13:10",
+                "arrivalTimeLocal": "17:30"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK924",
+                "daysOfWeek": [],
+                "departureTimeLocal": "20:05",
+                "arrivalTimeLocal": "00:40"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1512,7 +2066,15 @@
                 "arrivalTimeLocal": "13:15"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK46",
+                "daysOfWeek": [],
+                "departureTimeLocal": "15:15",
+                "arrivalTimeLocal": "23:35"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1536,7 +2098,15 @@
                 "arrivalTimeLocal": "12:45"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK28",
+                "daysOfWeek": [],
+                "departureTimeLocal": "14:35",
+                "arrivalTimeLocal": "01:05"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1558,9 +2128,31 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "08:50",
                 "arrivalTimeLocal": "13:15"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK51",
+                "daysOfWeek": [],
+                "departureTimeLocal": "16:30",
+                "arrivalTimeLocal": "20:50"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK50",
+                "daysOfWeek": [],
+                "departureTimeLocal": "15:40",
+                "arrivalTimeLocal": "23:45"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK52",
+                "daysOfWeek": [],
+                "departureTimeLocal": "22:35",
+                "arrivalTimeLocal": "06:30"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1584,7 +2176,15 @@
                 "arrivalTimeLocal": "13:20"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK88",
+                "daysOfWeek": [],
+                "departureTimeLocal": "15:25",
+                "arrivalTimeLocal": "23:45"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1608,7 +2208,15 @@
                 "arrivalTimeLocal": "13:25"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK56",
+                "daysOfWeek": [],
+                "departureTimeLocal": "15:25",
+                "arrivalTimeLocal": "23:55"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1632,7 +2240,15 @@
                 "arrivalTimeLocal": "13:40"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK78",
+                "daysOfWeek": [],
+                "departureTimeLocal": "15:55",
+                "arrivalTimeLocal": "00:10"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1656,7 +2272,15 @@
                 "arrivalTimeLocal": "13:25"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK98",
+                "daysOfWeek": [],
+                "departureTimeLocal": "15:30",
+                "arrivalTimeLocal": "23:10"
+            }
+        ]
     },
     {
         "originName": "TPE",
@@ -1680,7 +2304,15 @@
                 "arrivalTimeLocal": "17:00"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Korean Air",
+                "flightNumber": "KE185",
+                "daysOfWeek": [],
+                "departureTimeLocal": "10:35",
+                "arrivalTimeLocal": "12:10"
+            }
+        ]
     },
     {
         "originName": "MEL",
@@ -1704,7 +2336,15 @@
                 "arrivalTimeLocal": "21:30"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Singapore Airlines",
+                "flightNumber": "SQ237",
+                "daysOfWeek": [],
+                "departureTimeLocal": "00:25",
+                "arrivalTimeLocal": "09:50"
+            }
+        ]
     },
     {
         "originName": "CHC",
@@ -1728,7 +2368,15 @@
                 "arrivalTimeLocal": "19:05"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK412",
+                "daysOfWeek": [],
+                "departureTimeLocal": "07:50",
+                "arrivalTimeLocal": "13:55"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1750,9 +2398,31 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "09:45",
                 "arrivalTimeLocal": "14:20"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK91",
+                "daysOfWeek": [],
+                "departureTimeLocal": "15:45",
+                "arrivalTimeLocal": "20:30"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK206",
+                "daysOfWeek": [],
+                "departureTimeLocal": "14:05",
+                "arrivalTimeLocal": "22:10"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK92",
+                "daysOfWeek": [],
+                "departureTimeLocal": "22:20",
+                "arrivalTimeLocal": "06:25"
+            }
+        ]
     },
     {
         "originName": "HNL",
@@ -1774,9 +2444,24 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "13:00",
                 "arrivalTimeLocal": "16:15"
+            },
+            {
+                "airline": "All Nippon Airways",
+                "flightNumber": "NH183",
+                "daysOfWeek": [],
+                "departureTimeLocal": "12:00",
+                "arrivalTimeLocal": "15:15"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "All Nippon Airways",
+                "flightNumber": "NH184",
+                "daysOfWeek": [],
+                "departureTimeLocal": "20:10",
+                "arrivalTimeLocal": "08:45"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1800,7 +2485,15 @@
                 "arrivalTimeLocal": "14:25"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK124",
+                "daysOfWeek": [],
+                "departureTimeLocal": "16:25",
+                "arrivalTimeLocal": "21:50"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1824,7 +2517,15 @@
                 "arrivalTimeLocal": "10:50"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK449",
+                "daysOfWeek": [],
+                "departureTimeLocal": "21:10",
+                "arrivalTimeLocal": "05:35"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1848,7 +2549,15 @@
                 "arrivalTimeLocal": "16:15"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK764",
+                "daysOfWeek": [],
+                "departureTimeLocal": "19:15",
+                "arrivalTimeLocal": "05:30"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1870,9 +2579,31 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "10:00",
                 "arrivalTimeLocal": "14:25"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK131",
+                "daysOfWeek": [],
+                "departureTimeLocal": "16:15",
+                "arrivalTimeLocal": "20:30"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK134",
+                "daysOfWeek": [],
+                "departureTimeLocal": "16:55",
+                "arrivalTimeLocal": "23:10"
+            },
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK132",
+                "daysOfWeek": [],
+                "departureTimeLocal": "23:20",
+                "arrivalTimeLocal": "05:30"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1896,7 +2627,15 @@
                 "arrivalTimeLocal": "22:00"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK381",
+                "daysOfWeek": [],
+                "departureTimeLocal": "00:35",
+                "arrivalTimeLocal": "04:20"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1920,7 +2659,15 @@
                 "arrivalTimeLocal": "22:05"
             }
         ],
-        "returnflights": []
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK363",
+                "daysOfWeek": [],
+                "departureTimeLocal": "00:15",
+                "arrivalTimeLocal": "04:05"
+            }
+        ]
     },
     {
         "originName": "DXB",
@@ -1942,6 +2689,326 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "10:35",
                 "arrivalTimeLocal": "06:25"
+            }
+        ],
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK435",
+                "daysOfWeek": [],
+                "departureTimeLocal": "21:00",
+                "arrivalTimeLocal": "05:10"
+            }
+        ]
+    },
+    {
+        "originName": "BKK",
+        "originCityName": "Bangkok",
+        "originCoordinates": [
+            100.7472,
+            13.6811
+        ],
+        "destinationName": "HKG",
+        "destinationCityName": "Hong Kong",
+        "destinationCoordinates": [
+            113.9185,
+            22.308
+        ],
+        "goflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK384",
+                "daysOfWeek": [],
+                "departureTimeLocal": "14:05",
+                "arrivalTimeLocal": "18:05"
+            }
+        ],
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK385",
+                "daysOfWeek": [],
+                "departureTimeLocal": "21:30",
+                "arrivalTimeLocal": "23:45"
+            }
+        ]
+    },
+    {
+        "originName": "SIN",
+        "originCityName": "Singapore",
+        "originCoordinates": [
+            103.9915,
+            1.3644
+        ],
+        "destinationName": "DEL",
+        "destinationCityName": "Delhi",
+        "destinationCoordinates": [
+            77.1,
+            28.5562
+        ],
+        "goflights": [
+            {
+                "airline": "Singapore Airlines",
+                "flightNumber": "SQ406",
+                "daysOfWeek": [],
+                "departureTimeLocal": "16:50",
+                "arrivalTimeLocal": "20:10"
+            }
+        ],
+        "returnflights": [
+            {
+                "airline": "Singapore Airlines",
+                "flightNumber": "SQ403",
+                "daysOfWeek": [],
+                "departureTimeLocal": "21:55",
+                "arrivalTimeLocal": "06:10"
+            }
+        ]
+    },
+    {
+        "originName": "ICN",
+        "originCityName": "Seoul",
+        "originCoordinates": [
+            126.4505,
+            37.4692
+        ],
+        "destinationName": "BKK",
+        "destinationCityName": "Bangkok",
+        "destinationCoordinates": [
+            100.7472,
+            13.6811
+        ],
+        "goflights": [
+            {
+                "airline": "Asiana Airlines",
+                "flightNumber": "OZ741",
+                "daysOfWeek": [],
+                "departureTimeLocal": "19:30",
+                "arrivalTimeLocal": "23:10"
+            }
+        ],
+        "returnflights": [
+            {
+                "airline": "Asiana Airlines",
+                "flightNumber": "OZ742",
+                "daysOfWeek": [],
+                "departureTimeLocal": "01:10",
+                "arrivalTimeLocal": "08:55"
+            }
+        ]
+    },
+    {
+        "originName": "DXB",
+        "originCityName": "Dubai",
+        "originCoordinates": [
+            55.3657,
+            25.2532
+        ],
+        "destinationName": "AMM",
+        "destinationCityName": "Amman",
+        "destinationCoordinates": [
+            35.9931,
+            31.7225
+        ],
+        "goflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK903",
+                "daysOfWeek": [],
+                "departureTimeLocal": "14:05",
+                "arrivalTimeLocal": "16:00"
+            }
+        ],
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK904",
+                "daysOfWeek": [],
+                "departureTimeLocal": "18:00",
+                "arrivalTimeLocal": "22:00"
+            }
+        ]
+    },
+    {
+        "originName": "SIN",
+        "originCityName": "Singapore",
+        "originCoordinates": [
+            103.9915,
+            1.3644
+        ],
+        "destinationName": "BOM",
+        "destinationCityName": "Mumbai",
+        "destinationCoordinates": [
+            72.8683,
+            19.0888
+        ],
+        "goflights": [
+            {
+                "airline": "Singapore Airlines",
+                "flightNumber": "SQ424",
+                "daysOfWeek": [],
+                "departureTimeLocal": "19:00",
+                "arrivalTimeLocal": "22:10"
+            }
+        ],
+        "returnflights": [
+            {
+                "airline": "Singapore Airlines",
+                "flightNumber": "SQ423",
+                "daysOfWeek": [],
+                "departureTimeLocal": "23:40",
+                "arrivalTimeLocal": "07:40"
+            }
+        ]
+    },
+    {
+        "originName": "ICN",
+        "originCityName": "Seoul",
+        "originCoordinates": [
+            126.4505,
+            37.4692
+        ],
+        "destinationName": "SYD",
+        "destinationCityName": "Sydney",
+        "destinationCoordinates": [
+            151.1772,
+            -33.9461
+        ],
+        "goflights": [
+            {
+                "airline": "Asiana Airlines",
+                "flightNumber": "OZ601",
+                "daysOfWeek": [],
+                "departureTimeLocal": "20:00",
+                "arrivalTimeLocal": "07:30"
+            }
+        ],
+        "returnflights": [
+            {
+                "airline": "Asiana Airlines",
+                "flightNumber": "OZ602",
+                "daysOfWeek": [],
+                "departureTimeLocal": "09:30",
+                "arrivalTimeLocal": "19:00"
+            }
+        ]
+    },
+    {
+        "originName": "DXB",
+        "originCityName": "Dubai",
+        "originCoordinates": [
+            55.3657,
+            25.2532
+        ],
+        "destinationName": "BLR",
+        "destinationCityName": "Bengaluru",
+        "destinationCoordinates": [
+            77.7066,
+            13.1986
+        ],
+        "goflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK568",
+                "daysOfWeek": [],
+                "departureTimeLocal": "21:15",
+                "arrivalTimeLocal": "02:45"
+            }
+        ],
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK569",
+                "daysOfWeek": [],
+                "departureTimeLocal": "04:45",
+                "arrivalTimeLocal": "07:05"
+            }
+        ]
+    },
+    {
+        "originName": "DXB",
+        "originCityName": "Dubai",
+        "originCoordinates": [
+            55.3657,
+            25.2532
+        ],
+        "destinationName": "BOM",
+        "destinationCityName": "Mumbai",
+        "destinationCoordinates": [
+            72.8683,
+            19.0888
+        ],
+        "goflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK500",
+                "daysOfWeek": [],
+                "departureTimeLocal": "21:55",
+                "arrivalTimeLocal": "02:30"
+            }
+        ],
+        "returnflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK501",
+                "daysOfWeek": [],
+                "departureTimeLocal": "04:30",
+                "arrivalTimeLocal": "06:00"
+            }
+        ]
+    },
+    {
+        "originName": "LHR",
+        "originCityName": "London",
+        "originCoordinates": [
+            -0.4543,
+            51.47
+        ],
+        "destinationName": "IAD",
+        "destinationCityName": "Washington, D.C.",
+        "destinationCoordinates": [
+            -77.4477,
+            38.947
+        ],
+        "goflights": [
+            {
+                "airline": "British Airways",
+                "flightNumber": "BA293",
+                "daysOfWeek": [],
+                "departureTimeLocal": "17:15",
+                "arrivalTimeLocal": "20:25"
+            }
+        ],
+        "returnflights": [
+            {
+                "airline": "British Airways",
+                "flightNumber": "BA292",
+                "daysOfWeek": [],
+                "departureTimeLocal": "00:35",
+                "arrivalTimeLocal": "12:23"
+            }
+        ]
+    },
+    {
+        "originName": "GIG",
+        "originCityName": "na",
+        "originCoordinates": [
+            0,
+            0
+        ],
+        "destinationName": "GRU",
+        "destinationCityName": "S\u00e3o Paulo",
+        "destinationCoordinates": [
+            -46.4697,
+            -23.4346
+        ],
+        "goflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK261",
+                "daysOfWeek": [],
+                "departureTimeLocal": "19:35",
+                "arrivalTimeLocal": "20:00"
             }
         ],
         "returnflights": []
