@@ -199,136 +199,136 @@ fetch("routesV2.json")
     //// Airline Filters
 
     // need to wait until all styles are loaded > I think this can be removed
-    map.on("style.load", () => {
-      function toggleLayers(selectedAirlines) {
-        // console.log(map.getStyle());
+    // map.on("style.load", () => {
+    function toggleLayers(selectedAirlines) {
+      // console.log(map.getStyle());
 
-        map.getStyle().layers.forEach((layer) => {
-          // take the layers starting with "route..."
-          if (layer.type === "line" && layer.id.substring(0, 5) == "route") {
-            // console.log(map.getLayer(layer.id).metadata.airline);
-            // Get the airlines associated with the layer
-            const airlineArray =
-              // map.getPaintProperty(layer.id, "line-opacity") !== 0
-              // ?
-              map.getLayer(layer.id).metadata.airline;
-            // : null;
-            for (let n = 0; n < airlineArray.length; n++) {
-              if (selectedAirlines.includes(airlineArray[n])) {
-                map.setPaintProperty(layer.id, "line-opacity", 1);
-                n = airlineArray.length;
-              } else {
-                map.setPaintProperty(layer.id, "line-opacity", 0);
-              }
+      map.getStyle().layers.forEach((layer) => {
+        // take the layers starting with "route..."
+        if (layer.type === "line" && layer.id.substring(0, 5) == "route") {
+          // console.log(map.getLayer(layer.id).metadata.airline);
+          // Get the airlines associated with the layer
+          const airlineArray =
+            // map.getPaintProperty(layer.id, "line-opacity") !== 0
+            // ?
+            map.getLayer(layer.id).metadata.airline;
+          // : null;
+          for (let n = 0; n < airlineArray.length; n++) {
+            if (selectedAirlines.includes(airlineArray[n])) {
+              map.setPaintProperty(layer.id, "line-opacity", 1);
+              n = airlineArray.length;
+            } else {
+              map.setPaintProperty(layer.id, "line-opacity", 0);
             }
           }
-        });
+        }
+      });
+    }
+
+    // // Assuming you have a reference to your map element with id "map"
+    // const mapElement = document.getElementById("map");
+
+    // // Add a click event listener to the map element
+    // mapElement.addEventListener("click", () => {
+    //   // Example user input (you can replace this with your actual user input handling)
+    //   const selectedAirlines = ["Korean Air", "British Airways"];
+
+    //   // Call the toggleLayers function with the selected airlines
+    //   toggleLayers(selectedAirlines);
+    // });
+
+    // Function to toggle airline selection
+    function toggleAirline(airlineId) {
+      const imageElement = document.getElementById(airlineId);
+      let airlineName = "";
+
+      if (airlineId === "koreanAir") {
+        airlineName = "Korean Air";
+      }
+      if (airlineId === "emirates") {
+        airlineName = "Emirates";
+      }
+      if (airlineId === "britishAirways") {
+        airlineName = "British Airways";
+      }
+      if (airlineId === "etihad") {
+        airlineName = "Etihad Airways";
+      }
+      if (airlineId === "qatar") {
+        airlineName = "Qatar Airways";
+      }
+      if (airlineId === "ana") {
+        airlineName = "All Nippon Airways";
+      }
+      if (airlineId === "asiana") {
+        airlineName = "Asiana Airlines";
+      }
+      if (airlineId === "lufthansa") {
+        airlineName = "Lufthansa";
+      }
+      if (airlineId === "singaporeAirlines") {
+        airlineName = "Singapore Airlines";
+      }
+      if (airlineId === "qantas") {
+        airlineName = "Qantas Airways";
       }
 
-      // // Assuming you have a reference to your map element with id "map"
-      // const mapElement = document.getElementById("map");
+      // Check if the image is already selected
+      const index = selectedAirlines.indexOf(airlineName);
 
-      // // Add a click event listener to the map element
-      // mapElement.addEventListener("click", () => {
-      //   // Example user input (you can replace this with your actual user input handling)
-      //   const selectedAirlines = ["Korean Air", "British Airways"];
+      console.log(index);
+      console.log(selectedAirlines);
 
-      //   // Call the toggleLayers function with the selected airlines
-      //   toggleLayers(selectedAirlines);
-      // });
-
-      // Function to toggle airline selection
-      function toggleAirline(airlineId) {
-        const imageElement = document.getElementById(airlineId);
-        let airlineName = "";
-
-        if (airlineId === "koreanAir") {
-          airlineName = "Korean Air";
-        }
-        if (airlineId === "emirates") {
-          airlineName = "Emirates";
-        }
-        if (airlineId === "britishAirways") {
-          airlineName = "British Airways";
-        }
-        if (airlineId === "etihad") {
-          airlineName = "Etihad Airways";
-        }
-        if (airlineId === "qatar") {
-          airlineName = "Qatar Airways";
-        }
-        if (airlineId === "ana") {
-          airlineName = "All Nippon Airways";
-        }
-        if (airlineId === "asiana") {
-          airlineName = "Asiana Airlines";
-        }
-        if (airlineId === "lufthansa") {
-          airlineName = "Lufthansa";
-        }
-        if (airlineId === "singaporeAirlines") {
-          airlineName = "Singapore Airlines";
-        }
-        if (airlineId === "qantas") {
-          airlineName = "Qantas Airways";
-        }
-
-        // Check if the image is already selected
-        const index = selectedAirlines.indexOf(airlineName);
-
-        console.log(index);
-        console.log(selectedAirlines);
-
-        if (index === -1) {
-          // Image not selected, add it to the array
-          selectedAirlines.push(airlineName);
-          imageElement.classList.remove("unselected"); // Add a CSS class for styling
-        } else {
-          // Image already selected, remove it from the array
-          selectedAirlines.splice(index, 1);
-          imageElement.classList.add("unselected"); // Remove the CSS class
-        }
-
-        // Call your function here, passing selectedImages as needed
-        toggleLayers(selectedAirlines);
+      if (index === -1) {
+        // Image not selected, add it to the array
+        selectedAirlines.push(airlineName);
+        imageElement.classList.remove("unselected"); // Add a CSS class for styling
+      } else {
+        // Image already selected, remove it from the array
+        selectedAirlines.splice(index, 1);
+        imageElement.classList.add("unselected"); // Remove the CSS class
       }
 
-      // Event listeners for image clicks
-      document
-        .getElementById("koreanAir")
-        .addEventListener("click", () => toggleAirline("koreanAir"));
-      document
-        .getElementById("emirates")
-        .addEventListener("click", () => toggleAirline("emirates"));
-      document
-        .getElementById("britishAirways")
-        .addEventListener("click", () => toggleAirline("britishAirways"));
-      document
-        .getElementById("etihad")
-        .addEventListener("click", () => toggleAirline("etihad"));
-      document
-        .getElementById("qatar")
-        .addEventListener("click", () => toggleAirline("qatar"));
-      document
-        .getElementById("ana")
-        .addEventListener("click", () => toggleAirline("ana"));
-      document
-        .getElementById("asiana")
-        .addEventListener("click", () => toggleAirline("asiana"));
-      document
-        .getElementById("lufthansa")
-        .addEventListener("click", () => toggleAirline("lufthansa"));
-      document
-        .getElementById("singaporeAirlines")
-        .addEventListener("click", () => toggleAirline("singaporeAirlines"));
-      document
-        .getElementById("qantas")
-        .addEventListener("click", () => toggleAirline("qantas"));
+      // Call your function here, passing selectedImages as needed
+      toggleLayers(selectedAirlines);
+    }
 
-      // Wait for the map to be idle
-      // I think this keeps loading, so I need another event
-      // map.on("idle", () => {});
-    });
+    // Event listeners for image clicks
+    document
+      .getElementById("koreanAir")
+      .addEventListener("click", () => toggleAirline("koreanAir"));
+    document
+      .getElementById("emirates")
+      .addEventListener("click", () => toggleAirline("emirates"));
+    document
+      .getElementById("britishAirways")
+      .addEventListener("click", () => toggleAirline("britishAirways"));
+    document
+      .getElementById("etihad")
+      .addEventListener("click", () => toggleAirline("etihad"));
+    document
+      .getElementById("qatar")
+      .addEventListener("click", () => toggleAirline("qatar"));
+    document
+      .getElementById("ana")
+      .addEventListener("click", () => toggleAirline("ana"));
+    document
+      .getElementById("asiana")
+      .addEventListener("click", () => toggleAirline("asiana"));
+    document
+      .getElementById("lufthansa")
+      .addEventListener("click", () => toggleAirline("lufthansa"));
+    document
+      .getElementById("singaporeAirlines")
+      .addEventListener("click", () => toggleAirline("singaporeAirlines"));
+    document
+      .getElementById("qantas")
+      .addEventListener("click", () => toggleAirline("qantas"));
+
+    // Wait for the map to be idle
+    // I think this keeps loading, so I need another event
+    // map.on("idle", () => {});
+    // });
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //// Creating the location marker
