@@ -120,6 +120,7 @@ fetch("routesV2.json")
           metadata: {
             origin: originCityName,
             airline: routeAirlines,
+            destination: destinationCityName,
           },
         });
       });
@@ -371,6 +372,7 @@ fetch("routesV2.json")
         });
       }
     }
+    console.log(allMarkersObject);
 
     // create markers
     for (let j = 0; j < allMarkersObject.length; j++) {
@@ -378,9 +380,15 @@ fetch("routesV2.json")
       const markerElement = document.createElement("div");
       markerElement.className = "marker";
 
+      // first we need to find all airlines belonging to a specific marker
+      // we can use the name of the city, search the name of the city in routesV2, and then extract the airlines
+      // then we need to add the airlines as metadata using setpopup
+      // then we need to remve the irrelevant markers using mapboxMarkers.forEach(marker => {...
+
       // Add a marker
       new mapboxgl.Marker(markerElement)
         .setLngLat(allMarkersObject[j].coordinates) // Set the marker's coordinates
+        // .setPopup(new mapboxgl.Popup().setHTML(allMarkersObject[j].airline)) // Add airline metadata to the popup
         .addTo(map);
 
       ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -393,10 +401,11 @@ fetch("routesV2.json")
 
       // Add event listener for mouse enter (hover) event for a marker
       elementToHover.addEventListener("mouseenter", () => {
+        // TODO
         // first tries at code to make all the lines light up when you hover over a marker
         // it should make the lines from that marker light up
         // it should also make the other lines gray
-        console.log(allMarkersObject[j].cityName);
+        // console.log(allMarkersObject[j].cityName);
 
         //// tooltip
         // Get the position of the element relative to the viewport
