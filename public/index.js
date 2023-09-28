@@ -1,5 +1,5 @@
 // import importedRoutes from "./routes.json" assert { type: "json" };
-import importedRoutesV2 from "./routesV2.json" assert { type: "json" };
+// import importedRoutesV2 from "./routesV2.json" assert { type: "json" };
 // import importedRoutesV2 from "./routesV2mock.json" assert { type: "json" };
 
 //// This is the public Mapbox code
