@@ -8,13 +8,6 @@ mapboxgl.accessToken =
 
 //// local accessToken
 
-const map = new mapboxgl.Map({
-  container: "map",
-  style: "mapbox://styles/jorisboris/clmdk27ll01bw01qx24l12bnw",
-  center: [-96, 37.8],
-  zoom: 1,
-});
-
 const lineTooltip = document.getElementById("lineTooltip");
 
 const selectedAirlines = [
@@ -37,6 +30,13 @@ const selectedAirlines = [
 fetch("routesV2.json")
   .then((response) => response.json())
   .then((importedRoutesV2) => {
+    const map = new mapboxgl.Map({
+      container: "map",
+      style: "mapbox://styles/jorisboris/clmdk27ll01bw01qx24l12bnw",
+      center: [-96, 37.8],
+      zoom: 1,
+    });
+
     for (let k = 0; k < importedRoutesV2.length; k++) {
       let origin1 = importedRoutesV2[k].originCoordinates;
 
