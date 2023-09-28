@@ -115,6 +115,7 @@ fetch("routesV2.json")
           paint: {
             "line-width": 2,
             "line-color": "#007cbf",
+            "line-opacity": 1,
           },
           metadata: {
             origin: originCityName,
@@ -132,8 +133,15 @@ fetch("routesV2.json")
           layers: ["route" + k],
         });
 
-        if (features.length > 0) {
-          const feature = features[0];
+        // Filter out features with line-opacity equal to 0
+        const visibleFeatures = features.filter((feature) => {
+          const layerId = feature.layer.id;
+          const opacity = map.getPaintProperty(layerId, "line-opacity");
+          return opacity > 0;
+        });
+
+        if (visibleFeatures.length > 0) {
+          // const feature = visibleFeatures[0];
           // const coordinates = e.lngLat;
 
           //// create tooltipcontent
@@ -173,12 +181,19 @@ fetch("routesV2.json")
 
       // Add an event listener for the "mouseenter" event
       map.on("mouseenter", "route" + k, function () {
-        // Change the line's appearance when hovered over
-        map.setPaintProperty("route" + k, "line-color", "#FF5733"); // Change line color to red, for example
-        map.setPaintProperty("route" + k, "line-width", 4); // Increase line width on hover
+        const layerId = "route" + k;
+        const opacity = map.getPaintProperty(layerId, "line-opacity");
+        console.log(opacity);
 
-        // Add the "hover-pointer" class to the map container
-        map.getCanvas().classList.add("hover-pointer");
+        // Only apply styling and cursor change when line is visible (opacity > 0)
+        if (opacity > 0) {
+          // Change the line's appearance when hovered over
+          map.setPaintProperty("route" + k, "line-color", "#FF5733"); // Change line color to red, for example
+          map.setPaintProperty("route" + k, "line-width", 4); // Increase line width on hover
+
+          // Add the "hover-pointer" class to the map container
+          map.getCanvas().classList.add("hover-pointer");
+        }
       });
 
       // Add an event listener for the "mouseleave" event
