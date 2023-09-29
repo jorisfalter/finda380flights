@@ -246,16 +246,28 @@ fetch("routesV2.json")
       // add and remove the markers
       mapboxMarkers.forEach((marker) => {
         // Get the popup content and split it into an array of airlines
-        console.log("togglemarker:" + marker._popup);
-        Object.entries(marker._popup).forEach(([key, value]) => {
-          console.log(key + ": " + value);
-        });
+        // console.log("togglemarker:" + marker._popup);
+        // Object.entries(marker._popup).forEach(([key, value]) => {
+        //   console.log(key + ": " + value);
+        // });
 
-        const markerAirlines = marker
-          .getPopup()
-          .getHTML()
-          .split(",")
-          .map((airline) => airline.trim());
+        const markerAirlinesFull = marker._popup._content.innerHTML;
+        console.log(marker._popup._content.innerHTML);
+        console.log(marker._popup._content.innerText);
+
+        // Create a temporary div element to parse the HTML
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = markerAirlinesFull;
+
+        // Get all <p> elements within the div
+        const airlineElements = tempDiv.querySelectorAll("p");
+
+        // Extract airline names into an array
+        const markerAirlines = Array.from(airlineElements).map(
+          (p) => p.textContent
+        );
+
+        console.log(markerAirlines);
 
         // Check if there's an intersection between marker's airlines and selected airlines
         const intersection = markerAirlines.filter((airline) =>
@@ -384,83 +396,88 @@ fetch("routesV2.json")
     }
 
     // create markers
-    for (let j = 0; j < allMarkersObject.length; j++) {
-      // Create a marker element
-      const markerElement = document.createElement("div");
-      markerElement.className = "marker";
+    map.on("load", () => {
+      for (let j = 0; j < allMarkersObject.length; j++) {
+        // Create a marker element
+        const markerElement = document.createElement("div");
+        markerElement.className = "marker";
 
-      // Extract airlines for the current city
-      const markerAirlines = extractAirlinesByCity(
-        allMarkersObject[j].cityName
-      );
+        // Extract airlines for the current city
+        const markerAirlines = extractAirlinesByCity(
+          allMarkersObject[j].cityName
+        );
 
-      console.log("markerAirlines");
-      console.log(markerAirlines);
+        // console.log("markerAirlines");
+        // console.log(markerAirlines);
 
-      const airlineListHTML = markerAirlines
-        .map((airline) => `<p>${airline}</p>`)
-        .join("");
+        const airlineListHTML = markerAirlines
+          .map((airline) => `<p>${airline}</p>`)
+          .join("");
 
-      // Add a marker
-      const newMarker = new mapboxgl.Marker(markerElement)
-        .setLngLat(allMarkersObject[j].coordinates) // Set the marker's coordinates
-        .setPopup(new mapboxgl.Popup().setHTML("<p>testHtml</p>")) // Set the airline names as popup content
-        .addTo(map);
+        // Add a marker
+        const newMarker = new mapboxgl.Marker(markerElement)
+          .setLngLat(allMarkersObject[j].coordinates) // Set the marker's coordinates
+          .setPopup(new mapboxgl.Popup().setHTML(airlineListHTML)) // Set the airline names as popup content
+          .addTo(map);
 
-      console.log("newMarker:" + newMarker._popup);
-      Object.entries(newMarker._popup._marker._popup).forEach(
-        ([key, value]) => {
-          console.log("_popup.: " + key + ": " + value);
-        }
-      );
-      // Add the marker to the mapboxMarkers array
-      mapboxMarkers.push(newMarker);
+        // console.log("newMarker:" + newMarker._popup);
+        // Object.entries(newMarker._popup._marker._popup).forEach(
+        //   ([key, value]) => {
+        //     console.log("_popup.: " + key + ": " + value);
+        //   }
+        // );
+        // Add the marker to the mapboxMarkers array
+        mapboxMarkers.push(newMarker);
 
-      ////////////////////////////////////////////////////////////////////////////////////////////////
-      // Add tooltip and hover effect to marker
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+        // Add tooltip and hover effect to marker
 
-      // Get references to the element and the tooltip container
-      const elementToHover = document.getElementsByClassName("marker")[j];
+        // Get references to the element and the tooltip container
+        const elementToHover = document.getElementsByClassName("marker")[j];
 
-      const tooltip = document.getElementById("tooltip");
+        const tooltip = document.getElementById("tooltip");
 
-      // Add event listener for mouse enter (hover) event for a marker
-      elementToHover.addEventListener("mouseenter", () => {
-        // TODO
-        // first tries at code to make all the lines light up when you hover over a marker
-        // it should make the lines from that marker light up
-        // it should also make the other lines gray
-        // console.log(allMarkersObject[j].cityName);
+        // Add event listener for mouse enter (hover) event for a marker
+        elementToHover.addEventListener("mouseenter", () => {
+          // TODO
+          // first tries at code to make all the lines light up when you hover over a marker
+          // it should make the lines from that marker light up
+          // it should also make the other lines gray
+          // console.log(allMarkersObject[j].cityName);
 
-        //// tooltip
-        // Get the position of the element relative to the viewport
-        const rect = elementToHover.getBoundingClientRect();
+          //// tooltip
+          // Get the position of the element relative to the viewport
+          const rect = elementToHover.getBoundingClientRect();
 
-        // Set the tooltip content
-        tooltip.textContent =
-          allMarkersObject[j].cityName + " (" + allMarkersObject[j].name + ")";
-        tooltip.style.display = "block";
+          // Set the tooltip content
+          tooltip.textContent =
+            allMarkersObject[j].cityName +
+            " (" +
+            allMarkersObject[j].name +
+            ")";
+          tooltip.style.display = "block";
 
-        // Calculate the left position for the tooltip to center it above the element
-        const tooltipWidth = tooltip.offsetWidth;
-        const elementWidth = rect.width;
-        const leftPosition = rect.left + elementWidth / 2 - tooltipWidth / 2;
+          // Calculate the left position for the tooltip to center it above the element
+          const tooltipWidth = tooltip.offsetWidth;
+          const elementWidth = rect.width;
+          const leftPosition = rect.left + elementWidth / 2 - tooltipWidth / 2;
 
-        // Position the tooltip above the element
-        const margin = 10;
-        const tooltipTop = rect.top - tooltip.offsetHeight - margin;
+          // Position the tooltip above the element
+          const margin = 10;
+          const tooltipTop = rect.top - tooltip.offsetHeight - margin;
 
-        // Set the tooltip position
-        tooltip.style.top = `${tooltipTop}px`;
-        tooltip.style.left = `${leftPosition}px`;
-      });
+          // Set the tooltip position
+          tooltip.style.top = `${tooltipTop}px`;
+          tooltip.style.left = `${leftPosition}px`;
+        });
 
-      // Add event listener for mouse leave (hover out) event
-      elementToHover.addEventListener("mouseleave", () => {
-        // Hide the tooltip
-        tooltip.style.display = "none";
-      });
-    }
+        // Add event listener for mouse leave (hover out) event
+        elementToHover.addEventListener("mouseleave", () => {
+          // Hide the tooltip
+          tooltip.style.display = "none";
+        });
+      }
+    });
 
     console.log(importedRoutesV2);
   })
