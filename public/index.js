@@ -267,7 +267,7 @@ fetch("routesV2.json")
           (p) => p.textContent
         );
 
-        console.log(markerAirlines);
+        // console.log(markerAirlines);
 
         // Check if there's an intersection between marker's airlines and selected airlines
         const intersection = markerAirlines.filter((airline) =>
