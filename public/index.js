@@ -10,6 +10,7 @@ mapboxgl.accessToken =
 
 const lineTooltip = document.getElementById("lineTooltip");
 
+// this one is for the airline filters
 const selectedAirlines = [
   "Singapore Airlines",
   "Asiana Airlines",
@@ -22,6 +23,9 @@ const selectedAirlines = [
   "All Nippon Airways",
   "Lufthansa",
 ];
+
+// this is a list of markers
+const mapboxMarkers = [];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //// Drawing Lines
@@ -214,11 +218,8 @@ fetch("routesV2.json")
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //// Airline Filters
 
-    // need to wait until all styles are loaded > I think this can be removed
-    // map.on("style.load", () => {
+    // this is a function to change line opacity
     function toggleLayers(selectedAirlines) {
-      // console.log(map.getStyle());
-
       map.getStyle().layers.forEach((layer) => {
         // take the layers starting with "route..."
         if (layer.type === "line" && layer.id.substring(0, 5) == "route") {
@@ -241,53 +242,56 @@ fetch("routesV2.json")
       });
     }
 
-    // // Assuming you have a reference to your map element with id "map"
-    // const mapElement = document.getElementById("map");
+    function toggleMarkers() {
+      // add and remove the markers
+      mapboxMarkers.forEach((marker) => {
+        // Get the popup content and split it into an array of airlines
+        console.log("togglemarker:" + marker._popup);
+        Object.entries(marker._popup).forEach(([key, value]) => {
+          console.log(key + ": " + value);
+        });
 
-    // // Add a click event listener to the map element
-    // mapElement.addEventListener("click", () => {
-    //   // Example user input (you can replace this with your actual user input handling)
-    //   const selectedAirlines = ["Korean Air", "British Airways"];
+        const markerAirlines = marker
+          .getPopup()
+          .getHTML()
+          .split(",")
+          .map((airline) => airline.trim());
 
-    //   // Call the toggleLayers function with the selected airlines
-    //   toggleLayers(selectedAirlines);
-    // });
+        // Check if there's an intersection between marker's airlines and selected airlines
+        const intersection = markerAirlines.filter((airline) =>
+          selectedAirlines.includes(airline)
+        );
 
-    // Function to toggle airline selection
+        if (intersection.length > 0) {
+          // Show the marker
+          marker.addTo(map);
+        } else {
+          // Hide the marker
+          marker.remove();
+        }
+      });
+    }
+
+    // Function to add and remove airline from the array
     function toggleAirline(airlineId) {
+      // imageElement
       const imageElement = document.getElementById(airlineId);
-      let airlineName = "";
+      // Define an object that maps airline IDs to airline names
+      const airlineIdToName = {
+        koreanAir: "Korean Air",
+        emirates: "Emirates",
+        britishAirways: "British Airways",
+        etihad: "Etihad Airways",
+        qatar: "Qatar Airways",
+        ana: "All Nippon Airways",
+        asiana: "Asiana Airlines",
+        lufthansa: "Lufthansa",
+        singaporeAirlines: "Singapore Airlines",
+        qantas: "Qantas Airways",
+      };
 
-      if (airlineId === "koreanAir") {
-        airlineName = "Korean Air";
-      }
-      if (airlineId === "emirates") {
-        airlineName = "Emirates";
-      }
-      if (airlineId === "britishAirways") {
-        airlineName = "British Airways";
-      }
-      if (airlineId === "etihad") {
-        airlineName = "Etihad Airways";
-      }
-      if (airlineId === "qatar") {
-        airlineName = "Qatar Airways";
-      }
-      if (airlineId === "ana") {
-        airlineName = "All Nippon Airways";
-      }
-      if (airlineId === "asiana") {
-        airlineName = "Asiana Airlines";
-      }
-      if (airlineId === "lufthansa") {
-        airlineName = "Lufthansa";
-      }
-      if (airlineId === "singaporeAirlines") {
-        airlineName = "Singapore Airlines";
-      }
-      if (airlineId === "qantas") {
-        airlineName = "Qantas Airways";
-      }
+      // Get the airline name based on the airline ID
+      const airlineName = airlineIdToName[airlineId];
 
       // Check if the image is already selected
       const index = selectedAirlines.indexOf(airlineName);
@@ -307,44 +311,29 @@ fetch("routesV2.json")
 
       // Call your function here, passing selectedImages as needed
       toggleLayers(selectedAirlines);
+      toggleMarkers();
     }
 
-    // Event listeners for image clicks
-    document
-      .getElementById("koreanAir")
-      .addEventListener("click", () => toggleAirline("koreanAir"));
-    document
-      .getElementById("emirates")
-      .addEventListener("click", () => toggleAirline("emirates"));
-    document
-      .getElementById("britishAirways")
-      .addEventListener("click", () => toggleAirline("britishAirways"));
-    document
-      .getElementById("etihad")
-      .addEventListener("click", () => toggleAirline("etihad"));
-    document
-      .getElementById("qatar")
-      .addEventListener("click", () => toggleAirline("qatar"));
-    document
-      .getElementById("ana")
-      .addEventListener("click", () => toggleAirline("ana"));
-    document
-      .getElementById("asiana")
-      .addEventListener("click", () => toggleAirline("asiana"));
-    document
-      .getElementById("lufthansa")
-      .addEventListener("click", () => toggleAirline("lufthansa"));
-    document
-      .getElementById("singaporeAirlines")
-      .addEventListener("click", () => toggleAirline("singaporeAirlines"));
-    document
-      .getElementById("qantas")
-      .addEventListener("click", () => toggleAirline("qantas"));
+    // Define an array of airline IDs
+    const airlineIds = [
+      "koreanAir",
+      "emirates",
+      "britishAirways",
+      "etihad",
+      "qatar",
+      "ana",
+      "asiana",
+      "lufthansa",
+      "singaporeAirlines",
+      "qantas",
+    ];
 
-    // Wait for the map to be idle
-    // I think this keeps loading, so I need another event
-    // map.on("idle", () => {});
-    // });
+    // Loop through the airline IDs and add event listeners
+    airlineIds.forEach((airlineId) => {
+      document
+        .getElementById(airlineId)
+        .addEventListener("click", () => toggleAirline(airlineId));
+    });
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //// Creating the location marker
@@ -374,22 +363,58 @@ fetch("routesV2.json")
     }
     console.log(allMarkersObject);
 
+    // Function to extract unique airlines based on city name
+    function extractAirlinesByCity(cityName) {
+      const uniqueAirlines = new Set(); // Use a Set to store unique airlines
+
+      // Loop through the routesArray
+      importedRoutesV2.forEach((route) => {
+        if (
+          route.originCityName === cityName ||
+          route.destinationCityName === cityName
+        ) {
+          // Iterate through "goflights" and "returnflights" to collect airlines
+          [...route.goflights, ...route.returnflights].forEach((flight) => {
+            uniqueAirlines.add(flight.airline); // Add airline to the Set
+          });
+        }
+      });
+
+      return Array.from(uniqueAirlines); // Convert Set to an array and return
+    }
+
     // create markers
     for (let j = 0; j < allMarkersObject.length; j++) {
-      // Create a marker element with a custom icon
+      // Create a marker element
       const markerElement = document.createElement("div");
       markerElement.className = "marker";
 
-      // first we need to find all airlines belonging to a specific marker
-      // we can use the name of the city, search the name of the city in routesV2, and then extract the airlines
-      // then we need to add the airlines as metadata using setpopup
-      // then we need to remve the irrelevant markers using mapboxMarkers.forEach(marker => {...
+      // Extract airlines for the current city
+      const markerAirlines = extractAirlinesByCity(
+        allMarkersObject[j].cityName
+      );
+
+      console.log("markerAirlines");
+      console.log(markerAirlines);
+
+      const airlineListHTML = markerAirlines
+        .map((airline) => `<p>${airline}</p>`)
+        .join("");
 
       // Add a marker
-      new mapboxgl.Marker(markerElement)
+      const newMarker = new mapboxgl.Marker(markerElement)
         .setLngLat(allMarkersObject[j].coordinates) // Set the marker's coordinates
-        // .setPopup(new mapboxgl.Popup().setHTML(allMarkersObject[j].airline)) // Add airline metadata to the popup
+        .setPopup(new mapboxgl.Popup().setHTML("<p>testHtml</p>")) // Set the airline names as popup content
         .addTo(map);
+
+      console.log("newMarker:" + newMarker._popup);
+      Object.entries(newMarker._popup._marker._popup).forEach(
+        ([key, value]) => {
+          console.log("_popup.: " + key + ": " + value);
+        }
+      );
+      // Add the marker to the mapboxMarkers array
+      mapboxMarkers.push(newMarker);
 
       ////////////////////////////////////////////////////////////////////////////////////////////////
       // Add tooltip and hover effect to marker
