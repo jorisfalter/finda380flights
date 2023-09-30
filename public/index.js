@@ -251,9 +251,13 @@ fetch("routesV2.json")
         //   console.log(key + ": " + value);
         // });
 
-        const markerAirlinesFull = marker._popup._content.innerHTML;
-        console.log(marker._popup._content.innerHTML);
-        console.log(marker._popup._content.innerText);
+        // const markerAirlinesFull = marker._popup._content.innerHTML;
+        // console.log(marker._popup._content.innerHTML);
+        // console.log(marker._popup._content.innerText);
+
+        console.log(marker._element.dataset.airlines);
+        const markerAirlinesFull = marker._element.dataset.airlines;
+        // airlineElements = marker.getAttribute("data-airlines");
 
         // Create a temporary div element to parse the HTML
         const tempDiv = document.createElement("div");
@@ -417,8 +421,10 @@ fetch("routesV2.json")
         // Add a marker
         const newMarker = new mapboxgl.Marker(markerElement)
           .setLngLat(allMarkersObject[j].coordinates) // Set the marker's coordinates
-          .setPopup(new mapboxgl.Popup().setHTML(airlineListHTML)) // Set the airline names as popup content
+          // .setPopup(new mapboxgl.Popup().setHTML(airlineListHTML)) // Set the airline names as popup content
           .addTo(map);
+
+        newMarker.getElement().setAttribute("data-airlines", airlineListHTML);
 
         // console.log("newMarker:" + newMarker._popup);
         // Object.entries(newMarker._popup._marker._popup).forEach(
