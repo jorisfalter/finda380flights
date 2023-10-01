@@ -1113,6 +1113,13 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "02:00",
                 "arrivalTimeLocal": "13:00"
+            },
+            {
+                "airline": "Qatar Airways",
+                "flightNumber": "QR832",
+                "daysOfWeek": [],
+                "departureTimeLocal": "07:55",
+                "arrivalTimeLocal": "19:05"
             }
         ],
         "returnflights": [
@@ -1122,6 +1129,13 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "20:00",
                 "arrivalTimeLocal": "22:50"
+            },
+            {
+                "airline": "Qatar Airways",
+                "flightNumber": "QR833",
+                "daysOfWeek": [],
+                "departureTimeLocal": "21:05",
+                "arrivalTimeLocal": "23:55"
             }
         ]
     },
@@ -1553,6 +1567,20 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "15:10",
                 "arrivalTimeLocal": "21:30"
+            },
+            {
+                "airline": "Qantas Airways",
+                "flightNumber": "QF81",
+                "daysOfWeek": [],
+                "departureTimeLocal": "11:55",
+                "arrivalTimeLocal": "18:15"
+            },
+            {
+                "airline": "Qantas Airways",
+                "flightNumber": "QFA001",
+                "daysOfWeek": [],
+                "departureTimeLocal": "14:30",
+                "arrivalTimeLocal": "07:30"
             }
         ],
         "returnflights": [
@@ -2467,6 +2495,13 @@
                 "daysOfWeek": [],
                 "departureTimeLocal": "20:10",
                 "arrivalTimeLocal": "08:45"
+            },
+            {
+                "airline": "All Nippon Airways",
+                "flightNumber": "NH182",
+                "daysOfWeek": [],
+                "departureTimeLocal": "21:30",
+                "arrivalTimeLocal": "10:05"
             }
         ]
     },
@@ -3043,5 +3078,37 @@
             }
         ],
         "returnflights": []
+    },
+    {
+        "originName": "ICN",
+        "originCityName": "Seoul",
+        "originCoordinates": [
+            126.4505,
+            37.4692
+        ],
+        "destinationName": "NRT",
+        "destinationCityName": "Tokyo",
+        "destinationCoordinates": [
+            140.3864,
+            35.7647
+        ],
+        "goflights": [
+            {
+                "airline": "Asiana Airlines",
+                "flightNumber": "OZ102",
+                "daysOfWeek": [],
+                "departureTimeLocal": "09:00",
+                "arrivalTimeLocal": "11:20"
+            }
+        ],
+        "returnflights": [
+            {
+                "airline": "Asiana Airlines",
+                "flightNumber": "OZ101",
+                "daysOfWeek": [],
+                "departureTimeLocal": "13:20",
+                "arrivalTimeLocal": "15:50"
+            }
+        ]
     }
 ]
