@@ -134,7 +134,8 @@ fetch("routesV2.json")
       //// hovering a line
 
       // Add event listener to detect mouse movement over the line - I think this only does the tooltip
-      map.on("mousemove", "route" + k, (e) => {
+      function mouseEnterAndClick(e) {
+        // map.on("mousemove", "route" + k, (e) => {
         const features = map.queryRenderedFeatures(e.point, {
           layers: ["route" + k],
         });
@@ -191,9 +192,18 @@ fetch("routesV2.json")
           lineTooltip.style.left = e.originalEvent.pageX + "px";
           lineTooltip.style.top = e.originalEvent.pageY + "px";
         }
+      }
+      // );
+
+      map.on("mouseenter", "route" + k, (e) => {
+        mouseEnterAndClick(e);
+      });
+      map.on("click", "route" + k, (e) => {
+        mouseEnterAndClick(e);
       });
 
       // Add an event listener for the "mouseenter" event, this is to change the color
+
       map.on("mouseenter", "route" + k, function () {
         const layerId = "route" + k;
         const opacity = map.getPaintProperty(layerId, "line-opacity");
