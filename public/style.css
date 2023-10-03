@@ -36,6 +36,11 @@
   height: 40px;
 }
 
+#map {
+
+  width: 100%;
+}
+
 }
 
 .airlineFilter{
