@@ -43,12 +43,11 @@ fetch("routesV2.json")
 
     for (let k = 0; k < importedRoutesV2.length; k++) {
       let origin1 = importedRoutesV2[k].originCoordinates;
-
       let originCityName = importedRoutesV2[k].originCityName;
-
       let destination1 = importedRoutesV2[k].destinationCoordinates;
-
       let destinationCityName = importedRoutesV2[k].destinationCityName;
+      let originAirportName = importedRoutesV2[k].originName;
+      let destinationAirportName = importedRoutesV2[k].destinationName;
 
       let routeAirlines = [];
       for (let m = 0; m < importedRoutesV2[k].goflights.length; m++) {
@@ -125,6 +124,8 @@ fetch("routesV2.json")
             origin: originCityName,
             airline: routeAirlines,
             destination: destinationCityName,
+            origin_airport: originAirportName,
+            destination_airport: destinationAirportName,
           },
         });
       });
@@ -255,7 +256,7 @@ fetch("routesV2.json")
         // console.log(marker._popup._content.innerHTML);
         // console.log(marker._popup._content.innerText);
 
-        console.log(marker._element.dataset.airlines);
+        // console.log(marker._element.dataset.airlines);
         const markerAirlinesFull = marker._element.dataset.airlines;
         // airlineElements = marker.getAttribute("data-airlines");
 
@@ -377,7 +378,7 @@ fetch("routesV2.json")
         });
       }
     }
-    console.log(allMarkersObject);
+    // console.log(allMarkersObject);
 
     // Function to extract unique airlines based on city name
     function extractAirlinesByCity(cityName) {
@@ -386,8 +387,8 @@ fetch("routesV2.json")
       // Loop through the routesArray
       importedRoutesV2.forEach((route) => {
         if (
-          route.originCityName === cityName ||
-          route.destinationCityName === cityName
+          route.originName === cityName ||
+          route.destinationName === cityName
         ) {
           // Iterate through "goflights" and "returnflights" to collect airlines
           [...route.goflights, ...route.returnflights].forEach((flight) => {
@@ -407,9 +408,7 @@ fetch("routesV2.json")
         markerElement.className = "marker";
 
         // Extract airlines for the current city
-        const markerAirlines = extractAirlinesByCity(
-          allMarkersObject[j].cityName
-        );
+        const markerAirlines = extractAirlinesByCity(allMarkersObject[j].name);
 
         // console.log("markerAirlines");
         // console.log(markerAirlines);
