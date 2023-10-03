@@ -117,7 +117,7 @@ fetch("routesV2.json")
           source: "route" + k,
           type: "line",
           paint: {
-            "line-width": 2,
+            "line-width": 3,
             "line-color": "#007cbf",
             "line-opacity": 1,
           },
@@ -132,7 +132,7 @@ fetch("routesV2.json")
       ////////////////////////////////////////////////////////////////////////////////////////////////
       //// hovering a line
 
-      // Add event listener to detect mouse movement over the line
+      // Add event listener to detect mouse movement over the line - I think this only does the tooltip
       map.on("mousemove", "route" + k, (e) => {
         const features = map.queryRenderedFeatures(e.point, {
           layers: ["route" + k],
@@ -184,19 +184,19 @@ fetch("routesV2.json")
         }
       });
 
-      // Add an event listener for the "mouseenter" event
+      // Add an event listener for the "mouseenter" event, this is to change the color
       map.on("mouseenter", "route" + k, function () {
         const layerId = "route" + k;
         const opacity = map.getPaintProperty(layerId, "line-opacity");
-        console.log(opacity);
+        // console.log(opacity);
 
         // Only apply styling and cursor change when line is visible (opacity > 0)
         if (opacity > 0) {
           // Change the line's appearance when hovered over
           map.setPaintProperty("route" + k, "line-color", "#FF5733"); // Change line color to red, for example
-          map.setPaintProperty("route" + k, "line-width", 4); // Increase line width on hover
+          map.setPaintProperty("route" + k, "line-width", 6); // Increase line width on hover
 
-          // Add the "hover-pointer" class to the map container
+          // Add the "hover-pointer" class to the map container - this changes the mouse appearance
           map.getCanvas().classList.add("hover-pointer");
         }
       });
@@ -205,7 +205,7 @@ fetch("routesV2.json")
       map.on("mouseleave", "route" + k, function () {
         // Restore the line's original appearance when the mouse leaves
         map.setPaintProperty("route" + k, "line-color", "#007cbf"); // Restore original line color
-        map.setPaintProperty("route" + k, "line-width", 2); // Restore original line width
+        map.setPaintProperty("route" + k, "line-width", 3); // Restore original line width
 
         // Remove the "hover-pointer" class from the map container
         map.getCanvas().classList.remove("hover-pointer");

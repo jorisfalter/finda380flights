@@ -36,6 +36,16 @@ def get_airline_name(flight_number):
     else:
         return "Unknown"  # Return a default value if the abbreviation is not found
 
+# Function to update the daysOfWeek for a specific flightNumber
+def add_day_of_week(flights, flight_number, day_of_week):
+    # print(flights)
+    for flight in flights:
+        # print(flight)
+        # print(flight_number)
+        if flight["flightNumber"] == flight_number:
+            if day_of_week not in flight["daysOfWeek"]:
+                flight["daysOfWeek"].append(day_of_week)
+            break  # No need to continue searching once found
 
 if __name__ == "__main__":
 
@@ -95,7 +105,7 @@ if __name__ == "__main__":
             if all(item.get("flightNumber") != document["flightNumber"] for item in matching_data_obj["goflights"]):
 
                 print("going to add a similar flight but other number")
-                print(document["departureTimeLocal"])
+                # print(document["departureTimeLocal"])
                 countNewGoRoutes += 1
 
                 airlineName = get_airline_name(document["flightNumber"])
@@ -111,7 +121,7 @@ if __name__ == "__main__":
 
             else: 
                 # now check the DOW
-                ignoredRoutes +=1
+                add_day_of_week(matching_data_obj["goflights"], document["flightNumber"], document["departureDow"])
         
         # if no matching flight already exists, we will check if the opposite (return) flight already exists
         else:
@@ -143,7 +153,8 @@ if __name__ == "__main__":
 
                 else: 
                     # now check the DOW
-                    ignoredRoutes +=1
+                    add_day_of_week(matching_data_obj_return["returnflights"], document["flightNumber"], document["departureDow"])
+
 
             # if both the return and the go flights don't exist, we have to create a new route
             else:
@@ -191,16 +202,11 @@ if __name__ == "__main__":
                             "goflights": [{
                                 "airline": airlineName,
                                 "flightNumber": document["flightNumber"],
-                                "daysOfWeek": [],
+                                "daysOfWeek": [document["departureDow"]],
                                 "departureTimeLocal": document["departureTimeLocal"],
                                 "arrivalTimeLocal": document["arrivalTimeLocal"]}],
                             "returnflights": [
-                                # {
-                                # "airline": "",
-                                # "flightNumber": "",
-                                # "daysOfWeek": [],
-                                # "departureTimeLocal": "",
-                                # "arrivalTimeLocal": ""}
+                                # empty array for now
                                 ]
                             }
                 data.append(newObject)
@@ -209,7 +215,7 @@ if __name__ == "__main__":
     print(f"array with {counter} objects created")
     print(f"{countNewGoRoutes} go routes added")
     print(f"{countNewReturnRoutes} return routes added")
-    print(f"{ignoredRoutes} duplicates ignored")
+    # print(f"{ignoredRoutes} duplicates ignored")
 
     
     # Specify the file path where you want to save the JSON file
