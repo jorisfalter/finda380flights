@@ -381,14 +381,15 @@ fetch("routesV2.json")
     // console.log(allMarkersObject);
 
     // Function to extract unique airlines based on city name
-    function extractAirlinesByCity(cityName) {
+    // note: this doesn't use cityName but airportName!
+    function extractAirlinesByCity(airportName) {
       const uniqueAirlines = new Set(); // Use a Set to store unique airlines
 
       // Loop through the routesArray
       importedRoutesV2.forEach((route) => {
         if (
-          route.originName === cityName ||
-          route.destinationName === cityName
+          route.originName === airportName ||
+          route.destinationName === airportName
         ) {
           // Iterate through "goflights" and "returnflights" to collect airlines
           [...route.goflights, ...route.returnflights].forEach((flight) => {
