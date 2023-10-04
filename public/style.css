@@ -43,6 +43,16 @@
 
 }
 
+.dow{
+  border: 2px solid white;
+  color:black;
+  box-shadow:
+  -2px -2px 4px rgba(0, 0, 0, 0.5) inset,
+  2px 2px 4px rgba(255, 255, 255, 0.5) inset;
+  padding: 2px;
+  background-color: #fff;
+}
+
 .airlineFilter{
   width: 80%;
   margin:auto;

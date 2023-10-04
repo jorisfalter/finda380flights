@@ -165,7 +165,8 @@ fetch("routesV2.json")
               item.departureTimeLocal
             } - ${item.arrivalTimeLocal}<br>${item.daysOfWeek.sort(
               (a, b) => a - b
-            )}<br><div style="line-height: 1px;"></div>`;
+            )}<br>
+            <span class = "dow">Mo</span> <span class = "dow">Tu</span><div style="line-height: 1px;"></div>`;
           }
 
           // create origin - destination
