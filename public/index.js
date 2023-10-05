@@ -128,17 +128,37 @@ fetch("routesV2.json")
             destination_airport: destinationAirportName,
           },
         });
+
+        // adding a second layer which is wider which makes clicking easier:
+        map.addLayer({
+          id: "route" + k + "hover",
+          source: "route" + k,
+          type: "line",
+          paint: {
+            "line-width": 20,
+            "line-color": "#007cbf",
+            "line-opacity": 0.1,
+          },
+          metadata: {
+            origin: originCityName,
+            airline: routeAirlines,
+            destination: destinationCityName,
+            origin_airport: originAirportName,
+            destination_airport: destinationAirportName,
+          },
+        });
       });
 
       ////////////////////////////////////////////////////////////////////////////////////////////////
       //// hovering a line
 
-      // Add event listener to detect mouse movement over the line - I think this only does the tooltip
+      // show the tooltip
       function mouseEnterAndClick(e) {
         // map.on("mousemove", "route" + k, (e) => {
         const features = map.queryRenderedFeatures(e.point, {
-          layers: ["route" + k],
+          layers: ["route" + k + "hover"],
         });
+        console.log(features);
 
         // Filter out features with line-opacity equal to 0
         const visibleFeatures = features.filter((feature) => {
@@ -199,17 +219,18 @@ fetch("routesV2.json")
       }
       // );
 
-      map.on("mouseenter", "route" + k, (e) => {
+      // this is to launch the tooltip function above. For mobile view it also launches on click
+      map.on("mouseenter", "route" + k + "hover", (e) => {
         mouseEnterAndClick(e);
       });
-      map.on("click", "route" + k, (e) => {
+      map.on("click", "route" + k + "hover", (e) => {
         mouseEnterAndClick(e);
+        console.log("click");
       });
 
-      // Add an event listener for the "mouseenter" event, this is to change the color
-
-      map.on("mouseenter", "route" + k, function () {
-        const layerId = "route" + k;
+      // Change the color and the mouse appearance
+      map.on("mouseenter", "route" + k + "hover", function () {
+        const layerId = "route" + k + "hover";
         const opacity = map.getPaintProperty(layerId, "line-opacity");
         // console.log(opacity);
 
@@ -225,7 +246,7 @@ fetch("routesV2.json")
       });
 
       // Add an event listener for the "mouseleave" event
-      map.on("mouseleave", "route" + k, function () {
+      map.on("mouseleave", "route" + k + "hover", function () {
         // Restore the line's original appearance when the mouse leaves
         map.setPaintProperty("route" + k, "line-color", "#007cbf"); // Restore original line color
         map.setPaintProperty("route" + k, "line-width", 3); // Restore original line width
