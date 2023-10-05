@@ -131,13 +131,13 @@ fetch("routesV2.json")
 
         // adding a second layer which is wider which makes clicking easier:
         map.addLayer({
-          id: "route" + k + "hover",
+          id: "hoverroute" + k,
           source: "route" + k,
           type: "line",
           paint: {
             "line-width": 20,
             "line-color": "#007cbf",
-            "line-opacity": 0.1,
+            "line-opacity": 0.01,
           },
           metadata: {
             origin: originCityName,
@@ -156,7 +156,7 @@ fetch("routesV2.json")
       function mouseEnterAndClick(e) {
         // map.on("mousemove", "route" + k, (e) => {
         const features = map.queryRenderedFeatures(e.point, {
-          layers: ["route" + k + "hover"],
+          layers: ["hoverroute" + k],
         });
         console.log(features);
 
@@ -230,17 +230,17 @@ fetch("routesV2.json")
       // );
 
       // this is to launch the tooltip function above. For mobile view it also launches on click
-      map.on("mouseenter", "route" + k + "hover", (e) => {
+      map.on("mouseenter", "hoverroute" + k, (e) => {
         mouseEnterAndClick(e);
       });
-      map.on("click", "route" + k + "hover", (e) => {
+      map.on("click", "hoverroute" + k, (e) => {
         mouseEnterAndClick(e);
         console.log("click");
       });
 
       // Change the color and the mouse appearance
-      map.on("mouseenter", "route" + k + "hover", function () {
-        const layerId = "route" + k + "hover";
+      map.on("mouseenter", "hoverroute" + k, function () {
+        const layerId = "hoverroute" + k;
         const opacity = map.getPaintProperty(layerId, "line-opacity");
         // console.log(opacity);
 
@@ -256,7 +256,7 @@ fetch("routesV2.json")
       });
 
       // Add an event listener for the "mouseleave" event
-      map.on("mouseleave", "route" + k + "hover", function () {
+      map.on("mouseleave", "hoverroute" + k, function () {
         // Restore the line's original appearance when the mouse leaves
         map.setPaintProperty("route" + k, "line-color", "#007cbf"); // Restore original line color
         map.setPaintProperty("route" + k, "line-width", 3); // Restore original line width
@@ -287,6 +287,24 @@ fetch("routesV2.json")
           for (let n = 0; n < airlineArray.length; n++) {
             if (selectedAirlines.includes(airlineArray[n])) {
               map.setPaintProperty(layer.id, "line-opacity", 1);
+              n = airlineArray.length;
+            } else {
+              map.setPaintProperty(layer.id, "line-opacity", 0);
+            }
+          }
+        }
+        // take the layers starting with "route..."
+        if (layer.type === "line" && layer.id.substring(0, 5) == "hover") {
+          // console.log(map.getLayer(layer.id).metadata.airline);
+          // Get the airlines associated with the layer
+          const airlineArray =
+            // map.getPaintProperty(layer.id, "line-opacity") !== 0
+            // ?
+            map.getLayer(layer.id).metadata.airline;
+          // : null;
+          for (let n = 0; n < airlineArray.length; n++) {
+            if (selectedAirlines.includes(airlineArray[n])) {
+              map.setPaintProperty(layer.id, "line-opacity", 0.01);
               n = airlineArray.length;
             } else {
               map.setPaintProperty(layer.id, "line-opacity", 0);

@@ -55,11 +55,11 @@ body {
   padding: 2px;
   background-color: #fff;
   text-align: center;
-  width: 22px;
-  font-size: 0.7rem;
+  width: 18px;
+  font-size: 0.8em;
   border-radius:3px;
   display:inline-block;
-  margin-right: 5px;
+  margin-right: 3px;
 
 }
 
@@ -81,6 +81,8 @@ body {
   color: white;
   border-radius: 5px;
   pointer-events: none; /* Allow interactions with the map underneath */
+  font-size: 12px;
+
 }
 
 .unselected {
@@ -124,7 +126,6 @@ body {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 14px;
   background: linear-gradient(60deg,#f5b31e,#ffe289,#FFBF00);
   background-size: 300% 300%; /* Double the width to accommodate the animation */
   animation: animatedgradient 3s ease infinite alternate; /* Use a different duration if needed */
