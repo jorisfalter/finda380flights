@@ -205,7 +205,17 @@ fetch("routesV2.json")
 
           // add destination - origin info for each airline and flightnumber
           for (const item of importedRoutesV2[k].returnflights) {
-            tooltipContent += `${item.airline} - ${item.flightNumber}<br>${item.departureTimeLocal} - ${item.arrivalTimeLocal}<br>${item.daysOfWeek}<br><div style="line-height: 1px;"></div>`;
+            // Iterate through the array and create <span> elements for DOW
+            let container = "";
+            for (const day of item.daysOfWeek) {
+              const span = document.createElement("span");
+              // span.className = "dow"; // Add the "dow" class to each <span> element
+              // span.textContent = day; // Set the content of the <span> to the day of the week
+              let newSubString =
+                "<span class = 'dow' >" + day + "   " + "</span>";
+              container += newSubString; // Append the <span> element to your container
+            }
+            tooltipContent += `${item.airline} - ${item.flightNumber}<br>${item.departureTimeLocal} - ${item.arrivalTimeLocal}<br><div style="padding: 5px 0">${container}</div><div style="line-height: 1px;"></div>`;
           }
 
           // add it to the html
