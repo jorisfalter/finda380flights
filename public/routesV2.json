@@ -355,15 +355,6 @@
                 ],
                 "departureTimeLocal": "21:25",
                 "arrivalTimeLocal": "09:15"
-            },
-            {
-                "airline": "Unknown",
-                "flightNumber": "N/A",
-                "daysOfWeek": [
-                    "Mo"
-                ],
-                "departureTimeLocal": "21:25",
-                "arrivalTimeLocal": "09:15"
             }
         ]
     },
@@ -4843,6 +4834,7 @@
                 "daysOfWeek": [
                     "Mo",
                     "We",
+                    "Th",
                     "Fr",
                     "Sa",
                     "Su"
@@ -4852,58 +4844,8 @@
             }
         ]
     },
-    {
-        "originName": "GIG",
-        "originCityName": "Rio de Janeiro",
-        "originCoordinates": [
-            -43.2506,
-            -22.8146
-        ],
-        "destinationName": "GRU",
-        "destinationCityName": "S\u00e3o Paulo",
-        "destinationCoordinates": [
-            -46.4697,
-            -23.4346
-        ],
-        "goflights": [
-            {
-                "airline": "Emirates",
-                "flightNumber": "EK261",
-                "daysOfWeek": [
-                    "We"
-                ],
-                "departureTimeLocal": "19:35",
-                "arrivalTimeLocal": "20:00"
-            }
-        ],
-        "returnflights": []
-    },
-    {
-        "originName": "NRT",
-        "originCityName": "Tokyo",
-        "originCoordinates": [
-            140.3864,
-            35.7647
-        ],
-        "destinationName": "XMN",
-        "destinationCityName": "Xiamen",
-        "destinationCoordinates": [
-            118.1278,
-            24.5441
-        ],
-        "goflights": [
-            {
-                "airline": "All Nippon Airways",
-                "flightNumber": "NH9411",
-                "daysOfWeek": [
-                    "Th"
-                ],
-                "departureTimeLocal": "21:13",
-                "arrivalTimeLocal": "00:03"
-            }
-        ],
-        "returnflights": []
-    },
+
+ 
     {
         "originName": "ICN",
         "originCityName": "Seoul",
@@ -4940,6 +4882,7 @@
                     "Mo",
                     "Tu",
                     "We",
+                    "Th",
                     "Su"
                 ],
                 "departureTimeLocal": "13:20",
@@ -4988,218 +4931,6 @@
                 "arrivalTimeLocal": "05:25"
             }
         ]
-    },
-    {
-        "originName": "KIX",
-        "originCityName": "Osaka",
-        "originCoordinates": [
-            135.2442,
-            34.4342
-        ],
-        "destinationName": "XMN",
-        "destinationCityName": "Xiamen",
-        "destinationCoordinates": [
-            118.1278,
-            24.5441
-        ],
-        "goflights": [
-            {
-                "airline": "All Nippon Airways",
-                "flightNumber": "NH9411",
-                "daysOfWeek": [
-                    "Su"
-                ],
-                "departureTimeLocal": "23:07",
-                "arrivalTimeLocal": "01:08"
-            }
-        ],
-        "returnflights": []
-    },
-    {
-        "originName": "ATH",
-        "originCityName": "na",
-        "originCoordinates": [
-            0,
-            0
-        ],
-        "destinationName": "MAD",
-        "destinationCityName": "Madrid",
-        "destinationCoordinates": [
-            -3.5626,
-            40.4719
-        ],
-        "goflights": [
-            {
-                "airline": "Emirates",
-                "flightNumber": "EK141",
-                "daysOfWeek": [
-                    "Tu"
-                ],
-                "departureTimeLocal": "13:15",
-                "arrivalTimeLocal": "15:32"
-            }
-        ],
-        "returnflights": []
-    },
-    {
-        "originName": "MUC",
-        "originCityName": "Munich",
-        "originCoordinates": [
-            11.7746,
-            48.3537
-        ],
-        "destinationName": "LEJ",
-        "destinationCityName": "na",
-        "destinationCoordinates": [
-            0,
-            0
-        ],
-        "goflights": [
-            {
-                "airline": "Lufthansa",
-                "flightNumber": "LH9860",
-                "daysOfWeek": [
-                    "Tu",
-                    "We"
-                ],
-                "departureTimeLocal": "13:00",
-                "arrivalTimeLocal": "14:05"
-            },
-            {
-                "airline": "Lufthansa",
-                "flightNumber": "LH9864",
-                "daysOfWeek": [],
-                "departureTimeLocal": "13:00",
-                "arrivalTimeLocal": "14:05"
-            }
-        ],
-        "returnflights": []
-    },
-    {
-        "originName": "LEJ",
-        "originCityName": "na",
-        "originCoordinates": [
-            0,
-            0
-        ],
-        "destinationName": "PRG",
-        "destinationCityName": "na",
-        "destinationCoordinates": [
-            0,
-            0
-        ],
-        "goflights": [
-            {
-                "airline": "Lufthansa",
-                "flightNumber": "LH9861",
-                "daysOfWeek": [
-                    "Tu",
-                    "We"
-                ],
-                "departureTimeLocal": "14:10",
-                "arrivalTimeLocal": "15:05"
-            },
-            {
-                "airline": "Lufthansa",
-                "flightNumber": "LH9865",
-                "daysOfWeek": [],
-                "departureTimeLocal": "14:10",
-                "arrivalTimeLocal": "15:05"
-            }
-        ],
-        "returnflights": []
-    },
-    {
-        "originName": "PRG",
-        "originCityName": "na",
-        "originCoordinates": [
-            0,
-            0
-        ],
-        "destinationName": "VIE",
-        "destinationCityName": "na",
-        "destinationCoordinates": [
-            0,
-            0
-        ],
-        "goflights": [
-            {
-                "airline": "Lufthansa",
-                "flightNumber": "LH9862",
-                "daysOfWeek": [
-                    "Tu",
-                    "We"
-                ],
-                "departureTimeLocal": "15:10",
-                "arrivalTimeLocal": "16:10"
-            },
-            {
-                "airline": "Lufthansa",
-                "flightNumber": "LH9866",
-                "daysOfWeek": [],
-                "departureTimeLocal": "15:10",
-                "arrivalTimeLocal": "16:10"
-            }
-        ],
-        "returnflights": []
-    },
-    {
-        "originName": "VIE",
-        "originCityName": "na",
-        "originCoordinates": [
-            0,
-            0
-        ],
-        "destinationName": "MUC",
-        "destinationCityName": "Munich",
-        "destinationCoordinates": [
-            11.7746,
-            48.3537
-        ],
-        "goflights": [
-            {
-                "airline": "Lufthansa",
-                "flightNumber": "LH9863",
-                "daysOfWeek": [
-                    "Th"
-                ],
-                "departureTimeLocal": "01:00",
-                "arrivalTimeLocal": "01:00"
-            },
-            {
-                "airline": "Lufthansa",
-                "flightNumber": "LH9867",
-                "daysOfWeek": [],
-                "departureTimeLocal": "16:15",
-                "arrivalTimeLocal": "17:30"
-            }
-        ],
-        "returnflights": []
-    },
-    {
-        "originName": "LAX",
-        "originCityName": "Los Angeles",
-        "originCoordinates": [
-            -118.4081,
-            33.9425
-        ],
-        "destinationName": "PUS",
-        "destinationCityName": "na",
-        "destinationCoordinates": [
-            0,
-            0
-        ],
-        "goflights": [
-            {
-                "airline": "Qantas Airways",
-                "flightNumber": "QF6015",
-                "daysOfWeek": [
-                    "We"
-                ],
-                "departureTimeLocal": "17:05",
-                "arrivalTimeLocal": "21:01"
-            }
-        ],
-        "returnflights": []
     }
+
 ]

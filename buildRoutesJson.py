@@ -123,7 +123,7 @@ if __name__ == "__main__":
                 new_subObject = {
                             "airline": airlineName,
                             "flightNumber": document["flightNumber"],
-                            "daysOfWeek": [],
+                            "daysOfWeek": [document["departureDow"]],
                             "departureTimeLocal": document["departureTimeLocal"],
                             "arrivalTimeLocal": document["arrivalTimeLocal"]}
                 matching_data_obj["goflights"].append(new_subObject)
@@ -155,7 +155,7 @@ if __name__ == "__main__":
                     new_subObject = {
                             "airline": airlineName,
                             "flightNumber": document["flightNumber"],
-                            "daysOfWeek": [],
+                            "daysOfWeek": [document["departureDow"]],
                             "departureTimeLocal": document["departureTimeLocal"],
                             "arrivalTimeLocal": document["arrivalTimeLocal"]}
                     matching_data_obj_return["returnflights"].append(new_subObject)
