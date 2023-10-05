@@ -1,3 +1,8 @@
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  
+}
+
 /* leaflet code from weekendaway */
 #map { height: 600px; }
 
@@ -31,26 +36,31 @@
 }
 
 @media (max-width: 768px) {
-.airline{
-  width: 20%;
-  height: 40px;
-}
+  .airline{
+    width: 20%;
+    height: 40px;
+  }
 
-#map {
-
-  width: 100%;
-}
-
+  #map {
+    width: 100%;
+  }
 }
 
 .dow{
-  border: 2px solid white;
+  /* border: 2px solid white; */
   color:black;
   box-shadow:
   -2px -2px 4px rgba(0, 0, 0, 0.5) inset,
   2px 2px 4px rgba(255, 255, 255, 0.5) inset;
   padding: 2px;
   background-color: #fff;
+  text-align: center;
+  width: 22px;
+  font-size: 0.7rem;
+  border-radius:3px;
+  display:inline-block;
+  margin-right: 5px;
+
 }
 
 .airlineFilter{

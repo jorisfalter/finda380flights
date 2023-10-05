@@ -36,12 +36,23 @@ def get_airline_name(flight_number):
     else:
         return "Unknown"  # Return a default value if the abbreviation is not found
 
+# Function to convert a number to a day of week
+# deprecated > moved to external function
+def number_to_day_name(number):
+    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    
+    if 0 <= number <= 6:
+        return days[number]
+    else:
+        return None
+
 # Function to update the daysOfWeek for a specific flightNumber
 def add_day_of_week(flights, flight_number, day_of_week):
     # print(flights)
     for flight in flights:
         # print(flight)
         # print(flight_number)
+        # day_of_week_name = number_to_day_name(day_of_week)
         if flight["flightNumber"] == flight_number:
             if day_of_week not in flight["daysOfWeek"]:
                 flight["daysOfWeek"].append(day_of_week)
@@ -192,6 +203,10 @@ if __name__ == "__main__":
 
                 ## get the airline name
                 airlineName = get_airline_name(document["flightNumber"])
+
+                # get the day of week
+                # day_of_week_name = number_to_day_name(document["departureDow"])
+
 
                 newObject = {"originName": document["originIata"],
                             "originCityName": cityNameOrigin,

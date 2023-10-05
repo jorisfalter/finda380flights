@@ -17,13 +17,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK306",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "03:50",
                 "arrivalTimeLocal": "15:25"
@@ -32,12 +32,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK308",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "10:40",
                 "arrivalTimeLocal": "22:20"
@@ -48,13 +49,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK309",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "07:25",
                 "arrivalTimeLocal": "11:35"
@@ -63,12 +64,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK307",
                 "daysOfWeek": [
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "00:40",
                 "arrivalTimeLocal": "05:00"
@@ -93,13 +95,13 @@
                 "airline": "Singapore Airlines",
                 "flightNumber": "SQ322",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "23:30",
                 "arrivalTimeLocal": "05:55"
@@ -108,13 +110,13 @@
                 "airline": "Qantas Airways",
                 "flightNumber": "QF1",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "23:30",
                 "arrivalTimeLocal": "06:35"
@@ -123,13 +125,13 @@
                 "airline": "Singapore Airlines",
                 "flightNumber": "SQ308",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "09:00",
                 "arrivalTimeLocal": "15:40"
@@ -140,13 +142,13 @@
                 "airline": "Singapore Airlines",
                 "flightNumber": "SQ319",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "20:50",
                 "arrivalTimeLocal": "16:55"
@@ -155,13 +157,13 @@
                 "airline": "Qantas Airways",
                 "flightNumber": "QF2",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "20:55",
                 "arrivalTimeLocal": "17:30"
@@ -170,12 +172,13 @@
                 "airline": "Singapore Airlines",
                 "flightNumber": "SQ317",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "11:25",
                 "arrivalTimeLocal": "07:30"
@@ -200,13 +203,13 @@
                 "airline": "Qatar Airways",
                 "flightNumber": "QR908",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "20:00",
                 "arrivalTimeLocal": "17:10"
@@ -217,12 +220,13 @@
                 "airline": "Qatar Airways",
                 "flightNumber": "QR909",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "21:00",
                 "arrivalTimeLocal": "04:55"
@@ -247,13 +251,13 @@
                 "airline": "Korean Air",
                 "flightNumber": "KE82",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "13:25",
                 "arrivalTimeLocal": "17:45"
@@ -264,13 +268,13 @@
                 "airline": "Korean Air",
                 "flightNumber": "KE81",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "10:00",
                 "arrivalTimeLocal": "11:05"
@@ -295,13 +299,13 @@
                 "airline": "British Airways",
                 "flightNumber": "BA54",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "21:20",
                 "arrivalTimeLocal": "07:30"
@@ -310,12 +314,13 @@
                 "airline": "British Airways",
                 "flightNumber": "BA56",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "19:20",
                 "arrivalTimeLocal": "05:30"
@@ -326,13 +331,13 @@
                 "airline": "British Airways",
                 "flightNumber": "BA55",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "19:05",
                 "arrivalTimeLocal": "07:05"
@@ -341,12 +346,21 @@
                 "airline": "British Airways",
                 "flightNumber": "BA57",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
+                ],
+                "departureTimeLocal": "21:25",
+                "arrivalTimeLocal": "09:15"
+            },
+            {
+                "airline": "Unknown",
+                "flightNumber": "N/A",
+                "daysOfWeek": [
+                    "Mo"
                 ],
                 "departureTimeLocal": "21:25",
                 "arrivalTimeLocal": "09:15"
@@ -371,13 +385,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK242",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "14:30",
                 "arrivalTimeLocal": "11:15"
@@ -388,13 +402,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK241",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "03:30",
                 "arrivalTimeLocal": "09:30"
@@ -419,13 +433,13 @@
                 "airline": "Asiana Airlines",
                 "flightNumber": "OZ201",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "12:10",
                 "arrivalTimeLocal": "17:35"
@@ -434,13 +448,13 @@
                 "airline": "Korean Air",
                 "flightNumber": "KE18",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "12:30",
                 "arrivalTimeLocal": "17:50"
@@ -451,12 +465,13 @@
                 "airline": "Korean Air",
                 "flightNumber": "KE17",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "14:30",
                 "arrivalTimeLocal": "09:40"
@@ -465,12 +480,13 @@
                 "airline": "Asiana Airlines",
                 "flightNumber": "OZ202",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "14:40",
                 "arrivalTimeLocal": "09:50"
@@ -495,13 +511,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK409",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "05:15",
                 "arrivalTimeLocal": "13:05"
@@ -510,12 +526,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK407",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "21:15",
                 "arrivalTimeLocal": "05:15"
@@ -526,13 +543,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK408",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "02:20",
                 "arrivalTimeLocal": "21:30"
@@ -541,12 +558,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK406",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "10:05",
                 "arrivalTimeLocal": "05:30"
@@ -571,13 +589,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK415",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "06:00",
                 "arrivalTimeLocal": "14:10"
@@ -586,12 +604,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK413",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "21:10",
                 "arrivalTimeLocal": "05:40"
@@ -602,13 +621,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK414",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "02:15",
                 "arrivalTimeLocal": "22:05"
@@ -617,12 +636,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK412",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "10:25",
                 "arrivalTimeLocal": "06:05"
@@ -647,11 +667,11 @@
                 "airline": "British Airways",
                 "flightNumber": "BA212",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa"
                 ],
                 "departureTimeLocal": "19:15",
                 "arrivalTimeLocal": "06:50"
@@ -662,10 +682,10 @@
                 "airline": "British Airways",
                 "flightNumber": "BA213",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa"
                 ],
                 "departureTimeLocal": "14:40",
                 "arrivalTimeLocal": "17:00"
@@ -690,13 +710,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK701",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "02:35",
                 "arrivalTimeLocal": "09:10"
@@ -705,12 +725,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK703",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "10:10",
                 "arrivalTimeLocal": "16:45"
@@ -721,12 +742,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK702",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "16:35",
                 "arrivalTimeLocal": "23:10"
@@ -735,12 +757,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK704",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "21:50",
                 "arrivalTimeLocal": "04:25"
@@ -765,13 +788,13 @@
                 "airline": "Lufthansa",
                 "flightNumber": "LH411",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "17:30",
                 "arrivalTimeLocal": "07:35"
@@ -782,12 +805,13 @@
                 "airline": "Lufthansa",
                 "flightNumber": "LH410",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "12:10",
                 "arrivalTimeLocal": "15:00"
@@ -812,9 +836,9 @@
                 "airline": "British Airways",
                 "flightNumber": "BA106",
                 "daysOfWeek": [
-                    2,
-                    4,
-                    0
+                    "Mo",
+                    "We",
+                    "Fr"
                 ],
                 "departureTimeLocal": "01:25",
                 "arrivalTimeLocal": "06:15"
@@ -823,13 +847,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK7",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "02:30",
                 "arrivalTimeLocal": "07:05"
@@ -838,13 +862,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK1",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "07:45",
                 "arrivalTimeLocal": "12:25"
@@ -853,12 +877,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK29",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "09:40",
                 "arrivalTimeLocal": "14:25"
@@ -867,12 +892,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK31",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "11:25",
                 "arrivalTimeLocal": "16:10"
@@ -881,12 +907,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK3",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "14:15",
                 "arrivalTimeLocal": "18:40"
@@ -895,12 +922,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK5",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "15:45",
                 "arrivalTimeLocal": "20:15"
@@ -911,12 +939,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK8",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "09:05",
                 "arrivalTimeLocal": "19:10"
@@ -925,12 +954,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK2",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "14:20",
                 "arrivalTimeLocal": "00:20"
@@ -939,12 +969,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK30",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "16:50",
                 "arrivalTimeLocal": "02:45"
@@ -953,12 +984,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK32",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "19:50",
                 "arrivalTimeLocal": "05:50"
@@ -967,12 +999,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK4",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "20:40",
                 "arrivalTimeLocal": "06:35"
@@ -981,12 +1014,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK6",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "22:15",
                 "arrivalTimeLocal": "08:05"
@@ -995,8 +1029,9 @@
                 "airline": "British Airways",
                 "flightNumber": "BA107",
                 "daysOfWeek": [
-                    3,
-                    6
+                    "Tu",
+                    "Th",
+                    "Su"
                 ],
                 "departureTimeLocal": "12:55",
                 "arrivalTimeLocal": "23:05"
@@ -1021,13 +1056,13 @@
                 "airline": "British Airways",
                 "flightNumber": "BA206",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "17:00",
                 "arrivalTimeLocal": "06:50"
@@ -1038,12 +1073,13 @@
                 "airline": "British Airways",
                 "flightNumber": "BA207",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "10:25",
                 "arrivalTimeLocal": "14:45"
@@ -1068,13 +1104,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK231",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "02:20",
                 "arrivalTimeLocal": "08:40"
@@ -1085,12 +1121,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK232",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "10:55",
                 "arrivalTimeLocal": "08:05"
@@ -1115,13 +1152,13 @@
                 "airline": "Qatar Airways",
                 "flightNumber": "QR11",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "01:05",
                 "arrivalTimeLocal": "06:25"
@@ -1130,12 +1167,13 @@
                 "airline": "Qatar Airways",
                 "flightNumber": "QR3",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "07:55",
                 "arrivalTimeLocal": "13:15"
@@ -1144,7 +1182,7 @@
                 "airline": "Qatar Airways",
                 "flightNumber": "QR105",
                 "daysOfWeek": [
-                    0
+                    "Mo"
                 ],
                 "departureTimeLocal": "01:05",
                 "arrivalTimeLocal": "06:25"
@@ -1155,12 +1193,13 @@
                 "airline": "Qatar Airways",
                 "flightNumber": "QR6",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "08:30",
                 "arrivalTimeLocal": "17:10"
@@ -1169,12 +1208,13 @@
                 "airline": "Qatar Airways",
                 "flightNumber": "QR4",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "15:05",
                 "arrivalTimeLocal": "23:50"
@@ -1199,13 +1239,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK302",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "02:50",
                 "arrivalTimeLocal": "15:30"
@@ -1216,12 +1256,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK303",
                 "daysOfWeek": [
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "00:05",
                 "arrivalTimeLocal": "04:55"
@@ -1246,13 +1287,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK384",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "02:50",
                 "arrivalTimeLocal": "12:30"
@@ -1261,13 +1302,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK376",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "03:45",
                 "arrivalTimeLocal": "13:25"
@@ -1276,12 +1317,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK374",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "22:30",
                 "arrivalTimeLocal": "08:00"
@@ -1292,13 +1334,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK375",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "09:55",
                 "arrivalTimeLocal": "13:00"
@@ -1307,12 +1349,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK385",
                 "daysOfWeek": [
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "01:35",
                 "arrivalTimeLocal": "04:45"
@@ -1321,12 +1364,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK377",
                 "daysOfWeek": [
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "02:50",
                 "arrivalTimeLocal": "06:00"
@@ -1351,13 +1395,13 @@
                 "airline": "Qantas Airways",
                 "flightNumber": "QF11",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "10:20",
                 "arrivalTimeLocal": "07:05"
@@ -1368,13 +1412,13 @@
                 "airline": "Qantas Airways",
                 "flightNumber": "QF12",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "23:40",
                 "arrivalTimeLocal": "07:45"
@@ -1399,10 +1443,10 @@
                 "airline": "Emirates",
                 "flightNumber": "EK11",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa"
                 ],
                 "departureTimeLocal": "02:45",
                 "arrivalTimeLocal": "07:20"
@@ -1411,13 +1455,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK15",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "08:00",
                 "arrivalTimeLocal": "12:35"
@@ -1426,12 +1470,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK9",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "14:55",
                 "arrivalTimeLocal": "19:45"
@@ -1442,10 +1487,10 @@
                 "airline": "Emirates",
                 "flightNumber": "EK12",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa"
                 ],
                 "departureTimeLocal": "10:10",
                 "arrivalTimeLocal": "20:00"
@@ -1454,12 +1499,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK16",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "14:35",
                 "arrivalTimeLocal": "00:40"
@@ -1468,12 +1514,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK10",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "21:45",
                 "arrivalTimeLocal": "07:35"
@@ -1498,13 +1545,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK318",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "02:40",
                 "arrivalTimeLocal": "17:35"
@@ -1515,12 +1562,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK319",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "22:30",
                 "arrivalTimeLocal": "04:10"
@@ -1545,13 +1593,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK203",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "02:50",
                 "arrivalTimeLocal": "08:50"
@@ -1560,13 +1608,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK201",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "08:30",
                 "arrivalTimeLocal": "14:25"
@@ -1577,13 +1625,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK202",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "23:00",
                 "arrivalTimeLocal": "19:45"
@@ -1592,12 +1640,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK204",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "11:20",
                 "arrivalTimeLocal": "07:50"
@@ -1622,13 +1671,13 @@
                 "airline": "Etihad Airways",
                 "flightNumber": "EY11",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "02:05",
                 "arrivalTimeLocal": "06:45"
@@ -1637,13 +1686,13 @@
                 "airline": "Etihad Airways",
                 "flightNumber": "EY19",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "08:10",
                 "arrivalTimeLocal": "12:50"
@@ -1654,12 +1703,13 @@
                 "airline": "Etihad Airways",
                 "flightNumber": "EY12",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "09:30",
                 "arrivalTimeLocal": "19:35"
@@ -1668,12 +1718,13 @@
                 "airline": "Etihad Airways",
                 "flightNumber": "EY20",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "14:50",
                 "arrivalTimeLocal": "00:55"
@@ -1698,13 +1749,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK420",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "02:45",
                 "arrivalTimeLocal": "17:35"
@@ -1715,12 +1766,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK421",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "22:20",
                 "arrivalTimeLocal": "05:20"
@@ -1745,13 +1797,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK346",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "03:10",
                 "arrivalTimeLocal": "14:25"
@@ -1762,12 +1814,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK347",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "19:20",
                 "arrivalTimeLocal": "22:20"
@@ -1792,13 +1845,13 @@
                 "airline": "Qatar Airways",
                 "flightNumber": "QR834",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "02:00",
                 "arrivalTimeLocal": "13:00"
@@ -1807,10 +1860,10 @@
                 "airline": "Qatar Airways",
                 "flightNumber": "QR832",
                 "daysOfWeek": [
-                    4,
-                    5,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "Fr",
+                    "Sa"
                 ],
                 "departureTimeLocal": "07:55",
                 "arrivalTimeLocal": "19:05"
@@ -1821,12 +1874,13 @@
                 "airline": "Qatar Airways",
                 "flightNumber": "QR835",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "20:00",
                 "arrivalTimeLocal": "22:50"
@@ -1835,9 +1889,10 @@
                 "airline": "Qatar Airways",
                 "flightNumber": "QR833",
                 "daysOfWeek": [
-                    4,
-                    5,
-                    0
+                    "Mo",
+                    "Tu",
+                    "Fr",
+                    "Sa"
                 ],
                 "departureTimeLocal": "21:05",
                 "arrivalTimeLocal": "23:55"
@@ -1862,13 +1917,13 @@
                 "airline": "Qatar Airways",
                 "flightNumber": "QR900",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "02:25",
                 "arrivalTimeLocal": "18:20"
@@ -1879,12 +1934,13 @@
                 "airline": "Qatar Airways",
                 "flightNumber": "QR901",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "23:00",
                 "arrivalTimeLocal": "05:15"
@@ -1909,13 +1965,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK354",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "03:05",
                 "arrivalTimeLocal": "15:00"
@@ -1924,12 +1980,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK352",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "09:40",
                 "arrivalTimeLocal": "21:15"
@@ -1940,12 +1997,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK355",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "21:40",
                 "arrivalTimeLocal": "00:50"
@@ -1954,12 +2012,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK353",
                 "daysOfWeek": [
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "00:50",
                 "arrivalTimeLocal": "04:15"
@@ -1984,13 +2043,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK366",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "03:40",
                 "arrivalTimeLocal": "16:15"
@@ -2001,12 +2060,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK367",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "23:35",
                 "arrivalTimeLocal": "04:20"
@@ -2031,13 +2091,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK322",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "03:40",
                 "arrivalTimeLocal": "17:00"
@@ -2048,12 +2108,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK323",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "23:55",
                 "arrivalTimeLocal": "04:25"
@@ -2078,13 +2139,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK226",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "17:05",
                 "arrivalTimeLocal": "19:40"
@@ -2095,12 +2156,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK225",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "09:10",
                 "arrivalTimeLocal": "14:00"
@@ -2125,13 +2187,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK216",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "16:40",
                 "arrivalTimeLocal": "19:30"
@@ -2142,12 +2204,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK215",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "08:55",
                 "arrivalTimeLocal": "14:15"
@@ -2172,13 +2235,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK368",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "03:25",
                 "arrivalTimeLocal": "16:35"
@@ -2189,12 +2252,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK369",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "19:40",
                 "arrivalTimeLocal": "00:45"
@@ -2219,13 +2283,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK71",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "04:05",
                 "arrivalTimeLocal": "09:25"
@@ -2234,13 +2298,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK73",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "08:20",
                 "arrivalTimeLocal": "13:30"
@@ -2249,12 +2313,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK75",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "14:40",
                 "arrivalTimeLocal": "20:00"
@@ -2265,12 +2330,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK72",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "11:25",
                 "arrivalTimeLocal": "20:00"
@@ -2279,12 +2345,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK74",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "15:35",
                 "arrivalTimeLocal": "00:20"
@@ -2293,12 +2360,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK76",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "21:55",
                 "arrivalTimeLocal": "06:35"
@@ -2323,13 +2391,13 @@
                 "airline": "Lufthansa",
                 "flightNumber": "LH425",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "20:05",
                 "arrivalTimeLocal": "09:15"
@@ -2340,12 +2408,13 @@
                 "airline": "Lufthansa",
                 "flightNumber": "LH424",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "15:35",
                 "arrivalTimeLocal": "17:50"
@@ -2370,13 +2439,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK212",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "19:55",
                 "arrivalTimeLocal": "19:45"
@@ -2387,12 +2456,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK211",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "09:35",
                 "arrivalTimeLocal": "16:50"
@@ -2417,13 +2487,13 @@
                 "airline": "British Airways",
                 "flightNumber": "BA192",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "19:30",
                 "arrivalTimeLocal": "10:35"
@@ -2434,12 +2504,13 @@
                 "airline": "British Airways",
                 "flightNumber": "BA193",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "12:50",
                 "arrivalTimeLocal": "16:50"
@@ -2464,13 +2535,13 @@
                 "airline": "Singapore Airlines",
                 "flightNumber": "SQ232",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "11:00",
                 "arrivalTimeLocal": "17:30"
@@ -2479,12 +2550,13 @@
                 "airline": "Singapore Airlines",
                 "flightNumber": "SQ222",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "15:00",
                 "arrivalTimeLocal": "21:20"
@@ -2493,11 +2565,12 @@
                 "airline": "Qantas Airways",
                 "flightNumber": "QF1",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Su"
                 ],
                 "departureTimeLocal": "15:10",
                 "arrivalTimeLocal": "21:30"
@@ -2506,7 +2579,7 @@
                 "airline": "Qantas Airways",
                 "flightNumber": "QF81",
                 "daysOfWeek": [
-                    5
+                    "Sa"
                 ],
                 "departureTimeLocal": "11:55",
                 "arrivalTimeLocal": "18:15"
@@ -2515,7 +2588,7 @@
                 "airline": "Qantas Airways",
                 "flightNumber": "QFA001",
                 "daysOfWeek": [
-                    6
+                    "Su"
                 ],
                 "departureTimeLocal": "14:30",
                 "arrivalTimeLocal": "07:30"
@@ -2526,12 +2599,13 @@
                 "airline": "Qantas Airways",
                 "flightNumber": "QF2",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "19:30",
                 "arrivalTimeLocal": "05:10"
@@ -2540,12 +2614,13 @@
                 "airline": "Singapore Airlines",
                 "flightNumber": "SQ221",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "20:20",
                 "arrivalTimeLocal": "05:55"
@@ -2554,12 +2629,13 @@
                 "airline": "Singapore Airlines",
                 "flightNumber": "SQ231",
                 "daysOfWeek": [
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "00:45",
                 "arrivalTimeLocal": "10:25"
@@ -2568,7 +2644,7 @@
                 "airline": "Qantas Airways",
                 "flightNumber": "QF82",
                 "daysOfWeek": [
-                    6
+                    "Su"
                 ],
                 "departureTimeLocal": "20:30",
                 "arrivalTimeLocal": "07:25"
@@ -2593,13 +2669,13 @@
                 "airline": "Singapore Airlines",
                 "flightNumber": "SQ892",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "09:40",
                 "arrivalTimeLocal": "13:55"
@@ -2610,12 +2686,13 @@
                 "airline": "Singapore Airlines",
                 "flightNumber": "SQ893",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "15:40",
                 "arrivalTimeLocal": "19:35"
@@ -2640,11 +2717,11 @@
                 "airline": "Singapore Airlines",
                 "flightNumber": "SQ830",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "09:30",
                 "arrivalTimeLocal": "15:05"
@@ -2655,11 +2732,11 @@
                 "airline": "Singapore Airlines",
                 "flightNumber": "SQ833",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "16:50",
                 "arrivalTimeLocal": "22:20"
@@ -2684,13 +2761,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK206",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "22:20",
                 "arrivalTimeLocal": "12:15"
@@ -2701,12 +2778,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK205",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "16:10",
                 "arrivalTimeLocal": "18:55"
@@ -2731,12 +2809,12 @@
                 "airline": "British Airways",
                 "flightNumber": "BA296",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "21:15",
                 "arrivalTimeLocal": "11:00"
@@ -2747,11 +2825,12 @@
                 "airline": "British Airways",
                 "flightNumber": "BA297",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "15:35",
                 "arrivalTimeLocal": "18:15"
@@ -2776,13 +2855,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK805",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "06:55",
                 "arrivalTimeLocal": "08:45"
@@ -2791,12 +2870,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK803",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "15:40",
                 "arrivalTimeLocal": "18:00"
@@ -2805,12 +2885,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK801",
                 "daysOfWeek": [
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "00:10",
                 "arrivalTimeLocal": "02:10"
@@ -2821,12 +2902,12 @@
                 "airline": "Emirates",
                 "flightNumber": "EK806",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "10:45",
                 "arrivalTimeLocal": "14:45"
@@ -2835,12 +2916,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK804",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "20:05",
                 "arrivalTimeLocal": "00:15"
@@ -2849,12 +2931,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK802",
                 "daysOfWeek": [
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "04:10",
                 "arrivalTimeLocal": "07:55"
@@ -2879,13 +2962,13 @@
                 "airline": "British Airways",
                 "flightNumber": "BA286",
                 "daysOfWeek": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "19:25",
                 "arrivalTimeLocal": "13:50"
@@ -2896,12 +2979,13 @@
                 "airline": "British Airways",
                 "flightNumber": "BA287",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "14:05",
                 "arrivalTimeLocal": "17:10"
@@ -2926,13 +3010,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK17",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "07:25",
                 "arrivalTimeLocal": "12:00"
@@ -2941,12 +3025,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK19",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "14:30",
                 "arrivalTimeLocal": "19:15"
@@ -2957,12 +3042,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK18",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "14:05",
                 "arrivalTimeLocal": "00:20"
@@ -2971,12 +3057,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK20",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "21:15",
                 "arrivalTimeLocal": "07:25"
@@ -3001,13 +3088,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK141",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "07:40",
                 "arrivalTimeLocal": "13:25"
@@ -3018,12 +3105,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK142",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "15:25",
                 "arrivalTimeLocal": "00:35"
@@ -3048,13 +3136,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK751",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "07:30",
                 "arrivalTimeLocal": "12:45"
@@ -3065,12 +3153,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK752",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "14:45",
                 "arrivalTimeLocal": "01:15"
@@ -3095,13 +3184,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK39",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "07:50",
                 "arrivalTimeLocal": "12:30"
@@ -3112,12 +3201,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK40",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "14:40",
                 "arrivalTimeLocal": "00:45"
@@ -3142,13 +3232,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK262",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "01:25",
                 "arrivalTimeLocal": "22:55"
@@ -3159,12 +3249,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK261",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "09:05",
                 "arrivalTimeLocal": "17:00"
@@ -3189,13 +3280,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK147",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "08:05",
                 "arrivalTimeLocal": "13:15"
@@ -3206,12 +3297,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK148",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "15:20",
                 "arrivalTimeLocal": "23:59"
@@ -3236,13 +3328,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK927",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "08:15",
                 "arrivalTimeLocal": "11:05"
@@ -3251,12 +3343,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK923",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "15:15",
                 "arrivalTimeLocal": "18:05"
@@ -3267,12 +3360,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK928",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "13:10",
                 "arrivalTimeLocal": "17:30"
@@ -3281,12 +3375,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK924",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "20:05",
                 "arrivalTimeLocal": "00:40"
@@ -3311,13 +3406,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK45",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "08:25",
                 "arrivalTimeLocal": "13:15"
@@ -3328,12 +3423,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK46",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "15:15",
                 "arrivalTimeLocal": "23:35"
@@ -3358,13 +3454,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK27",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "07:50",
                 "arrivalTimeLocal": "12:45"
@@ -3375,12 +3471,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK28",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "14:35",
                 "arrivalTimeLocal": "01:05"
@@ -3405,13 +3502,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK49",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "08:50",
                 "arrivalTimeLocal": "13:15"
@@ -3420,12 +3517,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK51",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "16:30",
                 "arrivalTimeLocal": "20:50"
@@ -3436,12 +3534,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK50",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "15:40",
                 "arrivalTimeLocal": "23:45"
@@ -3450,12 +3549,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK52",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "22:35",
                 "arrivalTimeLocal": "06:30"
@@ -3480,12 +3580,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK87",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "08:40",
                 "arrivalTimeLocal": "13:20"
@@ -3496,12 +3597,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK88",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "15:25",
                 "arrivalTimeLocal": "23:45"
@@ -3526,13 +3628,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK55",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "08:30",
                 "arrivalTimeLocal": "13:25"
@@ -3543,12 +3645,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK56",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "15:25",
                 "arrivalTimeLocal": "23:55"
@@ -3573,13 +3676,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK77",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "08:45",
                 "arrivalTimeLocal": "13:40"
@@ -3590,12 +3693,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK78",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "15:55",
                 "arrivalTimeLocal": "00:10"
@@ -3620,12 +3724,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK97",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "09:10",
                 "arrivalTimeLocal": "13:25"
@@ -3636,12 +3741,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK98",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "15:30",
                 "arrivalTimeLocal": "23:10"
@@ -3666,12 +3772,13 @@
                 "airline": "Korean Air",
                 "flightNumber": "KE186",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "13:25",
                 "arrivalTimeLocal": "17:00"
@@ -3680,7 +3787,7 @@
                 "airline": "Korean Air",
                 "flightNumber": "KE8190",
                 "daysOfWeek": [
-                    0
+                    "Mo"
                 ],
                 "departureTimeLocal": "15:30",
                 "arrivalTimeLocal": "19:00"
@@ -3691,12 +3798,13 @@
                 "airline": "Korean Air",
                 "flightNumber": "KE185",
                 "daysOfWeek": [
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "10:35",
                 "arrivalTimeLocal": "12:10"
@@ -3705,7 +3813,7 @@
                 "airline": "Korean Air",
                 "flightNumber": "KE8189",
                 "daysOfWeek": [
-                    0
+                    "Mo"
                 ],
                 "departureTimeLocal": "12:30",
                 "arrivalTimeLocal": "14:05"
@@ -3730,12 +3838,13 @@
                 "airline": "Singapore Airlines",
                 "flightNumber": "SQ228",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "15:40",
                 "arrivalTimeLocal": "21:30"
@@ -3746,12 +3855,13 @@
                 "airline": "Singapore Airlines",
                 "flightNumber": "SQ237",
                 "daysOfWeek": [
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "00:25",
                 "arrivalTimeLocal": "09:50"
@@ -3776,12 +3886,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK413",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "18:45",
                 "arrivalTimeLocal": "19:05"
@@ -3792,12 +3903,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK412",
                 "daysOfWeek": [
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "07:50",
                 "arrivalTimeLocal": "13:55"
@@ -3822,12 +3934,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK205",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "09:45",
                 "arrivalTimeLocal": "14:20"
@@ -3836,12 +3949,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK91",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "15:45",
                 "arrivalTimeLocal": "20:30"
@@ -3852,12 +3966,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK206",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "14:05",
                 "arrivalTimeLocal": "22:10"
@@ -3866,12 +3981,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK92",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "22:20",
                 "arrivalTimeLocal": "06:25"
@@ -3896,9 +4012,9 @@
                 "airline": "All Nippon Airways",
                 "flightNumber": "NH181",
                 "daysOfWeek": [
-                    1,
-                    4,
-                    6
+                    "Tu",
+                    "Fr",
+                    "Su"
                 ],
                 "departureTimeLocal": "13:00",
                 "arrivalTimeLocal": "16:15"
@@ -3907,12 +4023,13 @@
                 "airline": "All Nippon Airways",
                 "flightNumber": "NH183",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "12:00",
                 "arrivalTimeLocal": "15:15"
@@ -3923,12 +4040,13 @@
                 "airline": "All Nippon Airways",
                 "flightNumber": "NH184",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "20:10",
                 "arrivalTimeLocal": "08:45"
@@ -3937,8 +4055,9 @@
                 "airline": "All Nippon Airways",
                 "flightNumber": "NH182",
                 "daysOfWeek": [
-                    4,
-                    6
+                    "Tu",
+                    "Fr",
+                    "Su"
                 ],
                 "departureTimeLocal": "21:30",
                 "arrivalTimeLocal": "10:05"
@@ -3963,12 +4082,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK123",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "10:45",
                 "arrivalTimeLocal": "14:25"
@@ -3979,12 +4099,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK124",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "16:25",
                 "arrivalTimeLocal": "21:50"
@@ -4009,12 +4130,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK448",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "10:05",
                 "arrivalTimeLocal": "10:50"
@@ -4025,12 +4147,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK449",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "21:10",
                 "arrivalTimeLocal": "05:35"
@@ -4055,12 +4178,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK763",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "09:55",
                 "arrivalTimeLocal": "16:15"
@@ -4071,12 +4195,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK764",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "19:15",
                 "arrivalTimeLocal": "05:30"
@@ -4101,12 +4226,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK133",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "10:00",
                 "arrivalTimeLocal": "14:25"
@@ -4115,12 +4241,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK131",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "16:15",
                 "arrivalTimeLocal": "20:30"
@@ -4131,12 +4258,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK134",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "16:55",
                 "arrivalTimeLocal": "23:10"
@@ -4145,12 +4273,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK132",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "23:20",
                 "arrivalTimeLocal": "05:30"
@@ -4175,12 +4304,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK380",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "10:05",
                 "arrivalTimeLocal": "22:00"
@@ -4191,12 +4321,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK381",
                 "daysOfWeek": [
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "00:35",
                 "arrivalTimeLocal": "04:20"
@@ -4221,12 +4352,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK362",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "10:20",
                 "arrivalTimeLocal": "22:05"
@@ -4237,12 +4369,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK363",
                 "daysOfWeek": [
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "00:15",
                 "arrivalTimeLocal": "04:05"
@@ -4267,12 +4400,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK434",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "10:35",
                 "arrivalTimeLocal": "06:25"
@@ -4283,12 +4417,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK435",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "21:00",
                 "arrivalTimeLocal": "05:10"
@@ -4313,12 +4448,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK384",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "14:05",
                 "arrivalTimeLocal": "18:05"
@@ -4329,12 +4465,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK385",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "21:30",
                 "arrivalTimeLocal": "23:45"
@@ -4359,12 +4496,13 @@
                 "airline": "Singapore Airlines",
                 "flightNumber": "SQ406",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "16:50",
                 "arrivalTimeLocal": "20:10"
@@ -4375,12 +4513,13 @@
                 "airline": "Singapore Airlines",
                 "flightNumber": "SQ403",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "21:55",
                 "arrivalTimeLocal": "06:10"
@@ -4405,12 +4544,13 @@
                 "airline": "Asiana Airlines",
                 "flightNumber": "OZ741",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "19:30",
                 "arrivalTimeLocal": "23:10"
@@ -4421,12 +4561,13 @@
                 "airline": "Asiana Airlines",
                 "flightNumber": "OZ742",
                 "daysOfWeek": [
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "01:10",
                 "arrivalTimeLocal": "08:55"
@@ -4451,12 +4592,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK903",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "14:05",
                 "arrivalTimeLocal": "16:00"
@@ -4467,12 +4609,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK904",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "18:00",
                 "arrivalTimeLocal": "22:00"
@@ -4497,12 +4640,13 @@
                 "airline": "Singapore Airlines",
                 "flightNumber": "SQ424",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "19:00",
                 "arrivalTimeLocal": "22:10"
@@ -4513,12 +4657,13 @@
                 "airline": "Singapore Airlines",
                 "flightNumber": "SQ423",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "23:40",
                 "arrivalTimeLocal": "07:40"
@@ -4543,10 +4688,10 @@
                 "airline": "Asiana Airlines",
                 "flightNumber": "OZ601",
                 "daysOfWeek": [
-                    2,
-                    4,
-                    6,
-                    0
+                    "Mo",
+                    "We",
+                    "Fr",
+                    "Su"
                 ],
                 "departureTimeLocal": "20:00",
                 "arrivalTimeLocal": "07:30"
@@ -4557,10 +4702,10 @@
                 "airline": "Asiana Airlines",
                 "flightNumber": "OZ602",
                 "daysOfWeek": [
-                    3,
-                    5,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "Th",
+                    "Sa"
                 ],
                 "departureTimeLocal": "09:30",
                 "arrivalTimeLocal": "19:00"
@@ -4585,12 +4730,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK568",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "21:15",
                 "arrivalTimeLocal": "02:45"
@@ -4601,12 +4747,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK569",
                 "daysOfWeek": [
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "04:45",
                 "arrivalTimeLocal": "07:05"
@@ -4631,12 +4778,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK500",
                 "daysOfWeek": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "21:55",
                 "arrivalTimeLocal": "02:30"
@@ -4647,12 +4795,13 @@
                 "airline": "Emirates",
                 "flightNumber": "EK501",
                 "daysOfWeek": [
-                    3,
-                    4,
-                    5,
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "04:30",
                 "arrivalTimeLocal": "06:00"
@@ -4677,11 +4826,11 @@
                 "airline": "British Airways",
                 "flightNumber": "BA293",
                 "daysOfWeek": [
-                    2,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "We",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "17:15",
                 "arrivalTimeLocal": "20:25"
@@ -4692,11 +4841,11 @@
                 "airline": "British Airways",
                 "flightNumber": "BA292",
                 "daysOfWeek": [
-                    2,
-                    4,
-                    5,
-                    6,
-                    0
+                    "Mo",
+                    "We",
+                    "Fr",
+                    "Sa",
+                    "Su"
                 ],
                 "departureTimeLocal": "00:35",
                 "arrivalTimeLocal": "12:23"
@@ -4721,7 +4870,7 @@
                 "airline": "Emirates",
                 "flightNumber": "EK261",
                 "daysOfWeek": [
-                    2
+                    "We"
                 ],
                 "departureTimeLocal": "19:35",
                 "arrivalTimeLocal": "20:00"
@@ -4747,7 +4896,7 @@
                 "airline": "All Nippon Airways",
                 "flightNumber": "NH9411",
                 "daysOfWeek": [
-                    3
+                    "Th"
                 ],
                 "departureTimeLocal": "21:13",
                 "arrivalTimeLocal": "00:03"
@@ -4773,9 +4922,11 @@
                 "airline": "Asiana Airlines",
                 "flightNumber": "OZ102",
                 "daysOfWeek": [
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Su"
                 ],
                 "departureTimeLocal": "09:00",
                 "arrivalTimeLocal": "11:20"
@@ -4786,9 +4937,10 @@
                 "airline": "Asiana Airlines",
                 "flightNumber": "OZ101",
                 "daysOfWeek": [
-                    6,
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Su"
                 ],
                 "departureTimeLocal": "13:20",
                 "arrivalTimeLocal": "15:50"
@@ -4813,8 +4965,10 @@
                 "airline": "Korean Air",
                 "flightNumber": "KE177",
                 "daysOfWeek": [
-                    6,
-                    0
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Su"
                 ],
                 "departureTimeLocal": "19:45",
                 "arrivalTimeLocal": "22:30"
@@ -4825,8 +4979,10 @@
                 "airline": "Korean Air",
                 "flightNumber": "KE178",
                 "daysOfWeek": [
-                    0,
-                    1
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th"
                 ],
                 "departureTimeLocal": "00:45",
                 "arrivalTimeLocal": "05:25"
@@ -4851,10 +5007,197 @@
                 "airline": "All Nippon Airways",
                 "flightNumber": "NH9411",
                 "daysOfWeek": [
-                    6
+                    "Su"
                 ],
                 "departureTimeLocal": "23:07",
                 "arrivalTimeLocal": "01:08"
+            }
+        ],
+        "returnflights": []
+    },
+    {
+        "originName": "ATH",
+        "originCityName": "na",
+        "originCoordinates": [
+            0,
+            0
+        ],
+        "destinationName": "MAD",
+        "destinationCityName": "Madrid",
+        "destinationCoordinates": [
+            -3.5626,
+            40.4719
+        ],
+        "goflights": [
+            {
+                "airline": "Emirates",
+                "flightNumber": "EK141",
+                "daysOfWeek": [
+                    "Tu"
+                ],
+                "departureTimeLocal": "13:15",
+                "arrivalTimeLocal": "15:32"
+            }
+        ],
+        "returnflights": []
+    },
+    {
+        "originName": "MUC",
+        "originCityName": "Munich",
+        "originCoordinates": [
+            11.7746,
+            48.3537
+        ],
+        "destinationName": "LEJ",
+        "destinationCityName": "na",
+        "destinationCoordinates": [
+            0,
+            0
+        ],
+        "goflights": [
+            {
+                "airline": "Lufthansa",
+                "flightNumber": "LH9860",
+                "daysOfWeek": [
+                    "Tu",
+                    "We"
+                ],
+                "departureTimeLocal": "13:00",
+                "arrivalTimeLocal": "14:05"
+            },
+            {
+                "airline": "Lufthansa",
+                "flightNumber": "LH9864",
+                "daysOfWeek": [],
+                "departureTimeLocal": "13:00",
+                "arrivalTimeLocal": "14:05"
+            }
+        ],
+        "returnflights": []
+    },
+    {
+        "originName": "LEJ",
+        "originCityName": "na",
+        "originCoordinates": [
+            0,
+            0
+        ],
+        "destinationName": "PRG",
+        "destinationCityName": "na",
+        "destinationCoordinates": [
+            0,
+            0
+        ],
+        "goflights": [
+            {
+                "airline": "Lufthansa",
+                "flightNumber": "LH9861",
+                "daysOfWeek": [
+                    "Tu",
+                    "We"
+                ],
+                "departureTimeLocal": "14:10",
+                "arrivalTimeLocal": "15:05"
+            },
+            {
+                "airline": "Lufthansa",
+                "flightNumber": "LH9865",
+                "daysOfWeek": [],
+                "departureTimeLocal": "14:10",
+                "arrivalTimeLocal": "15:05"
+            }
+        ],
+        "returnflights": []
+    },
+    {
+        "originName": "PRG",
+        "originCityName": "na",
+        "originCoordinates": [
+            0,
+            0
+        ],
+        "destinationName": "VIE",
+        "destinationCityName": "na",
+        "destinationCoordinates": [
+            0,
+            0
+        ],
+        "goflights": [
+            {
+                "airline": "Lufthansa",
+                "flightNumber": "LH9862",
+                "daysOfWeek": [
+                    "Tu",
+                    "We"
+                ],
+                "departureTimeLocal": "15:10",
+                "arrivalTimeLocal": "16:10"
+            },
+            {
+                "airline": "Lufthansa",
+                "flightNumber": "LH9866",
+                "daysOfWeek": [],
+                "departureTimeLocal": "15:10",
+                "arrivalTimeLocal": "16:10"
+            }
+        ],
+        "returnflights": []
+    },
+    {
+        "originName": "VIE",
+        "originCityName": "na",
+        "originCoordinates": [
+            0,
+            0
+        ],
+        "destinationName": "MUC",
+        "destinationCityName": "Munich",
+        "destinationCoordinates": [
+            11.7746,
+            48.3537
+        ],
+        "goflights": [
+            {
+                "airline": "Lufthansa",
+                "flightNumber": "LH9863",
+                "daysOfWeek": [
+                    "Th"
+                ],
+                "departureTimeLocal": "01:00",
+                "arrivalTimeLocal": "01:00"
+            },
+            {
+                "airline": "Lufthansa",
+                "flightNumber": "LH9867",
+                "daysOfWeek": [],
+                "departureTimeLocal": "16:15",
+                "arrivalTimeLocal": "17:30"
+            }
+        ],
+        "returnflights": []
+    },
+    {
+        "originName": "LAX",
+        "originCityName": "Los Angeles",
+        "originCoordinates": [
+            -118.4081,
+            33.9425
+        ],
+        "destinationName": "PUS",
+        "destinationCityName": "na",
+        "destinationCoordinates": [
+            0,
+            0
+        ],
+        "goflights": [
+            {
+                "airline": "Qantas Airways",
+                "flightNumber": "QF6015",
+                "daysOfWeek": [
+                    "We"
+                ],
+                "departureTimeLocal": "17:05",
+                "arrivalTimeLocal": "21:01"
             }
         ],
         "returnflights": []
