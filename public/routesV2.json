@@ -346,6 +346,7 @@
                 "airline": "British Airways",
                 "flightNumber": "BA57",
                 "daysOfWeek": [
+                    "Mo",
                     "Tu",
                     "We",
                     "Th",
@@ -640,49 +641,7 @@
             }
         ]
     },
-    {
-        "originName": "BOS",
-        "originCityName": "Boston",
-        "originCoordinates": [
-            -71.0096,
-            42.3656
-        ],
-        "destinationName": "LHR",
-        "destinationCityName": "London",
-        "destinationCoordinates": [
-            -0.4543,
-            51.47
-        ],
-        "goflights": [
-            {
-                "airline": "British Airways",
-                "flightNumber": "BA212",
-                "daysOfWeek": [
-                    "Tu",
-                    "We",
-                    "Th",
-                    "Fr",
-                    "Sa"
-                ],
-                "departureTimeLocal": "19:15",
-                "arrivalTimeLocal": "06:50"
-            }
-        ],
-        "returnflights": [
-            {
-                "airline": "British Airways",
-                "flightNumber": "BA213",
-                "daysOfWeek": [
-                    "We",
-                    "Th",
-                    "Fr",
-                    "Sa"
-                ],
-                "departureTimeLocal": "14:40",
-                "arrivalTimeLocal": "17:00"
-            }
-        ]
-    },
+  
     {
         "originName": "DXB",
         "originCityName": "Dubai",
