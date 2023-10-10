@@ -1,6 +1,6 @@
 import json
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 import pytz
 import csv
 import pymongo
@@ -58,6 +58,10 @@ def add_day_of_week(flights, flight_number, day_of_week):
                 flight["daysOfWeek"].append(day_of_week)
             break  # No need to continue searching once found
 
+def convert_to_abbreviated_days(days_list):
+    abbreviated_days = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
+    return [abbreviated_days[day] for day in sorted(days_list)]
+
 if __name__ == "__main__":
 
     # Custom JSON encoder that handles datetime objects
@@ -87,7 +91,11 @@ if __name__ == "__main__":
     countNewGoRoutes = 0
     countNewReturnRoutes = 0;
     ignoredRoutes = 0;
-    for document in source_collection.find():
+
+    # Calculate the date one week ago
+    one_week_ago = datetime.utcnow() - timedelta(days=7)
+
+    for document in source_collection.find({'loggingTime': {'$gte': one_week_ago}}):
 
         origin_iata = document["originIata"]
         destination_iata = document["destinationIata"]
@@ -232,13 +240,24 @@ if __name__ == "__main__":
     print(f"{countNewReturnRoutes} return routes added")
     # print(f"{ignoredRoutes} duplicates ignored")
 
-    
+
+    # convert to days of week
+    for entry in data:
+        for flight in entry["goflights"] + entry["returnflights"]:
+            flight["daysOfWeek"] = convert_to_abbreviated_days(
+                flight["daysOfWeek"])
+
+
+    # clean up data: if return is empty, don't show
+    filtered_data = [obj for obj in data if obj["returnflights"]]
+
+
     # Specify the file path where you want to save the JSON file
     file_path = "routesV2.json"
 
     # Open the file in write mode and use json.dump() to write the data
     with open(file_path, "w") as json_file:
-        json.dump(data, json_file, indent=4, cls=DateTimeEncoder)
+        json.dump(filtered_data, json_file, indent=4, cls=DateTimeEncoder)
 
     # close db:
     client.close()
