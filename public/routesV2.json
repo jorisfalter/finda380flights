@@ -515,15 +515,6 @@
                 "arrivalTimeLocal": "07:05"
             },
             {
-                "airline": "Unknown",
-                "flightNumber": "N/A",
-                "daysOfWeek": [
-                    "Mo"
-                ],
-                "departureTimeLocal": "21:25",
-                "arrivalTimeLocal": "09:15"
-            },
-            {
                 "airline": "British Airways",
                 "flightNumber": "BA57",
                 "daysOfWeek": [

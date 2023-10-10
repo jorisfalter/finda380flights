@@ -251,13 +251,24 @@ if __name__ == "__main__":
     # clean up data: if return is empty, don't show
     filtered_data = [obj for obj in data if obj["returnflights"]]
 
+    # clean up data: if airline is unknown remove nested object
+    # Remove nested objects with "Unknown" airline
+    second_filtered_data = [
+    {
+        **entry,
+        "goflights": [flight for flight in entry["goflights"] if flight["airline"] != "Unknown"],
+        "returnflights": [flight for flight in entry["returnflights"] if flight["airline"] != "Unknown"],
+    }
+    for entry in filtered_data
+    ]
+
 
     # Specify the file path where you want to save the JSON file
     file_path = "routesV2.json"
 
     # Open the file in write mode and use json.dump() to write the data
     with open(file_path, "w") as json_file:
-        json.dump(filtered_data, json_file, indent=4, cls=DateTimeEncoder)
+        json.dump(second_filtered_data, json_file, indent=4, cls=DateTimeEncoder)
 
     # close db:
     client.close()
