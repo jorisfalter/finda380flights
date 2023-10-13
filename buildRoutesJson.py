@@ -25,6 +25,10 @@ with open(json_file_path, "r") as json_file:
 with open(json_file_path_airlines,"r") as json_file:
     airline_data = json.load(json_file)
 
+
+
+
+
 # function to get the airline name
 def get_airline_name(flight_number):
     # Extract the first two letters from the flight number (the airline abbreviation)
@@ -82,7 +86,6 @@ if __name__ == "__main__":
         f'mongodb+srv://joris-a380:{mongoPass}@cluster0.1gi6i3v.mongodb.net/?retryWrites=true&w=majority&connectTimeoutMS=5000', tlsCAFile=ca)
 
     db = client['a380flightsDb']
-    # source_collection = db['a380flightsCollection']
     source_collection = db['a380flightsCollectionV2']
 
     # Query MongoDB and retrieve data
@@ -262,7 +265,7 @@ if __name__ == "__main__":
     for entry in filtered_data
     ]
 
-
+    # story locally
     # Specify the file path where you want to save the JSON file
     file_path = "routesV2.json"
 
@@ -270,5 +273,26 @@ if __name__ == "__main__":
     with open(file_path, "w") as json_file:
         json.dump(second_filtered_data, json_file, indent=4, cls=DateTimeEncoder)
 
-    # close db:
+    # close db from which I retrieved data:
     client.close()
+
+    # write to mongo db to store data
+    # load Mongo
+    from pymongo import MongoClient
+    ca = certifi.where()
+
+    # Load environment variables from .env file
+    load_dotenv()
+    mongoPass = os.getenv("MONGO_ATLAS_PASS")
+
+    client = pymongo.MongoClient(
+        f'mongodb+srv://joris-a380:{mongoPass}@cluster0.1gi6i3v.mongodb.net/?retryWrites=true&w=majority&connectTimeoutMS=5000', tlsCAFile=ca)
+
+    db = client['a380flightsDb']
+    collection = db['a380routesCollection']
+    collection.delete_many({})
+    collection.insert_many(second_filtered_data)
+
+
+
+  
