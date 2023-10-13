@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
+const MongoClient = require("mongodb").MongoClient;
 const app = express();
 
 app.set("view engine", "ejs");
@@ -14,8 +15,52 @@ app.use(
   })
 );
 
+////////////////////////////////////////////////////////////////////////
+// Setup Mongoclient
+const mongoUrl =
+  "mongodb+srv://joris-a380:" +
+  process.env.MONGO_ATLAS_PASS +
+  "@cluster1.1gi6i3v.mongodb.net/a380flightsDB";
+
+const dbName = "a380flightsDb";
+const collectionName = "a380routesCollection";
+
+// Use connect method to connect to the server
+MongoClient.connect(mongoUrl, {})
+  .then((client) => {
+    console.log("Connected to MongoDB");
+    const db = client.db(dbName);
+    const collection = db.collection(collectionName);
+
+    async function fetchDataFromDb() {
+      try {
+        const result = await collection.find({}).toArray();
+      } catch (err) {
+        console.error(err);
+        res.status(500).send("Internal Server Error");
+      }
+    }
+    fetchDataFromDb;
+
+    // Set up an API endpoint to retrieve the data
+    app.get("/api/data", async (req, res) => {
+      console.log("endpoint called");
+      try {
+        const result = await collection.find({}).toArray();
+        res.json(result);
+      } catch (err) {
+        console.error(err);
+        res.status(500).send("Internal Server Error");
+      }
+    });
+  })
+  .catch((err) => {
+    console.error("Error connecting to MongoDB", err);
+  });
+
 //////////////////////////////////////////////////////////////////////
 // app starts here
+
 app.get("/", function (req, res) {
   res.render("index", {
     // foundFlights: false,

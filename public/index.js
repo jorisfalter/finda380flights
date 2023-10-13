@@ -27,9 +27,19 @@ const selectedAirlines = [
 // this is a list of markers
 const mapboxMarkers = [];
 
-////////////////////////////////////////////////////////////////////////////////////////////////
-//// Drawing Lines
+// let dbData = [];
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+// Testing using db
+fetch("/api/data")
+  .then((response) => response.json())
+  .then((data) => {
+    console.log("here's the db data");
+    console.log(data);
+  })
+  .catch((error) => console.error("fetch error: ", error));
+
+////////////////////////////////////////////////////////////////////////////////////////////////
 // Fetch JSON data from a file
 fetch("routesV2.json")
   .then((response) => response.json())
@@ -158,7 +168,7 @@ fetch("routesV2.json")
         const features = map.queryRenderedFeatures(e.point, {
           layers: ["hoverroute" + k],
         });
-        console.log(features);
+        // console.log(features);
 
         // Filter out features with line-opacity equal to 0
         const visibleFeatures = features.filter((feature) => {
@@ -235,7 +245,7 @@ fetch("routesV2.json")
       });
       map.on("click", "hoverroute" + k, (e) => {
         mouseEnterAndClick(e);
-        console.log("click");
+        // console.log("click");
       });
 
       // Change the color and the mouse appearance
@@ -384,8 +394,8 @@ fetch("routesV2.json")
       // Check if the image is already selected
       const index = selectedAirlines.indexOf(airlineName);
 
-      console.log(index);
-      console.log(selectedAirlines);
+      // console.log(index);
+      // console.log(selectedAirlines);
 
       if (index === -1) {
         // Image not selected, add it to the array
@@ -556,7 +566,7 @@ fetch("routesV2.json")
       }
     });
 
-    console.log(importedRoutesV2);
+    // console.log(importedRoutesV2);
   })
   .catch((error) => {
     console.error("Error loading JSON data:", error);
