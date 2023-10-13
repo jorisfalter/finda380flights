@@ -30,18 +30,19 @@ const mapboxMarkers = [];
 // let dbData = [];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
-// Testing using db
-fetch("/api/data")
-  .then((response) => response.json())
-  .then((data) => {
-    console.log("here's the db data");
-    console.log(data);
-  })
-  .catch((error) => console.error("fetch error: ", error));
+// // Testing using db
+// fetch("/api/data")
+//   .then((response) => response.json())
+//   .then((data) => {
+//     console.log("here's the db data");
+//     console.log(data);
+//   })
+//   .catch((error) => console.error("fetch error: ", error));
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // Fetch JSON data from a file
-fetch("routesV2.json")
+// fetch("routesV2.json")
+fetch("/api/data")
   .then((response) => response.json())
   .then((importedRoutesV2) => {
     const map = new mapboxgl.Map({
