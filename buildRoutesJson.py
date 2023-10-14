@@ -267,11 +267,11 @@ if __name__ == "__main__":
 
     # story locally
     # Specify the file path where you want to save the JSON file
-    file_path = "routesV2.json"
+    # file_path = "routesV2.json"
 
     # Open the file in write mode and use json.dump() to write the data
-    with open(file_path, "w") as json_file:
-        json.dump(second_filtered_data, json_file, indent=4, cls=DateTimeEncoder)
+    # with open(file_path, "w") as json_file:
+        # json.dump(second_filtered_data, json_file, indent=4, cls=DateTimeEncoder)
 
     # close db from which I retrieved data:
     client.close()
