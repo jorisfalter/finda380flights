@@ -40,7 +40,7 @@ const mapboxMarkers = [];
 //   .catch((error) => console.error("fetch error: ", error));
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
-// Fetch JSON data from a file
+// Fetch JSON data from the db
 // fetch("routesV2.json")
 fetch("/api/data")
   .then((response) => response.json())
