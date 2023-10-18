@@ -61,5 +61,6 @@
     "GIG": { "cityName": "Rio de Janeiro", "latitude": -22.8146, "longitude": -43.2506},
     "XMN": { "cityName": "Xiamen","latitude": 24.5441,"longitude": 118.1278},
     "KIX": { "cityName": "Osaka", "latitude": 34.4342, "longitude": 135.2442},
-    "MNL": { "cityName": "Manila", "latitude": 14.5995, "longitude": 120.9842 }
+    "MNL": { "cityName": "Manila", "latitude": 14.5995, "longitude": 120.9842 },
+    "LEJ": { "cityName": "Leipzig", "latitude": 51.4236, "longitude": 12.2368 }
 }
