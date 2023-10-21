@@ -1,6 +1,5 @@
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  
 }
 
 /* leaflet code from weekendaway */
@@ -70,9 +69,41 @@ body {
   border-radius:3px;
   display:inline-block;
   margin-right: 3px;
+}
+
+.parent-div{
+  margin: 0 auto;
+  width: 80%;
+  /* position:relative; */
+  padding-top: 2px;
 
 }
 
+.fixed-div {
+  /* position: absolute; */
+  bottom: 2px; /* Adjust the distance from the bottom as needed */
+  right: 2px; /* Adjust the distance from the left as needed */
+  background-color: #333; /* Background color */
+  color: #fff; /* Text color */
+  padding: 10px; /* Padding around the content */
+  border-radius: 2px; /* Rounded corners */
+  font-size: 10px; /* Font size */
+  display:inline-block;
+}
+
+/* Media query for mobile responsiveness */
+@media (max-width: 768px) {
+  .fixed-div {
+      font-size: 10px; /* Adjust font size for mobile */
+      bottom: 2px; /* Adjust the distance from the bottom for mobile */
+      left: 2px; /* Adjust the distance from the left for mobile */
+  }
+}
+
+.fixed-div a {
+  color: yellow; /* Link color */
+  text-decoration: none; /* Underline for links */
+}
 
 
 .airline:hover{
