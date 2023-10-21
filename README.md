@@ -9,6 +9,10 @@ Mongodb
 Node
 EJS
 
+## how to start
+
+Node app.js
+
 ## what each file does
 
 flightradarapi.py > cron-job to fetch a380s flying every hour
