@@ -64,4 +64,6 @@
     "MNL": { "cityName": "Manila", "latitude": 14.5995, "longitude": 120.9842 },
     "LEJ": { "cityName": "Leipzig", "latitude": 51.4236, "longitude": 12.2368 },
     "TEV": { "cityName": "Teruel", "latitude": 40.41325102246875, "longitude": -1.2172425079456282 }, 
+    "STR": { "cityName": "Stuttgart", "latitude": 48.688148864788324, "longitude":  9.205703146027185 }
+
 }
