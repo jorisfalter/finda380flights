@@ -62,5 +62,6 @@
     "XMN": { "cityName": "Xiamen","latitude": 24.5441,"longitude": 118.1278},
     "KIX": { "cityName": "Osaka", "latitude": 34.4342, "longitude": 135.2442},
     "MNL": { "cityName": "Manila", "latitude": 14.5995, "longitude": 120.9842 },
-    "LEJ": { "cityName": "Leipzig", "latitude": 51.4236, "longitude": 12.2368 }
+    "LEJ": { "cityName": "Leipzig", "latitude": 51.4236, "longitude": 12.2368 },
+    "TEV": { "cityName": "Teruel", "latitude": 40.41325102246875, "longitude": -1.2172425079456282 }, 
 }
