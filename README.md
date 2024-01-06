@@ -13,8 +13,11 @@ EJS
 
 Node app.js
 
+The flightradarapi cronjob runs every hour to find all flights with a380s at that specific time
+The buildRoutesJson runs every day to filter out the specific routes based on the flights from last 7 days
+
 ## what each file does
 
 flightradarapi.py > cron-job to fetch a380s flying every hour
 app.js > node app
-buildRoutesJson > builds JSON with routes based on data from mongodb. Data is exported as JSON which has to be dragged into the public folder. Intention is to move this automatically to a cron job using MongoDB
+buildRoutesJson > builds JSON with routes based on data from mongodb.
