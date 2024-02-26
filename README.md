@@ -18,6 +18,6 @@ The buildRoutesJson runs every day to filter out the specific routes based on th
 
 ## what each file does
 
-flightradarapi.py > cron-job to fetch a380s flying every hour
+flightradarapi.py > cron-job to fetch a380s flying every hour: python3 flightradarapi.py runs every hour
 app.js > node app
-buildRoutesJson > builds JSON with routes based on data from mongodb.
+buildRoutesJson > builds JSON with routes based on data from mongodb: python3 buildRoutesJson.py runs daily
