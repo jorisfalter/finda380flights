@@ -65,6 +65,8 @@
     "LEJ": { "cityName": "Leipzig", "latitude": 51.4236, "longitude": 12.2368 },
     "TEV": { "cityName": "Teruel", "latitude": 40.41325102246875, "longitude": -1.2172425079456282 }, 
     "STR": { "cityName": "Stuttgart", "latitude": 48.688148864788324, "longitude":  9.205703146027185 },
-    "BCN": { "cityName": "Barcelona", "latitude": 41.2980, "longitude":  2.0799 }
+    "BCN": { "cityName": "Barcelona", "latitude": 41.2980, "longitude":  2.0799 },
+    "VIE": { "cityName": "Vienna", "latitude": 48.1121, "longitude": 16.5697  }
+
 
 }
