@@ -47,7 +47,8 @@ fetch("/api/data")
   .then((importedRoutesV2) => {
     const map = new mapboxgl.Map({
       container: "map",
-      style: "mapbox://styles/jorisboris/clmdk27ll01bw01qx24l12bnw",
+      // style: "mapbox://styles/jorisboris/clmdk27ll01bw01qx24l12bnw",
+      style: "mapbox://styles/mapbox/streets-v11",
       center: [-96, 37.8],
       zoom: 1,
     });
