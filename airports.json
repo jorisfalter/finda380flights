@@ -132,5 +132,6 @@
   "BCN": { "cityName": "Barcelona", "latitude": 41.298, "longitude": 2.0799 },
   "VIE": { "cityName": "Vienna", "latitude": 48.1121, "longitude": 16.5697 },
   "PRG": { "cityName": "Prague", "latitude": 50.1018, "longitude": 14.2632 },
-  "RUH": { "cityName": "Riyadh", "latitude": 24.9596, "longitude": 46.7024 }
+  "RUH": { "cityName": "Riyadh", "latitude": 24.9596, "longitude": 46.7024 },
+  "CPH": { "cityName": "Copenhagen", "latitude": 55.6120, "longitude": 12.648}
 }
