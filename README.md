@@ -24,4 +24,4 @@ buildRoutesJson > builds JSON with routes based on data from mongodb: python3 bu
 
 ## adding airports
 
-Manually add coordinates to airports.json (I think)
+Manually add coordinates to airports.json
