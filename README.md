@@ -9,6 +9,8 @@ Mongodb
 Node
 EJS
 
+deployed on heroku
+
 ## how to start
 
 Node app.js
