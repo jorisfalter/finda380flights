@@ -135,7 +135,8 @@
   "RUH": { "cityName": "Riyadh", "latitude": 24.9596, "longitude": 46.7024 },
   "CPH": { "cityName": "Copenhagen", "latitude": 55.6120, "longitude": 12.648},
   "DWC": { "cityName": "Dubai Al Maktoum", "latitude": 24.8860, "longitude": 55.1588},
-  "BAH": { "cityName": "Bahrain", "latitude": 26.2672, "longitude": 50.6303}
+  "BAH": { "cityName": "Bahrain", "latitude": 26.2672, "longitude": 50.6303},
+  "DEN": { "cityName": "Denver", "latitude": 39.8563, "longitude": -104.6764}
 
 
 }
