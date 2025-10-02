@@ -20,7 +20,7 @@ app.use(
 const mongoUrl =
   "mongodb+srv://joris-a380:" +
   process.env.MONGO_ATLAS_PASS +
-  "@cluster1.1gi6i3v.mongodb.net/a380flightsDB";
+  "@cluster0.1gi6i3v.mongodb.net/a380flightsDB";
 
 const dbName = "a380flightsDb";
 const collectionName = "a380routesCollection";

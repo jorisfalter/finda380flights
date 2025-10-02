@@ -9,7 +9,7 @@ Mongodb
 Node
 EJS
 
-deployed on heroku
+Heroku
 
 ## how to start
 
