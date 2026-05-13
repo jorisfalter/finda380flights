@@ -26,6 +26,45 @@ with open(json_file_path_airlines,"r") as json_file:
     airline_data = json.load(json_file)
 
 
+# OurAirports fallback dataset: ~85k airports, public domain CSV.
+# Used when an IATA code isn't in our curated airports.json — prevents
+# the (0,0) ghost-route bug where unknown airports landed on the Africa
+# coast instead of being properly placed.
+ourairports_data = {}
+try:
+    with open("ourairports.csv", "r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            iata = (row.get("iata_code") or "").strip()
+            if not iata:
+                continue
+            try:
+                lat = float(row["latitude_deg"])
+                lon = float(row["longitude_deg"])
+            except (KeyError, ValueError):
+                continue
+            ourairports_data[iata] = {
+                "cityName": (row.get("municipality") or row.get("name") or "").strip() or "na",
+                "latitude": lat,
+                "longitude": lon,
+            }
+    print(f"Loaded {len(ourairports_data)} airports from ourairports.csv fallback")
+except FileNotFoundError:
+    print("WARNING: ourairports.csv missing — unknown airports will be skipped")
+
+
+def resolve_airport(iata):
+    """Look up IATA → (latitude, longitude, cityName).
+    Returns None if airport is unknown in both data sources."""
+    found = airport_data.get(iata)
+    if found and found.get("latitude") is not None and found.get("longitude") is not None:
+        return found["latitude"], found["longitude"], found.get("cityName", "na")
+    found = ourairports_data.get(iata)
+    if found:
+        return found["latitude"], found["longitude"], found["cityName"]
+    return None
+
+
 
 
 
@@ -185,36 +224,24 @@ if __name__ == "__main__":
             # if both the return and the go flights don't exist, we have to create a new route
             else:
 
-                ## search the coordinates
-                ## Origin
-                # Look up the coordinates for the origin
-                foundCoordinatesOrigin = airport_data.get(
-                    document["originIata"])
+                # Resolve both airports through curated → OurAirports fallback.
+                # If either is unknown, skip the route entirely instead of
+                # plotting it at (0,0) — that ghost-routes lines through the
+                # Atlantic and breaks the map (see DRS / MUC-DRS LH9902).
+                origin_resolved = resolve_airport(document["originIata"])
+                destination_resolved = resolve_airport(document["destinationIata"])
+                if origin_resolved is None or destination_resolved is None:
+                    unknown = []
+                    if origin_resolved is None:
+                        unknown.append(document["originIata"])
+                    if destination_resolved is None:
+                        unknown.append(document["destinationIata"])
+                    ignoredRoutes += 1
+                    print(f"SKIP route — unknown airport(s) {unknown} on flight {document['flightNumber']}")
+                    continue
 
-                # for error handling now
-                latitudeOrigin = 0
-                longitudeOrigin = 0
-                cityNameOrigin = "na"
-
-                if foundCoordinatesOrigin:
-                    latitudeOrigin = foundCoordinatesOrigin["latitude"]
-                    longitudeOrigin = foundCoordinatesOrigin["longitude"]
-                    cityNameOrigin = foundCoordinatesOrigin["cityName"]
-
-                ## destination
-                # look up the coordinates for the destination
-                foundCoordinatesDestination = airport_data.get(
-                    document["destinationIata"])
-
-                # for error handling now
-                latitudeDestination = 0
-                longitudeDestination = 0
-                cityNameDestination = "na"
-
-                if foundCoordinatesDestination:
-                    latitudeDestination = foundCoordinatesDestination["latitude"]
-                    longitudeDestination = foundCoordinatesDestination["longitude"]
-                    cityNameDestination = foundCoordinatesDestination["cityName"]
+                latitudeOrigin, longitudeOrigin, cityNameOrigin = origin_resolved
+                latitudeDestination, longitudeDestination, cityNameDestination = destination_resolved
 
                 ## get the airline name
                 airlineName = get_airline_name(document["flightNumber"])
