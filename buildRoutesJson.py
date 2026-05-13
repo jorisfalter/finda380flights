@@ -1,4 +1,5 @@
 import json
+import sys
 import time
 from datetime import datetime, timedelta
 import pytz
@@ -7,6 +8,8 @@ import pymongo
 import certifi
 from dotenv import load_dotenv
 import os
+
+from aircraft_config import get_config
 
 
 # imports the data from airports.json
@@ -112,6 +115,14 @@ def convert_to_abbreviated_days(days_list):
 
 if __name__ == "__main__":
 
+    # Default to a380 — preserves the existing Heroku Scheduler entry
+    # that calls `python3 buildRoutesJson.py` without args.
+    aircraft_key = sys.argv[1] if len(sys.argv) > 1 else "a380"
+    aircraft_config = get_config(aircraft_key)
+    print(f"Building routes for {aircraft_config['display_name']} "
+          f"(source: {aircraft_config['flights_collection']}, "
+          f"target: {aircraft_config['routes_collection']})")
+
     # Custom JSON encoder that handles datetime objects
     class DateTimeEncoder(json.JSONEncoder):
         def default(self, obj):
@@ -130,7 +141,7 @@ if __name__ == "__main__":
         f'mongodb+srv://joris-a380:{mongoPass}@cluster0.1gi6i3v.mongodb.net/?retryWrites=true&w=majority&connectTimeoutMS=5000', tlsCAFile=ca)
 
     db = client['a380flightsDb']
-    source_collection = db['a380flightsCollectionV2']
+    source_collection = db[aircraft_config["flights_collection"]]
 
     # Query MongoDB and retrieve data
     data = []
@@ -325,7 +336,7 @@ if __name__ == "__main__":
         f'mongodb+srv://joris-a380:{mongoPass}@cluster0.1gi6i3v.mongodb.net/?retryWrites=true&w=majority&connectTimeoutMS=5000', tlsCAFile=ca)
 
     db = client['a380flightsDb']
-    collection = db['a380routesCollection']
+    collection = db[aircraft_config["routes_collection"]]
 
     # Defensive: refuse to wipe the routes collection if the new build
     # is empty. Without this guard, an upstream ingest outage cascades

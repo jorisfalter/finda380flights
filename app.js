@@ -25,34 +25,41 @@ const mongoUrl =
 const dbName = "a380flightsDb";
 const collectionName = "a380routesCollection";
 
-// Use connect method to connect to the server
+// Per-aircraft route collections. Keep this in sync with aircraft_config.py
+// on the Python side — that file is the source of truth for the ingest
+// pipeline; this map is just what the web layer reads.
+const aircraftCollections = {
+  a380: "a380routesCollection",
+  b747: "b747routesCollection",
+};
+
 MongoClient.connect(mongoUrl, {})
   .then((client) => {
     console.log("Connected to MongoDB");
     const db = client.db(dbName);
-    const collection = db.collection(collectionName);
 
-    async function fetchDataFromDb() {
+    function getRouteCollection(aircraftKey) {
+      const name = aircraftCollections[aircraftKey];
+      if (!name) throw new Error(`unknown aircraft ${aircraftKey}`);
+      return db.collection(name);
+    }
+
+    async function serveRoutes(aircraftKey, res) {
       try {
-        const result = await collection.find({}).toArray();
+        const result = await getRouteCollection(aircraftKey).find({}).toArray();
+        res.json(result);
       } catch (err) {
-        console.error(err);
+        console.error(`/api/${aircraftKey}/data failed`, err);
         res.status(500).send("Internal Server Error");
       }
     }
-    fetchDataFromDb;
 
-    // Set up an API endpoint to retrieve the data
-    app.get("/api/data", async (req, res) => {
-      console.log("endpoint called");
-      try {
-        const result = await collection.find({}).toArray();
-        res.json(result);
-      } catch (err) {
-        console.error(err);
-        res.status(500).send("Internal Server Error");
-      }
-    });
+    // Legacy endpoint — frontend still hits this. Treat as A380.
+    app.get("/api/data", (req, res) => serveRoutes("a380", res));
+
+    // New per-aircraft endpoints.
+    app.get("/api/a380/data", (req, res) => serveRoutes("a380", res));
+    app.get("/api/b747/data", (req, res) => serveRoutes("b747", res));
   })
   .catch((err) => {
     console.error("Error connecting to MongoDB", err);
@@ -63,8 +70,12 @@ MongoClient.connect(mongoUrl, {})
 
 app.get("/", function (req, res) {
   res.render("index", {
-    // foundFlights: false,
-    // foundDestinationsDestinationsOnlyTrf: [],
+    mapboxAccessToken: process.env.MAPBOX_ACCESS_TOKEN,
+  });
+});
+
+app.get("/747", function (req, res) {
+  res.render("747", {
     mapboxAccessToken: process.env.MAPBOX_ACCESS_TOKEN,
   });
 });

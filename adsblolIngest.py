@@ -9,6 +9,7 @@ Independent of FlightRadar24, so when FR24 starts blocking again
 """
 
 import os
+import sys
 import time
 import datetime
 import requests
@@ -16,14 +17,16 @@ import pymongo
 import certifi
 from dotenv import load_dotenv
 
+from aircraft_config import get_config
 
-ADSB_LOL_URL = "https://api.adsb.lol/v2/type/A388"
+
+ADSB_LOL_URL = "https://api.adsb.lol/v2/type/{type}"
 ADSBDB_URL = "https://api.adsbdb.com/v0/callsign/{callsign}"
 HEADERS = {"User-Agent": "wheredoesthea380fly.com backup ingest"}
 
 
-def fetch_a380s():
-    r = requests.get(ADSB_LOL_URL, headers=HEADERS, timeout=30)
+def fetch_aircraft(icao_type):
+    r = requests.get(ADSB_LOL_URL.format(type=icao_type), headers=HEADERS, timeout=30)
     r.raise_for_status()
     return r.json().get("ac", [])
 
@@ -44,17 +47,23 @@ def lookup_route(callsign):
         return None
 
 
-def main():
+def main(aircraft_key="a380"):
+    config = get_config(aircraft_key)
     load_dotenv()
     mongo_pass = os.getenv("MONGO_ATLAS_PASS")
     client = pymongo.MongoClient(
         f"mongodb+srv://joris-a380:{mongo_pass}@cluster0.1gi6i3v.mongodb.net/?retryWrites=true&w=majority&connectTimeoutMS=5000",
         tlsCAFile=certifi.where(),
     )
-    collection = client["a380flightsDb"]["a380flightsCollectionV2"]
+    collection = client["a380flightsDb"][config["flights_collection"]]
 
-    aircraft = fetch_a380s()
-    print(f"adsb.lol: {len(aircraft)} A380s currently airborne")
+    aircraft = []
+    for icao_type in config["icao_types"]:
+        for ac in fetch_aircraft(icao_type):
+            ac["_icaoType"] = icao_type  # tag for downstream
+            aircraft.append(ac)
+    print(f"adsb.lol: {len(aircraft)} {config['display_name']} aircraft currently airborne "
+          f"(types: {','.join(config['icao_types'])})")
 
     seen_callsigns = set()
     inserted = 0
@@ -103,6 +112,7 @@ def main():
             "source": "adsblol",
             "hex": ac.get("hex"),
             "registration": ac.get("r"),
+            "icaoType": ac.get("_icaoType"),
         }
         collection.insert_one(doc)
         inserted += 1
@@ -115,4 +125,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    aircraft_key = sys.argv[1] if len(sys.argv) > 1 else "a380"
+    main(aircraft_key)

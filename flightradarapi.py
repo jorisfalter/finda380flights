@@ -4,15 +4,18 @@ import time
 import datetime
 import pytz
 import csv
+import sys
 import pymongo
 import certifi
 from dotenv import load_dotenv
 import os
 
+from aircraft_config import get_config
 
-def get_flight_data():
+
+def get_flight_data(aircraft_key="a380"):
+    config = get_config(aircraft_key)
     api = FlightRadar24API()
-    # data = []
     from pymongo import MongoClient
     ca = certifi.where()
 
@@ -24,12 +27,14 @@ def get_flight_data():
         f'mongodb+srv://joris-a380:{mongoPass}@cluster0.1gi6i3v.mongodb.net/?retryWrites=true&w=majority&connectTimeoutMS=5000', tlsCAFile=ca)
 
     db = client['a380flightsDb']
-    # collection = db['a380flightsCollection']
-    collection = db['a380flightsCollectionV2']
+    collection = db[config["flights_collection"]]
 
-
-    flights = api.get_flights(aircraft_type="A388")
-    print(f"Found {len(flights)} A380 flights")
+    # ICAO type codes per aircraft family (e.g. 747 has B748/B744/B74F).
+    flights = []
+    for icao_type in config["icao_types"]:
+        flights.extend(api.get_flights(aircraft_type=icao_type))
+    print(f"Found {len(flights)} {config['display_name']} flights "
+          f"(types: {','.join(config['icao_types'])})")
 
     for idx, flight in enumerate(flights):
         # Throttle to stay under FR24's per-request rate limit
@@ -85,8 +90,10 @@ def get_flight_data():
 
             # data for database
             dataOneFlight = {"loggingTime":now,"flightNumber": flight.number, "originIata": flight.origin_airport_iata,
-                             "destinationIata": flight.destination_airport_iata, "departureDatetimeLocal": local_dep_datetime, 
-                             "arrivalDatetimeLocal": local_arr_datetime, "departureTimeLocal":departureTimeLocal, "arrivalTimeLocal":arrivalTimeLocal, "departureDow":departureDow, "arrivalDow":arrivalDow}
+                             "destinationIata": flight.destination_airport_iata, "departureDatetimeLocal": local_dep_datetime,
+                             "arrivalDatetimeLocal": local_arr_datetime, "departureTimeLocal":departureTimeLocal, "arrivalTimeLocal":arrivalTimeLocal, "departureDow":departureDow, "arrivalDow":arrivalDow,
+                             "icaoType": getattr(flight, "aircraft_code", None),
+                             "source": "fr24"}
 
             result = collection.insert_one(dataOneFlight)
 
@@ -122,4 +129,7 @@ if __name__ == "__main__":
     #         csv_writer.writerow(row)
     # file.close()
 
-    flight_data=get_flight_data()
+    # Default to a380 so the existing Heroku Scheduler job keeps working
+    # without arg changes. Add new jobs as: `python3 flightradarapi.py b747`.
+    aircraft_key = sys.argv[1] if len(sys.argv) > 1 else "a380"
+    get_flight_data(aircraft_key)
