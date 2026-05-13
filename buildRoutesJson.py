@@ -53,15 +53,20 @@ except FileNotFoundError:
     print("WARNING: ourairports.csv missing — unknown airports will be skipped")
 
 
-def resolve_airport(iata):
+unknown_airports = {}  # iata → list of flight numbers seen, for end-of-run notify
+
+
+def resolve_airport(iata, flight_number=None):
     """Look up IATA → (latitude, longitude, cityName).
-    Returns None if airport is unknown in both data sources."""
+    Returns None if airport is unknown in both data sources, and tracks
+    the unresolved code for an end-of-run Telegram summary."""
     found = airport_data.get(iata)
     if found and found.get("latitude") is not None and found.get("longitude") is not None:
         return found["latitude"], found["longitude"], found.get("cityName", "na")
     found = ourairports_data.get(iata)
     if found:
         return found["latitude"], found["longitude"], found["cityName"]
+    unknown_airports.setdefault(iata or "<empty>", []).append(flight_number or "<no flight>")
     return None
 
 
@@ -228,8 +233,8 @@ if __name__ == "__main__":
                 # If either is unknown, skip the route entirely instead of
                 # plotting it at (0,0) — that ghost-routes lines through the
                 # Atlantic and breaks the map (see DRS / MUC-DRS LH9902).
-                origin_resolved = resolve_airport(document["originIata"])
-                destination_resolved = resolve_airport(document["destinationIata"])
+                origin_resolved = resolve_airport(document["originIata"], document["flightNumber"])
+                destination_resolved = resolve_airport(document["destinationIata"], document["flightNumber"])
                 if origin_resolved is None or destination_resolved is None:
                     unknown = []
                     if origin_resolved is None:
@@ -332,6 +337,18 @@ if __name__ == "__main__":
         collection.delete_many({})
         collection.insert_many(second_filtered_data)
         print(f"Routes rebuilt: {len(second_filtered_data)} entries")
+
+    # End-of-run alert for unresolvable airports. Stays quiet when everything
+    # was resolvable — only fires when there's a genuine new IATA to deal with.
+    real_unknowns = {k: v for k, v in unknown_airports.items() if k and k != "<empty>"}
+    if real_unknowns:
+        from notify import telegram_notify
+        lines = ["A380 map: unresolvable IATA codes this run"]
+        for iata, flights in sorted(real_unknowns.items()):
+            sample_flights = ", ".join(sorted(set(flights))[:5])
+            lines.append(f"  • {iata} (flights: {sample_flights})")
+        lines.append("Add to airports.json or extend ourairports.csv.")
+        telegram_notify("\n".join(lines))
 
 
 
