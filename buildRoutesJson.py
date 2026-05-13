@@ -290,8 +290,17 @@ if __name__ == "__main__":
 
     db = client['a380flightsDb']
     collection = db['a380routesCollection']
-    collection.delete_many({})
-    collection.insert_many(second_filtered_data)
+
+    # Defensive: refuse to wipe the routes collection if the new build
+    # is empty. Without this guard, an upstream ingest outage cascades
+    # into a blank map in prod (see April 30 → May 7 2026 incident).
+    if not second_filtered_data:
+        print(f"REFUSING to wipe routes — second_filtered_data is empty. "
+              f"Existing route count preserved: {collection.count_documents({})}")
+    else:
+        collection.delete_many({})
+        collection.insert_many(second_filtered_data)
+        print(f"Routes rebuilt: {len(second_filtered_data)} entries")
 
 
 
