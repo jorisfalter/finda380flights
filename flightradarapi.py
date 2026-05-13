@@ -28,8 +28,21 @@ def get_flight_data():
     collection = db['a380flightsCollectionV2']
 
 
-    for flight in api.get_flights(aircraft_type="A388"):
-        flight_details = api.get_flight_details(flight)
+    flights = api.get_flights(aircraft_type="A388")
+    print(f"Found {len(flights)} A380 flights")
+
+    for idx, flight in enumerate(flights):
+        # Throttle to stay under FR24's per-request rate limit
+        if idx > 0:
+            time.sleep(1.5)
+
+        try:
+            flight_details = api.get_flight_details(flight)
+        except Exception as e:
+            # 429s and intermittent failures should not kill the whole run
+            print(f"skip {flight.number}: {type(e).__name__}: {str(e)[:120]}")
+            time.sleep(5)
+            continue
 
         # get all flight details
         # print(json.dumps(flight_details,
