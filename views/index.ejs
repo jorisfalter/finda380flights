@@ -27,7 +27,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&family=Quicksand:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=<%= assetVersion %>">
 
     <!-- Recommended favicon format -->
     <link rel="icon" href="favicon.webp" type="favicon/webp">
@@ -77,6 +77,9 @@
             Wanna see a random airport ... ?! Visit <b><a href="https://www.randomairport.world/" target="_blank">Random
                     Airport App</a></b>!
         </div>
+        <span class="attribution">
+            by <a href="https://www.jorisfalter.com" target="_blank" rel="noopener">jorisfalter.com</a>
+        </span>
     </div>
     <div class="seodata">
         <h1>Airbus A380 Flight Paths and Destination Map</h1>
@@ -90,7 +93,7 @@
 
 
     <!-- <script src="index.js"></script> -->
-    <script type="module" src="index.js"></script>
+    <script type="module" src="index.js?v=<%= assetVersion %>"></script>
 
     <!-- 100% privacy-first analytics -->
     <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>

@@ -18,7 +18,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&family=Quicksand:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=<%= assetVersion %>">
     <link rel="icon" href="favicon.webp" type="favicon/webp">
 
     <style>
@@ -86,6 +86,9 @@
            href="https://docs.google.com/spreadsheets/d/1IdwkRChkpVNy_rbbB-GoS4vG-jcp4kwlzouzk0viX_w/edit?gid=670352788#gid=670352788">
             💬 Feedback Suggestions Requests
         </a>
+        <span class="attribution">
+            by <a href="https://www.jorisfalter.com" target="_blank" rel="noopener">jorisfalter.com</a>
+        </span>
     </div>
 
     <div id="map"></div>
@@ -98,7 +101,7 @@
         <p>Filter routes by cargo or passenger operations. Live data from FR24 and ADS-B.</p>
     </div>
 
-    <script type="module" src="747.js"></script>
+    <script type="module" src="747.js?v=<%= assetVersion %>"></script>
 </body>
 
 </html>

@@ -6,6 +6,11 @@ const app = express();
 
 app.set("view engine", "ejs");
 
+// Cache-busting token for static assets. Prefer Heroku's git commit hash so
+// it changes exactly when we deploy; fall back to process start time so it
+// still rolls over on local restart.
+const ASSET_VERSION = (process.env.HEROKU_SLUG_COMMIT || process.env.SOURCE_VERSION || Date.now().toString()).substring(0, 12);
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public")); // udemy class 248 15 minutes
 
@@ -71,12 +76,14 @@ MongoClient.connect(mongoUrl, {})
 app.get("/", function (req, res) {
   res.render("index", {
     mapboxAccessToken: process.env.MAPBOX_KEY,
+    assetVersion: ASSET_VERSION,
   });
 });
 
 app.get("/747", function (req, res) {
   res.render("747", {
     mapboxAccessToken: process.env.MAPBOX_KEY,
+    assetVersion: ASSET_VERSION,
   });
 });
 

@@ -129,6 +129,19 @@ body {
 }
 .feedback-link:hover { opacity: 0.85; }
 
+.attribution {
+  font-size: 10px;
+  color: #666;
+  opacity: 0.75;
+  font-family: 'Quicksand', sans-serif;
+  padding: 0 6px;
+}
+.attribution a {
+  color: #666;
+  text-decoration: none;
+}
+.attribution a:hover { color: #000; text-decoration: underline; }
+
 
 .airline:hover{
   border-color:blue;
