@@ -105,6 +105,23 @@ body {
   text-decoration: none; /* Underline for links */
 }
 
+/* Feedback chip — modeled after randomairport.world's bottom-left pill. */
+.feedback-link {
+  position: fixed;
+  bottom: 6px;
+  left: 6px;
+  z-index: 1000;
+  background: #000;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+}
+.feedback-link:hover { opacity: 0.85; }
+
 
 .airline:hover{
   border-color:blue;
