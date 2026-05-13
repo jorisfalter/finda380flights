@@ -235,7 +235,10 @@ Promise.all([
               container += newSubString; // Append the <span> element to your container
             }
 
-            tooltipContent += `${item.airline} - ${item.flightNumber}<br>${item.departureTimeLocal} - ${item.arrivalTimeLocal}<br><div style="padding: 5px 0">${container}</div>
+            const timeLine = (item.departureTimeLocal && item.arrivalTimeLocal)
+              ? `${item.departureTimeLocal} - ${item.arrivalTimeLocal}`
+              : `<em style="opacity:0.7">live</em>`;
+            tooltipContent += `${item.airline} - ${item.flightNumber}<br>${timeLine}<br><div style="padding: 5px 0">${container}</div>
             <div style="line-height: 4px;"></div>`;
           }
 
@@ -258,7 +261,10 @@ Promise.all([
                 "<span class = 'dow' >" + day + "   " + "</span>";
               container += newSubString; // Append the <span> element to your container
             }
-            tooltipContent += `${item.airline} - ${item.flightNumber}<br>${item.departureTimeLocal} - ${item.arrivalTimeLocal}<br><div style="padding: 5px 0">${container}</div><div style="line-height: 1px;"></div>`;
+            const timeLine = (item.departureTimeLocal && item.arrivalTimeLocal)
+              ? `${item.departureTimeLocal} - ${item.arrivalTimeLocal}`
+              : `<em style="opacity:0.7">live</em>`;
+            tooltipContent += `${item.airline} - ${item.flightNumber}<br>${timeLine}<br><div style="padding: 5px 0">${container}</div><div style="line-height: 1px;"></div>`;
           }
 
           // add it to the html
