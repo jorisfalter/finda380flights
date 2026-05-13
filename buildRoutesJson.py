@@ -95,10 +95,14 @@ if __name__ == "__main__":
     countNewReturnRoutes = 0;
     ignoredRoutes = 0;
 
-    # Calculate the date one week ago
-    one_week_ago = datetime.utcnow() - timedelta(days=7)
+    # Lookback window for which past flights count toward "current routes".
+    # Defaults to 7 days. Set LOOKBACK_DAYS env var to widen, e.g. for backfill
+    # after an ingest outage or to make the map more resilient to weekly gaps.
+    lookback_days = int(os.getenv("LOOKBACK_DAYS", "7"))
+    cutoff = datetime.utcnow() - timedelta(days=lookback_days)
+    print(f"Using {lookback_days}-day lookback (cutoff {cutoff.isoformat()})")
 
-    for document in source_collection.find({'loggingTime': {'$gte': one_week_ago}}):
+    for document in source_collection.find({'loggingTime': {'$gte': cutoff}}):
 
         origin_iata = document["originIata"]
         destination_iata = document["destinationIata"]
