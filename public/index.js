@@ -2,11 +2,10 @@
 // import importedRoutesV2 from "./routesV2.json" assert { type: "json" };
 // import importedRoutesV2 from "./routesV2mock.json" assert { type: "json" };
 
-//// This is the public Mapbox code
-mapboxgl.accessToken =
-  "pk.eyJ1Ijoiam9yaXNib3JpcyIsImEiOiJjbG1lam95ZWQxeXhjM2ZteGY2NDhqY2ltIn0.UnfVT_V85n8-D4IN7lxcnA";
-
-//// local accessToken
+// Mapbox token injected by the EJS template from process.env.MAPBOX_KEY.
+// Removed from source after GitHub's secret scanner started flagging
+// commits that introduce pk.* Mapbox tokens (May 2026).
+mapboxgl.accessToken = window.MAPBOX_ACCESS_TOKEN;
 
 const lineTooltip = document.getElementById("lineTooltip");
 

@@ -70,13 +70,13 @@ MongoClient.connect(mongoUrl, {})
 
 app.get("/", function (req, res) {
   res.render("index", {
-    mapboxAccessToken: process.env.MAPBOX_ACCESS_TOKEN,
+    mapboxAccessToken: process.env.MAPBOX_KEY,
   });
 });
 
 app.get("/747", function (req, res) {
   res.render("747", {
-    mapboxAccessToken: process.env.MAPBOX_ACCESS_TOKEN,
+    mapboxAccessToken: process.env.MAPBOX_KEY,
   });
 });
 

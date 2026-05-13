@@ -2,8 +2,8 @@
 // import importedRoutesV2 from "./routesV2.json" assert { type: "json" };
 // import importedRoutesV2 from "./routesV2mock.json" assert { type: "json" };
 
-mapboxgl.accessToken =
-  "pk.eyJ1Ijoiam9yaXNib3JpcyIsImEiOiJjbG1lam95ZWQxeXhjM2ZteGY2NDhqY2ltIn0.UnfVT_V85n8-D4IN7lxcnA";
+// Token injected by views/747.ejs from process.env.MAPBOX_KEY.
+mapboxgl.accessToken = window.MAPBOX_ACCESS_TOKEN;
 
 const lineTooltip = document.getElementById("lineTooltip");
 
