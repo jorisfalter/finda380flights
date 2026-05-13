@@ -2,5 +2,5 @@ FlightRadarAPI==1.5.1
 curl_cffi==0.15.0
 pytz==2023.3
 pymongo==4.5.0
-certifi==2021.10.8
+certifi>=2024.2.2
 python-dotenv==1.0.0
