@@ -1,4 +1,5 @@
 import json
+import re
 import sys
 import time
 from datetime import datetime, timedelta
@@ -33,43 +34,60 @@ with open(json_file_path_airlines,"r") as json_file:
 # Used when an IATA code isn't in our curated airports.json — prevents
 # the (0,0) ghost-route bug where unknown airports landed on the Africa
 # coast instead of being properly placed.
-ourairports_data = {}
+ourairports_data = {}    # primary iata_code → airport
+ourairports_alias = {}   # 3-letter keyword aliases → airport (lower priority)
 try:
     with open("ourairports.csv", "r", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            iata = (row.get("iata_code") or "").strip()
-            if not iata:
-                continue
             try:
                 lat = float(row["latitude_deg"])
                 lon = float(row["longitude_deg"])
             except (KeyError, ValueError):
                 continue
-            ourairports_data[iata] = {
+            entry = {
                 "cityName": (row.get("municipality") or row.get("name") or "").strip() or "na",
                 "latitude": lat,
                 "longitude": lon,
             }
-    print(f"Loaded {len(ourairports_data)} airports from ourairports.csv fallback")
+            iata = (row.get("iata_code") or "").strip().upper()
+            if iata:
+                ourairports_data[iata] = entry
+            # OurAirports sometimes carries a stale iata_code and lists the
+            # current code only in keywords (e.g. Bishkek: iata_code=BSZ but
+            # keywords include FRU). Index 3-letter all-caps keyword tokens
+            # as lower-priority aliases so those still resolve.
+            for token in re.split(r"[,;]", row.get("keywords") or ""):
+                token = token.strip().upper()
+                if len(token) == 3 and token.isalpha():
+                    ourairports_alias.setdefault(token, entry)
+    print(f"Loaded {len(ourairports_data)} airports + {len(ourairports_alias)} keyword aliases from ourairports.csv")
 except FileNotFoundError:
     print("WARNING: ourairports.csv missing — unknown airports will be skipped")
 
 
 unknown_airports = {}  # iata → list of flight numbers seen, for end-of-run notify
 
+# Junk values the upstream feeds emit when an airport is genuinely unknown.
+# These are not real codes — skip the route silently, no Telegram alert.
+INVALID_IATA = {"", "N/A", "NA", "NULL", "NONE", "-", "?", "XXX"}
+
 
 def resolve_airport(iata, flight_number=None):
     """Look up IATA → (latitude, longitude, cityName).
-    Returns None if airport is unknown in both data sources, and tracks
-    the unresolved code for an end-of-run Telegram summary."""
+    Returns None if the code is junk or unknown. Genuinely-unknown real
+    codes are tracked for an end-of-run Telegram summary; junk codes
+    (N/A etc.) are skipped without alerting."""
+    code = (iata or "").strip().upper()
+    if code in INVALID_IATA:
+        return None  # junk — skip route, do not alert
     found = airport_data.get(iata)
     if found and found.get("latitude") is not None and found.get("longitude") is not None:
         return found["latitude"], found["longitude"], found.get("cityName", "na")
-    found = ourairports_data.get(iata)
+    found = ourairports_data.get(code) or ourairports_alias.get(code)
     if found:
         return found["latitude"], found["longitude"], found["cityName"]
-    unknown_airports.setdefault(iata or "<empty>", []).append(flight_number or "<no flight>")
+    unknown_airports.setdefault(code, []).append(flight_number or "<no flight>")
     return None
 
 
