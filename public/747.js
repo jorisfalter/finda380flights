@@ -7,33 +7,36 @@ mapboxgl.accessToken = window.MAPBOX_ACCESS_TOKEN;
 
 const lineTooltip = document.getElementById("lineTooltip");
 
-// selectedAirlines is mutated by the cargo/passenger filter — same hook
-// the A380 page uses for per-airline filtering, except here the contents
-// are derived from the active category instead of from logo clicks.
-let selectedAirlines = [];
 let airlines747 = { airlines: {} };
 let currentCategory = "all";
 
-// Classify by IATA flight number. Mixed-role airlines split by flight-number
-// range — e.g. Lufthansa Cargo is LH8xxx+, Korean Air Cargo is KE200+.
+// Classify by IATA flight number → "passenger" or "cargo".
+// In 2026 passenger 747 ops are a tiny known set (Lufthansa, Air China,
+// Korean Air, Mahan Air). Everything else flying a 747 is cargo — so
+// anything not explicitly a known passenger flight defaults to "cargo".
+// Mixed-role airlines split by flight-number range (Lufthansa Cargo is
+// LH8xxx+, Korean Air Cargo is KE200+, etc.).
 function classifyFlight(flightNumber) {
-  if (!flightNumber) return "unknown";
+  if (!flightNumber) return "cargo";
   const prefix = flightNumber.substring(0, 2).toUpperCase();
   const entry = airlines747.airlines[prefix];
-  if (!entry) return "unknown";
+  if (!entry) return "cargo";
   if (entry.category === "cargo") return "cargo";
   if (entry.cargo_flight_min) {
     const numPart = flightNumber.substring(2).replace(/\D/g, "");
     const num = parseInt(numPart, 10);
     if (!isNaN(num) && num >= entry.cargo_flight_min) return "cargo";
   }
-  return entry.category;
+  return "passenger";
 }
 
-function routeMatchesCategory(route, category) {
-  if (category === "all") return true;
-  const all = [...(route.goflights || []), ...(route.returnflights || [])];
-  return all.some((f) => classifyFlight(f.flightNumber) === category);
+// Categories present on a route, e.g. ["cargo"] or ["passenger","cargo"].
+function routeCategoriesOf(route) {
+  const cats = new Set();
+  [...(route.goflights || []), ...(route.returnflights || [])].forEach((f) => {
+    cats.add(classifyFlight(f.flightNumber));
+  });
+  return Array.from(cats);
 }
 
 // this is a list of markers
@@ -59,21 +62,10 @@ Promise.all([
 ])
   .then(([airlinesJson, allRoutes]) => {
     airlines747 = airlinesJson;
-    // Populate selectedAirlines with every airline ever seen on a 747 route,
-    // so the existing toggleLayers/toggleMarkers logic shows them all by
-    // default. The cargo/pax filter prunes this list at runtime.
-    const seenAirlines = new Set();
-    allRoutes.forEach((r) => {
-      [...(r.goflights || []), ...(r.returnflights || [])].forEach((f) => {
-        if (f.airline) seenAirlines.add(f.airline);
-      });
-    });
-    selectedAirlines = Array.from(seenAirlines);
 
     // Draw all routes upfront. The cargo/passenger toggle later hides
-    // mismatched routes by editing selectedAirlines and re-running
-    // toggleLayers — so we need every route as a map layer even if
-    // it's invisible at start. (Cheaper than re-rendering on toggle.)
+    // mismatched routes by setting line-opacity to 0 — so we need every
+    // route as a map layer even if it's invisible at start.
     const importedRoutesV2 = allRoutes;
     console.log(`747 map: ${allRoutes.length} total routes loaded`);
     const map = new mapboxgl.Map({
@@ -96,6 +88,9 @@ Promise.all([
       for (let m = 0; m < importedRoutesV2[k].goflights.length; m++) {
         routeAirlines.push(importedRoutesV2[k].goflights[m].airline);
       }
+
+      // Category set for this route — drives the cargo/passenger filter.
+      const routeCategories = routeCategoriesOf(importedRoutesV2[k]);
 
       // mathematical hack to make sure both coordinates are positive when crossing the dateline
       function changeHemisphere1() {
@@ -166,6 +161,7 @@ Promise.all([
           metadata: {
             origin: originCityName,
             airline: routeAirlines,
+            category: routeCategories,
             destination: destinationCityName,
             origin_airport: originAirportName,
             destination_airport: destinationAirportName,
@@ -185,6 +181,7 @@ Promise.all([
           metadata: {
             origin: originCityName,
             airline: routeAirlines,
+            category: routeCategories,
             destination: destinationCityName,
             origin_airport: originAirportName,
             destination_airport: destinationAirportName,
@@ -319,112 +316,34 @@ Promise.all([
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    //// Airline Filters
+    //// Cargo / Passenger filter
 
-    // this is a function to change line opacity
-    function toggleLayers(selectedAirlines) {
-      map.getStyle().layers.forEach((layer) => {
-        // take the layers starting with "route..."
-        if (layer.type === "line" && layer.id.substring(0, 5) == "route") {
-          // console.log(map.getLayer(layer.id).metadata.airline);
-          // Get the airlines associated with the layer
-          const airlineArray =
-            // map.getPaintProperty(layer.id, "line-opacity") !== 0
-            // ?
-            map.getLayer(layer.id).metadata.airline;
-          // : null;
-          for (let n = 0; n < airlineArray.length; n++) {
-            if (selectedAirlines.includes(airlineArray[n])) {
-              map.setPaintProperty(layer.id, "line-opacity", 1);
-              n = airlineArray.length;
-            } else {
-              map.setPaintProperty(layer.id, "line-opacity", 0);
-            }
-          }
-        }
-        // take the layers starting with "route..."
-        if (layer.type === "line" && layer.id.substring(0, 5) == "hover") {
-          // console.log(map.getLayer(layer.id).metadata.airline);
-          // Get the airlines associated with the layer
-          const airlineArray =
-            // map.getPaintProperty(layer.id, "line-opacity") !== 0
-            // ?
-            map.getLayer(layer.id).metadata.airline;
-          // : null;
-          for (let n = 0; n < airlineArray.length; n++) {
-            if (selectedAirlines.includes(airlineArray[n])) {
-              map.setPaintProperty(layer.id, "line-opacity", 0.01);
-              n = airlineArray.length;
-            } else {
-              map.setPaintProperty(layer.id, "line-opacity", 0);
-            }
-          }
-        }
-      });
-    }
-
-    function toggleMarkers() {
-      // add and remove the markers
-      mapboxMarkers.forEach((marker) => {
-        // Get the popup content and split it into an array of airlines
-        // console.log("togglemarker:" + marker._popup);
-        // Object.entries(marker._popup).forEach(([key, value]) => {
-        //   console.log(key + ": " + value);
-        // });
-
-        // const markerAirlinesFull = marker._popup._content.innerHTML;
-        // console.log(marker._popup._content.innerHTML);
-        // console.log(marker._popup._content.innerText);
-
-        // console.log(marker._element.dataset.airlines);
-        const markerAirlinesFull = marker._element.dataset.airlines;
-        // airlineElements = marker.getAttribute("data-airlines");
-
-        // Create a temporary div element to parse the HTML
-        const tempDiv = document.createElement("div");
-        tempDiv.innerHTML = markerAirlinesFull;
-
-        // Get all <p> elements within the div
-        const airlineElements = tempDiv.querySelectorAll("p");
-
-        // Extract airline names into an array
-        const markerAirlines = Array.from(airlineElements).map(
-          (p) => p.textContent
-        );
-
-        // console.log(markerAirlines);
-
-        // Check if there's an intersection between marker's airlines and selected airlines
-        const intersection = markerAirlines.filter((airline) =>
-          selectedAirlines.includes(airline)
-        );
-
-        if (intersection.length > 0) {
-          // Show the marker
-          marker.addTo(map);
-        } else {
-          // Hide the marker
-          marker.remove();
-        }
-      });
-    }
-
-    // Cargo / Passenger filter — toggles which routes are visible by
-    // editing selectedAirlines (the same hook A380's per-airline filter
-    // uses) and re-running the existing toggleLayers/toggleMarkers passes.
+    // Cargo / Passenger filter. Filters directly on each layer's category
+    // metadata — NOT on airline name. Airline name is too coarse: Lufthansa
+    // flies both passenger and cargo 747s, so an airline-name filter would
+    // leak cargo routes into the passenger view.
     function applyCategoryFilter(category) {
       currentCategory = category;
-      const matchingAirlines = new Set();
-      allRoutes.forEach((r) => {
-        if (routeMatchesCategory(r, category)) {
-          [...(r.goflights || []), ...(r.returnflights || [])].forEach((f) => {
-            if (f.airline) matchingAirlines.add(f.airline);
-          });
-        }
+
+      map.getStyle().layers.forEach((layer) => {
+        if (layer.type !== "line") return;
+        const isHover = layer.id.startsWith("hoverroute");
+        const isRoute = !isHover && layer.id.startsWith("route");
+        if (!isRoute && !isHover) return;
+
+        const cats = (map.getLayer(layer.id).metadata || {}).category || [];
+        const visible = category === "all" || cats.includes(category);
+        const onOpacity = isHover ? 0.01 : 1;
+        map.setPaintProperty(layer.id, "line-opacity", visible ? onOpacity : 0);
       });
-      selectedAirlines = Array.from(matchingAirlines);
-      toggleLayers(selectedAirlines);
-      toggleMarkers();
+
+      // Markers: visible if the airport is touched by a route of this category.
+      mapboxMarkers.forEach((marker) => {
+        const cats = (marker._element.dataset.categories || "").split(",");
+        const visible = category === "all" || cats.includes(category);
+        if (visible) marker.addTo(map);
+        else marker.remove();
+      });
 
       ["all", "passenger", "cargo"].forEach((c) => {
         const btn = document.getElementById(`filter-${c}`);
@@ -485,6 +404,17 @@ Promise.all([
       return Array.from(uniqueAirlines); // Convert Set to an array and return
     }
 
+    // Categories touching an airport — used to show/hide markers per filter.
+    function extractCategoriesByAirport(airportName) {
+      const cats = new Set();
+      importedRoutesV2.forEach((route) => {
+        if (route.originName === airportName || route.destinationName === airportName) {
+          routeCategoriesOf(route).forEach((c) => cats.add(c));
+        }
+      });
+      return Array.from(cats);
+    }
+
     // create markers
     map.on("load", () => {
       for (let j = 0; j < allMarkersObject.length; j++) {
@@ -509,6 +439,12 @@ Promise.all([
           .addTo(map);
 
         newMarker.getElement().setAttribute("data-airlines", airlineListHTML);
+        newMarker
+          .getElement()
+          .setAttribute(
+            "data-categories",
+            extractCategoriesByAirport(allMarkersObject[j].name).join(",")
+          );
 
         // console.log("newMarker:" + newMarker._popup);
         // Object.entries(newMarker._popup._marker._popup).forEach(
