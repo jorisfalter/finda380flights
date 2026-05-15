@@ -232,10 +232,12 @@ Promise.all([
               container += newSubString; // Append the <span> element to your container
             }
 
+            // adsb.lol records carry no scheduled times — omit the time
+            // line entirely rather than showing a placeholder.
             const timeLine = (item.departureTimeLocal && item.arrivalTimeLocal)
-              ? `${item.departureTimeLocal} - ${item.arrivalTimeLocal}`
-              : `<em style="opacity:0.7">live</em>`;
-            tooltipContent += `${item.airline} - ${item.flightNumber}<br>${timeLine}<br><div style="padding: 5px 0">${container}</div>
+              ? `${item.departureTimeLocal} - ${item.arrivalTimeLocal}<br>`
+              : ``;
+            tooltipContent += `${item.airline} - ${item.flightNumber}<br>${timeLine}<div style="padding: 5px 0">${container}</div>
             <div style="line-height: 4px;"></div>`;
           }
 
@@ -258,10 +260,12 @@ Promise.all([
                 "<span class = 'dow' >" + day + "   " + "</span>";
               container += newSubString; // Append the <span> element to your container
             }
+            // adsb.lol records carry no scheduled times — omit the time
+            // line entirely rather than showing a placeholder.
             const timeLine = (item.departureTimeLocal && item.arrivalTimeLocal)
-              ? `${item.departureTimeLocal} - ${item.arrivalTimeLocal}`
-              : `<em style="opacity:0.7">live</em>`;
-            tooltipContent += `${item.airline} - ${item.flightNumber}<br>${timeLine}<br><div style="padding: 5px 0">${container}</div><div style="line-height: 1px;"></div>`;
+              ? `${item.departureTimeLocal} - ${item.arrivalTimeLocal}<br>`
+              : ``;
+            tooltipContent += `${item.airline} - ${item.flightNumber}<br>${timeLine}<div style="padding: 5px 0">${container}</div><div style="line-height: 1px;"></div>`;
           }
 
           // add it to the html
