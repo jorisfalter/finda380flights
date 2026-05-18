@@ -450,8 +450,8 @@ fetch("/api/data")
     });
 
     // Grey out airline tiles for carriers with no current A380 routes
-    // (e.g. Qatar parks its A380 fleet seasonally). The title tooltip
-    // shows when that airline last flew an A380.
+    // (e.g. Qatar parks its A380 fleet seasonally). Hovering a greyed
+    // tile shows a tooltip with that airline's last A380 flight date.
     fetch("/api/a380/airline-status")
       .then((r) => r.json())
       .then((statusList) => {
@@ -466,23 +466,40 @@ fetch("/api/data")
           statusByName[s.airline] = s;
         });
 
+        const tooltip = document.getElementById("tooltip");
+
         airlineIds.forEach((airlineId) => {
           const name = airlineIdToName[airlineId];
           if (activeAirlines.has(name)) return; // active — leave as-is
           const el = document.getElementById(airlineId);
           if (!el) return;
           el.classList.add("airline-inactive");
+
           const status = statusByName[name];
+          let msg = `${name} — no A380 routes right now`;
           if (status && status.lastFlight) {
             const dateStr = new Date(status.lastFlight).toLocaleDateString("en-GB", {
               day: "numeric",
               month: "short",
               year: "numeric",
             });
-            el.title = `${name}: no current A380 routes — last A380 flight ${dateStr}`;
-          } else {
-            el.title = `${name}: no current A380 routes`;
+            msg += `. Last A380 flight: ${dateStr}`;
           }
+
+          // Custom hover tooltip — native title= is too slow/subtle and
+          // ::after pseudo-elements don't render on <img>. Reuses the
+          // same #tooltip element the map markers use.
+          el.addEventListener("mouseenter", () => {
+            const rect = el.getBoundingClientRect();
+            tooltip.textContent = msg;
+            tooltip.style.display = "block";
+            const left = rect.left + rect.width / 2 - tooltip.offsetWidth / 2;
+            tooltip.style.left = `${Math.max(4, left)}px`;
+            tooltip.style.top = `${rect.bottom + 8}px`;
+          });
+          el.addEventListener("mouseleave", () => {
+            tooltip.style.display = "none";
+          });
         });
       })
       .catch((e) => console.error("airline-status fetch failed", e));

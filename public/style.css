@@ -176,10 +176,15 @@ body {
 }
 
 /* Airline with no current A380 routes (e.g. seasonally parked fleet).
-   Greyed + dimmed; hover title shows the last A380 flight date. */
+   Greyed + dimmed; hovering shows a tooltip with the last flight date. */
 .airline-inactive {
   filter: grayscale(1);
   opacity: 0.35;
+}
+/* Suppress the blink-on-hover animation for greyed-out tiles. */
+.airline-inactive:hover {
+  animation: none;
+  border-color: #ccc;
 }
 
 .mapboxgl-lineTooltip {
