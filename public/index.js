@@ -384,23 +384,25 @@ fetch("/api/data")
       });
     }
 
+    // Maps the airline filter tile IDs to airline names. Shared by the
+    // click-filter and the "parked fleet" greying-out logic below.
+    const airlineIdToName = {
+      koreanAir: "Korean Air",
+      emirates: "Emirates",
+      britishAirways: "British Airways",
+      etihad: "Etihad Airways",
+      qatar: "Qatar Airways",
+      ana: "All Nippon Airways",
+      asiana: "Asiana Airlines",
+      lufthansa: "Lufthansa",
+      singaporeAirlines: "Singapore Airlines",
+      qantas: "Qantas Airways",
+    };
+
     // Function to add and remove airline from the array
     function toggleAirline(airlineId) {
       // imageElement
       const imageElement = document.getElementById(airlineId);
-      // Define an object that maps airline IDs to airline names
-      const airlineIdToName = {
-        koreanAir: "Korean Air",
-        emirates: "Emirates",
-        britishAirways: "British Airways",
-        etihad: "Etihad Airways",
-        qatar: "Qatar Airways",
-        ana: "All Nippon Airways",
-        asiana: "Asiana Airlines",
-        lufthansa: "Lufthansa",
-        singaporeAirlines: "Singapore Airlines",
-        qantas: "Qantas Airways",
-      };
 
       // Get the airline name based on the airline ID
       const airlineName = airlineIdToName[airlineId];
@@ -446,6 +448,44 @@ fetch("/api/data")
         .getElementById(airlineId)
         .addEventListener("click", () => toggleAirline(airlineId));
     });
+
+    // Grey out airline tiles for carriers with no current A380 routes
+    // (e.g. Qatar parks its A380 fleet seasonally). The title tooltip
+    // shows when that airline last flew an A380.
+    fetch("/api/a380/airline-status")
+      .then((r) => r.json())
+      .then((statusList) => {
+        const activeAirlines = new Set();
+        importedRoutesV2.forEach((route) => {
+          [...(route.goflights || []), ...(route.returnflights || [])].forEach((f) => {
+            if (f.airline) activeAirlines.add(f.airline);
+          });
+        });
+        const statusByName = {};
+        statusList.forEach((s) => {
+          statusByName[s.airline] = s;
+        });
+
+        airlineIds.forEach((airlineId) => {
+          const name = airlineIdToName[airlineId];
+          if (activeAirlines.has(name)) return; // active — leave as-is
+          const el = document.getElementById(airlineId);
+          if (!el) return;
+          el.classList.add("airline-inactive");
+          const status = statusByName[name];
+          if (status && status.lastFlight) {
+            const dateStr = new Date(status.lastFlight).toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "short",
+              year: "numeric",
+            });
+            el.title = `${name}: no current A380 routes — last A380 flight ${dateStr}`;
+          } else {
+            el.title = `${name}: no current A380 routes`;
+          }
+        });
+      })
+      .catch((e) => console.error("airline-status fetch failed", e));
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //// Creating the location marker

@@ -65,6 +65,22 @@ MongoClient.connect(mongoUrl, {})
     // New per-aircraft endpoints.
     app.get("/api/a380/data", (req, res) => serveRoutes("a380", res));
     app.get("/api/b747/data", (req, res) => serveRoutes("b747", res));
+
+    // Per-airline last-seen status (for the greyed-out "parked fleet" UI).
+    async function serveAirlineStatus(aircraftKey, res) {
+      try {
+        const result = await db
+          .collection(aircraftKey + "airlineStatus")
+          .find({})
+          .toArray();
+        res.json(result);
+      } catch (err) {
+        console.error(`/api/${aircraftKey}/airline-status failed`, err);
+        res.status(500).send("Internal Server Error");
+      }
+    }
+    app.get("/api/a380/airline-status", (req, res) => serveAirlineStatus("a380", res));
+    app.get("/api/b747/airline-status", (req, res) => serveAirlineStatus("b747", res));
   })
   .catch((err) => {
     console.error("Error connecting to MongoDB", err);

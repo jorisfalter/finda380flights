@@ -379,6 +379,35 @@ if __name__ == "__main__":
         lines.append("Add to airports.json or extend ourairports.csv.")
         telegram_notify("\n".join(lines))
 
+    # Per-airline last-seen date. Powers the frontend "parked fleet"
+    # indicator — e.g. Qatar greyed out with "last A380 flight 1 Apr 2026"
+    # when they seasonally park their A380s. Grouped by 2-letter flight
+    # number prefix across the whole source collection (all-time).
+    status_collection = db[aircraft_key + "airlineStatus"]
+    pipeline = [
+        {"$match": {"flightNumber": {"$type": "string", "$ne": ""}}},
+        {"$group": {
+            "_id": {"$toUpper": {"$substrCP": ["$flightNumber", 0, 2]}},
+            "lastFlight": {"$max": "$loggingTime"},
+            "totalSeen": {"$sum": 1},
+        }},
+    ]
+    status_docs = []
+    for row in source_collection.aggregate(pipeline):
+        code = row["_id"]
+        if not code or len(code) != 2:
+            continue
+        status_docs.append({
+            "code": code,
+            "airline": get_airline_name(code),
+            "lastFlight": row["lastFlight"],
+            "totalSeen": row["totalSeen"],
+        })
+    if status_docs:
+        status_collection.delete_many({})
+        status_collection.insert_many(status_docs)
+        print(f"Airline status: {len(status_docs)} airline codes written")
+
 
 
   
