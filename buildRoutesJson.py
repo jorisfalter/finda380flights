@@ -384,6 +384,9 @@ if __name__ == "__main__":
     # when they seasonally park their A380s. Grouped by 2-letter flight
     # number prefix across the whole source collection (all-time).
     status_collection = db[aircraft_key + "airlineStatus"]
+    # NB: source_collection belongs to the first MongoClient, already
+    # closed above — re-reference the source via this still-open client.
+    source_for_status = db[aircraft_config["flights_collection"]]
     pipeline = [
         {"$match": {"flightNumber": {"$type": "string", "$ne": ""}}},
         {"$group": {
@@ -393,7 +396,7 @@ if __name__ == "__main__":
         }},
     ]
     status_docs = []
-    for row in source_collection.aggregate(pipeline):
+    for row in source_for_status.aggregate(pipeline):
         code = row["_id"]
         if not code or len(code) != 2:
             continue
