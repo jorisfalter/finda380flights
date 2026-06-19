@@ -36,6 +36,9 @@ def get_flight_data(aircraft_key="a380"):
     print(f"Found {len(flights)} {config['display_name']} flights "
           f"(types: {','.join(config['icao_types'])})")
 
+    # Per-run counters for end-of-run health summary + Telegram alert.
+    stats = {"inserted": 0, "rate_limited": 0, "other_error": 0, "no_destination": 0, "insert_failed": 0}
+
     for idx, flight in enumerate(flights):
         # Throttle to stay under FR24's per-request rate limit
         if idx > 0:
@@ -45,7 +48,12 @@ def get_flight_data(aircraft_key="a380"):
             flight_details = api.get_flight_details(flight)
         except Exception as e:
             # 429s and intermittent failures should not kill the whole run
-            print(f"skip {flight.number}: {type(e).__name__}: {str(e)[:120]}")
+            msg = str(e)[:120]
+            if "429" in msg or "Too Many" in msg:
+                stats["rate_limited"] += 1
+            else:
+                stats["other_error"] += 1
+            print(f"skip {flight.number}: {type(e).__name__}: {msg}")
             time.sleep(5)
             continue
 
@@ -95,22 +103,62 @@ def get_flight_data(aircraft_key="a380"):
                              "icaoType": getattr(flight, "aircraft_code", None),
                              "source": "fr24"}
 
-            result = collection.insert_one(dataOneFlight)
-
-            # dataOneFlight = [flight.number, flight.origin_airport_iata,
-            #  flight.destination_airport_iata, local_dep_datetime, local_arr_datetime]
-            # data.append(dataOneFlight)
+            try:
+                collection.insert_one(dataOneFlight)
+                stats["inserted"] += 1
+            except Exception as e:
+                stats["insert_failed"] += 1
+                print(f"insert fail {flight.number}: {type(e).__name__}: {str(e)[:120]}")
 
             print(flight.number, flight.origin_airport_iata,
                   flight.destination_airport_iata, local_dep_datetime, departureTimeLocal, departureDow, local_arr_datetime, arrivalTimeLocal, arrivalDow)
 
 
         else:
+            stats["no_destination"] += 1
             print("no destination")
-            # print(flight_details)
 
-        # break
-    # close db:
+    # Health summary — printed every run, alerted to Telegram only when
+    # FR24 has effectively given up. Threshold is intentionally strict
+    # (inserted==0 with a non-trivial fleet) because FR24's normal hit
+    # rate is 5-15% with rate-limiting — alerting on every "low" run
+    # would spam. Dedupe via a state collection: max one alert per
+    # aircraft per 12h.
+    found = len(flights)
+    inserted = stats["inserted"]
+    rate = (inserted / found) if found else 0
+    print(
+        f"FR24 {config['display_name']} summary: found={found} inserted={inserted} "
+        f"rate_limited={stats['rate_limited']} other_error={stats['other_error']} "
+        f"no_destination={stats['no_destination']} insert_failed={stats['insert_failed']} "
+        f"success_rate={rate:.0%}"
+    )
+    DEAD_THRESHOLD_FOUND = 20
+    DEAD_ALERT_DEDUPE_HOURS = 12
+    if found >= DEAD_THRESHOLD_FOUND and inserted == 0:
+        health_col = client["a380flightsDb"]["_ingestHealth"]
+        key = f"fr24:{aircraft_key}"
+        last = health_col.find_one({"_id": key})
+        cutoff = datetime.datetime.utcnow() - datetime.timedelta(hours=DEAD_ALERT_DEDUPE_HOURS)
+        if not last or last.get("lastAlertAt", datetime.datetime.min) < cutoff:
+            try:
+                from notify import telegram_notify
+                telegram_notify(
+                    f"⚠️ FR24 {config['display_name']} ingest is dead: "
+                    f"0/{found} captured. {stats['rate_limited']} rate-limited, "
+                    f"{stats['other_error']} other errors. "
+                    f"adsb.lol backup still covers most routes."
+                )
+                health_col.update_one(
+                    {"_id": key},
+                    {"$set": {"lastAlertAt": datetime.datetime.utcnow(),
+                              "found": found, "inserted": inserted,
+                              "rate_limited": stats["rate_limited"]}},
+                    upsert=True,
+                )
+            except Exception as e:
+                print(f"  (telegram alert failed: {e})")
+
     client.close()
 
 
