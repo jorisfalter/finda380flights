@@ -1,0 +1,26 @@
+{
+  "version": "2026-06",
+  "comment": "767 operator classification. Big cargo fleet (FedEx, UPS, DHL, ABX Air) and a large passenger fleet (Delta, United, ANA, JAL, Avianca, LATAM).",
+  "airlines": {
+    "DL": { "name": "Delta Air Lines",         "category": "passenger" },
+    "UA": { "name": "United Airlines",         "category": "passenger" },
+    "NH": { "name": "All Nippon Airways",      "category": "passenger" },
+    "JL": { "name": "Japan Airlines",          "category": "passenger" },
+    "AV": { "name": "Avianca",                 "category": "passenger" },
+    "LA": { "name": "LATAM Airlines",          "category": "passenger" },
+    "AA": { "name": "American Airlines",       "category": "passenger" },
+    "AC": { "name": "Air Canada Rouge",        "category": "passenger" },
+    "OM": { "name": "MIAT Mongolian",          "category": "passenger" },
+    "RA": { "name": "Nepal Airlines",          "category": "passenger" },
+    "FX": { "name": "FedEx Express",           "category": "cargo" },
+    "5X": { "name": "UPS Airlines",            "category": "cargo" },
+    "D0": { "name": "DHL Air UK",              "category": "cargo" },
+    "GTI": { "name": "Atlas Air",              "category": "cargo" },
+    "ABX": { "name": "ABX Air",                "category": "cargo" },
+    "PO": { "name": "Polar Air Cargo",         "category": "cargo" },
+    "ER": { "name": "DHL Aero Expreso",        "category": "cargo" },
+    "ABW": { "name": "AirBridgeCargo",         "category": "cargo" },
+    "AY": { "name": "Finnair Cargo",           "category": "cargo" },
+    "DAE": { "name": "DHL Aviation",           "category": "cargo" }
+  }
+}

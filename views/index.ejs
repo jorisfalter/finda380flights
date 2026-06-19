@@ -45,7 +45,13 @@
     <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
 
     <div class="nav-links">
-        <a href="/747">747 map →</a>
+        <% navLinks.forEach(function(link) { %>
+            <% if (link.path === currentPath) { %>
+                <span class="nav-current"><%= link.label %></span>
+            <% } else { %>
+                <a href="<%= link.path %>"><%= link.label %></a>
+            <% } %>
+        <% }) %>
     </div>
 
     <div class="airlineFilter">

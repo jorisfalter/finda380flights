@@ -93,6 +93,8 @@ app.get("/", function (req, res) {
   res.render("index", {
     mapboxAccessToken: process.env.MAPBOX_KEY,
     assetVersion: ASSET_VERSION,
+    navLinks: NAV_LINKS,
+    currentPath: "/",
   });
 });
 
@@ -100,18 +102,24 @@ app.get("/", function (req, res) {
 // adding a new aircraft is just: aircraft_config.py entry + the route
 // below + 3 Heroku Scheduler entries (FR24, adsb.lol, buildRoutes).
 const AIRCRAFT_PAGES = {
-  "/747": {
-    key: "b747",
-    label: "747",
-    hasCategoryFilter: true,
-    airlinesJsonUrl: "/airlines_747.json",
-  },
-  // New aircraft types plug in here once their ingest cron is running:
-  //   "/a340": { key: "a340", label: "A340", hasCategoryFilter: false },
-  //   "/757":  { key: "b757", label: "757",  hasCategoryFilter: true, airlinesJsonUrl: "/airlines_757.json" },
-  //   "/767":  { key: "b767", label: "767",  hasCategoryFilter: true, airlinesJsonUrl: "/airlines_767.json" },
-  //   "/717":  { key: "b717", label: "717",  hasCategoryFilter: false },
+  "/747":  { key: "b747", label: "747",  hasCategoryFilter: true,  airlinesJsonUrl: "/airlines_747.json" },
+  "/a340": { key: "a340", label: "A340", hasCategoryFilter: false },
+  "/a350": { key: "a350", label: "A350", hasCategoryFilter: false },
+  "/787":  { key: "b787", label: "787",  hasCategoryFilter: false },
+  "/757":  { key: "b757", label: "757",  hasCategoryFilter: true,  airlinesJsonUrl: "/airlines_757.json" },
+  "/767":  { key: "b767", label: "767",  hasCategoryFilter: true,  airlinesJsonUrl: "/airlines_767.json" },
 };
+
+// Cross-page nav: every aircraft map links to every other one.
+const NAV_LINKS = [
+  { path: "/",     label: "A380" },
+  { path: "/747",  label: "747"  },
+  { path: "/787",  label: "787"  },
+  { path: "/a350", label: "A350" },
+  { path: "/a340", label: "A340" },
+  { path: "/757",  label: "757"  },
+  { path: "/767",  label: "767"  },
+];
 
 Object.entries(AIRCRAFT_PAGES).forEach(([path, conf]) => {
   app.get(path, (req, res) => {
@@ -125,6 +133,8 @@ Object.entries(AIRCRAFT_PAGES).forEach(([path, conf]) => {
       canonicalPath: path,
       mapboxAccessToken: process.env.MAPBOX_KEY,
       assetVersion: ASSET_VERSION,
+      navLinks: NAV_LINKS,
+      currentPath: path,
     });
   });
 });

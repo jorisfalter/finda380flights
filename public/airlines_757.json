@@ -1,0 +1,20 @@
+{
+  "version": "2026-06",
+  "comment": "757 operator classification. Many passenger 757s are still flying (Delta, United, Icelandair, Condor), and the cargo conversions (757F) are huge with FedEx, UPS, DHL.",
+  "airlines": {
+    "DL": { "name": "Delta Air Lines",         "category": "passenger" },
+    "UA": { "name": "United Airlines",         "category": "passenger" },
+    "FI": { "name": "Icelandair",              "category": "passenger" },
+    "DE": { "name": "Condor",                  "category": "passenger" },
+    "JE": { "name": "Jet2.com",                "category": "passenger" },
+    "QU": { "name": "Azur Air",                "category": "passenger" },
+    "FX": { "name": "FedEx Express",           "category": "cargo" },
+    "5X": { "name": "UPS Airlines",            "category": "cargo" },
+    "D0": { "name": "DHL Air UK",              "category": "cargo" },
+    "ER": { "name": "DHL Aero Expreso",        "category": "cargo" },
+    "BCS": { "name": "European Air Transport", "category": "cargo" },
+    "AMS": { "name": "Amerijet",               "category": "cargo" },
+    "ABX": { "name": "ABX Air",                "category": "cargo" },
+    "PO": { "name": "Polar Air Cargo",         "category": "cargo" }
+  }
+}

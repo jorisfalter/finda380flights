@@ -160,6 +160,17 @@ body {
   text-decoration: none;
   font-weight: 500;
 }
+.nav-links a, .nav-links .nav-current {
+  display: inline-block;
+  padding: 2px 6px;
+  margin: 0 2px;
+}
+.nav-current {
+  color: #333;
+  font-weight: 700;
+  border-bottom: 2px solid #1e88e5;
+}
+
 @media (max-width: 768px) {
   .nav-links {
     position: static;

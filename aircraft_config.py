@@ -24,6 +24,46 @@ AIRCRAFT_TYPES = {
         "routes_collection": "b747routesCollection",
         "display_name": "747",
     },
+    "a340": {
+        # A340-300 / -500 / -600. Mostly retired from passenger service;
+        # a handful of operators left (Mahan Air, Lufthansa Cargo, some
+        # leisure/charter ops).
+        "icao_types": ["A343", "A345", "A346"],
+        "flights_collection": "a340flightsCollection",
+        "routes_collection": "a340routesCollection",
+        "display_name": "A340",
+    },
+    "a350": {
+        # A350-900 / -1000. Modern flagship widebody — flown by SQ, CX,
+        # QR, EY, AF/KL, LH, DL, UA, ANA/JL, EVA/CI, etc.
+        "icao_types": ["A359", "A35K"],
+        "flights_collection": "a350flightsCollection",
+        "routes_collection": "a350routesCollection",
+        "display_name": "A350",
+    },
+    "b787": {
+        # 787-8 / -9 / -10. Most widely operated modern widebody.
+        "icao_types": ["B788", "B789", "B78X"],
+        "flights_collection": "b787flightsCollection",
+        "routes_collection": "b787routesCollection",
+        "display_name": "787",
+    },
+    "b757": {
+        # 757-200 / -300. Mix of passenger (DL, UA, Icelandair, Condor)
+        # and cargo (FedEx, UPS, DHL).
+        "icao_types": ["B752", "B753"],
+        "flights_collection": "b757flightsCollection",
+        "routes_collection": "b757routesCollection",
+        "display_name": "757",
+    },
+    "b767": {
+        # 767-300 / -400. Mix: passenger (DL, UA, ANA, JL) and cargo
+        # (FedEx, UPS, DHL, ABX Air).
+        "icao_types": ["B763", "B764"],
+        "flights_collection": "b767flightsCollection",
+        "routes_collection": "b767routesCollection",
+        "display_name": "767",
+    },
 }
 
 
