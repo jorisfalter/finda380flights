@@ -187,6 +187,71 @@ body {
   border-color: #ccc;
 }
 
+/* Dynamic airline filter — used by the generic aircraft.ejs view
+   (currently /747, later /a340, /757, /767, /717). Text tiles rather
+   than logo PNGs so the page works for any aircraft type without
+   hand-curated assets. */
+.airline-filter-dynamic {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.92);
+  font-family: 'Quicksand', sans-serif;
+}
+.airline-tile {
+  border: 1px solid #ccc;
+  background: white;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.airline-tile.selected {
+  background: #1e88e5;
+  color: white;
+  border-color: #1e88e5;
+}
+.airline-tile.airline-inactive {
+  cursor: default;
+  filter: grayscale(1);
+  opacity: 0.4;
+}
+.airline-tile:not(.airline-inactive):hover {
+  border-color: #1e88e5;
+}
+
+/* Cargo / passenger toggle — sits below the airline tiles when active. */
+.category-filter {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 6px 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  font-family: 'Quicksand', sans-serif;
+}
+.category-filter button {
+  border: 1px solid #ccc;
+  background: white;
+  padding: 6px 14px;
+  margin: 0 2px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+.category-filter button.active {
+  background: #1e88e5;
+  color: white;
+  border-color: #1e88e5;
+}
+
 .mapboxgl-lineTooltip {
   position: absolute;
   display: none;

@@ -96,10 +96,36 @@ app.get("/", function (req, res) {
   });
 });
 
-app.get("/747", function (req, res) {
-  res.render("747", {
-    mapboxAccessToken: process.env.MAPBOX_KEY,
-    assetVersion: ASSET_VERSION,
+// Generic per-aircraft route. The aircraft.ejs view is data-driven —
+// adding a new aircraft is just: aircraft_config.py entry + the route
+// below + 3 Heroku Scheduler entries (FR24, adsb.lol, buildRoutes).
+const AIRCRAFT_PAGES = {
+  "/747": {
+    key: "b747",
+    label: "747",
+    hasCategoryFilter: true,
+    airlinesJsonUrl: "/airlines_747.json",
+  },
+  // New aircraft types plug in here once their ingest cron is running:
+  //   "/a340": { key: "a340", label: "A340", hasCategoryFilter: false },
+  //   "/757":  { key: "b757", label: "757",  hasCategoryFilter: true, airlinesJsonUrl: "/airlines_757.json" },
+  //   "/767":  { key: "b767", label: "767",  hasCategoryFilter: true, airlinesJsonUrl: "/airlines_767.json" },
+  //   "/717":  { key: "b717", label: "717",  hasCategoryFilter: false },
+};
+
+Object.entries(AIRCRAFT_PAGES).forEach(([path, conf]) => {
+  app.get(path, (req, res) => {
+    res.render("aircraft", {
+      aircraftKey: conf.key,
+      aircraftLabel: conf.label,
+      apiUrl: `/api/${conf.key}/data`,
+      airlineStatusUrl: `/api/${conf.key}/airline-status`,
+      airlinesJsonUrl: conf.airlinesJsonUrl || null,
+      hasCategoryFilter: !!conf.hasCategoryFilter,
+      canonicalPath: path,
+      mapboxAccessToken: process.env.MAPBOX_KEY,
+      assetVersion: ASSET_VERSION,
+    });
   });
 });
 
