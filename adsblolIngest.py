@@ -17,7 +17,7 @@ import pymongo
 import certifi
 from dotenv import load_dotenv
 
-from aircraft_config import get_config
+from aircraft_config import get_config, resolve_keys
 
 
 ADSB_LOL_URL = "https://api.adsb.lol/v2/type/{type}"
@@ -125,5 +125,8 @@ def main(aircraft_key="a380"):
 
 
 if __name__ == "__main__":
-    aircraft_key = sys.argv[1] if len(sys.argv) > 1 else "a380"
-    main(aircraft_key)
+    for k in resolve_keys(sys.argv[1:]):
+        try:
+            main(k)
+        except Exception as e:
+            print(f"{k} adsb.lol ingest failed: {type(e).__name__}: {e}")

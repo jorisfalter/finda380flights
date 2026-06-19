@@ -24,7 +24,7 @@ import pymongo
 import certifi
 from dotenv import load_dotenv
 
-from aircraft_config import get_config
+from aircraft_config import get_config, resolve_keys
 
 
 def repack(client, collection_name, retention_days):
@@ -74,5 +74,8 @@ def main(aircraft_keys, retention_days):
 if __name__ == "__main__":
     load_dotenv()
     retention_days = int(os.getenv("RETENTION_DAYS", "180"))
-    keys = sys.argv[1:] if len(sys.argv) > 1 else ["a380", "b747"]
+    # Default to a380+b747 to preserve the existing Heroku Scheduler call
+    # `python3 cleanup_old.py a380 b747`. Use "all" for every aircraft.
+    raw_args = sys.argv[1:] if len(sys.argv) > 1 else ["a380", "b747"]
+    keys = resolve_keys(raw_args) if raw_args == ["all"] else raw_args
     main(keys, retention_days)

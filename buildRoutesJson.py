@@ -10,7 +10,7 @@ import certifi
 from dotenv import load_dotenv
 import os
 
-from aircraft_config import get_config
+from aircraft_config import get_config, resolve_keys
 
 
 # imports the data from airports.json
@@ -133,9 +133,21 @@ def convert_to_abbreviated_days(days_list):
 
 if __name__ == "__main__":
 
-    # Default to a380 — preserves the existing Heroku Scheduler entry
-    # that calls `python3 buildRoutesJson.py` without args.
-    aircraft_key = sys.argv[1] if len(sys.argv) > 1 else "a380"
+    # Multi-key support via subprocess recursion. Each aircraft gets a fresh
+    # interpreter so the module-level state (airport_data, unknown_airports,
+    # etc.) doesn't leak between builds.
+    keys = resolve_keys(sys.argv[1:])
+    if len(keys) > 1:
+        import subprocess
+        rc = 0
+        for k in keys:
+            r = subprocess.run([sys.executable, __file__, k])
+            if r.returncode != 0:
+                print(f"  {k} build returned exit {r.returncode}")
+                rc = r.returncode
+        sys.exit(rc)
+
+    aircraft_key = keys[0]
     aircraft_config = get_config(aircraft_key)
     print(f"Building routes for {aircraft_config['display_name']} "
           f"(source: {aircraft_config['flights_collection']}, "

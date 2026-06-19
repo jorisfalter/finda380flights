@@ -10,7 +10,7 @@ import certifi
 from dotenv import load_dotenv
 import os
 
-from aircraft_config import get_config
+from aircraft_config import get_config, resolve_keys
 
 
 def get_flight_data(aircraft_key="a380"):
@@ -129,7 +129,11 @@ if __name__ == "__main__":
     #         csv_writer.writerow(row)
     # file.close()
 
-    # Default to a380 so the existing Heroku Scheduler job keeps working
-    # without arg changes. Add new jobs as: `python3 flightradarapi.py b747`.
-    aircraft_key = sys.argv[1] if len(sys.argv) > 1 else "a380"
-    get_flight_data(aircraft_key)
+    # Accepts multiple keys or "all". `python3 flightradarapi.py` (no args)
+    # = a380 only, for backward compat with the original cron.
+    keys = resolve_keys(sys.argv[1:])
+    for k in keys:
+        try:
+            get_flight_data(k)
+        except Exception as e:
+            print(f"{k} ingest failed: {type(e).__name__}: {e}")

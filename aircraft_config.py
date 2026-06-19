@@ -74,3 +74,16 @@ def get_config(key):
             f"Unknown aircraft key '{key}'. Valid: {sorted(AIRCRAFT_TYPES.keys())}"
         )
     return AIRCRAFT_TYPES[key]
+
+
+def resolve_keys(args):
+    """Resolve CLI args to a list of aircraft keys.
+       no args      → ["a380"]  (backward-compat default for old crons)
+       ["all"]      → every key in AIRCRAFT_TYPES
+       ["a380","b747"] → those specific keys (validated)"""
+    if not args:
+        return ["a380"]
+    args = [a.lower() for a in args]
+    if "all" in args:
+        return list(AIRCRAFT_TYPES.keys())
+    return args
