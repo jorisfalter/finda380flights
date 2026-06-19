@@ -142,41 +142,55 @@ body {
 }
 .attribution a:hover { color: #000; text-decoration: underline; }
 
-/* Cross-map nav link (A380 ⇄ 747). Floats top-right on desktop; on mobile
-   it drops into normal flow above the airline tiles so it stops
-   overlapping them. */
+/* Cross-map nav — vertical stack on the right edge so it never overlaps
+   the airline-logo strip at the top of the A380 page. Each aircraft
+   map links to every other one. */
 .nav-links {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  position: fixed;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
   z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px 4px;
   background: rgba(255, 255, 255, 0.95);
-  padding: 6px 10px;
   border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
   font-family: 'Quicksand', sans-serif;
+  font-size: 13px;
+}
+.nav-links a, .nav-links .nav-current {
+  display: block;
+  padding: 4px 10px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
 }
 .nav-links a {
   color: #1e88e5;
-  text-decoration: none;
   font-weight: 500;
 }
-.nav-links a, .nav-links .nav-current {
-  display: inline-block;
-  padding: 2px 6px;
-  margin: 0 2px;
+.nav-links a:hover {
+  background: #eef5fb;
 }
 .nav-current {
-  color: #333;
+  color: #fff;
+  background: #1e88e5;
   font-weight: 700;
-  border-bottom: 2px solid #1e88e5;
 }
 
 @media (max-width: 768px) {
   .nav-links {
-    position: static;
-    text-align: right;
-    background: none;
-    padding: 4px 8px;
+    top: auto;
+    bottom: 60px;
+    transform: none;
+    font-size: 11px;
+    padding: 4px 2px;
+  }
+  .nav-links a, .nav-links .nav-current {
+    padding: 3px 6px;
   }
 }
 
