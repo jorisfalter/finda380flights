@@ -367,6 +367,20 @@ if __name__ == "__main__":
         collection.insert_many(second_filtered_data)
         print(f"Routes rebuilt: {len(second_filtered_data)} entries")
 
+    # Low-routes safety alert. A healthy run produces ~50-100 routes;
+    # anything tiny is almost always an infra problem, not real fleet
+    # behavior (this was missing in the June 2026 Atlas-quota incident
+    # — writes were silently blocked for days with zero notification).
+    LOW_ROUTES_THRESHOLD = 5
+    if len(second_filtered_data) < LOW_ROUTES_THRESHOLD:
+        from notify import telegram_notify
+        telegram_notify(
+            f"⚠️ {aircraft_config['display_name']} map: only "
+            f"{len(second_filtered_data)} routes built this run "
+            f"(threshold {LOW_ROUTES_THRESHOLD}). Likely infra issue — "
+            f"check ingest cronjobs and MongoDB Atlas quota."
+        )
+
     # End-of-run alert for unresolvable airports. Stays quiet when everything
     # was resolvable — only fires when there's a genuine new IATA to deal with.
     real_unknowns = {k: v for k, v in unknown_airports.items() if k and k != "<empty>"}
