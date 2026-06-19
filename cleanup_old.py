@@ -1,17 +1,19 @@
-"""Daily cleanup: delete source-collection records older than N days.
+"""Daily cleanup: keep only the last RETENTION_DAYS of records.
 
-Prevents the MongoDB Atlas free-tier 512MB quota from filling up and
-silently blocking all writes — which is exactly what happened in
-June 2026 (1.7M records accumulated since 2023, hit 517/512MB, every
-ingest insert started failing, routes collection went empty, no
-Telegram alert because the alert system only watched for unknown
-airport codes).
+Uses drop-and-repack instead of plain delete because MongoDB Atlas
+M0 free tier's WiredTiger storage engine doesn't release allocated
+disk space after deletes. The June 2026 incident: we deleted 1.5M
+records but storage stayed at 150MB allocated, eventually hit the
+512MB quota intermittently, and the adsb.lol cron started crashing.
 
-RETENTION_DAYS=180 is plenty for our use:
-- buildRoutesJson only reads the last LOOKBACK_DAYS (=30) for routes
-- airline-status's "last A380 flight" lookback handles parked fleets
-  up to RETENTION_DAYS old, which covers seasonal patterns like
-  Qatar parking its A380s every summer
+Drop-and-repack pattern:
+  1. Read records we want to keep into memory
+  2. Drop the whole collection (releases ALL allocated storage)
+  3. Re-insert the kept records (storage allocated fresh, minimal)
+
+Daily cost is small at our scale (~200K kept docs ~= 30s of work).
+RETENTION_DAYS=180 covers seasonal "parked fleet" lookups (Qatar
+parks A380s every summer — April→October).
 """
 
 import os
@@ -25,32 +27,52 @@ from dotenv import load_dotenv
 from aircraft_config import get_config
 
 
-def cleanup(aircraft_key, retention_days):
-    config = get_config(aircraft_key)
+def repack(client, collection_name, retention_days):
+    db = client["a380flightsDb"]
+    col = db[collection_name]
+    cutoff = datetime.datetime.utcnow() - datetime.timedelta(days=retention_days)
+
+    before_count = col.count_documents({})
+    before_storage = db.command("collStats", collection_name).get("storageSize", 0) / 1024 / 1024
+
+    keep = list(col.find({"loggingTime": {"$gte": cutoff}}))
+    dropped = before_count - len(keep)
+
+    col.drop()
+
+    if keep:
+        # Re-insert in batches to stay within reasonable memory + payload size.
+        new_col = db[collection_name]
+        for i in range(0, len(keep), 5000):
+            new_col.insert_many(keep[i : i + 5000], ordered=False)
+
+    after_storage = db.command("collStats", collection_name).get("storageSize", 0) / 1024 / 1024
+    print(
+        f"{collection_name}: kept {len(keep)}, dropped {dropped}, "
+        f"storage {before_storage:.1f}MB → {after_storage:.1f}MB"
+    )
+
+
+def main(aircraft_keys, retention_days):
     mongo_pass = os.getenv("MONGO_ATLAS_PASS")
     client = pymongo.MongoClient(
         f"mongodb+srv://joris-a380:{mongo_pass}@cluster0.1gi6i3v.mongodb.net/"
         f"?retryWrites=true&w=majority&connectTimeoutMS=5000",
         tlsCAFile=certifi.where(),
     )
-    col = client["a380flightsDb"][config["flights_collection"]]
-    cutoff = datetime.datetime.utcnow() - datetime.timedelta(days=retention_days)
-    before = col.count_documents({})
-    result = col.delete_many({"loggingTime": {"$lt": cutoff}})
-    after = col.count_documents({})
-    print(
-        f"{config['flights_collection']}: deleted {result.deleted_count} records "
-        f"older than {cutoff.isoformat()}  (before={before} after={after})"
-    )
-    client.close()
+    try:
+        for key in aircraft_keys:
+            try:
+                config = get_config(key)
+                repack(client, config["flights_collection"], retention_days)
+            except Exception as e:
+                print(f"{key} cleanup failed: {type(e).__name__}: {e}")
+    finally:
+        client.close()
 
 
 if __name__ == "__main__":
     load_dotenv()
     retention_days = int(os.getenv("RETENTION_DAYS", "180"))
     keys = sys.argv[1:] if len(sys.argv) > 1 else ["a380", "b747"]
-    for key in keys:
-        try:
-            cleanup(key, retention_days)
-        except Exception as e:
-            print(f"{key} cleanup failed: {type(e).__name__}: {e}")
+    main(keys, retention_days)

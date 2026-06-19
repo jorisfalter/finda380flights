@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= aircraftLabel %> Map - Where Does The <%= aircraftLabel %> Fly</title>
+
+    <meta name="description"
+        content="Discover destinations and flight paths of the <%= aircraftLabel %>. Live routes from FR24 and ADS-B, filterable by airline<% if (hasCategoryFilter) { %> and by cargo/passenger<% } %>.">
+
+    <link rel="canonical" href="https://www.wheredoesthea380fly.com<%= canonicalPath %>" />
+    <meta name="robots" content="index, follow">
+
+    <script>
+      window.AIRCRAFT_CONFIG = {
+        key: "<%= aircraftKey %>",
+        label: "<%= aircraftLabel %>",
+        apiUrl: "<%= apiUrl %>",
+        airlineStatusUrl: "<%= airlineStatusUrl %>",
+        airlinesJsonUrl: <%- airlinesJsonUrl ? `"${airlinesJsonUrl}"` : 'null' %>,
+        hasCategoryFilter: <%= hasCategoryFilter %>
+      };
+      window.MAPBOX_ACCESS_TOKEN = "<%- mapboxAccessToken %>";
+    </script>
+
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css?v=<%= assetVersion %>">
+    <link rel="icon" href="favicon.webp" type="favicon/webp">
+</head>
+
+<body>
+    <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+
+    <div class="nav-links">
+        <a href="/">← A380 map</a>
+    </div>
+
+    <!-- Airline filter — tiles get rendered into here by aircraft.js once
+         /api/{key}/airline-status loads. -->
+    <div id="airline-filter" class="airline-filter-dynamic"></div>
+
+    <% if (hasCategoryFilter) { %>
+    <div class="category-filter">
+        <button id="filter-all" class="active" data-cat="all">All</button>
+        <button id="filter-passenger" data-cat="passenger">Passenger</button>
+        <button id="filter-cargo" data-cat="cargo">Cargo</button>
+    </div>
+    <% } %>
+
+    <div class="bottom-bar">
+        <a class="feedback-link" target="_blank" rel="noopener"
+           href="https://docs.google.com/spreadsheets/d/1IdwkRChkpVNy_rbbB-GoS4vG-jcp4kwlzouzk0viX_w/edit?gid=670352788#gid=670352788">
+            💬 Feedback Suggestions Requests
+        </a>
+        <span class="attribution">
+            by <a href="https://www.jorisfalter.com" target="_blank" rel="noopener">jorisfalter.com</a>
+        </span>
+    </div>
+
+    <div id="map"></div>
+    <div id="tooltip"></div>
+    <div id="lineTooltip" class="mapboxgl-lineTooltip"></div>
+
+    <div class="seodata">
+        <h1><%= aircraftLabel %> Flight Paths and Destination Map</h1>
+        <h2>Live routes from FR24 and ADS-B, updated hourly</h2>
+    </div>
+
+    <script type="module" src="aircraft.js?v=<%= assetVersion %>"></script>
+</body>
+
+</html>
