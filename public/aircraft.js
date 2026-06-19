@@ -288,17 +288,19 @@ Promise.all([
                 : ``;
             tooltipContent += `${item.airline} - ${item.flightNumber}<br>${timeLine}<div style="padding: 5px 0">${container}</div><div style="line-height: 4px;"></div>`;
           }
-          tooltipContent += `<br><strong>${destinationAirportName} - ${originAirportName}</strong><br><div style="line-height: 1px;"></div>`;
-          for (const item of importedRoutesV2[k].returnflights) {
-            let container = "";
-            for (const day of item.daysOfWeek) {
-              container += `<span class="dow">${day}   </span>`;
+          if (importedRoutesV2[k].returnflights && importedRoutesV2[k].returnflights.length > 0) {
+            tooltipContent += `<br><strong>${destinationAirportName} - ${originAirportName}</strong><br><div style="line-height: 1px;"></div>`;
+            for (const item of importedRoutesV2[k].returnflights) {
+              let container = "";
+              for (const day of item.daysOfWeek) {
+                container += `<span class="dow">${day}   </span>`;
+              }
+              const timeLine =
+                item.departureTimeLocal && item.arrivalTimeLocal
+                  ? `${item.departureTimeLocal} - ${item.arrivalTimeLocal}<br>`
+                  : ``;
+              tooltipContent += `${item.airline} - ${item.flightNumber}<br>${timeLine}<div style="padding: 5px 0">${container}</div><div style="line-height: 1px;"></div>`;
             }
-            const timeLine =
-              item.departureTimeLocal && item.arrivalTimeLocal
-                ? `${item.departureTimeLocal} - ${item.arrivalTimeLocal}<br>`
-                : ``;
-            tooltipContent += `${item.airline} - ${item.flightNumber}<br>${timeLine}<div style="padding: 5px 0">${container}</div><div style="line-height: 1px;"></div>`;
           }
           lineTooltip.innerHTML = tooltipContent;
           lineTooltip.style.display = "block";

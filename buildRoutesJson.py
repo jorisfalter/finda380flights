@@ -328,8 +328,12 @@ if __name__ == "__main__":
                 flight["daysOfWeek"])
 
 
-    # clean up data: if return is empty, don't show
-    filtered_data = [obj for obj in data if obj["returnflights"]]
+    # Don't filter out one-direction-only routes. For a new aircraft type
+    # (1h of data) or thin operators, the return direction might not have
+    # been observed yet, but the outbound flight is still a real route
+    # worth showing. The frontend hides the "return" tooltip section when
+    # returnflights is empty.
+    filtered_data = data
 
     # clean up data: if airline is unknown remove nested object
     # Remove nested objects with "Unknown" airline

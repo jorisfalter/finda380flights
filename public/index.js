@@ -215,7 +215,9 @@ fetch("/api/data")
             <div style="line-height: 4px;"></div>`;
           }
 
-          // create origin - destination
+          // Only show the return section if a return flight has actually
+          // been observed — buildRoutesJson no longer requires it.
+          if (importedRoutesV2[k].returnflights && importedRoutesV2[k].returnflights.length > 0) {
           tooltipContent += `<br><strong>${
             importedRoutesV2[k].destinationName +
             " - " +
@@ -241,6 +243,7 @@ fetch("/api/data")
               : ``;
             tooltipContent += `${item.airline} - ${item.flightNumber}<br>${timeLine}<div style="padding: 5px 0">${container}</div><div style="line-height: 1px;"></div>`;
           }
+          } // end if returnflights
 
           // add it to the html
           lineTooltip.innerHTML = tooltipContent;
