@@ -36,6 +36,11 @@ const collectionName = "a380routesCollection";
 const aircraftCollections = {
   a380: "a380routesCollection",
   b747: "b747routesCollection",
+  a340: "a340routesCollection",
+  a350: "a350routesCollection",
+  b787: "b787routesCollection",
+  b757: "b757routesCollection",
+  b767: "b767routesCollection",
 };
 
 MongoClient.connect(mongoUrl, {})
@@ -62,10 +67,6 @@ MongoClient.connect(mongoUrl, {})
     // Legacy endpoint — frontend still hits this. Treat as A380.
     app.get("/api/data", (req, res) => serveRoutes("a380", res));
 
-    // New per-aircraft endpoints.
-    app.get("/api/a380/data", (req, res) => serveRoutes("a380", res));
-    app.get("/api/b747/data", (req, res) => serveRoutes("b747", res));
-
     // Per-airline last-seen status (for the greyed-out "parked fleet" UI).
     async function serveAirlineStatus(aircraftKey, res) {
       try {
@@ -79,8 +80,15 @@ MongoClient.connect(mongoUrl, {})
         res.status(500).send("Internal Server Error");
       }
     }
-    app.get("/api/a380/airline-status", (req, res) => serveAirlineStatus("a380", res));
-    app.get("/api/b747/airline-status", (req, res) => serveAirlineStatus("b747", res));
+
+    // Per-aircraft data + airline-status endpoints, registered from the
+    // collection map so adding a new aircraft = one line in the map above.
+    Object.keys(aircraftCollections).forEach((key) => {
+      app.get(`/api/${key}/data`, (req, res) => serveRoutes(key, res));
+      app.get(`/api/${key}/airline-status`, (req, res) =>
+        serveAirlineStatus(key, res)
+      );
+    });
   })
   .catch((err) => {
     console.error("Error connecting to MongoDB", err);
