@@ -21,6 +21,12 @@ AIRCRAFT_TYPES = {
         # genuinely low-volume — a flat threshold spammed Telegram for
         # them while missing real drops on big fleets.
         "low_routes_threshold": 30,
+        # fr24_dead_found_threshold: in flightradarapi, alert when FR24
+        # found at least this many planes airborne but captured zero of
+        # them (i.e. FR24 is blocking us). Set below the typical "found"
+        # count per type so it catches a real outage without firing when
+        # only a handful happened to be flying.
+        "fr24_dead_found_threshold": 15,
     },
     "b747": {
         # B748 = 747-8 (pax + freighter), B744 = 747-400 (mostly cargo now,
@@ -31,6 +37,7 @@ AIRCRAFT_TYPES = {
         "routes_collection": "b747routesCollection",
         "display_name": "747",
         "low_routes_threshold": 100,
+        "fr24_dead_found_threshold": 15,
     },
     "a340": {
         # A340-300 / -500 / -600. Mostly retired from passenger service;
@@ -41,6 +48,7 @@ AIRCRAFT_TYPES = {
         "routes_collection": "a340routesCollection",
         "display_name": "A340",
         "low_routes_threshold": 1,
+        "fr24_dead_found_threshold": 4,
     },
     "a350": {
         # A350-900 / -1000. Modern flagship widebody — flown by SQ, CX,
@@ -50,6 +58,7 @@ AIRCRAFT_TYPES = {
         "routes_collection": "a350routesCollection",
         "display_name": "A350",
         "low_routes_threshold": 30,
+        "fr24_dead_found_threshold": 15,
     },
     "b787": {
         # 787-8 / -9 / -10. Most widely operated modern widebody.
@@ -58,6 +67,7 @@ AIRCRAFT_TYPES = {
         "routes_collection": "b787routesCollection",
         "display_name": "787",
         "low_routes_threshold": 50,
+        "fr24_dead_found_threshold": 15,
     },
     "b757": {
         # 757-200 / -300. Mix of passenger (DL, UA, Icelandair, Condor)
@@ -67,6 +77,7 @@ AIRCRAFT_TYPES = {
         "routes_collection": "b757routesCollection",
         "display_name": "757",
         "low_routes_threshold": 10,
+        "fr24_dead_found_threshold": 10,
     },
     "b767": {
         # 767-300 / -400. Mix: passenger (DL, UA, ANA, JL) and cargo
@@ -76,6 +87,7 @@ AIRCRAFT_TYPES = {
         "routes_collection": "b767routesCollection",
         "display_name": "767",
         "low_routes_threshold": 20,
+        "fr24_dead_found_threshold": 15,
     },
 }
 

@@ -133,9 +133,11 @@ def get_flight_data(aircraft_key="a380"):
         f"no_destination={stats['no_destination']} insert_failed={stats['insert_failed']} "
         f"success_rate={rate:.0%}"
     )
-    DEAD_THRESHOLD_FOUND = 20
+    # Per-aircraft so a thin type (A340 ~14 airborne) can still flag a real
+    # FR24 outage, while big types don't false-alarm on a quiet hour.
+    dead_threshold_found = config.get("fr24_dead_found_threshold", 20)
     DEAD_ALERT_DEDUPE_HOURS = 12
-    if found >= DEAD_THRESHOLD_FOUND and inserted == 0:
+    if found >= dead_threshold_found and inserted == 0:
         health_col = client["a380flightsDb"]["_ingestHealth"]
         key = f"fr24:{aircraft_key}"
         last = health_col.find_one({"_id": key})
