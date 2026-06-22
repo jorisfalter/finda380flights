@@ -8,12 +8,19 @@ Adding a new aircraft type:
      insert — no migration needed.
 """
 
+_DEFAULT_LOW_ROUTES_THRESHOLD = 5
+
 AIRCRAFT_TYPES = {
     "a380": {
         "icao_types": ["A388"],
         "flights_collection": "a380flightsCollectionV2",
         "routes_collection": "a380routesCollection",
         "display_name": "A380",
+        # low_routes_threshold: alert when buildRoutesJson produces fewer
+        # than this. Set per-aircraft because niche types (A340) are
+        # genuinely low-volume — a flat threshold spammed Telegram for
+        # them while missing real drops on big fleets.
+        "low_routes_threshold": 30,
     },
     "b747": {
         # B748 = 747-8 (pax + freighter), B744 = 747-400 (mostly cargo now,
@@ -23,6 +30,7 @@ AIRCRAFT_TYPES = {
         "flights_collection": "b747flightsCollection",
         "routes_collection": "b747routesCollection",
         "display_name": "747",
+        "low_routes_threshold": 100,
     },
     "a340": {
         # A340-300 / -500 / -600. Mostly retired from passenger service;
@@ -32,6 +40,7 @@ AIRCRAFT_TYPES = {
         "flights_collection": "a340flightsCollection",
         "routes_collection": "a340routesCollection",
         "display_name": "A340",
+        "low_routes_threshold": 1,
     },
     "a350": {
         # A350-900 / -1000. Modern flagship widebody — flown by SQ, CX,
@@ -40,6 +49,7 @@ AIRCRAFT_TYPES = {
         "flights_collection": "a350flightsCollection",
         "routes_collection": "a350routesCollection",
         "display_name": "A350",
+        "low_routes_threshold": 30,
     },
     "b787": {
         # 787-8 / -9 / -10. Most widely operated modern widebody.
@@ -47,6 +57,7 @@ AIRCRAFT_TYPES = {
         "flights_collection": "b787flightsCollection",
         "routes_collection": "b787routesCollection",
         "display_name": "787",
+        "low_routes_threshold": 50,
     },
     "b757": {
         # 757-200 / -300. Mix of passenger (DL, UA, Icelandair, Condor)
@@ -55,6 +66,7 @@ AIRCRAFT_TYPES = {
         "flights_collection": "b757flightsCollection",
         "routes_collection": "b757routesCollection",
         "display_name": "757",
+        "low_routes_threshold": 10,
     },
     "b767": {
         # 767-300 / -400. Mix: passenger (DL, UA, ANA, JL) and cargo
@@ -63,6 +75,7 @@ AIRCRAFT_TYPES = {
         "flights_collection": "b767flightsCollection",
         "routes_collection": "b767routesCollection",
         "display_name": "767",
+        "low_routes_threshold": 20,
     },
 }
 

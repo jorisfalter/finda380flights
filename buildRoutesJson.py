@@ -383,17 +383,16 @@ if __name__ == "__main__":
         collection.insert_many(second_filtered_data)
         print(f"Routes rebuilt: {len(second_filtered_data)} entries")
 
-    # Low-routes safety alert. A healthy run produces ~50-100 routes;
-    # anything tiny is almost always an infra problem, not real fleet
-    # behavior (this was missing in the June 2026 Atlas-quota incident
-    # — writes were silently blocked for days with zero notification).
-    LOW_ROUTES_THRESHOLD = 5
-    if len(second_filtered_data) < LOW_ROUTES_THRESHOLD:
+    # Low-routes safety alert. Per-aircraft threshold lives in aircraft_config
+    # because niche types (A340) genuinely produce few routes while big
+    # fleets (A350, 787) producing few routes is a real infra problem.
+    low_routes_threshold = aircraft_config.get("low_routes_threshold", 5)
+    if len(second_filtered_data) < low_routes_threshold:
         from notify import telegram_notify
         telegram_notify(
             f"⚠️ {aircraft_config['display_name']} map: only "
             f"{len(second_filtered_data)} routes built this run "
-            f"(threshold {LOW_ROUTES_THRESHOLD}). Likely infra issue — "
+            f"(threshold {low_routes_threshold}). Likely infra issue — "
             f"check ingest cronjobs and MongoDB Atlas quota."
         )
 
@@ -402,7 +401,7 @@ if __name__ == "__main__":
     real_unknowns = {k: v for k, v in unknown_airports.items() if k and k != "<empty>"}
     if real_unknowns:
         from notify import telegram_notify
-        lines = ["A380 map: unresolvable IATA codes this run"]
+        lines = [f"{aircraft_config['display_name']} map: unresolvable IATA codes this run"]
         for iata, flights in sorted(real_unknowns.items()):
             sample_flights = ", ".join(sorted(set(flights))[:5])
             lines.append(f"  • {iata} (flights: {sample_flights})")
