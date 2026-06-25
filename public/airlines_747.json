@@ -20,6 +20,8 @@
     "CX": { "name": "Cathay Cargo",             "category": "cargo" },
     "GEC": { "name": "Lufthansa Cargo",         "category": "cargo" },
     "GTI": { "name": "Atlas Air",               "category": "cargo" },
-    "KAL": { "name": "Korean Air Cargo",        "category": "cargo" }
+    "KAL": { "name": "Korean Air Cargo",        "category": "cargo" },
+    "CC": { "name": "Air Atlanta Icelandic",    "category": "cargo" },
+    "KJ": { "name": "Air Incheon",              "category": "cargo" }
   }
 }

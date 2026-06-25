@@ -32,7 +32,8 @@ with open(json_file_path_airlines,"r") as json_file:
 # Merge the per-aircraft cargo/passenger classification files — they carry
 # curated display names for cargo carriers (UPS, FedEx, Atlas, etc.) that
 # aren't in the A380-only airlines.json.
-for _cat_file in ("airlines_747.json", "airlines_757.json", "airlines_767.json"):
+# Read from public/ — single source of truth, also served to the frontend.
+for _cat_file in ("public/airlines_747.json", "public/airlines_757.json", "public/airlines_767.json"):
     try:
         with open(_cat_file) as f:
             for code, info in json.load(f).get("airlines", {}).items():
