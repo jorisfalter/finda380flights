@@ -29,6 +29,43 @@ with open(json_file_path, "r") as json_file:
 with open(json_file_path_airlines,"r") as json_file:
     airline_data = json.load(json_file)
 
+# Merge the per-aircraft cargo/passenger classification files — they carry
+# curated display names for cargo carriers (UPS, FedEx, Atlas, etc.) that
+# aren't in the A380-only airlines.json.
+for _cat_file in ("airlines_747.json", "airlines_757.json", "airlines_767.json"):
+    try:
+        with open(_cat_file) as f:
+            for code, info in json.load(f).get("airlines", {}).items():
+                airline_data.setdefault(code.upper(), info.get("name", code))
+    except FileNotFoundError:
+        pass
+
+# OpenFlights airlines dataset (~6000 carriers, ODbL). Comprehensive
+# fallback so 747/787/etc. cargo + regional carriers get a real name
+# instead of "Unknown". Without this, 84% of 747 routes showed no airline
+# in the tooltip because airlines.json only had the 10 A380 operators.
+# Columns: id, name, alias, IATA(3), ICAO(4), callsign, country, active
+airlines_by_iata = {}   # 2-letter IATA → name
+airlines_by_icao = {}   # 3-letter ICAO → name
+try:
+    with open("airlines_openflights.dat", "r", encoding="utf-8") as f:
+        for row in csv.reader(f):
+            if len(row) < 8:
+                continue
+            name, iata, icao, active = row[1].strip(), row[3].strip().upper(), row[4].strip().upper(), row[7].strip()
+            if not name or name == "Unknown":
+                continue
+            if len(iata) == 2 and iata not in ("-", "\\N", "N/A"):
+                # Prefer active carriers when an IATA code is reused.
+                if iata not in airlines_by_iata or active == "Y":
+                    airlines_by_iata[iata] = name
+            if len(icao) == 3 and icao not in ("-", "\\N", "N/A"):
+                if icao not in airlines_by_icao or active == "Y":
+                    airlines_by_icao[icao] = name
+    print(f"Loaded {len(airlines_by_iata)} IATA + {len(airlines_by_icao)} ICAO airline names from OpenFlights")
+except FileNotFoundError:
+    print("WARNING: airlines_openflights.dat missing — many carriers will be Unknown")
+
 
 # OurAirports fallback dataset: ~85k airports, public domain CSV.
 # Used when an IATA code isn't in our curated airports.json — prevents
@@ -96,14 +133,21 @@ def resolve_airport(iata, flight_number=None):
 
 # function to get the airline name
 def get_airline_name(flight_number):
-    # Extract the first two letters from the flight number (the airline abbreviation)
-    airline_abbreviation = flight_number[:2].upper()  # Convert to uppercase for case-insensitive matching
-
-    # Check if the airline abbreviation exists in the data
-    if airline_abbreviation in airline_data:
-        return airline_data[airline_abbreviation]
-    else:
-        return "Unknown"  # Return a default value if the abbreviation is not found
+    if not flight_number:
+        return "Unknown"
+    code2 = flight_number[:2].upper()
+    code3 = flight_number[:3].upper()
+    # 1. Curated A380/cargo names (nicest display strings)
+    if code2 in airline_data:
+        return airline_data[code2]
+    # 2. OpenFlights 2-letter IATA (covers most carriers)
+    if code2 in airlines_by_iata:
+        return airlines_by_iata[code2]
+    # 3. Some ingested flight numbers are ICAO callsigns (e.g. adsbdb
+    #    returned no IATA → we stored "GTI8997"). Try 3-letter ICAO.
+    if code3 in airlines_by_icao:
+        return airlines_by_icao[code3]
+    return "Unknown"
 
 # Function to convert a number to a day of week
 # deprecated > moved to external function
