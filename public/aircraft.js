@@ -1,7 +1,12 @@
 // Generic aircraft map page. Driven by window.AIRCRAFT_CONFIG that the
-// EJS template injects per route. Replaces the per-aircraft scripts —
-// to add a new aircraft type, add an aircraft_config.py entry + a route
-// in app.js that renders aircraft.ejs with the right config.
+// EJS template injects per route. Replaces the per-aircraft scripts.
+//
+// Performance note: routes are rendered as ONE GeoJSON source + two line
+// layers (visible + wide invisible hit-area), not one source/layer pair
+// per route. With 995 routes (747) the old per-route approach created
+// ~2000 layers + ~4000 event handlers and ground the UI to a halt.
+// Filtering uses native GL filter expressions and hover uses feature-state,
+// both of which run in the render engine instead of JS.
 
 mapboxgl.accessToken = window.MAPBOX_ACCESS_TOKEN;
 const cfg = window.AIRCRAFT_CONFIG;
@@ -13,6 +18,9 @@ const mapboxMarkers = [];
 let airlinesCategoryData = { airlines: {} };
 let currentCategory = "all";
 let selectedAirlines = []; // mutated by airline-tile clicks
+let _activeAirlines = new Set();
+let _map = null;
+let _routes = []; // importedRoutesV2, for tooltip lookup by feature idx
 
 // ---------------------------------------------------------------------
 // Classification (only meaningful when cfg.hasCategoryFilter)
@@ -41,6 +49,14 @@ function routeCategoriesOf(route) {
   return Array.from(cats);
 }
 
+function airlinesOf(route) {
+  const set = new Set();
+  [...(route.goflights || []), ...(route.returnflights || [])].forEach((f) => {
+    if (f.airline) set.add(f.airline);
+  });
+  return Array.from(set);
+}
+
 // ---------------------------------------------------------------------
 // Dynamic airline tiles
 
@@ -61,14 +77,12 @@ function renderAirlineTiles(statusList, activeAirlines, allRoutes) {
     if (s.airline && s.airline !== "Unknown") statusByName[s.airline] = s;
   });
 
-  // Build the universe of tiles: active airlines plus historically-seen ones.
   const allNames = new Set();
   activeAirlines.forEach((a) => allNames.add(a));
   statusList.forEach((s) => {
     if (s.airline && s.airline !== "Unknown") allNames.add(s.airline);
   });
 
-  // Sort: active first (by route count desc), then inactive (by lastFlight desc).
   const sorted = Array.from(allNames).sort((a, b) => {
     const aActive = activeAirlines.has(a);
     const bActive = activeAirlines.has(b);
@@ -126,39 +140,50 @@ function toggleAirline(airline, tile) {
     selectedAirlines.splice(idx, 1);
     tile.classList.remove("selected");
   }
-  refreshVisibility(window._map);
+  applyFilters();
 }
 
 // ---------------------------------------------------------------------
-// Combined filter: airline AND category
+// Filtering — native GL filter expressions (airline AND category)
 
-function refreshVisibility(map) {
-  map.getStyle().layers.forEach((layer) => {
-    if (layer.type !== "line") return;
-    const isHover = layer.id.startsWith("hoverroute");
-    const isRoute = !isHover && layer.id.startsWith("route");
-    if (!isRoute && !isHover) return;
+function applyFilters() {
+  if (!_map) return;
+  const allSelected = selectedAirlines.length >= _activeAirlines.size;
 
-    const meta = map.getLayer(layer.id).metadata || {};
-    const layerAirlines = meta.airline || [];
-    const layerCategories = meta.category || ["any"];
+  const clauses = [];
+  if (!allSelected) {
+    if (selectedAirlines.length === 0) {
+      clauses.push(["in", "|__none__|", ["get", "airlinesStr"]]);
+    } else {
+      clauses.push([
+        "any",
+        ...selectedAirlines.map((a) => ["in", "|" + a + "|", ["get", "airlinesStr"]]),
+      ]);
+    }
+  }
+  if (cfg.hasCategoryFilter && currentCategory !== "all") {
+    clauses.push(["in", "|" + currentCategory + "|", ["get", "categoriesStr"]]);
+  }
+  const filter = clauses.length ? ["all", ...clauses] : null;
 
-    const airlineMatch = layerAirlines.some((a) => selectedAirlines.includes(a));
-    const categoryMatch = currentCategory === "all" || layerCategories.includes(currentCategory);
-    const visible = airlineMatch && categoryMatch;
+  _map.setFilter("routes", filter);
+  _map.setFilter("routes-hover", filter);
 
-    const onOpacity = isHover ? 0.01 : 1;
-    map.setPaintProperty(layer.id, "line-opacity", visible ? onOpacity : 0);
-  });
-
-  // Markers: show if the airport's airline set + category set intersects.
+  // Markers: visible if at least one of their airlines is selected and
+  // category matches. O(markers), runs once per toggle.
   mapboxMarkers.forEach((marker) => {
-    const markerAirlines = (marker._element.dataset.airlines || "").split("|").filter(Boolean);
-    const markerCats = (marker._element.dataset.categories || "any").split(",");
-    const airlineMatch = markerAirlines.some((a) => selectedAirlines.includes(a));
-    const categoryMatch = currentCategory === "all" || markerCats.includes(currentCategory);
-    if (airlineMatch && categoryMatch) marker.addTo(window._map);
-    else marker.remove();
+    const meta = marker._meta;
+    const airlineMatch = allSelected || meta.airlines.some((a) => selectedAirlines.includes(a));
+    const categoryMatch =
+      !cfg.hasCategoryFilter || currentCategory === "all" || meta.categories.includes(currentCategory);
+    const visible = airlineMatch && categoryMatch;
+    if (visible && !marker._added) {
+      marker.addTo(_map);
+      marker._added = true;
+    } else if (!visible && marker._added) {
+      marker.remove();
+      marker._added = false;
+    }
   });
 }
 
@@ -168,7 +193,52 @@ function applyCategoryFilter(category) {
     const btn = document.getElementById(`filter-${c}`);
     if (btn) btn.classList.toggle("active", c === category);
   });
-  refreshVisibility(window._map);
+  applyFilters();
+}
+
+// ---------------------------------------------------------------------
+// Geodesic arc between two points. Step count scales with distance so we
+// don't burn ~500 turf calls on a short hop (or on 995 routes at once).
+
+function buildArc(origin, destination) {
+  let o = [origin[0], origin[1]];
+  let d = [destination[0], destination[1]];
+  // Dateline fix: keep both endpoints on the same side of ±180.
+  if (o[0] - d[0] > 180) d[0] += 360;
+  else if (o[0] - d[0] < -180) o[0] += 360;
+
+  const line = { type: "Feature", geometry: { type: "LineString", coordinates: [o, d] } };
+  const dist = turf.length(line); // km
+  const steps = Math.max(20, Math.min(120, Math.round(dist / 80)));
+  const arc = [];
+  for (let i = 0; i < dist; i += dist / steps) {
+    arc.push(turf.along(line, i).geometry.coordinates);
+  }
+  arc.push(d);
+  return arc;
+}
+
+function buildLineTooltip(route) {
+  let html = `<strong>${route.originName} - ${route.destinationName}</strong><br><div style="line-height: 1px;"></div>`;
+  const renderFlights = (flights) => {
+    let s = "";
+    for (const item of flights) {
+      let container = "";
+      for (const day of item.daysOfWeek) container += `<span class="dow">${day}   </span>`;
+      const timeLine =
+        item.departureTimeLocal && item.arrivalTimeLocal
+          ? `${item.departureTimeLocal} - ${item.arrivalTimeLocal}<br>`
+          : ``;
+      s += `${item.airline} - ${item.flightNumber}<br>${timeLine}<div style="padding: 5px 0">${container}</div><div style="line-height: 4px;"></div>`;
+    }
+    return s;
+  };
+  html += renderFlights(route.goflights || []);
+  if (route.returnflights && route.returnflights.length > 0) {
+    html += `<br><strong>${route.destinationName} - ${route.originName}</strong><br><div style="line-height: 1px;"></div>`;
+    html += renderFlights(route.returnflights);
+  }
+  return html;
 }
 
 // ---------------------------------------------------------------------
@@ -183,17 +253,49 @@ Promise.all([
 ])
   .then(([allRoutes, statusList, airlinesJson]) => {
     airlinesCategoryData = airlinesJson;
-    const importedRoutesV2 = allRoutes;
+    _routes = allRoutes;
     console.log(`${cfg.label} map: ${allRoutes.length} routes loaded`);
 
     const activeAirlines = new Set();
-    allRoutes.forEach((r) => {
-      [...(r.goflights || []), ...(r.returnflights || [])].forEach((f) => {
-        if (f.airline) activeAirlines.add(f.airline);
+    allRoutes.forEach((r) => airlinesOf(r).forEach((a) => activeAirlines.add(a)));
+    _activeAirlines = activeAirlines;
+
+    renderAirlineTiles(statusList, activeAirlines, allRoutes);
+
+    // Build ONE FeatureCollection for all routes + dedupe airports for markers.
+    const features = [];
+    const airportMeta = new Map(); // name -> {coordinates, cityName, airlines:Set, categories:Set}
+
+    allRoutes.forEach((route, k) => {
+      const arc = buildArc(route.originCoordinates, route.destinationCoordinates);
+      const airlines = airlinesOf(route);
+      const categories = routeCategoriesOf(route);
+      features.push({
+        type: "Feature",
+        id: k,
+        geometry: { type: "LineString", coordinates: arc },
+        properties: {
+          idx: k,
+          airlinesStr: "|" + airlines.join("|") + "|",
+          categoriesStr: "|" + categories.join("|") + "|",
+        },
+      });
+
+      [
+        { name: route.originName, coordinates: route.originCoordinates, cityName: route.originCityName },
+        { name: route.destinationName, coordinates: route.destinationCoordinates, cityName: route.destinationCityName },
+      ].forEach((p) => {
+        let m = airportMeta.get(p.name);
+        if (!m) {
+          m = { coordinates: p.coordinates, cityName: p.cityName, airlines: new Set(), categories: new Set() };
+          airportMeta.set(p.name, m);
+        }
+        airlines.forEach((a) => m.airlines.add(a));
+        categories.forEach((c) => m.categories.add(c));
       });
     });
 
-    renderAirlineTiles(statusList, activeAirlines, allRoutes);
+    const routesFC = { type: "FeatureCollection", features };
 
     const map = new mapboxgl.Map({
       container: "map",
@@ -201,131 +303,97 @@ Promise.all([
       center: [-96, 37.8],
       zoom: 1,
     });
-    window._map = map;
+    _map = map;
 
-    for (let k = 0; k < importedRoutesV2.length; k++) {
-      let origin1 = importedRoutesV2[k].originCoordinates;
-      let originCityName = importedRoutesV2[k].originCityName;
-      let destination1 = importedRoutesV2[k].destinationCoordinates;
-      let destinationCityName = importedRoutesV2[k].destinationCityName;
-      let originAirportName = importedRoutesV2[k].originName;
-      let destinationAirportName = importedRoutesV2[k].destinationName;
+    map.on("load", () => {
+      map.addSource("routes-src", { type: "geojson", data: routesFC });
 
-      let routeAirlines = [];
-      for (let m = 0; m < importedRoutesV2[k].goflights.length; m++) {
-        routeAirlines.push(importedRoutesV2[k].goflights[m].airline);
+      // Visible line layer — colour/width react to hover feature-state.
+      map.addLayer({
+        id: "routes",
+        source: "routes-src",
+        type: "line",
+        layout: { "line-cap": "round", "line-join": "round" },
+        paint: {
+          "line-color": [
+            "case",
+            ["boolean", ["feature-state", "hover"], false],
+            "#FF5733",
+            "#007cbf",
+          ],
+          "line-width": [
+            "case",
+            ["boolean", ["feature-state", "hover"], false],
+            6,
+            3,
+          ],
+          "line-opacity": 1,
+        },
+      });
+
+      // Wide transparent hit-area layer for easier hover/click.
+      map.addLayer({
+        id: "routes-hover",
+        source: "routes-src",
+        type: "line",
+        paint: { "line-width": 20, "line-color": "#000", "line-opacity": 0.01 },
+      });
+
+      // --- Hover / click: 3 handlers total (vs ~4000 before) ---
+      let hoveredId = null;
+
+      function showTooltip(e) {
+        if (!e.features || !e.features.length) return;
+        const k = e.features[0].properties.idx;
+        lineTooltip.innerHTML = buildLineTooltip(_routes[k]);
+        lineTooltip.style.display = "block";
+        lineTooltip.style.left = e.originalEvent.pageX + "px";
+        lineTooltip.style.top = e.originalEvent.pageY + "px";
       }
-      const routeCategories = routeCategoriesOf(importedRoutesV2[k]);
 
-      // Dateline-crossing fix: shift one endpoint past 180° so the
-      // great-circle arc draws as a single line rather than wrapping.
-      if (origin1[0] - destination1[0] > 180) destination1[0] += 360;
-      else if (origin1[0] - destination1[0] < -180) origin1[0] += 360;
-
-      const route = {
-        type: "FeatureCollection",
-        features: [
-          {
-            type: "Feature",
-            geometry: { type: "LineString", coordinates: [origin1, destination1] },
-          },
-        ],
-      };
-
-      const lineDistance = turf.length(route.features[0]);
-      const arc = [];
-      const steps = 500;
-      for (let i = 0; i < lineDistance; i += lineDistance / steps) {
-        arc.push(turf.along(route.features[0], i).geometry.coordinates);
-      }
-      route.features[0].geometry.coordinates = arc;
-
-      map.on("load", () => {
-        map.addSource("route" + k, { type: "geojson", data: route });
-
-        map.addLayer({
-          id: "route" + k,
-          source: "route" + k,
-          type: "line",
-          paint: { "line-width": 3, "line-color": "#007cbf", "line-opacity": 1 },
-          metadata: {
-            origin: originCityName,
-            airline: routeAirlines,
-            category: routeCategories,
-            destination: destinationCityName,
-            origin_airport: originAirportName,
-            destination_airport: destinationAirportName,
-          },
-        });
-        map.addLayer({
-          id: "hoverroute" + k,
-          source: "route" + k,
-          type: "line",
-          paint: { "line-width": 20, "line-color": "#007cbf", "line-opacity": 0.01 },
-          metadata: {
-            origin: originCityName,
-            airline: routeAirlines,
-            category: routeCategories,
-            destination: destinationCityName,
-            origin_airport: originAirportName,
-            destination_airport: destinationAirportName,
-          },
-        });
-
-        // Tooltip on hover/click
-        function mouseEnterAndClick(e) {
-          if (!e.features || !e.features.length) return;
-          let tooltipContent = `<strong>${originAirportName} - ${destinationAirportName}</strong><br><div style="line-height: 1px;"></div>`;
-
-          for (const item of importedRoutesV2[k].goflights) {
-            let container = "";
-            for (const day of item.daysOfWeek) {
-              container += `<span class="dow">${day}   </span>`;
-            }
-            const timeLine =
-              item.departureTimeLocal && item.arrivalTimeLocal
-                ? `${item.departureTimeLocal} - ${item.arrivalTimeLocal}<br>`
-                : ``;
-            tooltipContent += `${item.airline} - ${item.flightNumber}<br>${timeLine}<div style="padding: 5px 0">${container}</div><div style="line-height: 4px;"></div>`;
-          }
-          if (importedRoutesV2[k].returnflights && importedRoutesV2[k].returnflights.length > 0) {
-            tooltipContent += `<br><strong>${destinationAirportName} - ${originAirportName}</strong><br><div style="line-height: 1px;"></div>`;
-            for (const item of importedRoutesV2[k].returnflights) {
-              let container = "";
-              for (const day of item.daysOfWeek) {
-                container += `<span class="dow">${day}   </span>`;
-              }
-              const timeLine =
-                item.departureTimeLocal && item.arrivalTimeLocal
-                  ? `${item.departureTimeLocal} - ${item.arrivalTimeLocal}<br>`
-                  : ``;
-              tooltipContent += `${item.airline} - ${item.flightNumber}<br>${timeLine}<div style="padding: 5px 0">${container}</div><div style="line-height: 1px;"></div>`;
-            }
-          }
-          lineTooltip.innerHTML = tooltipContent;
-          lineTooltip.style.display = "block";
-          lineTooltip.style.left = e.originalEvent.pageX + "px";
-          lineTooltip.style.top = e.originalEvent.pageY + "px";
+      map.on("mousemove", "routes-hover", (e) => {
+        if (!e.features || !e.features.length) return;
+        const id = e.features[0].id;
+        if (hoveredId !== null && hoveredId !== id) {
+          map.setFeatureState({ source: "routes-src", id: hoveredId }, { hover: false });
         }
-        map.on("mouseenter", "hoverroute" + k, mouseEnterAndClick);
-        map.on("click", "hoverroute" + k, mouseEnterAndClick);
+        hoveredId = id;
+        map.setFeatureState({ source: "routes-src", id }, { hover: true });
+        map.getCanvas().classList.add("hover-pointer");
+        showTooltip(e);
+      });
+      map.on("click", "routes-hover", showTooltip);
+      map.on("mouseleave", "routes-hover", () => {
+        if (hoveredId !== null) {
+          map.setFeatureState({ source: "routes-src", id: hoveredId }, { hover: false });
+          hoveredId = null;
+        }
+        map.getCanvas().classList.remove("hover-pointer");
+        lineTooltip.style.display = "none";
+      });
 
-        map.on("mouseenter", "hoverroute" + k, function () {
-          const opacity = map.getPaintProperty("hoverroute" + k, "line-opacity");
-          if (opacity > 0) {
-            map.setPaintProperty("route" + k, "line-color", "#FF5733");
-            map.setPaintProperty("route" + k, "line-width", 6);
-            map.getCanvas().classList.add("hover-pointer");
-          }
+      // --- Markers ---
+      airportMeta.forEach((meta, name) => {
+        const el = document.createElement("div");
+        el.className = "marker";
+        const marker = new mapboxgl.Marker(el).setLngLat(meta.coordinates).addTo(map);
+        marker._meta = { airlines: Array.from(meta.airlines), categories: Array.from(meta.categories) };
+        marker._added = true;
+        mapboxMarkers.push(marker);
+
+        el.addEventListener("mouseenter", () => {
+          const rect = el.getBoundingClientRect();
+          tooltip.textContent = `${meta.cityName} (${name})`;
+          tooltip.style.display = "block";
+          const left = rect.left + rect.width / 2 - tooltip.offsetWidth / 2;
+          tooltip.style.left = `${left}px`;
+          tooltip.style.top = `${rect.top - tooltip.offsetHeight - 10}px`;
         });
-        map.on("mouseleave", "hoverroute" + k, function () {
-          map.setPaintProperty("route" + k, "line-color", "#007cbf");
-          map.setPaintProperty("route" + k, "line-width", 3);
-          map.getCanvas().classList.remove("hover-pointer");
-          lineTooltip.style.display = "none";
+        el.addEventListener("mouseleave", () => {
+          tooltip.style.display = "none";
         });
       });
-    }
+    });
 
     // Category filter wiring (only present when hasCategoryFilter)
     if (cfg.hasCategoryFilter) {
@@ -334,77 +402,5 @@ Promise.all([
         if (btn) btn.addEventListener("click", () => applyCategoryFilter(c));
       });
     }
-
-    // Build markers (deduped origin/destination airports)
-    const allMarkersNames = [];
-    const allMarkersObject = [];
-    for (let i = 0; i < importedRoutesV2.length; i++) {
-      const r = importedRoutesV2[i];
-      [
-        { name: r.originName, coordinates: r.originCoordinates, cityName: r.originCityName },
-        { name: r.destinationName, coordinates: r.destinationCoordinates, cityName: r.destinationCityName },
-      ].forEach((p) => {
-        if (!allMarkersNames.includes(p.name)) {
-          allMarkersNames.push(p.name);
-          allMarkersObject.push(p);
-        }
-      });
-    }
-
-    function airlinesAtAirport(airportName) {
-      const set = new Set();
-      importedRoutesV2.forEach((r) => {
-        if (r.originName === airportName || r.destinationName === airportName) {
-          [...r.goflights, ...r.returnflights].forEach((f) => set.add(f.airline));
-        }
-      });
-      return Array.from(set);
-    }
-    function categoriesAtAirport(airportName) {
-      const set = new Set();
-      importedRoutesV2.forEach((r) => {
-        if (r.originName === airportName || r.destinationName === airportName) {
-          routeCategoriesOf(r).forEach((c) => set.add(c));
-        }
-      });
-      return Array.from(set);
-    }
-
-    map.on("load", () => {
-      for (let j = 0; j < allMarkersObject.length; j++) {
-        const markerElement = document.createElement("div");
-        markerElement.className = "marker";
-
-        const newMarker = new mapboxgl.Marker(markerElement)
-          .setLngLat(allMarkersObject[j].coordinates)
-          .addTo(map);
-
-        // pipe-delimited so airline names containing commas don't break us
-        newMarker.getElement().setAttribute(
-          "data-airlines",
-          airlinesAtAirport(allMarkersObject[j].name).join("|")
-        );
-        newMarker.getElement().setAttribute(
-          "data-categories",
-          categoriesAtAirport(allMarkersObject[j].name).join(",")
-        );
-
-        mapboxMarkers.push(newMarker);
-
-        const elementToHover = document.getElementsByClassName("marker")[j];
-        elementToHover.addEventListener("mouseenter", () => {
-          const rect = elementToHover.getBoundingClientRect();
-          tooltip.textContent =
-            allMarkersObject[j].cityName + " (" + allMarkersObject[j].name + ")";
-          tooltip.style.display = "block";
-          const left = rect.left + rect.width / 2 - tooltip.offsetWidth / 2;
-          tooltip.style.left = `${left}px`;
-          tooltip.style.top = `${rect.top - tooltip.offsetHeight - 10}px`;
-        });
-        elementToHover.addEventListener("mouseleave", () => {
-          tooltip.style.display = "none";
-        });
-      }
-    });
   })
   .catch((e) => console.error(`${cfg.label} aircraft map failed:`, e));
